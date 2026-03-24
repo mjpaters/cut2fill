@@ -1042,11 +1042,47 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('feedbackModal').classList.remove('visible');
         }
     });
-    document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+    document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
         e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        try {
+            const resp = await fetch('https://formspree.io/f/xdawqlvg', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    name: document.getElementById('feedbackName').value,
+                    email: document.getElementById('feedbackEmail').value,
+                    type: document.getElementById('feedbackType').value,
+                    message: document.getElementById('feedbackMessage').value
+                })
+            });
+            if (resp.ok) {
+                showToast('Thanks for your feedback! We\'ll review it shortly.');
+            } else {
+                showToast('Failed to send — please try again.');
+            }
+        } catch (err) {
+            showToast('Network error — please try again.');
+        }
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Feedback';
         document.getElementById('feedbackModal').classList.remove('visible');
-        showToast('Thanks for your feedback! We\'ll review it shortly.');
         document.getElementById('feedbackForm').reset();
+    });
+
+    // Legal disclaimer modal
+    document.getElementById('disclaimerToggle').addEventListener('click', () => {
+        document.getElementById('disclaimerModal').style.display = 'flex';
+    });
+    document.getElementById('disclaimerClose').addEventListener('click', () => {
+        document.getElementById('disclaimerModal').style.display = 'none';
+    });
+    document.getElementById('disclaimerModal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('disclaimerModal')) {
+            document.getElementById('disclaimerModal').style.display = 'none';
+        }
     });
 
     // Sign in

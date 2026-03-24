@@ -18,7 +18,7 @@
         <div class="logo">
             <i class="fas fa-recycle logo-icon"></i>
             <div>
-                <span class="logo-text">Cut2Fill</span>
+                <span class="logo-text">Cut2Fill <span style="font-size:10px;font-weight:600;background:rgba(245,158,11,0.15);color:#f59e0b;padding:2px 6px;border-radius:4px;vertical-align:middle;margin-left:4px;">BETA</span></span>
                 <span class="logo-tagline">Connect. Reuse. Sustain.</span>
             </div>
         </div>
@@ -408,6 +408,38 @@
 
 <!-- Toast Notification -->
 <div class="toast" id="toast"></div>
+
+<!-- Footer -->
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:800;background:rgba(28,25,23,0.95);border-top:1px solid rgba(255,255,255,0.06);padding:6px 16px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgba(168,162,158,0.7);backdrop-filter:blur(8px);">
+    <div>&copy; 2025 Archers Group Pty Ltd. All rights reserved. <span style="margin-left:8px;background:rgba(245,158,11,0.12);color:#f59e0b;padding:1px 6px;border-radius:3px;font-weight:600;">BETA v0.1</span></div>
+    <div style="text-align:right;max-width:60%;line-height:1.4;">
+        <span style="cursor:pointer;text-decoration:underline;text-decoration-style:dotted;" id="disclaimerToggle">Legal Disclaimer</span>
+    </div>
+</footer>
+
+<!-- Disclaimer Modal -->
+<div class="modal-overlay" id="disclaimerModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;">
+    <div style="background:#1c1917;border:1px solid rgba(255,255,255,0.1);border-radius:12px;max-width:600px;width:90%;padding:24px;color:#e0dbd3;max-height:80vh;overflow-y:auto;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <h3 style="margin:0;font-size:16px;"><i class="fas fa-balance-scale" style="color:var(--amber);margin-right:6px;"></i>Legal Disclaimer</h3>
+            <button id="disclaimerClose" style="background:none;border:none;color:#a8a29e;font-size:18px;cursor:pointer;"><i class="fas fa-times"></i></button>
+        </div>
+        <div style="font-size:13px;line-height:1.7;color:#a8a29e;">
+            <p><strong style="color:#e0dbd3;">Map Data &amp; Accuracy</strong><br>
+            The information displayed on Cut2Fill is provided for general planning purposes only and should not be relied upon as a substitute for professional advice. Facility locations, boundaries, and zone data are approximate and may not reflect current conditions. Always verify critical information directly with the relevant facility operator, local council, or regulatory authority before making decisions.</p>
+            <p><strong style="color:#e0dbd3;">Delivery Estimator</strong><br>
+            Fuel consumption, truck hours, and emissions estimates are indicative only, based on generalised vehicle profiles and straight-line distance calculations with a road correction factor. Actual values will vary based on route, terrain, traffic, vehicle condition, load configuration, and driving behaviour. Estimates use National Greenhouse Account (NGA) Factors 2024 for CO₂-e calculations.</p>
+            <p><strong style="color:#e0dbd3;">Biosecurity Zones</strong><br>
+            Fire ant biosecurity zone boundaries shown are simplified representations of Queensland Government data. For official zone checks and Biosecurity Instrument Permit (BIP) requirements, always consult the <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/invasive-plants-animals/animals/fire-ants/zone-checker" target="_blank" rel="noopener" style="color:#6b8f5e;">Queensland Government Fire Ant Zone Checker</a>.</p>
+            <p><strong style="color:#e0dbd3;">Third-Party Data</strong><br>
+            Cut2Fill incorporates data from OpenStreetMap, CARTO, Queensland Government, local councils, and water utility providers. This data is used under their respective licences and terms. Cut2Fill does not guarantee the accuracy or completeness of third-party data.</p>
+            <p><strong style="color:#e0dbd3;">Intellectual Property</strong><br>
+            The Cut2Fill platform, including its design, curated datasets, and original content, is &copy; 2025 Archers Group Pty Ltd. All rights reserved. The Cut2Fill name and branding are proprietary to Archers Group.</p>
+            <p><strong style="color:#e0dbd3;">Limitation of Liability</strong><br>
+            To the maximum extent permitted by law, Archers Group Pty Ltd accepts no liability for any loss, damage, or cost arising from the use of or reliance on information provided through Cut2Fill. Use of this platform is at your own risk.</p>
+        </div>
+    </div>
+</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="app.js"></script>
