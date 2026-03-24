@@ -686,6 +686,7 @@ function applyFacilityFilters() {
     const filtered = getFilteredFacilities();
     addFacilityMarkers(filtered);
     updateFacilityStats(filtered);
+    addWaterFillMarkers();
 }
 
 function showFacilityPanel(facility) {
@@ -824,13 +825,13 @@ const waterFillPoints = [
 
 const waterFillColor = '#2196F3';
 let waterFillLayerGroup = L.layerGroup();
-let waterFillVisible = false;
 
 function addWaterFillMarkers() {
     waterFillLayerGroup.clearLayers();
     const search = document.getElementById('searchInput').value.toLowerCase();
-    const showPotable = document.getElementById('filterWaterPotable')?.checked ?? true;
-    const showRecycled = document.getElementById('filterWaterRecycled')?.checked ?? true;
+    const typeFilters = Array.from(document.querySelectorAll('[data-filter="facility"]:checked')).map(c => c.value);
+    const showPotable = typeFilters.includes('water-potable');
+    const showRecycled = typeFilters.includes('water-recycled');
 
     waterFillPoints.forEach(w => {
         if (w.waterType === 'potable' && !showPotable) return;
@@ -884,9 +885,10 @@ function showWaterFillPanel(w) {
 
 // ===== EVENT LISTENERS =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Initial render — facilities are the primary map data
+    // Initial render — facilities and water fill points
     applyFacilityFilters();
     facilityLayerGroup.addTo(map);
+    waterFillLayerGroup.addTo(map);
     renderDashboard();
 
     // Load LGA boundaries and fire ant zones from inline data
@@ -903,13 +905,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-filter]').forEach(cb => {
         cb.addEventListener('change', applyFacilityFilters);
     });
-    document.getElementById('searchInput').addEventListener('input', () => {
-        applyFacilityFilters();
-        if (waterFillVisible) {
-            addWaterFillMarkers();
-            document.getElementById('statWaterFill').textContent = waterFillLayerGroup.getLayers().length;
-        }
-    });
+    document.getElementById('searchInput').addEventListener('input', applyFacilityFilters);
     document.getElementById('clearFilters').addEventListener('click', () => {
         document.querySelectorAll('[data-filter]').forEach(cb => {
             cb.checked = true;
@@ -958,32 +954,6 @@ document.addEventListener('DOMContentLoaded', () => {
             map.removeLayer(lgaLayerGroup);
         }
         this.classList.toggle('active');
-    });
-
-    // Water fill points toggle
-    document.getElementById('btnWaterFill').addEventListener('click', function() {
-        waterFillVisible = !waterFillVisible;
-        const waterFilterGroup = document.getElementById('waterFilterGroup');
-        if (waterFillVisible) {
-            addWaterFillMarkers();
-            waterFillLayerGroup.addTo(map);
-            waterFilterGroup.style.display = '';
-            document.getElementById('statWaterFill').textContent = waterFillLayerGroup.getLayers().length;
-        } else {
-            map.removeLayer(waterFillLayerGroup);
-            waterFilterGroup.style.display = 'none';
-        }
-        this.classList.toggle('active');
-    });
-
-    // Water fill filter changes
-    document.querySelectorAll('[data-filter="water"]').forEach(cb => {
-        cb.addEventListener('change', () => {
-            if (waterFillVisible) {
-                addWaterFillMarkers();
-                document.getElementById('statWaterFill').textContent = waterFillLayerGroup.getLayers().length;
-            }
-        });
     });
 
     // Fire ant zone toggle

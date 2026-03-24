@@ -91,6 +91,16 @@
                     <span class="check-dot" style="background: #b85c4a;"></span>
                     PFAS Treatment
                 </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="water-potable">
+                    <span class="check-dot" style="background: #2196F3;"></span>
+                    Water Fill — Potable
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="water-recycled">
+                    <span class="check-dot" style="background: #9C27B0;"></span>
+                    Water Fill — Recycled
+                </label>
             </div>
         </div>
 
@@ -109,24 +119,6 @@
                     24/7
                 </label>
             </div>
-        </div>
-
-        <!-- Water Fill Points Filter -->
-        <div class="filter-group" id="waterFilterGroup" style="display:none;">
-            <h4 class="filter-title"><i class="fas fa-tint" style="color:#2196F3;"></i> Water Fill Points</h4>
-            <div class="filter-checks">
-                <label class="check-label">
-                    <input type="checkbox" checked id="filterWaterPotable" data-filter="water" value="potable">
-                    <span class="check-dot" style="background: #2196F3;"></span>
-                    Potable Water
-                </label>
-                <label class="check-label">
-                    <input type="checkbox" checked id="filterWaterRecycled" data-filter="water" value="recycled">
-                    <span class="check-dot" style="background: #9C27B0;"></span>
-                    Recycled Water
-                </label>
-            </div>
-            <div class="stat-row" style="margin-top:6px;"><span>Fill Points Shown</span><strong id="statWaterFill">0</strong></div>
         </div>
 
         <!-- Stats Summary -->
@@ -160,7 +152,6 @@
             <button class="map-ctrl-btn" id="btnMyLocation" title="My Location"><i class="fas fa-crosshairs"></i></button>
             <button class="map-ctrl-btn" id="btnSatellite" title="Toggle Satellite"><i class="fas fa-satellite"></i></button>
             <button class="map-ctrl-btn active" id="btnLGA" title="Council Boundaries"><i class="fas fa-draw-polygon"></i></button>
-            <button class="map-ctrl-btn" id="btnWaterFill" title="Water Fill Points"><i class="fas fa-tint"></i></button>
             <button class="map-ctrl-btn" id="btnFireAnts" title="Fire Ant Biosecurity Zones"><i class="fas fa-bug"></i></button>
             <button class="map-ctrl-btn" id="btnHeatmap" title="Toggle Heatmap"><i class="fas fa-fire"></i></button>
         </div>
