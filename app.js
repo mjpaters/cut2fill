@@ -591,6 +591,151 @@ function showFacilityPanel(facility) {
     map.panTo([facility.lat, facility.lng]);
 }
 
+// ===== WATER FILL POINTS =====
+const waterFillPoints = [
+    // QUU — Queensland Urban Utilities (23 stations)
+    { name: 'QUU — Murarrie Fill Station', code: 'TF001', provider: 'QUU', lat: -27.4600, lng: 153.1000, suburb: 'Murarrie', address: '188 Paringa Road, Murarrie', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Rocklea Fill Station', code: 'TF003', provider: 'QUU', lat: -27.5370, lng: 153.0060, suburb: 'Rocklea', address: '32 Dunn Road, Rocklea', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Rosewood Fill Station', code: 'TF006', provider: 'QUU', lat: -27.6350, lng: 152.5930, suburb: 'Rosewood', address: '59 John Street, Rosewood', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Kholo Fill Station', code: 'TF009', provider: 'QUU', lat: -27.5310, lng: 152.6530, suburb: 'Kholo', address: '80-84 Reservoir Lane, Kholo', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Walloon Fill Station', code: 'TF007', provider: 'QUU', lat: -27.5990, lng: 152.6730, suburb: 'Walloon', address: '527 Karrabin Rosewood Road, Walloon', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Marburg Fill Station', code: 'TF008', provider: 'QUU', lat: -27.5640, lng: 152.5980, suburb: 'Marburg', address: 'Opposite 136-144 Queen Street, Marburg', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Raceview Fill Station', code: 'TF004', provider: 'QUU', lat: -27.6270, lng: 152.7640, suburb: 'Raceview', address: '21 Llewellyn Street, Raceview', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Toogoolawah Fill Station', code: 'TF024', provider: 'QUU', lat: -27.0910, lng: 152.3810, suburb: 'Toogoolawah', address: 'Brisbane Valley Highway, Toogoolawah', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Kilcoy Fill Station', code: 'TF029', provider: 'QUU', lat: -26.9410, lng: 152.5640, suburb: 'Kilcoy', address: '30 McCauley Street, Kilcoy', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Esk Fill Station', code: 'TF025', provider: 'QUU', lat: -27.2380, lng: 152.4200, suburb: 'Esk', address: '72 Esk-Hampton Road, Esk', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Lowood Fill Station (Fernvale Rd)', code: 'TF027', provider: 'QUU', lat: -27.4470, lng: 152.5440, suburb: 'Lowood', address: 'Opposite 2720 Forest Hill-Fernvale Road, Lowood', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Lowood Fill Station (Lindemans)', code: 'TF026', provider: 'QUU', lat: -27.4620, lng: 152.5730, suburb: 'Lowood', address: '19 Lindemans Road, Lowood', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Minden Fill Station', code: 'TF028', provider: 'QUU', lat: -27.5320, lng: 152.5420, suburb: 'Minden', address: '780 Lowood-Minden Road, Minden', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Laidley Fill Station', code: 'TF021', provider: 'QUU', lat: -27.6280, lng: 152.3910, suburb: 'Laidley', address: 'Opposite 2108 Laidley Rosewood Road, Laidley', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Gatton Fill Station', code: 'TF014', provider: 'QUU', lat: -27.5570, lng: 152.2790, suburb: 'Gatton', address: '48 Cochrane Street, Gatton', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Postmans Ridge Fill Station', code: 'TF016', provider: 'QUU', lat: -27.5670, lng: 152.1130, suburb: "Postman's Ridge", address: "112 Murphy's Creek Road, Postman's Ridge", access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Hatton Vale Fill Station', code: 'TF019', provider: 'QUU', lat: -27.5680, lng: 152.4640, suburb: 'Hatton Vale', address: '51 Fairway Drive, Hatton Vale', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Forest Hill Fill Station', code: 'TF018', provider: 'QUU', lat: -27.5860, lng: 152.3570, suburb: 'Forest Hill', address: 'Opposite 15 Forest Hill-Fernvale Rd, Forest Hill', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Beaudesert Fill Station', code: 'TF010', provider: 'QUU', lat: -28.0040, lng: 153.0010, suburb: 'Beaudesert', address: '109 Helen Street, Beaudesert', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Boonah Fill Station', code: 'TF011', provider: 'QUU', lat: -27.9960, lng: 152.6860, suburb: 'Boonah', address: 'Corner Boonah-Rathdowney Road and Milford Road, Boonah', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Canungra Fill Station', code: 'TF013', provider: 'QUU', lat: -28.0210, lng: 153.1610, suburb: 'Canungra', address: '60 Lamington National Park Road, Canungra', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Rathdowney Fill Station', code: 'TF012', provider: 'QUU', lat: -28.2190, lng: 152.8670, suburb: 'Rathdowney', address: '2-4 John Street, Rathdowney', access: 'Card required', waterType: 'potable' },
+    { name: 'QUU — Peak Crossing Fill Station', code: 'TF005', provider: 'QUU', lat: -27.7830, lng: 152.7310, suburb: 'Peak Crossing', address: '1323 Ipswich-Boonah Road, Peak Crossing', access: 'Card required', waterType: 'potable' },
+
+    // Unitywater (21 stations)
+    { name: 'Unitywater — Beerburrum', provider: 'Unitywater', lat: -26.9580, lng: 152.9530, suburb: 'Beerburrum', address: '54 Red Road, Beerburrum', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Beerwah', provider: 'Unitywater', lat: -26.8570, lng: 152.9570, suburb: 'Beerwah', address: 'Roberts Road, Beerwah', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Cashmere', provider: 'Unitywater', lat: -27.2960, lng: 152.8840, suburb: 'Cashmere', address: 'Warra Lane, Cashmere', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Coolum', provider: 'Unitywater', lat: -26.5340, lng: 153.0760, suburb: 'Coolum', address: '38 Quanda Road, Coolum', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Cooroy', provider: 'Unitywater', lat: -26.4170, lng: 152.9070, suburb: 'Cooroy', address: '271 Lake McDonald Drive, Cooroy', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Dakabin', provider: 'Unitywater', lat: -27.2270, lng: 152.9840, suburb: 'Dakabin', address: 'Plantation Road, Dakabin', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Dayboro', provider: 'Unitywater', lat: -27.1990, lng: 152.8220, suburb: 'Dayboro', address: 'Mt Mee Road, Dayboro', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Kenilworth', provider: 'Unitywater', lat: -26.5980, lng: 152.7310, suburb: 'Kenilworth', address: 'Mary Street (WTP), Kenilworth', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Landsborough', provider: 'Unitywater', lat: -26.8090, lng: 152.9650, suburb: 'Landsborough', address: 'Gympie Street North, Landsborough', access: '6am-10pm Mon-Fri', waterType: 'potable' },
+    { name: 'Unitywater — Maleny', provider: 'Unitywater', lat: -26.7630, lng: 152.8480, suburb: 'Maleny', address: 'Maleny Show Ground, Maleny', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Mooloolah', provider: 'Unitywater', lat: -26.7620, lng: 152.9660, suburb: 'Mooloolah', address: 'Connection Road, Mooloolah', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Morayfield', provider: 'Unitywater', lat: -27.1020, lng: 152.9520, suburb: 'Morayfield', address: '215 Buchanan Road, Morayfield', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Nambour', provider: 'Unitywater', lat: -26.6260, lng: 152.9590, suburb: 'Nambour', address: 'Nambour Showgrounds, Nambour', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Noosaville', provider: 'Unitywater', lat: -26.4060, lng: 153.0500, suburb: 'Noosaville', address: '183 Eumundi Road, Noosaville', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Palmwoods', provider: 'Unitywater', lat: -26.6900, lng: 152.9600, suburb: 'Palmwoods', address: 'Woombye-Palmwoods Road, Palmwoods', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Pomona', provider: 'Unitywater', lat: -26.3690, lng: 152.8590, suburb: 'Pomona', address: 'Station Street, Pomona', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Tewantin', provider: 'Unitywater', lat: -26.3920, lng: 153.0340, suburb: 'Tewantin', address: '262 McKinnon Drive, Tewantin', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Wamuran', provider: 'Unitywater', lat: -27.0390, lng: 152.8640, suburb: 'Wamuran', address: 'Bye Road, Wamuran', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Woodford', provider: 'Unitywater', lat: -26.9510, lng: 152.7730, suburb: 'Woodford', address: '9 Chambers Road, Woodford', access: '24/7', waterType: 'potable' },
+    { name: 'Unitywater — Yandina', provider: 'Unitywater', lat: -26.5640, lng: 152.9560, suburb: 'Yandina', address: 'Harvest Street, Yandina', access: '24/7', waterType: 'potable' },
+
+    // Gold Coast City Council — Drinking Water (12 stations)
+    { name: 'GCCC — Stapylton (N1)', code: 'N1', provider: 'Gold Coast CC', lat: -27.7310, lng: 153.2530, suburb: 'Stapylton', address: 'Angel Road (cnr Penny Lane), Stapylton', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Ormeau Hills (N2)', code: 'N2', provider: 'Gold Coast CC', lat: -27.7710, lng: 153.2440, suburb: 'Ormeau Hills', address: 'Tillyroen Road, Ormeau Hills', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Pimpama (N3)', code: 'N3', provider: 'Gold Coast CC', lat: -27.8130, lng: 153.2810, suburb: 'Pimpama', address: 'Kerkin Road North, Pimpama', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Runaway Bay (N4)', code: 'N4', provider: 'Gold Coast CC', lat: -27.9080, lng: 153.3850, suburb: 'Runaway Bay', address: 'Sports Drive, Runaway Bay', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Oxenford (N5)', code: 'N5', provider: 'Gold Coast CC', lat: -27.8840, lng: 153.3220, suburb: 'Oxenford', address: "Entertainment Road (south of Wet'n'Wild), Oxenford", access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Upper Coomera (N6)', code: 'N6', provider: 'Gold Coast CC', lat: -27.8690, lng: 153.2870, suburb: 'Upper Coomera', address: 'Tamborine-Oxenford Road, Upper Coomera', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Maudsland (N7)', code: 'N7', provider: 'Gold Coast CC', lat: -27.9010, lng: 153.2960, suburb: 'Maudsland', address: 'Maudsland Road, Maudsland', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Nerang (S8)', code: 'S8', provider: 'Gold Coast CC', lat: -27.9870, lng: 153.3340, suburb: 'Nerang', address: 'Yarrimbah Drive, Nerang', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Worongary (S9)', code: 'S9', provider: 'Gold Coast CC', lat: -28.0420, lng: 153.3590, suburb: 'Worongary', address: 'Worongary Road, Worongary', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Mudgeeraba (S10)', code: 'S10', provider: 'Gold Coast CC', lat: -28.0830, lng: 153.3660, suburb: 'Mudgeeraba', address: 'Gold Coast-Springbrook Road, Mudgeeraba', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Mudgeeraba (S11)', code: 'S11', provider: 'Gold Coast CC', lat: -28.0760, lng: 153.3470, suburb: 'Mudgeeraba', address: 'Hardys Road, Mudgeeraba', access: '24/7', waterType: 'potable' },
+    { name: 'GCCC — Tallebudgera (S12)', code: 'S12', provider: 'Gold Coast CC', lat: -28.1320, lng: 153.3880, suburb: 'Tallebudgera', address: 'Tallebudgera Connection Road, Tallebudgera', access: '24/7', waterType: 'potable' },
+
+    // Gold Coast City Council — Recycled Water (5 active stations)
+    { name: 'GCCC — Coombabah STP (Recycled)', provider: 'Gold Coast CC', lat: -27.8840, lng: 153.3650, suburb: 'Coombabah', address: 'End of Shelter Road, Coombabah', access: '6am-6pm (24hr with card)', waterType: 'recycled' },
+    { name: 'GCCC — Merrimac STP (Recycled)', provider: 'Gold Coast CC', lat: -28.0400, lng: 153.3780, suburb: 'Merrimac', address: 'Boowaggon Road, Merrimac', access: '24hr with card', waterType: 'recycled' },
+    { name: 'GCCC — Parkwood (Recycled)', provider: 'Gold Coast CC', lat: -27.9620, lng: 153.3730, suburb: 'Parkwood', address: '180 Musgrave Avenue, Parkwood', access: '24/7', waterType: 'recycled' },
+    { name: 'GCCC — Pimpama STP (Recycled)', provider: 'Gold Coast CC', lat: -27.8170, lng: 153.2850, suburb: 'Pimpama', address: '270 Kerkin Road North, Pimpama', access: '24hr with card', waterType: 'recycled' },
+    { name: 'GCCC — Tugun/Bilinga (Recycled)', provider: 'Gold Coast CC', lat: -28.1320, lng: 153.4880, suburb: 'Tugun', address: '4 Boyd Street, Tugun', access: '24/7', waterType: 'recycled' },
+
+    // Logan City Council (5 filling stations)
+    { name: 'Logan CC — Greenbank #1', provider: 'Logan CC', lat: -27.7361, lng: 152.9693, suburb: 'Greenbank', address: '117-123 Pub Lane, Greenbank', access: '24/7', waterType: 'potable' },
+    { name: 'Logan CC — Greenbank #2', provider: 'Logan CC', lat: -27.7191, lng: 152.9871, suburb: 'Greenbank', address: 'Cnr Middle Road & Sheppards Drive, Greenbank', access: '24/7', waterType: 'potable' },
+    { name: 'Logan CC — Logan Village', provider: 'Logan CC', lat: -27.8037, lng: 153.0829, suburb: 'Logan Village', address: 'Cnr Travis Road & Camp Cable Road, Logan Village', access: '24/7', waterType: 'potable' },
+    { name: 'Logan CC — Chambers Flat', provider: 'Logan CC', lat: -27.7195, lng: 153.0724, suburb: 'Chambers Flat', address: 'Opposite 176-186 Koplick Road, Chambers Flat', access: '24/7', waterType: 'potable' },
+    { name: 'Logan CC — Jimboomba', provider: 'Logan CC', lat: -27.8350, lng: 153.0250, suburb: 'Jimboomba', address: 'Cerina Circuit, opposite 12-14, Jimboomba', access: '24/7', waterType: 'potable' },
+
+    // Redland City Council (5 filling stations)
+    { name: 'Redland CC — Capalaba', provider: 'Redland CC', lat: -27.5260, lng: 153.1920, suburb: 'Capalaba', address: '171 Ney Road, Capalaba', access: '24/7', waterType: 'potable' },
+    { name: 'Redland CC — Ormiston', provider: 'Redland CC', lat: -27.5180, lng: 153.2540, suburb: 'Ormiston', address: '101 Sturgeon Street, Fellmonger Park, Ormiston', access: '24/7', waterType: 'potable' },
+    { name: 'Redland CC — Thornlands', provider: 'Redland CC', lat: -27.5570, lng: 153.2580, suburb: 'Thornlands', address: '226 Cleveland-Redland Bay Road, Thornlands', access: '24/7', waterType: 'potable' },
+    { name: 'Redland CC — Redland Bay', provider: 'Redland CC', lat: -27.6140, lng: 153.3040, suburb: 'Redland Bay', address: '47-49 Orchard Road, Redland Bay', access: '24/7', waterType: 'potable' },
+    { name: 'Redland CC — Mount Cotton', provider: 'Redland CC', lat: -27.6240, lng: 153.2310, suburb: 'Mount Cotton', address: '11 Valley Way, Mount Cotton', access: '24/7', waterType: 'potable' },
+];
+
+const waterFillColor = '#2196F3';
+let waterFillLayerGroup = L.layerGroup();
+let waterFillVisible = false;
+
+function addWaterFillMarkers() {
+    waterFillLayerGroup.clearLayers();
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const showPotable = document.getElementById('filterWaterPotable')?.checked ?? true;
+    const showRecycled = document.getElementById('filterWaterRecycled')?.checked ?? true;
+
+    waterFillPoints.forEach(w => {
+        if (w.waterType === 'potable' && !showPotable) return;
+        if (w.waterType === 'recycled' && !showRecycled) return;
+        if (search) {
+            const haystack = `${w.name} ${w.suburb} ${w.provider} ${w.address}`.toLowerCase();
+            if (!haystack.includes(search)) return;
+        }
+
+        const isRecycled = w.waterType === 'recycled';
+        const markerColor = isRecycled ? '#9C27B0' : waterFillColor;
+        const marker = L.marker([w.lat, w.lng], {
+            icon: L.divIcon({
+                className: '',
+                html: `<div style="width:24px;height:24px;border-radius:50%;background:${markerColor};border:2px solid rgba(224,219,211,0.5);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.4);cursor:pointer;"><i class="fas fa-tint"></i></div>`,
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            })
+        });
+        marker.bindTooltip(`<strong>${w.name}</strong><br>${w.address}<br>${w.access}${isRecycled ? '<br><em style="color:#ce93d8;">Recycled water</em>' : ''}`, { direction: 'top', offset: [0, -14] });
+        marker.on('click', () => showWaterFillPanel(w));
+        waterFillLayerGroup.addLayer(marker);
+    });
+}
+
+function showWaterFillPanel(w) {
+    const panel = document.getElementById('infoPanel');
+    const isRecycled = w.waterType === 'recycled';
+    document.getElementById('infoPanelContent').innerHTML = `
+        <div class="info-header">
+            <div class="info-icon" style="background:rgba(255,255,255,0.08);color:${isRecycled ? '#ce93d8' : waterFillColor};">
+                <i class="fas fa-tint"></i>
+            </div>
+            <div>
+                <div class="info-title">${w.name}</div>
+                <div class="info-subtitle">Water Fill Point · ${w.suburb}</div>
+            </div>
+        </div>
+        <div class="badge-row">
+            <span class="badge" style="background:rgba(33,150,243,0.12);color:${isRecycled ? '#ce93d8' : waterFillColor};"><i class="fas fa-tint"></i> ${isRecycled ? 'Recycled Water' : 'Potable Water'}</span>
+            <span class="badge" style="background:rgba(255,255,255,0.06);color:var(--text-muted);"><i class="fas fa-building"></i> ${w.provider}</span>
+        </div>
+        <div class="info-notes"><i class="fas fa-map-marker-alt" style="color:var(--blue);margin-right:6px;"></i>${w.address}</div>
+        <div class="info-notes"><i class="fas fa-clock" style="color:var(--green);margin-right:6px;"></i>Access: ${w.access}</div>
+        ${w.code ? `<div class="info-notes"><i class="fas fa-tag" style="color:var(--amber);margin-right:6px;"></i>Station code: ${w.code}</div>` : ''}
+        ${isRecycled ? '<div class="info-notes" style="color:#ce93d8;"><i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>Recycled water — not for drinking. Suitable for dust suppression, compaction, and construction use.</div>' : ''}
+    `;
+    panel.classList.add('visible');
+    map.panTo([w.lat, w.lng]);
+}
+
 // ===== EVENT LISTENERS =====
 document.addEventListener('DOMContentLoaded', () => {
     // Initial render — facilities are the primary map data
@@ -612,7 +757,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-filter]').forEach(cb => {
         cb.addEventListener('change', applyFacilityFilters);
     });
-    document.getElementById('searchInput').addEventListener('input', applyFacilityFilters);
+    document.getElementById('searchInput').addEventListener('input', () => {
+        applyFacilityFilters();
+        if (waterFillVisible) {
+            addWaterFillMarkers();
+            document.getElementById('statWaterFill').textContent = waterFillLayerGroup.getLayers().length;
+        }
+    });
     document.getElementById('clearFilters').addEventListener('click', () => {
         document.querySelectorAll('[data-filter]').forEach(cb => {
             cb.checked = true;
@@ -660,6 +811,32 @@ document.addEventListener('DOMContentLoaded', () => {
             map.removeLayer(lgaLayerGroup);
         }
         this.classList.toggle('active');
+    });
+
+    // Water fill points toggle
+    document.getElementById('btnWaterFill').addEventListener('click', function() {
+        waterFillVisible = !waterFillVisible;
+        const waterFilterGroup = document.getElementById('waterFilterGroup');
+        if (waterFillVisible) {
+            addWaterFillMarkers();
+            waterFillLayerGroup.addTo(map);
+            waterFilterGroup.style.display = '';
+            document.getElementById('statWaterFill').textContent = waterFillLayerGroup.getLayers().length;
+        } else {
+            map.removeLayer(waterFillLayerGroup);
+            waterFilterGroup.style.display = 'none';
+        }
+        this.classList.toggle('active');
+    });
+
+    // Water fill filter changes
+    document.querySelectorAll('[data-filter="water"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+            if (waterFillVisible) {
+                addWaterFillMarkers();
+                document.getElementById('statWaterFill').textContent = waterFillLayerGroup.getLayers().length;
+            }
+        });
     });
 
     // Fire ant zone toggle
