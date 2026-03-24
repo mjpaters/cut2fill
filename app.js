@@ -646,8 +646,8 @@ function getFilteredFacilities() {
     const search = document.getElementById('searchInput').value.toLowerCase();
 
     return registeredFacilities.filter(f => {
-        if (typeFilters.length > 0 && !typeFilters.includes(f.type)) return false;
-        if (hoursFilters.length > 0 && !hoursFilters.includes(f.hours)) return false;
+        if (!typeFilters.includes(f.type)) return false;
+        if (!hoursFilters.includes(f.hours)) return false;
         if (search) {
             const haystack = `${f.name} ${f.suburb} ${f.notes} ${facilityTypeLabels[f.type] || ''}`.toLowerCase();
             if (!haystack.includes(search)) return false;
@@ -830,9 +830,8 @@ function addWaterFillMarkers() {
     waterFillLayerGroup.clearLayers();
     const search = document.getElementById('searchInput').value.toLowerCase();
     const typeFilters = Array.from(document.querySelectorAll('[data-filter="facility"]:checked')).map(c => c.value);
-    const noFacilityFilter = typeFilters.length === 0;
-    const showPotable = noFacilityFilter || typeFilters.includes('water-potable');
-    const showRecycled = noFacilityFilter || typeFilters.includes('water-recycled');
+    const showPotable = typeFilters.includes('water-potable');
+    const showRecycled = typeFilters.includes('water-recycled');
 
     waterFillPoints.forEach(w => {
         if (w.waterType === 'potable' && !showPotable) return;
@@ -1097,8 +1096,8 @@ function getFilteredProjects() {
     const typeFilters = Array.from(document.querySelectorAll('[data-filter="project-type"]:checked')).map(c => c.value);
     const search = document.getElementById('searchInput').value.toLowerCase();
     return majorProjects.filter(p => {
-        if (statusFilters.length > 0 && !statusFilters.includes(p.status)) return false;
-        if (typeFilters.length > 0 && !typeFilters.includes(p.projectType)) return false;
+        if (!statusFilters.includes(p.status)) return false;
+        if (!typeFilters.includes(p.projectType)) return false;
         if (search) {
             const haystack = `${p.name} ${p.suburb} ${p.description} ${p.authority} ${p.projectType} major project`.toLowerCase();
             if (!haystack.includes(search)) return false;
@@ -1253,17 +1252,17 @@ document.addEventListener('DOMContentLoaded', () => {
         applyProjectFilters();
     });
 
-    // Clear facility filters only
+    // Clear facility filters — uncheck facility types only, keep hours intact
     document.getElementById('clearFacilityFilters').addEventListener('click', () => {
-        document.querySelectorAll('[data-filter="facility"], [data-filter="hours"]').forEach(cb => {
+        document.querySelectorAll('[data-filter="facility"]').forEach(cb => {
             cb.checked = false;
         });
         applyFacilityFilters();
     });
 
-    // Clear project filters only
+    // Clear project filters — uncheck status only, keep type intact
     document.getElementById('clearProjectFilters').addEventListener('click', () => {
-        document.querySelectorAll('[data-filter="project-status"], [data-filter="project-type"]').forEach(cb => {
+        document.querySelectorAll('[data-filter="project-status"]').forEach(cb => {
             cb.checked = false;
         });
         applyProjectFilters();
