@@ -537,6 +537,10 @@ const registeredFacilities = [
     { name: 'Nucrush — Oxenford Quarry', type: 'quarry', lat: -27.8850, lng: 153.3150, suburb: 'Oxenford', icon: 'fa-gem', color: '#8a8478', hours: 'business', notes: '50+ years operating. Meta-greywacke (blue metal) quarry. Key Resource Area.' },
     { name: 'Kennedy Group — Bromelton Quarry', type: 'quarry', lat: -27.9927, lng: 152.9640, suburb: 'Bromelton', icon: 'fa-gem', color: '#8a8478', hours: 'business', notes: '100M+ tonne blue rock deposit — one of largest in QLD. Hard rock aggregates.' },
     { name: 'Neilsen Group — Cryna Quarry', type: 'quarry', lat: -28.0050, lng: 152.9800, suburb: 'Beaudesert', icon: 'fa-gem', color: '#8a8478', hours: 'business', notes: 'Operating since 1997. Hard rock basalt quarry producing concrete aggregates and road base.' },
+    // Somerset Regional Council
+    { name: 'Adbri — Fernvale Quarry', type: 'quarry', lat: -27.4600, lng: 152.6500, suburb: 'Fernvale', icon: 'fa-gem', color: '#8a8478', hours: 'business', notes: '1630 Brisbane Valley Hwy, Fernvale. Sand, gravel, aggregates and ready-mix concrete. Est. 1957 (formerly Zanows, acquired by Adbri 2022). Two quarry operations on site.' },
+    { name: 'Adbri — Coominya Quarry', type: 'quarry', lat: -27.4000, lng: 152.5300, suburb: 'Coominya', icon: 'fa-gem', color: '#8a8478', hours: 'business', notes: '1020 Atkinsons Dam Rd, Coominya. Aggregates and ready-mix concrete (Hy-Tec brand). Hard rock quarry resource.' },
+    { name: 'Rockwell — Buaraba Quarry', type: 'quarry', lat: -27.4300, lng: 152.4100, suburb: 'Buaraba', icon: 'fa-gem', color: '#8a8478', hours: 'business', notes: '156 Skew Gully Rd, Buaraba. Sandstone quarry — washed sands, gravels, road base, decorative crushed sandstone. Family-owned, 25+ years. Delivers across SEQ.' },
     // ===== LANDFILLS =====
     // Commercial Landfills
     { name: 'Veolia — Ti-Tree Bioenergy', type: 'landfill', lat: -27.5500, lng: 152.8600, suburb: 'Ipswich', icon: 'fa-dumpster', color: '#a0734a', hours: '24/7', notes: 'Engineered landfill with bioenergy generation. Accepts C&D and general waste. 24/7 commercial receivals.' },
