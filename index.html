@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut2Fill | Connect. Reuse. Sustain.</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="header-left">
+        <div class="logo">
+            <i class="fas fa-recycle logo-icon"></i>
+            <div>
+                <span class="logo-text">Cut2Fill</span>
+                <span class="logo-tagline">Connect. Reuse. Sustain.</span>
+            </div>
+        </div>
+    </div>
+    <nav class="header-nav">
+        <button class="nav-btn active" data-view="map"><i class="fas fa-map-marked-alt"></i> Map</button>
+        <button class="nav-btn" data-view="dashboard"><i class="fas fa-chart-bar"></i> Dashboard</button>
+    </nav>
+    <div class="header-right">
+        <button class="btn btn-outline" id="btnFeedback"><i class="fas fa-comment-dots"></i> Feedback</button>
+        <button class="btn btn-outline" id="btnLogin"><i class="fas fa-user"></i> Sign In</button>
+        <button class="btn btn-primary" id="btnPostListing"><i class="fas fa-plus"></i> Register My Site</button>
+    </div>
+</header>
+
+<!-- Fire Ant Zone Warning Banner -->
+<div class="zone-warning-banner" id="zoneWarningBanner">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Fire ant biosecurity zone crossing — BIP may be required.</span>
+    <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/invasive-plants-animals/animals/fire-ants/zone-checker" target="_blank" rel="noopener">Check zones on BQCC <i class="fas fa-external-link-alt"></i></a>
+    <button class="zone-warning-close" id="zoneWarningClose"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- Main Content -->
+<div class="main-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-filter"></i> Filters</h3>
+            <button class="btn-text" id="clearFilters">Clear All</button>
+        </div>
+
+        <!-- Search -->
+        <div class="filter-group">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search facility, suburb, operator...">
+        </div>
+
+        <!-- Facility Type Filter -->
+        <div class="filter-group">
+            <h4 class="filter-title">Facility Type</h4>
+            <div class="filter-checks">
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="quarry">
+                    <span class="check-dot" style="background: #8a8478;"></span>
+                    Quarry
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="landfill">
+                    <span class="check-dot" style="background: #a0734a;"></span>
+                    Landfill
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="transfer">
+                    <span class="check-dot" style="background: #5c8a97;"></span>
+                    Transfer Station
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="cd-recycler">
+                    <span class="check-dot" style="background: #6a9e8f;"></span>
+                    C&amp;D Recycler
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="soil-treatment">
+                    <span class="check-dot" style="background: #8b7eb5;"></span>
+                    Soil Treatment
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="pfas-treatment">
+                    <span class="check-dot" style="background: #b85c4a;"></span>
+                    PFAS Treatment
+                </label>
+            </div>
+        </div>
+
+        <!-- Opening Hours Filter -->
+        <div class="filter-group">
+            <h4 class="filter-title">Opening Hours</h4>
+            <div class="filter-checks">
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="hours" value="business">
+                    <i class="fas fa-sun" style="color:var(--amber);font-size:12px;"></i>
+                    Business Hours
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="hours" value="24/7">
+                    <i class="fas fa-clock" style="color:var(--green);font-size:12px;"></i>
+                    24/7
+                </label>
+            </div>
+        </div>
+
+        <!-- Stats Summary -->
+        <div class="sidebar-stats">
+            <h4 class="filter-title">SEQ Overview</h4>
+            <div class="stat-row"><span>Facilities Shown</span><strong id="statShown">0</strong></div>
+            <div class="stat-row"><span>Quarries</span><strong id="statQuarries">0</strong></div>
+            <div class="stat-row"><span>Landfills</span><strong id="statLandfills">0</strong></div>
+            <div class="stat-row"><span>Transfer Stations</span><strong id="statTransfer">0</strong></div>
+            <div class="stat-row"><span>Recyclers</span><strong id="statRecyclers">0</strong></div>
+        </div>
+
+        <button class="btn btn-secondary btn-full" id="btnToggleSidebar">
+            <i class="fas fa-chevron-left"></i> Collapse
+        </button>
+    </aside>
+
+    <!-- Map Area -->
+    <div class="map-container" id="mapView">
+        <div id="map"></div>
+
+        <!-- Address Search Bar -->
+        <div class="address-search" id="addressSearch">
+            <i class="fas fa-search address-search-icon"></i>
+            <input type="text" id="addressInput" placeholder="Search your project site address..." autocomplete="off">
+            <div class="address-results" id="addressResults"></div>
+        </div>
+
+        <!-- Map Controls -->
+        <div class="map-controls">
+            <button class="map-ctrl-btn" id="btnMyLocation" title="My Location"><i class="fas fa-crosshairs"></i></button>
+            <button class="map-ctrl-btn" id="btnSatellite" title="Toggle Satellite"><i class="fas fa-satellite"></i></button>
+            <button class="map-ctrl-btn active" id="btnLGA" title="Council Boundaries"><i class="fas fa-draw-polygon"></i></button>
+            <button class="map-ctrl-btn" id="btnFireAnts" title="Fire Ant Biosecurity Zones"><i class="fas fa-bug"></i></button>
+            <button class="map-ctrl-btn" id="btnHeatmap" title="Toggle Heatmap"><i class="fas fa-fire"></i></button>
+        </div>
+
+        <!-- Info Panel (shows when marker clicked) -->
+        <div class="info-panel" id="infoPanel">
+            <button class="info-close" id="infoPanelClose"><i class="fas fa-times"></i></button>
+            <div id="infoPanelContent"></div>
+        </div>
+    </div>
+
+    <!-- Dashboard View (hidden by default) -->
+    <div class="dashboard-container" id="dashboardView" style="display:none;">
+        <h2>Cut2Fill Dashboard</h2>
+        <div class="dashboard-grid">
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h3>Registered Sites</h3>
+                    <span class="dash-period">Current</span>
+                </div>
+                <div class="dash-stat-big" id="dashSiteStats">
+                    <!-- Populated by JS from actual data -->
+                </div>
+            </div>
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h3>Volume Summary</h3>
+                    <span class="dash-period">Active Listings</span>
+                </div>
+                <div class="dash-stat-big" id="dashVolumeStats">
+                    <!-- Populated by JS from actual data -->
+                </div>
+            </div>
+            <div class="dash-card full-width">
+                <div class="dash-card-header">
+                    <h3>Top Materials</h3>
+                </div>
+                <div class="material-chart" id="materialChart">
+                    <!-- Populated by JS from actual data -->
+                </div>
+            </div>
+            <div class="dash-card full-width">
+                <div class="dash-card-header">
+                    <h3>Registered Facilities</h3>
+                </div>
+                <div class="region-bars" id="facilityBars">
+                    <!-- Populated by JS from actual data -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Post Listing Modal -->
+<div class="modal-overlay" id="postModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2><i class="fas fa-map-marker-alt"></i> Register My Site</h2>
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <p class="modal-notice"><i class="fas fa-shield-alt"></i> All registrations are manually verified by the Archers team before going live.</p>
+        <form id="postForm" class="modal-body">
+            <!-- Step 1: Type -->
+            <div class="form-section">
+                <h3>What does your site have or need?</h3>
+                <div class="type-selector">
+                    <label class="type-option">
+                        <input type="radio" name="listingType" value="fill-available" checked>
+                        <div class="type-card">
+                            <i class="fas fa-truck-loading" style="color:#22c55e;"></i>
+                            <strong>Fill Available</strong>
+                            <span>Material available for pickup or delivery</span>
+                        </div>
+                    </label>
+                    <label class="type-option">
+                        <input type="radio" name="listingType" value="fill-wanted">
+                        <div class="type-card">
+                            <i class="fas fa-truck-moving" style="color:#f59e0b;"></i>
+                            <strong>Fill Wanted</strong>
+                            <span>Looking for material to be delivered</span>
+                        </div>
+                    </label>
+                    <label class="type-option">
+                        <input type="radio" name="listingType" value="private-dump">
+                        <div class="type-card">
+                            <i class="fas fa-mountain" style="color:#8b5cf6;"></i>
+                            <strong>Accepting Material</strong>
+                            <span>Private site accepting fill</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 2: Details -->
+            <div class="form-section">
+                <h3>Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Company / Contact Name *</label>
+                        <input type="text" id="formCompany" required placeholder="e.g. Smith Earthworks">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" id="formPhone" required placeholder="04XX XXX XXX">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="formEmail" placeholder="name@company.com.au">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" id="formProject" placeholder="e.g. Springfield Lakes Subdivision">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Material -->
+            <div class="form-section">
+                <h3>Material</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Material Type *</label>
+                        <select id="formMaterial" required>
+                            <option value="">Select material...</option>
+                            <option value="clean-fill">Clean Fill / Earth</option>
+                            <option value="rock">Rock / Rubble</option>
+                            <option value="sand">Sand</option>
+                            <option value="topsoil">Topsoil</option>
+                            <option value="concrete">Concrete / Asphalt</option>
+                            <option value="mixed">Mixed C&amp;D Waste</option>
+                            <option value="acid-sulfate">Acid Sulfate Soil</option>
+                            <option value="contaminated">Contaminated Soil</option>
+                        </select>
+                        <div class="material-tooltip" id="materialTooltip"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Estimated Volume (m³) *</label>
+                        <input type="number" id="formVolume" required placeholder="e.g. 500 (minimum 100m³)" min="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Available From *</label>
+                        <input type="date" id="formDateFrom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Available Until</label>
+                        <input type="date" id="formDateTo">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Pricing *</label>
+                        <div class="pricing-radios">
+                            <label class="pricing-radio">
+                                <input type="radio" name="formPricing" value="free" checked>
+                                <span class="pricing-radio-card free"><i class="fas fa-gift"></i> Free</span>
+                            </label>
+                            <label class="pricing-radio">
+                                <input type="radio" name="formPricing" value="quote">
+                                <span class="pricing-radio-card quote"><i class="fas fa-file-invoice-dollar"></i> Quote Required</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Location -->
+            <div class="form-section">
+                <h3>Location</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Address / Suburb *</label>
+                        <input type="text" id="formAddress" required placeholder="e.g. 123 Main St, Springfield QLD 4300">
+                    </div>
+                </div>
+                <p class="form-hint"><i class="fas fa-info-circle"></i> Your exact address won't be shown — only the suburb will appear on the map.</p>
+            </div>
+
+            <!-- Step 5: Additional -->
+            <div class="form-section">
+                <h3>Additional Info</h3>
+                <div class="form-group full-width">
+                    <label>Notes</label>
+                    <textarea id="formNotes" rows="3" placeholder="Access conditions, testing results, delivery requirements..."></textarea>
+                </div>
+                <div class="form-checks-row">
+                    <div class="form-group">
+                        <label class="check-label">
+                            <input type="checkbox" id="formTested">
+                            <i class="fas fa-flask" style="color:var(--green);font-size:13px;"></i>
+                            Material Tested / Classified
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="check-label">
+                            <input type="checkbox" id="formPickup" checked>
+                            <i class="fas fa-box-open" style="color:var(--amber);font-size:13px;"></i>
+                            Available for Pickup
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="check-label">
+                            <input type="checkbox" id="formDelivery">
+                            <i class="fas fa-truck" style="color:var(--blue);font-size:13px;"></i>
+                            Delivery Available
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="formCancel">Cancel</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit for Verification</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Feedback Modal -->
+<div class="modal-overlay" id="feedbackModal">
+    <div class="modal" style="max-width:500px;">
+        <div class="modal-header">
+            <h2><i class="fas fa-comment-dots"></i> Send Feedback</h2>
+            <button class="modal-close" id="feedbackModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="feedbackForm" class="modal-body">
+            <div class="form-section">
+                <div class="form-group full-width">
+                    <label>Your Name</label>
+                    <input type="text" id="feedbackName" placeholder="Optional">
+                </div>
+                <div class="form-group full-width">
+                    <label>Email</label>
+                    <input type="email" id="feedbackEmail" placeholder="Optional — if you'd like a response">
+                </div>
+                <div class="form-group full-width">
+                    <label>Feedback Type</label>
+                    <select id="feedbackType">
+                        <option value="general">General Feedback</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="data">Data Correction</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Your Feedback *</label>
+                    <textarea id="feedbackMessage" rows="5" required placeholder="Tell us what's working, what's not, or what you'd like to see..."></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="feedbackCancel">Cancel</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Feedback</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
