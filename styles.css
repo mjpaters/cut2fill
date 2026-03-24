@@ -301,6 +301,7 @@ body {
     z-index: 500;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: 4px;
 }
 .map-ctrl-btn {
@@ -324,6 +325,8 @@ body {
 .ctrl-label {
     font-size: 11px;
     font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.3px;
 }
 .map-ctrl-btn:hover { color: var(--text); background: rgba(46, 42, 34, 0.95); }
 .map-ctrl-btn.active { color: var(--green); background: rgba(107, 143, 94, 0.15); border-color: rgba(107,143,94,0.3); }
