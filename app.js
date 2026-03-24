@@ -26,7 +26,8 @@ const facilityTypeLabels = {
     'transfer': 'Transfer Station',
     'soil-treatment': 'Soil Treatment',
     'cd-recycler': 'C&D Recycler',
-    'pfas-treatment': 'PFAS Treatment'
+    'pfas-treatment': 'PFAS Treatment',
+    'concrete': 'Concrete Supplier'
 };
 const facilityTypeColors = {
     'quarry': '#8a8478',
@@ -34,7 +35,8 @@ const facilityTypeColors = {
     'transfer': '#5c8a97',
     'soil-treatment': '#8b7eb5',
     'cd-recycler': '#6a9e8f',
-    'pfas-treatment': '#b85c4a'
+    'pfas-treatment': '#b85c4a',
+    'concrete': '#d4a05a'
 };
 const facilityTypeIcons = {
     'quarry': 'fa-gem',
@@ -42,7 +44,8 @@ const facilityTypeIcons = {
     'transfer': 'fa-recycle',
     'soil-treatment': 'fa-flask',
     'cd-recycler': 'fa-cogs',
-    'pfas-treatment': 'fa-biohazard'
+    'pfas-treatment': 'fa-biohazard',
+    'concrete': 'fa-industry'
 };
 
 // ===== FIRE ANT BIOSECURITY ZONES (inline QLD Government data) =====
@@ -652,6 +655,84 @@ const registeredFacilities = [
     // PFAS Treatment
     { name: 'HiQ — Yatala PFAS Treatment', type: 'pfas-treatment', lat: -27.7230, lng: 153.2350, suburb: 'Yatala', icon: 'fa-biohazard', color: '#b85c4a', hours: 'business', notes: '12 Byte St, Yatala. First QLD Environmental Authority for PFAS treatment. Activated carbon immobilisation of PFAS in soil, sludges & water. Treats to non-detect standards. Services airports, defence bases, infrastructure. Mon-Fri.' },
     { name: 'Ventia — PFAS Remediation Services', type: 'pfas-treatment', lat: -27.5300, lng: 153.1000, suburb: 'Lytton', icon: 'fa-biohazard', color: '#b85c4a', hours: 'business', notes: 'PFAS soil and water remediation. Defence and commercial projects. Full chain of custody. Project-based treatment capability. Mon-Fri 7am-4pm.' },
+
+    // ===== CONCRETE SUPPLIERS =====
+    // Boral / Q-Crete — Brisbane
+    { name: 'Q-Crete — Everton Park', type: 'concrete', lat: -27.3970, lng: 152.9830, suburb: 'Everton Park', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '1 Collins Rd, Everton Park. Ready-mix concrete — structural and decorative. Boral subsidiary.' },
+    { name: 'Q-Crete — Murarrie', type: 'concrete', lat: -27.4600, lng: 153.0960, suburb: 'Murarrie', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Lytton Rd, Murarrie. Major metro batching plant. Boral subsidiary.' },
+    { name: 'Q-Crete — Archerfield', type: 'concrete', lat: -27.5360, lng: 153.0130, suburb: 'Archerfield', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Archerfield. Southern Brisbane batching plant. Boral subsidiary.' },
+    { name: 'Boral Concrete — Coopers Plains', type: 'concrete', lat: -27.5660, lng: 153.0320, suburb: 'Coopers Plains', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Metro south ready-mix supply.' },
+    { name: 'Boral Concrete — Wacol', type: 'concrete', lat: -27.5870, lng: 152.9320, suburb: 'Wacol', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Amatek Lane, Wacol. Western corridor batching plant.' },
+    // Boral / Q-Crete — Moreton Bay
+    { name: 'Q-Crete — Narangba', type: 'concrete', lat: -27.1960, lng: 152.9600, suburb: 'Narangba', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '201-205 Potassium St, Narangba. North corridor batching plant. Boral subsidiary.' },
+    { name: 'Boral Concrete — Lawnton', type: 'concrete', lat: -27.2800, lng: 152.9760, suburb: 'Lawnton', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'North Brisbane batching plant.' },
+    // Boral — Gold Coast / Logan
+    { name: 'Boral Concrete — Beenleigh', type: 'concrete', lat: -27.7140, lng: 153.1960, suburb: 'Beenleigh', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Logan/northern Gold Coast supply.' },
+    { name: 'Boral Concrete — Biggera Waters', type: 'concrete', lat: -27.9360, lng: 153.3960, suburb: 'Biggera Waters', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '243 Brisbane Rd, Biggera Waters. Central Gold Coast batching plant.' },
+    { name: 'Boral Concrete — Bundall', type: 'concrete', lat: -28.0050, lng: 153.4150, suburb: 'Bundall', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Gold Coast CBD corridor supply.' },
+    { name: 'Q-Crete — Burleigh Heads', type: 'concrete', lat: -28.0970, lng: 153.4310, suburb: 'Burleigh Heads', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Southern Gold Coast. Boral subsidiary.' },
+    // Boral — Ipswich
+    { name: 'Boral Concrete — Redbank Plains', type: 'concrete', lat: -27.6440, lng: 152.8600, suburb: 'Redbank Plains', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Ipswich growth corridor supply.' },
+    // Boral — Sunshine Coast / Noosa
+    { name: 'Boral Concrete — Caloundra West', type: 'concrete', lat: -26.8010, lng: 153.1080, suburb: 'Caloundra West', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '11 Industrial Ave, Caloundra West. Southern Sunshine Coast batching plant.' },
+    { name: 'Boral Concrete — Kunda Park', type: 'concrete', lat: -26.6770, lng: 153.0200, suburb: 'Kunda Park', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Central Sunshine Coast batching plant.' },
+    { name: 'Boral Concrete — Noosaville', type: 'concrete', lat: -26.4070, lng: 153.0370, suburb: 'Noosaville', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '1 Production St, Noosaville. Northern Sunshine Coast supply.' },
+    // Boral — Toowoomba
+    { name: 'Boral Concrete — Toowoomba', type: 'concrete', lat: -27.5480, lng: 151.9540, suburb: 'Toowoomba', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Cnr North & Larcombe Sts, Toowoomba. Darling Downs supply.' },
+
+    // Holcim / Readymix
+    { name: 'Holcim — Acacia Ridge', type: 'concrete', lat: -27.5800, lng: 153.0270, suburb: 'Acacia Ridge', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Bradman St, Acacia Ridge. Southern Brisbane batching plant.' },
+    { name: 'Holcim — Murarrie', type: 'concrete', lat: -27.4580, lng: 153.0980, suburb: 'Murarrie', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '1044 Lytton Rd, Murarrie. Formerly Excel Concrete, now Readymix brand.' },
+    { name: 'Holcim — Caboolture', type: 'concrete', lat: -27.0830, lng: 152.9570, suburb: 'Caboolture', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '8 Roseby Rd, Caboolture. Northern corridor batching plant.' },
+    { name: 'Holcim — Ipswich', type: 'concrete', lat: -27.6140, lng: 152.7610, suburb: 'Ipswich', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Western growth area supply.' },
+    { name: 'Holcim — Coomera', type: 'concrete', lat: -27.8560, lng: 153.3450, suburb: 'Coomera', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Maudsland Rd, Coomera. Northern Gold Coast batching plant.' },
+    { name: 'Holcim — Warana', type: 'concrete', lat: -26.6860, lng: 153.1170, suburb: 'Warana', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '11-13 Premier Circuit, Warana. Kawana Waters area supply.' },
+    { name: 'Holcim — Noosaville', type: 'concrete', lat: -26.4110, lng: 153.0440, suburb: 'Noosaville', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '91 Eumundi Rd, Noosaville. Northern Sunshine Coast supply.' },
+    { name: 'Holcim — Beaudesert', type: 'concrete', lat: -27.9900, lng: 152.9970, suburb: 'Beaudesert', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Barram Court, Beaudesert. Scenic Rim supply.' },
+    { name: 'Holcim — Boonah', type: 'concrete', lat: -27.9940, lng: 152.6820, suburb: 'Boonah', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Evans Rd, Boonah. Rural Scenic Rim supply.' },
+
+    // Heidelberg Materials (formerly Hanson)
+    { name: 'Heidelberg — Stapylton', type: 'concrete', lat: -27.7290, lng: 153.2600, suburb: 'Stapylton', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Northern Gold Coast / Logan border. Formerly Hanson.' },
+    { name: 'Heidelberg — Southport', type: 'concrete', lat: -27.9660, lng: 153.3980, suburb: 'Southport', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Central Gold Coast supply. Formerly Hanson.' },
+    { name: 'Heidelberg — Maroochydore', type: 'concrete', lat: -26.6540, lng: 153.0950, suburb: 'Maroochydore', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Central Sunshine Coast supply. Formerly Hanson.' },
+
+    // Wagners
+    { name: 'Wagners Concrete — Pinkenba', type: 'concrete', lat: -27.4180, lng: 153.1140, suburb: 'Pinkenba', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '47 Pamela St, Pinkenba. Also cement terminal. Earth Friendly Concrete (EFC geopolymer) available.' },
+    { name: 'Wagners Concrete — Narangba', type: 'concrete', lat: -27.1960, lng: 152.9630, suburb: 'Narangba', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '115 Potassium St, Narangba. EFC geopolymer concrete available since 2023.' },
+    { name: 'Wagners Concrete — Coolum', type: 'concrete', lat: -26.5400, lng: 153.0680, suburb: 'Coolum Beach', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '97 Quanda Rd, Coolum Beach. EFC geopolymer concrete available since 2023.' },
+    { name: 'Wagners Concrete — Toowoomba', type: 'concrete', lat: -27.5580, lng: 151.9590, suburb: 'Toowoomba', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '339 Anzac Ave, Toowoomba. Ready-mix supply.' },
+
+    // Nucon (Nucrush Group)
+    { name: 'Nucon — Upper Coomera', type: 'concrete', lat: -27.8700, lng: 153.2960, suburb: 'Upper Coomera', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '19 Hart St, Upper Coomera. Head office + batching plant. 50+ years in SEQ.' },
+    { name: 'Nucon — Southport', type: 'concrete', lat: -27.9750, lng: 153.3850, suburb: 'Southport', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '273 Southport Nerang Rd, Southport. Central Gold Coast supply.' },
+    { name: 'Nucon — Oxenford', type: 'concrete', lat: -27.8780, lng: 153.3130, suburb: 'Oxenford', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '33 Maudsland Rd, Oxenford. Northern Gold Coast supply.' },
+    { name: 'Nucon — Burleigh', type: 'concrete', lat: -28.0930, lng: 153.4250, suburb: 'Burleigh Heads', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '75 Hutchinson St, Burleigh Heads. Southern Gold Coast supply.' },
+    { name: 'Nucon — Logan', type: 'concrete', lat: -27.6690, lng: 153.1110, suburb: 'Kingston', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '58 Kingston Rd, Kingston. Logan supply.' },
+
+    // Neilsens Concrete
+    { name: 'Neilsens — Brendale', type: 'concrete', lat: -27.3190, lng: 152.9630, suburb: 'Brendale', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'Johnstone Rd, Brendale. HQ and original plant (est. 1993). NATA accredited lab.' },
+    { name: 'Neilsens — Carole Park', type: 'concrete', lat: -27.6100, lng: 152.9180, suburb: 'Carole Park', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '39 Mica St, Carole Park. Est. 1997. Includes NATA lab.' },
+    { name: 'Neilsens — Windsor', type: 'concrete', lat: -27.4330, lng: 153.0260, suburb: 'Windsor', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '97 Somerset St, Windsor. Est. 2004. Inner north Brisbane supply.' },
+    { name: 'Neilsens — Stapylton', type: 'concrete', lat: -27.7280, lng: 153.2600, suburb: 'Stapylton', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '45 Christensen Rd, Stapylton. Est. 2011. Southern corridor supply.' },
+    { name: 'Neilsens — Beaudesert', type: 'concrete', lat: -27.9900, lng: 152.9970, suburb: 'Beaudesert', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '43 Cryna Rd, Beaudesert. Est. 2017. Scenic Rim supply.' },
+
+    // Neil Mansell Concrete
+    { name: 'Neil Mansell — Kunda Park', type: 'concrete', lat: -26.6750, lng: 153.0250, suburb: 'Kunda Park', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '566-570 Maroochydore Rd, Kunda Park. Sunshine Coast supply. Also operates mobile plants.' },
+    { name: 'Neil Mansell — Toowoomba', type: 'concrete', lat: -27.5700, lng: 151.9250, suburb: 'Toowoomba', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '483 Greenwattle St, Toowoomba. Darling Downs supply.' },
+
+    // Sunmix Concrete
+    { name: 'Sunmix — Kingston', type: 'concrete', lat: -27.6660, lng: 153.1200, suburb: 'Kingston', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '5-11 Marble Dr, Kingston. Independent operator, 25+ years. Logan/southside Brisbane supply.' },
+    { name: 'Sunmix — Beaudesert', type: 'concrete', lat: -27.9730, lng: 153.0010, suburb: 'Beaudesert', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '150 Enterprise Dr North, Beaudesert. Scenic Rim supply.' },
+
+    // Cordwells Concrete
+    { name: 'Cordwells — Yandina', type: 'concrete', lat: -26.5630, lng: 152.9550, suburb: 'Yandina', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '11-21 Cordwell Rd, Yandina. Family-owned since 1965. Sunshine Coast\'s longest-established concrete supplier.' },
+
+    // SPS Quality Concrete
+    { name: 'SPS Concrete — Ningi', type: 'concrete', lat: -27.0660, lng: 153.0680, suburb: 'Ningi', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '565 Bestmann Rd, Ningi. Family-owned. Head office + batching plant. Moreton Bay supply.' },
+    { name: 'SPS Concrete — Bells Creek', type: 'concrete', lat: -26.8100, lng: 153.1020, suburb: 'Bells Creek', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: '21 Ron Parkinson Cres, Bells Creek. Caloundra area supply.' },
+
+    // Hymix (Adbri/CRH)
+    { name: 'Hymix — Brendale', type: 'concrete', lat: -27.3220, lng: 152.9550, suburb: 'Brendale', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'McDonald Rd, Brendale. Adbri/CRH group. Structural and decorative concrete.' },
 ];
 
 let facilityLayerGroup = L.layerGroup();
