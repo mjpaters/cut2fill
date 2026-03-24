@@ -883,12 +883,343 @@ function showWaterFillPanel(w) {
     map.panTo([w.lat, w.lng]);
 }
 
+// ===== MAJOR PROJECTS (Brisbane 2032 Olympics Pipeline) =====
+const majorProjects = [
+    {
+        name: 'Brisbane Stadium (Victoria Park)',
+        lat: -27.4500, lng: 153.0230,
+        suburb: 'Herston',
+        description: '$3.8B new 55,000-seat stadium and 64-hectare precinct at Victoria Park. Main venue for Brisbane 2032 Olympics opening/closing ceremonies.',
+        status: 'upcoming',
+        projectType: 'venue',
+        cost: '$3.8B',
+        authority: 'Queensland Government / Brisbane 2032 OCA',
+        startDate: '2026-06-01',
+        expectedEndDate: '2030-12-01',
+        phases: [
+            { name: 'Site preparation & enabling works', start: '2026-06-01', end: '2027-06-01' },
+            { name: 'Bulk earthworks & foundations', start: '2027-01-01', end: '2028-06-01' },
+            { name: 'Structure & services', start: '2028-01-01', end: '2030-06-01' },
+            { name: 'Fitout & commissioning', start: '2030-01-01', end: '2030-12-01' }
+        ],
+        estimatedVolume: '800,000+ m³',
+        sourceUrl: 'https://www.statedevelopment.qld.gov.au/brisbane-2032'
+    },
+    {
+        name: 'Logan & Gold Coast Faster Rail',
+        lat: -27.7100, lng: 153.1800,
+        suburb: 'Kuraby–Beenleigh',
+        description: '$5.75B rail upgrade — 20km quadruplication from Kuraby to Beenleigh with new stations. Faster, more frequent services for SEQ south.',
+        status: 'upcoming',
+        projectType: 'rail',
+        cost: '$5.75B',
+        authority: 'Cross River Rail Delivery Authority',
+        startDate: '2026-01-01',
+        expectedEndDate: '2032-06-01',
+        phases: [
+            { name: 'Early works & corridor acquisition', start: '2026-01-01', end: '2027-06-01' },
+            { name: 'Bulk earthworks & drainage', start: '2027-06-01', end: '2029-06-01' },
+            { name: 'Track & station construction', start: '2029-01-01', end: '2031-12-01' },
+            { name: 'Systems & commissioning', start: '2031-06-01', end: '2032-06-01' }
+        ],
+        estimatedVolume: '1,200,000+ m³',
+        sourceUrl: 'https://www.tmr.qld.gov.au/projects/logan-and-gold-coast-faster-rail'
+    },
+    {
+        name: 'Coomera Connector (Second M1)',
+        lat: -27.8850, lng: 153.3100,
+        suburb: 'Coomera–Nerang',
+        description: '$2.16B second motorway corridor — 16km Coomera to Nerang. Stage 1 (northern) open, Central and Southern stages active construction.',
+        status: 'active',
+        projectType: 'road',
+        cost: '$2.16B',
+        authority: 'Queensland DTMR',
+        startDate: '2022-01-01',
+        expectedEndDate: '2028-12-01',
+        phases: [
+            { name: 'Stage 1 — Northern (complete)', start: '2022-01-01', end: '2025-06-01' },
+            { name: 'Stage 2 — Central', start: '2024-06-01', end: '2027-06-01' },
+            { name: 'Stage 3 — Southern', start: '2025-01-01', end: '2028-12-01' }
+        ],
+        estimatedVolume: '600,000+ m³',
+        sourceUrl: 'https://www.tmr.qld.gov.au/projects/coomera-connector'
+    },
+    {
+        name: 'Cross River Rail',
+        lat: -27.4850, lng: 153.0280,
+        suburb: 'Dutton Park–Bowen Hills',
+        description: '$19B+ transformational rail project — 10.2km new rail line including 5.9km twin tunnels under Brisbane River and CBD. Four new underground stations.',
+        status: 'active',
+        projectType: 'rail',
+        cost: '$19B+',
+        authority: 'Cross River Rail Delivery Authority',
+        startDate: '2019-09-01',
+        expectedEndDate: '2026-12-01',
+        phases: [
+            { name: 'Tunnel boring (complete)', start: '2019-09-01', end: '2023-06-01' },
+            { name: 'Station cavern fitout', start: '2022-01-01', end: '2025-12-01' },
+            { name: 'Rail systems & testing', start: '2025-01-01', end: '2026-06-01' },
+            { name: 'Commissioning & opening', start: '2026-06-01', end: '2026-12-01' }
+        ],
+        estimatedVolume: '500,000+ m³ excavated',
+        sourceUrl: 'https://crossriverrail.qld.gov.au'
+    },
+    {
+        name: 'Gabba Entertainment Precinct',
+        lat: -27.4858, lng: 153.0381,
+        suburb: 'Woolloongabba',
+        description: '9-hectare precinct redevelopment centred on the Gabba. Includes demolition/rebuild of stadium and new entertainment, commercial and community spaces.',
+        status: 'upcoming',
+        projectType: 'precinct',
+        cost: 'TBC (~$2.7B)',
+        authority: 'Queensland Government / Stadiums Queensland',
+        startDate: '2026-10-01',
+        expectedEndDate: '2031-06-01',
+        phases: [
+            { name: 'Demolition & site clearance', start: '2026-10-01', end: '2027-12-01' },
+            { name: 'Earthworks & foundations', start: '2027-06-01', end: '2029-01-01' },
+            { name: 'Construction & fitout', start: '2028-06-01', end: '2031-01-01' },
+            { name: 'Commissioning', start: '2031-01-01', end: '2031-06-01' }
+        ],
+        estimatedVolume: '350,000+ m³',
+        sourceUrl: 'https://www.statedevelopment.qld.gov.au/brisbane-2032'
+    },
+    {
+        name: 'Gateway / Bruce Highway Upgrades',
+        lat: -27.3250, lng: 153.0400,
+        suburb: 'Bracken Ridge',
+        description: '~$2B Gateway Motorway and Bruce Highway interchange upgrades. Major capacity improvements at key northern corridor bottleneck.',
+        status: 'upcoming',
+        projectType: 'road',
+        cost: '~$2B',
+        authority: 'Queensland DTMR',
+        startDate: '2026-10-01',
+        expectedEndDate: '2030-06-01',
+        phases: [
+            { name: 'Design & early works', start: '2026-10-01', end: '2027-12-01' },
+            { name: 'Earthworks & structures', start: '2027-06-01', end: '2029-06-01' },
+            { name: 'Roadworks & completion', start: '2029-01-01', end: '2030-06-01' }
+        ],
+        estimatedVolume: '400,000+ m³',
+        sourceUrl: 'https://www.tmr.qld.gov.au/projects/gateway-motorway-and-bruce-highway-upgrade'
+    },
+    {
+        name: 'Inland Rail — Calvert to Kagaru',
+        lat: -27.7400, lng: 152.7800,
+        suburb: 'Calvert–Kagaru',
+        description: '$1.2B, 53km new rail corridor including 1km tunnel. Part of Melbourne-Brisbane Inland Rail. Environmental approvals phase.',
+        status: 'planning',
+        projectType: 'rail',
+        cost: '$1.2B',
+        authority: 'ARTC / Inland Rail',
+        startDate: '2027-01-01',
+        expectedEndDate: '2031-12-01',
+        phases: [
+            { name: 'EIS & approvals', start: '2024-01-01', end: '2027-01-01' },
+            { name: 'Enabling works & land acquisition', start: '2027-01-01', end: '2028-06-01' },
+            { name: 'Bulk earthworks & tunnel', start: '2028-01-01', end: '2030-06-01' },
+            { name: 'Track laying & commissioning', start: '2030-01-01', end: '2031-12-01' }
+        ],
+        estimatedVolume: '2,000,000+ m³',
+        sourceUrl: 'https://www.inlandrail.gov.au/calvert-to-kagaru'
+    },
+    {
+        name: 'Gold Coast Light Rail Stage 3',
+        lat: -28.0800, lng: 153.4300,
+        suburb: 'Broadbeach South–Burleigh Heads',
+        description: '$1.55B, 6.7km light rail extension from Broadbeach South to Burleigh Heads. Active construction with tunnelling at Burleigh Hill.',
+        status: 'active',
+        projectType: 'rail',
+        cost: '$1.55B',
+        authority: 'Queensland DTMR / GoldLinQ',
+        startDate: '2023-06-01',
+        expectedEndDate: '2028-06-01',
+        phases: [
+            { name: 'Utility relocation & early works', start: '2023-06-01', end: '2025-06-01' },
+            { name: 'Civil works & track laying', start: '2025-01-01', end: '2027-06-01' },
+            { name: 'Systems & testing', start: '2027-01-01', end: '2028-01-01' },
+            { name: 'Commissioning & opening', start: '2028-01-01', end: '2028-06-01' }
+        ],
+        estimatedVolume: '150,000+ m³',
+        sourceUrl: 'https://www.tmr.qld.gov.au/projects/gold-coast-light-rail-stage-3'
+    },
+    {
+        name: 'Beerburrum to Nambour Rail Upgrade',
+        lat: -26.8500, lng: 152.9500,
+        suburb: 'Beerburrum–Landsborough',
+        description: '$1.6B, 12km rail duplication from Beerburrum to Landsborough. Additional tracks, upgraded stations and level crossing removals.',
+        status: 'active',
+        projectType: 'rail',
+        cost: '$1.6B',
+        authority: 'Queensland DTMR',
+        startDate: '2023-01-01',
+        expectedEndDate: '2027-12-01',
+        phases: [
+            { name: 'Enabling works & utilities', start: '2023-01-01', end: '2025-01-01' },
+            { name: 'Earthworks & bridges', start: '2024-06-01', end: '2026-12-01' },
+            { name: 'Track & signalling', start: '2026-06-01', end: '2027-06-01' },
+            { name: 'Testing & commissioning', start: '2027-06-01', end: '2027-12-01' }
+        ],
+        estimatedVolume: '500,000+ m³',
+        sourceUrl: 'https://www.tmr.qld.gov.au/projects/beerburrum-to-nambour-rail-upgrade'
+    },
+    {
+        name: 'Northshore Hamilton Athletes Village',
+        lat: -27.4380, lng: 153.0700,
+        suburb: 'Hamilton',
+        description: '304-hectare waterfront precinct at Northshore Hamilton. Athletes Village for Brisbane 2032, converting to mixed-use community post-Games. Street works active.',
+        status: 'active',
+        projectType: 'precinct',
+        cost: 'TBC (multi-billion)',
+        authority: 'Economic Development Queensland',
+        startDate: '2024-01-01',
+        expectedEndDate: '2031-12-01',
+        phases: [
+            { name: 'Street works & infrastructure', start: '2024-01-01', end: '2026-12-01' },
+            { name: 'Village construction', start: '2026-06-01', end: '2030-06-01' },
+            { name: 'Games-time operations', start: '2032-07-01', end: '2032-09-01' },
+            { name: 'Legacy conversion', start: '2032-09-01', end: '2035-12-01' }
+        ],
+        estimatedVolume: '600,000+ m³',
+        sourceUrl: 'https://economic.development.qld.gov.au/northshore-hamilton'
+    }
+];
+
+const projectStatusColors = { active: '#22c55e', upcoming: '#f59e0b', planning: '#3b82f6' };
+const projectStatusLabels = { active: 'Active', upcoming: 'Upcoming', planning: 'Planning' };
+const projectTypeIcons = { rail: 'fa-train', road: 'fa-road', venue: 'fa-building', precinct: 'fa-city' };
+let majorProjectLayerGroup = L.layerGroup();
+let projectsVisible = true;
+
+function getFilteredProjects() {
+    const statusFilters = Array.from(document.querySelectorAll('[data-filter="project-status"]:checked')).map(c => c.value);
+    const typeFilters = Array.from(document.querySelectorAll('[data-filter="project-type"]:checked')).map(c => c.value);
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    return majorProjects.filter(p => {
+        if (!statusFilters.includes(p.status)) return false;
+        if (!typeFilters.includes(p.projectType)) return false;
+        if (search) {
+            const haystack = `${p.name} ${p.suburb} ${p.description} ${p.authority} ${p.projectType} major project`.toLowerCase();
+            if (!haystack.includes(search)) return false;
+        }
+        return true;
+    });
+}
+
+function addProjectMarkers(filtered) {
+    majorProjectLayerGroup.clearLayers();
+    if (!filtered) filtered = majorProjects;
+    filtered.forEach(p => {
+        const color = projectStatusColors[p.status];
+        const icon = projectTypeIcons[p.projectType] || 'fa-hard-hat';
+        const marker = L.marker([p.lat, p.lng], {
+            icon: L.divIcon({
+                className: '',
+                html: `<div style="width:34px;height:34px;border-radius:50%;background:${color};border:3px solid rgba(224,219,211,0.6);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;box-shadow:0 3px 10px rgba(0,0,0,0.5);cursor:pointer;"><i class="fas ${icon}"></i></div>`,
+                iconSize: [34, 34],
+                iconAnchor: [17, 17]
+            })
+        });
+        marker.bindTooltip(`<strong>${p.name}</strong><br>${p.suburb} · ${projectStatusLabels[p.status]} · ${p.cost}`, { direction: 'top', offset: [0, -18], className: 'custom-tooltip' });
+        marker.on('click', () => showProjectPanel(p));
+        majorProjectLayerGroup.addLayer(marker);
+    });
+}
+
+function calcProjectProgress(p) {
+    const now = Date.now();
+    const start = new Date(p.startDate).getTime();
+    const end = new Date(p.expectedEndDate).getTime();
+    if (now <= start) return 0;
+    if (now >= end) return 100;
+    return Math.round(((now - start) / (end - start)) * 100);
+}
+
+function getPhaseStatus(phase) {
+    const now = Date.now();
+    const start = new Date(phase.start).getTime();
+    const end = new Date(phase.end).getTime();
+    if (now >= end) return 'done';
+    if (now >= start) return 'current';
+    return 'future';
+}
+
+function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-AU', { month: 'short', year: 'numeric' });
+}
+
+function showProjectPanel(p) {
+    const panel = document.getElementById('infoPanel');
+    const color = projectStatusColors[p.status];
+    const icon = projectTypeIcons[p.projectType] || 'fa-hard-hat';
+    const progress = calcProjectProgress(p);
+
+    const phasesHtml = p.phases.map(phase => {
+        const status = getPhaseStatus(phase);
+        return `<div class="project-phase ${status}">
+            <span class="project-phase-name">${phase.name}</span>
+            <span class="project-phase-dates">${formatDate(phase.start)} – ${formatDate(phase.end)}</span>
+        </div>`;
+    }).join('');
+
+    document.getElementById('infoPanelContent').innerHTML = `
+        <div class="info-header">
+            <div class="info-icon" style="background:rgba(255,255,255,0.08);color:${color};">
+                <i class="fas ${icon}"></i>
+            </div>
+            <div>
+                <div class="info-title">${p.name}</div>
+                <div class="info-subtitle">${p.suburb} · ${p.projectType.charAt(0).toUpperCase() + p.projectType.slice(1)}</div>
+            </div>
+        </div>
+        <div class="badge-row">
+            <span class="info-badge" style="background:${color}22;color:${color};">${projectStatusLabels[p.status]}</span>
+            <span class="badge" style="background:rgba(255,255,255,0.06);color:var(--text-muted);"><i class="fas fa-dollar-sign"></i> ${p.cost}</span>
+            <span class="badge" style="background:rgba(255,255,255,0.06);color:var(--text-muted);"><i class="fas fa-building"></i> ${p.authority}</span>
+        </div>
+        <div class="info-notes"><i class="fas fa-info-circle" style="color:var(--blue);margin-right:6px;"></i>${p.description}</div>
+        <div style="margin-top:10px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+                <strong style="font-size:12px;"><i class="fas fa-tasks" style="color:var(--amber);margin-right:4px;"></i>Timeline Progress</strong>
+                <span style="font-size:11px;color:var(--text-muted);">${progress}%</span>
+            </div>
+            <div class="project-progress-bar">
+                <div class="project-progress-fill" style="width:${progress}%;"></div>
+            </div>
+            <div class="project-progress-label">
+                <span>${formatDate(p.startDate)}</span>
+                <span>${formatDate(p.expectedEndDate)}</span>
+            </div>
+        </div>
+        <div class="project-timeline">
+            <strong style="font-size:12px;display:block;margin-bottom:6px;"><i class="fas fa-stream" style="color:var(--green);margin-right:4px;"></i>Project Phases</strong>
+            ${phasesHtml}
+        </div>
+        ${p.estimatedVolume ? `<div class="info-notes" style="margin-top:8px;"><i class="fas fa-truck-loading" style="color:var(--amber);margin-right:6px;"></i>Estimated earthworks: <strong>${p.estimatedVolume}</strong></div>` : ''}
+        <div style="margin-top:8px;display:flex;gap:6px;align-items:center;">
+            <a href="${p.sourceUrl}" target="_blank" rel="noopener" class="btn btn-sm btn-outline" style="font-size:11px;"><i class="fas fa-external-link-alt"></i> Official Project Page</a>
+        </div>
+        <div style="margin-top:8px;font-size:10px;color:var(--text-dim);"><i class="fas fa-exclamation-circle" style="margin-right:4px;"></i>This data is indicative and sourced from publicly available government information. Dates and volumes are estimates only.</div>
+    `;
+    panel.classList.add('visible');
+    clearRouteLine();
+    map.panTo([p.lat, p.lng]);
+}
+
+function applyProjectFilters() {
+    const filtered = getFilteredProjects();
+    addProjectMarkers(filtered);
+}
+
 // ===== EVENT LISTENERS =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Initial render — facilities and water fill points
+    // Initial render — facilities, water fill points, and major projects
     applyFacilityFilters();
     facilityLayerGroup.addTo(map);
     waterFillLayerGroup.addTo(map);
+    applyProjectFilters();
+    majorProjectLayerGroup.addTo(map);
     renderDashboard();
 
     // Load LGA boundaries and fire ant zones from inline data
@@ -901,17 +1232,40 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => switchView(btn.dataset.view));
     });
 
-    // Facility filters
+    // Facility & project filters
     document.querySelectorAll('[data-filter]').forEach(cb => {
-        cb.addEventListener('change', applyFacilityFilters);
+        cb.addEventListener('change', () => {
+            applyFacilityFilters();
+            applyProjectFilters();
+        });
     });
-    document.getElementById('searchInput').addEventListener('input', applyFacilityFilters);
+    document.getElementById('searchInput').addEventListener('input', () => {
+        applyFacilityFilters();
+        applyProjectFilters();
+    });
     document.getElementById('clearFilters').addEventListener('click', () => {
         document.querySelectorAll('[data-filter]').forEach(cb => {
             cb.checked = true;
         });
         document.getElementById('searchInput').value = '';
         applyFacilityFilters();
+        applyProjectFilters();
+    });
+
+    // Clear facility filters only
+    document.getElementById('clearFacilityFilters').addEventListener('click', () => {
+        document.querySelectorAll('[data-filter="facility"], [data-filter="hours"]').forEach(cb => {
+            cb.checked = false;
+        });
+        applyFacilityFilters();
+    });
+
+    // Clear project filters only
+    document.getElementById('clearProjectFilters').addEventListener('click', () => {
+        document.querySelectorAll('[data-filter="project-status"], [data-filter="project-type"]').forEach(cb => {
+            cb.checked = false;
+        });
+        applyProjectFilters();
     });
 
     // Address search
@@ -927,7 +1281,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnToggleSidebar').addEventListener('click', () => {
         const sidebar = document.getElementById('sidebar');
         sidebar.classList.toggle('collapsed');
+        sidebar.classList.remove('mobile-open');
+        document.getElementById('sidebarBackdrop').classList.remove('visible');
         setTimeout(() => map.invalidateSize(), 350);
+    });
+
+    // Mobile filter drawer
+    document.getElementById('btnMobileFilters').addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const isOpen = sidebar.classList.contains('mobile-open');
+        sidebar.classList.toggle('mobile-open', !isOpen);
+        backdrop.classList.toggle('visible', !isOpen);
+    });
+    document.getElementById('sidebarBackdrop').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.remove('mobile-open');
+        document.getElementById('sidebarBackdrop').classList.remove('visible');
     });
 
     // Satellite toggle
@@ -963,6 +1332,17 @@ document.addEventListener('DOMContentLoaded', () => {
             fireAntLayerGroup.addTo(map);
         } else {
             map.removeLayer(fireAntLayerGroup);
+        }
+        this.classList.toggle('active');
+    });
+
+    // Major Projects toggle
+    document.getElementById('btnProjects').addEventListener('click', function() {
+        projectsVisible = !projectsVisible;
+        if (projectsVisible) {
+            majorProjectLayerGroup.addTo(map);
+        } else {
+            map.removeLayer(majorProjectLayerGroup);
         }
         this.classList.toggle('active');
     });

@@ -40,7 +40,11 @@
         <button class="btn btn-outline" id="btnLogin"><i class="fas fa-user"></i> Sign In</button>
         <button class="btn btn-primary" id="btnPostListing"><i class="fas fa-plus"></i> Register My Site</button>
     </div>
+    <button class="btn btn-outline mobile-filter-btn" id="btnMobileFilters"><i class="fas fa-filter"></i></button>
 </header>
+
+<!-- Mobile sidebar backdrop -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <!-- Fire Ant Zone Warning Banner -->
 <div class="zone-warning-banner" id="zoneWarningBanner">
@@ -67,7 +71,10 @@
 
         <!-- Facility Type Filter -->
         <div class="filter-group">
-            <h4 class="filter-title">Facility Type</h4>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <h4 class="filter-title">Facility Type</h4>
+                <button class="btn-text" id="clearFacilityFilters">Clear</button>
+            </div>
             <div class="filter-checks">
                 <label class="check-label">
                     <input type="checkbox" checked data-filter="facility" value="quarry">
@@ -108,6 +115,54 @@
                     <input type="checkbox" checked data-filter="facility" value="water-recycled">
                     <span class="check-dot" style="background: #9C27B0;"></span>
                     Water Fill — Recycled
+                </label>
+            </div>
+        </div>
+
+        <!-- Major Projects Filter -->
+        <div class="filter-group">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <h4 class="filter-title">Major Projects — Status</h4>
+                <button class="btn-text" id="clearProjectFilters">Clear</button>
+            </div>
+            <div class="filter-checks">
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-status" value="active">
+                    <span class="check-dot" style="background: #22c55e;"></span>
+                    Active
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-status" value="upcoming">
+                    <span class="check-dot" style="background: #f59e0b;"></span>
+                    Upcoming
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-status" value="planning">
+                    <span class="check-dot" style="background: #3b82f6;"></span>
+                    Planning
+                </label>
+            </div>
+            <h4 class="filter-title" style="margin-top:10px;">Major Projects — Type</h4>
+            <div class="filter-checks">
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-type" value="rail">
+                    <i class="fas fa-train" style="color:var(--blue);font-size:12px;"></i>
+                    Rail
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-type" value="road">
+                    <i class="fas fa-road" style="color:var(--amber);font-size:12px;"></i>
+                    Road
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-type" value="venue">
+                    <i class="fas fa-building" style="color:var(--green);font-size:12px;"></i>
+                    Venue
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-type" value="precinct">
+                    <i class="fas fa-city" style="color:var(--purple);font-size:12px;"></i>
+                    Precinct
                 </label>
             </div>
         </div>
@@ -161,6 +216,7 @@
             <button class="map-ctrl-btn" id="btnSatellite" title="Toggle Satellite"><span class="ctrl-label">Satellite</span> <i class="fas fa-satellite"></i></button>
             <button class="map-ctrl-btn active" id="btnLGA" title="Council Boundaries"><span class="ctrl-label">Councils</span> <i class="fas fa-draw-polygon"></i></button>
             <button class="map-ctrl-btn" id="btnFireAnts" title="Fire Ant Biosecurity Zones"><span class="ctrl-label">Fire Ants</span> <i class="fas fa-bug"></i></button>
+            <button class="map-ctrl-btn active" id="btnProjects" title="Major Projects"><span class="ctrl-label">Projects</span> <i class="fas fa-hard-hat"></i></button>
             <button class="map-ctrl-btn" id="btnHeatmap" title="Toggle Heatmap"><span class="ctrl-label">Heatmap</span> <i class="fas fa-fire"></i></button>
         </div>
 
