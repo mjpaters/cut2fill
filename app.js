@@ -195,6 +195,124 @@ function loadLGABoundaries() {
 let searchTimeout = null;
 let searchMarker = null;
 let searchCircle = null;
+let userSiteLocation = null;  // { lat, lng, label }
+
+// ===== LOGISTICS & EMISSIONS CALCULATOR =====
+const truckProfiles = {
+    'body-truck': { label: 'Body Truck', payload: 12, fuelPer100km: 35, icon: 'fa-truck' },
+    'truck-and-dog': { label: 'Truck & Dog', payload: 22, fuelPer100km: 45, icon: 'fa-truck-moving' },
+    'semi-tipper': { label: 'Semi Tipper', payload: 28, fuelPer100km: 50, icon: 'fa-trailer' },
+};
+const DIESEL_CO2_PER_LITRE = 2.68;  // kg CO2-e per litre (NGA Factors 2024)
+const AVG_SPEED_KMH = 45;           // average urban/peri-urban SEQ
+const ROAD_FACTOR = 1.35;           // straight-line to road distance multiplier
+
+function haversineKm(lat1, lng1, lat2, lng2) {
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLng/2)**2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function calcLogistics(distKm, tonnes, truckType) {
+    const truck = truckProfiles[truckType];
+    const loads = Math.ceil(tonnes / truck.payload);
+    const roundTripKm = distKm * 2;
+    const totalKm = roundTripKm * loads;
+    const fuelLitres = totalKm * truck.fuelPer100km / 100;
+    const co2Kg = fuelLitres * DIESEL_CO2_PER_LITRE;
+    const hoursPerTrip = roundTripKm / AVG_SPEED_KMH + 0.5; // +30min load/unload
+    const totalHours = hoursPerTrip * loads;
+    return { loads, roundTripKm, totalKm, fuelLitres, co2Kg, totalHours, truck };
+}
+
+let routeLine = null;
+
+function showRouteLine(fromLat, fromLng, toLat, toLng) {
+    if (routeLine) map.removeLayer(routeLine);
+    routeLine = L.polyline([[fromLat, fromLng], [toLat, toLng]], {
+        color: '#6b8f5e',
+        weight: 3,
+        opacity: 0.7,
+        dashArray: '10, 8'
+    }).addTo(map);
+}
+
+function clearRouteLine() {
+    if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
+}
+
+function buildLogisticsPanel(facility) {
+    if (!userSiteLocation) return '';
+    const straightKm = haversineKm(userSiteLocation.lat, userSiteLocation.lng, facility.lat, facility.lng);
+    const roadKm = (straightKm * ROAD_FACTOR).toFixed(1);
+
+    return `
+        <div class="logistics-section" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+                <i class="fas fa-route" style="color:var(--green);"></i>
+                <strong style="font-size:13px;">Delivery Estimator</strong>
+                <span class="badge" style="background:rgba(107,143,94,0.15);color:var(--green);margin-left:auto;font-size:11px;">~${roadKm} km each way</span>
+            </div>
+            <div style="display:flex;gap:8px;margin-bottom:8px;">
+                <div style="flex:1;">
+                    <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:3px;">Tonnes</label>
+                    <input type="number" id="calcTonnes" value="500" min="1" step="50" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--text);font-size:13px;">
+                </div>
+                <div style="flex:1.5;">
+                    <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:3px;">Truck Type</label>
+                    <select id="calcTruckType" style="width:100%;padding:6px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--text);font-size:13px;">
+                        <option value="body-truck">Body Truck (12t)</option>
+                        <option value="truck-and-dog" selected>Truck &amp; Dog (22t)</option>
+                        <option value="semi-tipper">Semi Tipper (28t)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="calcResults" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px;"></div>
+        </div>
+    `;
+}
+
+function updateCalcResults(facility) {
+    const container = document.getElementById('calcResults');
+    if (!container || !userSiteLocation) return;
+    const tonnes = parseFloat(document.getElementById('calcTonnes').value) || 0;
+    const truckType = document.getElementById('calcTruckType').value;
+    const straightKm = haversineKm(userSiteLocation.lat, userSiteLocation.lng, facility.lat, facility.lng);
+    const roadKm = straightKm * ROAD_FACTOR;
+    const r = calcLogistics(roadKm, tonnes, truckType);
+
+    container.innerHTML = `
+        <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:700;color:var(--text);">${r.loads}</div>
+            <div style="color:var(--text-muted);font-size:11px;"><i class="fas ${r.truck.icon}"></i> Loads</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:700;color:var(--amber);">${r.totalHours.toFixed(1)}h</div>
+            <div style="color:var(--text-muted);font-size:11px;"><i class="fas fa-clock"></i> Truck Hours</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:700;color:var(--blue);">${r.fuelLitres.toFixed(0)}L</div>
+            <div style="color:var(--text-muted);font-size:11px;"><i class="fas fa-gas-pump"></i> Diesel</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:700;color:${r.co2Kg > 5000 ? '#ef4444' : r.co2Kg > 2000 ? 'var(--amber)' : 'var(--green)'};">${r.co2Kg >= 1000 ? (r.co2Kg/1000).toFixed(1)+'t' : r.co2Kg.toFixed(0)+'kg'}</div>
+            <div style="color:var(--text-muted);font-size:11px;"><i class="fas fa-leaf"></i> CO₂-e</div>
+        </div>
+    `;
+    // Also show total km
+    const totalKmNote = document.getElementById('calcTotalKmNote');
+    if (!totalKmNote) {
+        const note = document.createElement('div');
+        note.id = 'calcTotalKmNote';
+        note.style.cssText = 'font-size:11px;color:var(--text-muted);text-align:center;margin-top:6px;grid-column:1/-1;';
+        note.innerHTML = `${r.totalKm.toFixed(0)} km total · ${r.truck.payload}t per load · ${r.truck.fuelPer100km}L/100km · NGA Factors 2024`;
+        container.appendChild(note);
+    } else {
+        totalKmNote.innerHTML = `${r.totalKm.toFixed(0)} km total · ${r.truck.payload}t per load · ${r.truck.fuelPer100km}L/100km · NGA Factors 2024`;
+    }
+}
 
 function initAddressSearch() {
     const input = document.getElementById('addressInput');
@@ -262,6 +380,10 @@ async function searchAddress(query) {
 }
 
 function zoomToLocation(lat, lng, label) {
+    // Store user site location for logistics calculator
+    userSiteLocation = { lat, lng, label };
+    clearRouteLine();
+
     // Remove previous search marker/circle
     if (searchMarker) map.removeLayer(searchMarker);
     if (searchCircle) map.removeLayer(searchCircle);
@@ -571,6 +693,10 @@ function showFacilityPanel(facility) {
     const hoursBadge = facility.hours === '24/7'
         ? '<span class="badge" style="background:rgba(34,197,94,0.12);color:var(--green);"><i class="fas fa-clock"></i> 24/7</span>'
         : '<span class="badge" style="background:rgba(245,158,11,0.12);color:var(--amber);"><i class="fas fa-sun"></i> Business Hours</span>';
+
+    const logisticsHtml = (facility.type === 'quarry' && userSiteLocation) ? buildLogisticsPanel(facility) :
+        (!userSiteLocation && facility.type === 'quarry' ? '<div style="margin-top:10px;padding:10px;border-radius:6px;background:rgba(255,255,255,0.04);font-size:12px;color:var(--text-muted);"><i class="fas fa-info-circle" style="color:var(--blue);margin-right:4px;"></i>Search your site address first to see delivery estimates</div>' : '');
+
     document.getElementById('infoPanelContent').innerHTML = `
         <div class="info-header">
             <div class="info-icon" style="background:rgba(255,255,255,0.08);color:${facility.color};">
@@ -586,9 +712,29 @@ function showFacilityPanel(facility) {
             ${hoursBadge}
         </div>
         ${facility.notes ? `<div class="info-notes"><i class="fas fa-info-circle" style="color:var(--blue);margin-right:6px;"></i>${facility.notes}</div>` : ''}
+        ${logisticsHtml}
     `;
     panel.classList.add('visible');
-    map.panTo([facility.lat, facility.lng]);
+
+    // Show route line and fit bounds if site is set
+    if (userSiteLocation && facility.type === 'quarry') {
+        showRouteLine(userSiteLocation.lat, userSiteLocation.lng, facility.lat, facility.lng);
+        const bounds = L.latLngBounds(
+            [userSiteLocation.lat, userSiteLocation.lng],
+            [facility.lat, facility.lng]
+        );
+        map.fitBounds(bounds, { padding: [60, 60] });
+
+        // Wire up live calc updates after DOM renders
+        setTimeout(() => {
+            updateCalcResults(facility);
+            document.getElementById('calcTonnes')?.addEventListener('input', () => updateCalcResults(facility));
+            document.getElementById('calcTruckType')?.addEventListener('change', () => updateCalcResults(facility));
+        }, 50);
+    } else {
+        clearRouteLine();
+        map.panTo([facility.lat, facility.lng]);
+    }
 }
 
 // ===== WATER FILL POINTS =====
@@ -778,6 +924,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Info panel close
     document.getElementById('infoPanelClose').addEventListener('click', () => {
         document.getElementById('infoPanel').classList.remove('visible');
+        clearRouteLine();
     });
 
     // Sidebar toggle
@@ -940,6 +1087,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Map click to close info panel
     map.on('click', () => {
         document.getElementById('infoPanel').classList.remove('visible');
+        clearRouteLine();
     });
 
     // SEQ region boundary replaced by individual LGA boundaries loaded from QLD Government data
