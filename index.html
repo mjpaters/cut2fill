@@ -20,6 +20,48 @@
 </head>
 <body>
 
+<!-- Password Gate -->
+<div id="authGate" style="position:fixed;inset:0;z-index:99999;background:#1a1814;display:flex;align-items:center;justify-content:center;">
+    <div style="text-align:center;max-width:360px;padding:24px;">
+        <i class="fas fa-recycle" style="font-size:36px;color:#6b8f5e;margin-bottom:12px;"></i>
+        <h1 style="font-size:20px;font-weight:700;color:#e0dbd3;margin-bottom:4px;">Cut2Fill</h1>
+        <p style="font-size:11px;color:#6b6358;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;">Beta Access</p>
+        <form id="authForm" style="display:flex;flex-direction:column;gap:10px;">
+            <input type="password" id="authPassword" placeholder="Enter access code" autocomplete="off"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;text-align:center;outline:none;">
+            <button type="submit" style="padding:10px;border:none;border-radius:6px;background:#6b8f5e;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">
+                <i class="fas fa-lock"></i> Enter
+            </button>
+            <p id="authError" style="color:#b85c4a;font-size:12px;display:none;">Incorrect access code</p>
+        </form>
+        <p style="font-size:10px;color:#6b6358;margin-top:20px;">&copy; 2025 Archers Group Pty Ltd</p>
+    </div>
+</div>
+
+<script>
+(function() {
+    var PASS_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+    async function sha256(str) {
+        var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+        return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+    }
+    if (sessionStorage.getItem('cut2fill_auth') === 'true') {
+        document.getElementById('authGate').style.display = 'none';
+    }
+    document.getElementById('authForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var hash = await sha256(document.getElementById('authPassword').value);
+        if (hash === PASS_HASH) {
+            sessionStorage.setItem('cut2fill_auth', 'true');
+            document.getElementById('authGate').style.display = 'none';
+        } else {
+            document.getElementById('authError').style.display = 'block';
+            document.getElementById('authPassword').value = '';
+        }
+    });
+})();
+</script>
+
 <!-- Header -->
 <header class="header">
     <div class="header-left">
