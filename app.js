@@ -167,7 +167,7 @@ function loadFireAntZones() {
 // Load LGA boundaries from external GeoJSON file
 async function loadLGABoundaries() {
     try {
-        const resp = await fetch('data/qld-lga-boundaries.geojson');
+        const resp = await fetch('data/qld-lga-boundaries.geojson?v=2');
         const data = await resp.json();
         data.features.forEach(feature => {
             const name = feature.properties.abbrev_name;
