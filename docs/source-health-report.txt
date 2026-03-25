@@ -1,0 +1,110 @@
+================================================================================
+CUT2FILL — DATA SOURCE HEALTH CHECK
+Run: 2026-03-25T10:08:48.338Z
+================================================================================
+
+--- TMR Registered Suppliers — Quarry Products [HIGH] ---
+  Primary: OK (200) https://www.tmr.qld.gov.au/_/media/busind/businesswithus/approved-products-and-s
+  Backup:  FAIL (403) https://www.tmr.qld.gov.au/business-industry/business-with-us/approved-products-
+  Snapshot: FRESH (0 days old, pulled 2026-03-25)
+
+--- Queensland LGA Boundaries [HIGH] ---
+  Primary: OK (200) https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre
+  Backup:  FAIL (500) https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={2AB1
+  Backup:  FAIL (403) https://www.abs.gov.au/statistics/standards/australian-statistical-geography-sta
+  Snapshot: FRESH (0 days old, pulled 2026-03-25)
+
+--- GeoResGlobe Mining Lease Permits [LOW] ---
+  Primary: OK (200) https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Economy/MinesPer
+  Backup:  OK (200) https://georesglobe.information.qld.gov.au/
+  Backup:  FAIL (500) https://qldspatial.information.qld.gov.au/catalogue/
+  Snapshot: FRESH (0 days old, pulled 2026-03-25)
+
+--- Fire Ant Biosecurity Zones [MEDIUM] ---
+  Primary: FAIL (404) https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/bi
+  Backup:  OK (301) https://www.daf.qld.gov.au/business-priorities/biosecurity/invasive-plants-anima
+  Snapshot: FRESH (1 days old, pulled 2026-03-24)
+
+--- OpenStreetMap Tile Server [HIGH] ---
+  Primary: FAIL (0) https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png
+  Backup:  FAIL (400) https://tile.openstreetmap.org/{z}/{x}/{y}.png
+  Backup:  OK (200) https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/
+
+--- ESRI World Imagery [LOW] ---
+  Primary: OK (200) https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til
+
+--- OpenStreetMap Nominatim Geocoder [MEDIUM] ---
+  Primary: FAIL (403) https://nominatim.openstreetmap.org/search
+  Backup:  FAIL (400) https://photon.komoot.io/api/
+
+--- Formspree Form Submission [LOW] ---
+  Primary: FAIL (405) https://formspree.io/f/xdawqlvg
+
+--- Font Awesome Icons CDN [HIGH] ---
+  Primary: OK (200) https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
+  Backup:  OK (200) https://use.fontawesome.com/releases/v6.5.1/css/all.css
+
+--- Google Fonts — Inter [LOW] ---
+  Primary: OK (200) https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&disp
+
+--- Google Analytics (GA4) [LOW] ---
+  Primary: OK (200) https://www.googletagmanager.com/gtag/js?id=G-EFFZRDLYK7
+
+================================================================================
+SUMMARY
+================================================================================
+10 issue(s) found:
+
+  [!!!] TMR Registered Suppliers — Quarry Products
+        Type: BACKUP_URL_FAIL
+        URL: https://www.tmr.qld.gov.au/business-industry/business-with-us/approved-products-and-suppliers
+        Error: HTTP 403
+
+  [!!!] Queensland LGA Boundaries
+        Type: BACKUP_URL_FAIL
+        URL: https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={2AB15F93-B7DA-4090-BEDD-3B0F708B078D}
+        Error: HTTP 500
+
+  [!!!] Queensland LGA Boundaries
+        Type: BACKUP_URL_FAIL
+        URL: https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files
+        Error: HTTP 403
+
+  [ . ] GeoResGlobe Mining Lease Permits
+        Type: BACKUP_URL_FAIL
+        URL: https://qldspatial.information.qld.gov.au/catalogue/
+        Error: HTTP 500
+
+  [ ! ] Fire Ant Biosecurity Zones
+        Type: PRIMARY_URL_FAIL
+        URL: https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/invasive-plants-animals/animals/fire-ants/zone-checker
+        Error: HTTP 404
+        Fallback: Local snapshot used by app. Official zone checker at primaryUrl is the authoritative real-time source. Link to it from the map for users to verify.
+
+  [!!!] OpenStreetMap Tile Server
+        Type: PRIMARY_URL_FAIL
+        URL: https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png
+        Error: getaddrinfo ENOTFOUND {s}.basemaps.cartocdn.com
+        Fallback: Switch to OSM direct tiles (backupUrls[0]) or ESRI World Street Map (backupUrls[1]). Change tileLayer URL in app.js.
+
+  [!!!] OpenStreetMap Tile Server
+        Type: BACKUP_URL_FAIL
+        URL: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+        Error: HTTP 400
+
+  [ ! ] OpenStreetMap Nominatim Geocoder
+        Type: PRIMARY_URL_FAIL
+        URL: https://nominatim.openstreetmap.org/search
+        Error: HTTP 403
+        Fallback: Switch to Photon geocoder (backupUrls[0]) — same OSM data, different API format. Requires minor code change in searchAddress().
+
+  [ ! ] OpenStreetMap Nominatim Geocoder
+        Type: BACKUP_URL_FAIL
+        URL: https://photon.komoot.io/api/
+        Error: HTTP 400
+
+  [ . ] Formspree Form Submission
+        Type: PRIMARY_URL_FAIL
+        URL: https://formspree.io/f/xdawqlvg
+        Error: HTTP 405
+        Fallback: Replace with mailto: link or alternative form service (Netlify Forms, Google Forms).

@@ -1,0 +1,192 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-03-25",
+  "description": "Cut2Fill data source registry — tracks every external data dependency with redundancy and snapshot metadata",
+
+  "sources": {
+    "tmr-registered-quarries": {
+      "name": "TMR Registered Suppliers — Quarry Products",
+      "authority": "Queensland Department of Transport and Main Roads",
+      "primaryUrl": "https://www.tmr.qld.gov.au/_/media/busind/businesswithus/approved-products-and-suppliers/pavements-materials-and-geotechnical/registered_suppliers_quarries.xlsx",
+      "backupUrls": [
+        "https://www.tmr.qld.gov.au/business-industry/business-with-us/approved-products-and-suppliers"
+      ],
+      "format": "xlsx",
+      "updateFrequency": "quarterly",
+      "lastPulled": "2026-03-25",
+      "lastVerified": "2026-03-25",
+      "snapshot": "docs/tmr-registered-quarries.xlsx",
+      "snapshotSummary": "docs/tmr-quarry-summary.txt",
+      "recordCount": 296,
+      "usedFor": ["quarry verification", "TMR registration codes (RQ numbers)", "approved products"],
+      "criticality": "high",
+      "fallbackStrategy": "Data persists in local snapshot. Search TMR site for relocated file. Alternatively request via TMR Engineering & Technology division.",
+      "notes": "URL has been stable but is a static file that gets replaced. The parent page at backupUrls[0] should always link to the current version."
+    },
+
+    "qld-lga-boundaries": {
+      "name": "Queensland LGA Boundaries",
+      "authority": "Queensland Government Spatial Services",
+      "primaryUrl": "https://spatial-gis.information.qld.gov.au/arcgis/rest/services/PlanningCadastre/LandParcelPropertyFramework/MapServer/20/query?where=1%3D1&outFields=abbrev_name,lga&f=geojson&outSR=4326",
+      "backupUrls": [
+        "https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={2AB15F93-B7DA-4090-BEDD-3B0F708B078D}",
+        "https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files"
+      ],
+      "format": "geojson (ArcGIS REST)",
+      "updateFrequency": "rarely (boundary changes only)",
+      "lastPulled": "2026-03-25",
+      "lastVerified": "2026-03-25",
+      "snapshot": "data/qld-lga-boundaries.geojson",
+      "recordCount": 78,
+      "usedFor": ["map LGA boundary overlays"],
+      "criticality": "high",
+      "fallbackStrategy": "Local snapshot is used directly by the app. ABS digital boundaries (backupUrls[1]) provide alternative Australia-wide LGA data filterable by state.",
+      "notes": "Simplified from 514k to 42k coordinate points using Douglas-Peucker at 0.001° tolerance. Re-pull only needed if council amalgamations occur."
+    },
+
+    "georesglobe-mining-leases": {
+      "name": "GeoResGlobe Mining Lease Permits",
+      "authority": "Queensland Department of Resources",
+      "primaryUrl": "https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Economy/MinesPermitsCurrent/MapServer/44/query",
+      "backupUrls": [
+        "https://georesglobe.information.qld.gov.au/",
+        "https://qldspatial.information.qld.gov.au/catalogue/"
+      ],
+      "format": "json (ArcGIS REST)",
+      "updateFrequency": "nightly",
+      "lastPulled": "2026-03-25",
+      "lastVerified": "2026-03-25",
+      "snapshot": "docs/georesglobe-quarry-data.json",
+      "snapshotSummary": "docs/georesglobe-quarry-summary.txt",
+      "recordCount": 138,
+      "usedFor": ["reference only — mineral mining permits, NOT construction quarries"],
+      "criticality": "low",
+      "fallbackStrategy": "Data is reference/audit material only, not displayed on map. Local snapshot sufficient.",
+      "notes": "Covers state Mining Leases (limestone, sandstone, gypsum etc). Most construction quarries operate under council DAs, not state mining leases. Not directly relevant to construction industry."
+    },
+
+    "fire-ant-zones": {
+      "name": "Fire Ant Biosecurity Zones",
+      "authority": "Queensland Government — Biosecurity Queensland",
+      "primaryUrl": "https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/invasive-plants-animals/animals/fire-ants/zone-checker",
+      "backupUrls": [
+        "https://www.daf.qld.gov.au/business-priorities/biosecurity/invasive-plants-animals/animals/fire-ants"
+      ],
+      "format": "geojson (simplified from government data)",
+      "updateFrequency": "zones change periodically — check quarterly",
+      "lastPulled": "2026-03-24",
+      "lastVerified": "2026-03-25",
+      "snapshot": "data/fire-ant-simple.geojson",
+      "recordCount": 2,
+      "usedFor": ["fire ant biosecurity zone overlay on map"],
+      "criticality": "medium",
+      "fallbackStrategy": "Local snapshot used by app. Official zone checker at primaryUrl is the authoritative real-time source. Link to it from the map for users to verify.",
+      "notes": "Zone boundaries are simplified representations. Users directed to official zone checker for BIP requirements."
+    },
+
+    "leaflet-tiles-osm": {
+      "name": "OpenStreetMap Tile Server",
+      "authority": "OpenStreetMap / CARTO",
+      "primaryUrl": "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+      "backupUrls": [
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+      ],
+      "format": "raster tiles",
+      "updateFrequency": "continuous",
+      "lastVerified": "2026-03-25",
+      "usedFor": ["base map tiles"],
+      "criticality": "high",
+      "fallbackStrategy": "Switch to OSM direct tiles (backupUrls[0]) or ESRI World Street Map (backupUrls[1]). Change tileLayer URL in app.js.",
+      "notes": "CARTO dark theme tiles. If CARTO CDN fails, map will show no background but markers/overlays still work."
+    },
+
+    "leaflet-tiles-satellite": {
+      "name": "ESRI World Imagery",
+      "authority": "Esri / ArcGIS Online",
+      "primaryUrl": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      "backupUrls": [],
+      "format": "raster tiles",
+      "updateFrequency": "continuous",
+      "lastVerified": "2026-03-25",
+      "usedFor": ["satellite view toggle"],
+      "criticality": "low",
+      "fallbackStrategy": "Satellite toggle becomes unavailable. No impact on core functionality.",
+      "notes": "Free tier, no API key required."
+    },
+
+    "nominatim-geocoding": {
+      "name": "OpenStreetMap Nominatim Geocoder",
+      "authority": "OpenStreetMap Foundation",
+      "primaryUrl": "https://nominatim.openstreetmap.org/search",
+      "backupUrls": [
+        "https://photon.komoot.io/api/"
+      ],
+      "format": "json",
+      "updateFrequency": "continuous",
+      "lastVerified": "2026-03-25",
+      "usedFor": ["address search bar on map"],
+      "criticality": "medium",
+      "fallbackStrategy": "Switch to Photon geocoder (backupUrls[0]) — same OSM data, different API format. Requires minor code change in searchAddress().",
+      "notes": "Rate limited to 1 request/second. No API key required for low-volume use. Heavy usage should use self-hosted instance."
+    },
+
+    "formspree-feedback": {
+      "name": "Formspree Form Submission",
+      "authority": "Formspree Inc.",
+      "primaryUrl": "https://formspree.io/f/xdawqlvg",
+      "backupUrls": [],
+      "format": "json POST",
+      "updateFrequency": "n/a",
+      "lastVerified": "2026-03-25",
+      "usedFor": ["feedback form submissions"],
+      "criticality": "low",
+      "fallbackStrategy": "Replace with mailto: link or alternative form service (Netlify Forms, Google Forms).",
+      "notes": "Free tier. Feedback still works without this — just loses the in-app form."
+    },
+
+    "font-awesome": {
+      "name": "Font Awesome Icons CDN",
+      "authority": "Fonticons Inc.",
+      "primaryUrl": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+      "backupUrls": [
+        "https://use.fontawesome.com/releases/v6.5.1/css/all.css"
+      ],
+      "format": "css",
+      "updateFrequency": "n/a",
+      "lastVerified": "2026-03-25",
+      "usedFor": ["all icons across the UI"],
+      "criticality": "high",
+      "fallbackStrategy": "Self-host the Font Awesome CSS and webfont files. Download from fontawesome.com and serve from /assets/.",
+      "notes": "If CDN fails, all icons disappear but functionality is unaffected."
+    },
+
+    "google-fonts-inter": {
+      "name": "Google Fonts — Inter",
+      "authority": "Google",
+      "primaryUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap",
+      "backupUrls": [],
+      "format": "css",
+      "updateFrequency": "n/a",
+      "lastVerified": "2026-03-25",
+      "usedFor": ["UI typography"],
+      "criticality": "low",
+      "fallbackStrategy": "Falls back to system fonts (-apple-system, sans-serif) defined in CSS. No visual breakage, just different font.",
+      "notes": "If Google Fonts fails, the site looks slightly different but is fully functional."
+    },
+
+    "google-analytics": {
+      "name": "Google Analytics (GA4)",
+      "authority": "Google",
+      "primaryUrl": "https://www.googletagmanager.com/gtag/js?id=G-EFFZRDLYK7",
+      "backupUrls": [],
+      "format": "js",
+      "updateFrequency": "n/a",
+      "lastVerified": "2026-03-25",
+      "usedFor": ["usage analytics"],
+      "criticality": "low",
+      "fallbackStrategy": "Analytics stops collecting. No impact on site functionality.",
+      "notes": "Loaded async — never blocks page rendering."
+    }
+  }
+}
