@@ -1810,10 +1810,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Form submit
-    document.getElementById('postForm').addEventListener('submit', (e) => {
+    document.getElementById('postForm').addEventListener('submit', async (e) => {
         e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        try {
+            const resp = await fetch('https://formspree.io/f/xdawqlvg', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    _subject: 'Cut2Fill — New Site Registration',
+                    listingType: document.querySelector('input[name="listingType"]:checked')?.value,
+                    company: document.getElementById('formCompany').value,
+                    phone: document.getElementById('formPhone').value,
+                    email: document.getElementById('formEmail').value,
+                    project: document.getElementById('formProject').value,
+                    material: document.getElementById('formMaterial').value,
+                    volume: document.getElementById('formVolume').value,
+                    dateFrom: document.getElementById('formDateFrom').value,
+                    dateTo: document.getElementById('formDateTo').value,
+                    pricing: document.querySelector('input[name="formPricing"]:checked')?.value,
+                    address: document.getElementById('formAddress').value,
+                    notes: document.getElementById('formNotes').value,
+                    tested: document.getElementById('formTested').checked,
+                    pickup: document.getElementById('formPickup').checked,
+                    delivery: document.getElementById('formDelivery').checked
+                })
+            });
+            if (resp.ok) {
+                showToast('Site submitted for verification — the Archers team will review and be in touch.');
+            } else {
+                showToast('Failed to send — please try again.');
+            }
+        } catch (err) {
+            showToast('Network error — please try again.');
+        }
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit for Verification';
         document.getElementById('postModal').classList.remove('visible');
-        showToast('Site submitted for verification — the Archers team will review and be in touch.');
         document.getElementById('postForm').reset();
         document.getElementById('materialTooltip').classList.remove('visible');
     });
