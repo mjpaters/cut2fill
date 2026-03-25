@@ -80,6 +80,7 @@
     <div class="header-right">
         <button class="btn btn-outline" id="btnFeedback"><i class="fas fa-comment-dots"></i> Feedback</button>
         <button class="btn btn-outline" id="btnLogin"><i class="fas fa-user"></i> Sign In</button>
+        <button class="btn btn-match" id="btnSubmitSource"><i class="fas fa-map-pin"></i> Know a Source?</button>
         <button class="btn btn-primary" id="btnPostListing"><i class="fas fa-plus"></i> Register My Site</button>
     </div>
     <button class="btn btn-outline mobile-filter-btn" id="btnMobileFilters"><i class="fas fa-filter"></i></button>
@@ -473,6 +474,97 @@
             <div class="form-actions">
                 <button type="button" class="btn btn-outline" id="formCancel">Cancel</button>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit for Verification</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Submit a Source Modal -->
+<div class="modal-overlay" id="sourceModal">
+    <div class="modal" style="max-width:540px;">
+        <div class="modal-header">
+            <h2><i class="fas fa-map-pin"></i> Know a Material Source?</h2>
+            <button class="modal-close" id="sourceModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <p class="modal-notice" style="background:rgba(196,132,62,0.12);border-color:rgba(196,132,62,0.15);color:#c4843e;">
+            <i class="fas fa-hands-helping"></i> Help QLD's construction industry. If you know where material comes from — a quarry, gravel pit, borrow pit, sand source, or water point — tell us. Local knowledge builds better maps.
+        </p>
+        <form id="sourceForm" class="modal-body">
+            <div class="form-section">
+                <h3>What kind of source?</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Source Type *</label>
+                        <select id="sourceType" required>
+                            <option value="">Select...</option>
+                            <option value="quarry">Quarry (registered or unregistered)</option>
+                            <option value="gravel-pit">Gravel Pit / Borrow Pit</option>
+                            <option value="sand-source">Sand / River Extraction</option>
+                            <option value="water-source">Water Source / Bore / Standpipe</option>
+                            <option value="recycled">Recycled Material Source</option>
+                            <option value="other">Other Material Source</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Location</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Where is it? *</label>
+                        <input type="text" id="sourceLocation" required placeholder="e.g. 5km south of Longreach on the Landsborough Hwy, or a street address">
+                    </div>
+                    <div class="form-group">
+                        <label>Nearest Town / Suburb</label>
+                        <input type="text" id="sourceTown" placeholder="e.g. Longreach">
+                    </div>
+                    <div class="form-group">
+                        <label>Council / LGA</label>
+                        <input type="text" id="sourceLGA" placeholder="e.g. Longreach Regional">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Details</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Source Name (if known)</label>
+                        <input type="text" id="sourceName" placeholder="e.g. Old Bill's gravel pit, Council Pit #3, Smiths Bore">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Material Available</label>
+                        <input type="text" id="sourceMaterial" placeholder="e.g. road base gravel, river sand, bore water, blue metal">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Who operates it? (if known)</label>
+                        <input type="text" id="sourceOperator" placeholder="e.g. Council works dept, private landowner, commercial operator">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Anything else we should know?</label>
+                        <textarea id="sourceNotes" rows="3" placeholder="Access conditions, quality, availability, seasonal limits, contact info..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Your Details (optional)</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="sourceContactName" placeholder="Optional">
+                    </div>
+                    <div class="form-group">
+                        <label>Email or Phone</label>
+                        <input type="text" id="sourceContactInfo" placeholder="Optional — if we need to clarify">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="sourceCancel">Cancel</button>
+                <button type="submit" class="btn btn-match"><i class="fas fa-paper-plane"></i> Submit Source</button>
             </div>
         </form>
     </div>

@@ -1818,6 +1818,58 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('materialTooltip').classList.remove('visible');
     });
 
+    // Submit a Source modal
+    document.getElementById('btnSubmitSource').addEventListener('click', () => {
+        document.getElementById('sourceModal').classList.add('visible');
+    });
+    document.getElementById('sourceModalClose').addEventListener('click', () => {
+        document.getElementById('sourceModal').classList.remove('visible');
+    });
+    document.getElementById('sourceCancel').addEventListener('click', () => {
+        document.getElementById('sourceModal').classList.remove('visible');
+    });
+    document.getElementById('sourceModal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('sourceModal')) {
+            document.getElementById('sourceModal').classList.remove('visible');
+        }
+    });
+    document.getElementById('sourceForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        try {
+            const resp = await fetch('https://formspree.io/f/xdawqlvg', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    _subject: 'Cut2Fill — New Material Source Submitted',
+                    sourceType: document.getElementById('sourceType').value,
+                    location: document.getElementById('sourceLocation').value,
+                    town: document.getElementById('sourceTown').value,
+                    lga: document.getElementById('sourceLGA').value,
+                    name: document.getElementById('sourceName').value,
+                    material: document.getElementById('sourceMaterial').value,
+                    operator: document.getElementById('sourceOperator').value,
+                    notes: document.getElementById('sourceNotes').value,
+                    contactName: document.getElementById('sourceContactName').value,
+                    contactInfo: document.getElementById('sourceContactInfo').value
+                })
+            });
+            if (resp.ok) {
+                showToast('Thanks! Source submitted — the Archers team will verify and add it to the map.');
+            } else {
+                showToast('Failed to send — please try again.');
+            }
+        } catch (err) {
+            showToast('Network error — please try again.');
+        }
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Source';
+        document.getElementById('sourceModal').classList.remove('visible');
+        document.getElementById('sourceForm').reset();
+    });
+
     // Feedback modal
     document.getElementById('btnFeedback').addEventListener('click', () => {
         document.getElementById('feedbackModal').classList.add('visible');
