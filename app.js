@@ -78,6 +78,7 @@ function getLocationZone(lat, lng) {
 }
 
 // ===== MAP INITIALIZATION =====
+const QLD_CENTER = [-22.5, 146.0];
 const SEQ_CENTER = [-27.47, 152.95];
 const SEQ_BOUNDS = [[-26.0, 151.5], [-28.3, 153.6]];
 
@@ -85,8 +86,7 @@ const map = L.map('map', {
     center: SEQ_CENTER,
     zoom: 9,
     zoomControl: true,
-    maxBounds: [[-25.5, 150.5], [-29.0, 154.5]],
-    minZoom: 7
+    minZoom: 5
 });
 
 // Tile layers
