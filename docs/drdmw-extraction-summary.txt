@@ -1,0 +1,205 @@
+================================================================================
+QLD RIVER SAND/GRAVEL EXTRACTION PERMITS - RESEARCH SUMMARY
+================================================================================
+Date:       2026-03-25
+Researcher: Claude (automated)
+Scope:      Queensland waterway extraction permits under Water Act 2000 (QLD)
+Department: Department of Regional Development, Manufacturing and Water (DRDMW)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+Two primary permit types exist for extracting sand, gravel and rock from
+Queensland waterways under the Water Act 2000:
+
+  1. QUARRY MATERIAL ALLOCATION NOTICES (QMAN) - 217 active records
+     The primary commercial extraction permit. Authorises removal of sand,
+     gravel, rock and other quarry materials from watercourses for sale/use.
+     Includes allocated volumes, extraction tracking, and annual rate limits.
+
+  2. RIVERINE PROTECTION PERMITS (RPP) - 18 active records
+     Authorises excavation, fill placement and vegetation destruction in
+     watercourses. Primarily for construction/infrastructure works, bank
+     stabilisation, and crossing maintenance. Material removal for commercial
+     purposes requires a separate QMAN.
+
+Both datasets are publicly available via the QLD Open Data Portal, updated
+quarterly, and accessible via CSV download and CKAN Datastore API.
+
+================================================================================
+DATA SOURCES FOUND
+================================================================================
+
+SOURCE 1: QLD OPEN DATA PORTAL (PRIMARY - FULL PROGRAMMATIC ACCESS)
+--------------------------------------------------------------------------
+Dataset:  "Water Entitlements"
+URL:      https://www.data.qld.gov.au/dataset/water-entitlements
+Status:   FULLY ACCESSIBLE - CSV download and JSON API both working
+
+Key resources:
+  a) Quarry Material Allocation Notices (QMAN)
+     - Resource ID: 2a7de874-b562-4712-9407-109332464f63
+     - Records: 217 active
+     - CSV: https://www.data.qld.gov.au/dataset/8aa66eca-4b37-4864-920a-02d08fd2fba3/resource/2a7de874-b562-4712-9407-109332464f63/download/quarry-material-allocation-notices.csv
+     - API: https://www.data.qld.gov.au/api/3/action/datastore_search?resource_id=2a7de874-b562-4712-9407-109332464f63&limit=250
+
+  b) Riverine Protection Permits (RPP)
+     - Resource ID: b113fab8-b678-4a7d-81b2-074b0e52c4a6
+     - Records: 18 active
+     - CSV: https://www.data.qld.gov.au/dataset/8aa66eca-4b37-4864-920a-02d08fd2fba3/resource/b113fab8-b678-4a7d-81b2-074b0e52c4a6/download/riverine-protection-permits.csv
+     - API: https://www.data.qld.gov.au/api/3/action/datastore_search?resource_id=b113fab8-b678-4a7d-81b2-074b0e52c4a6&limit=200
+
+  c) Related (water licences - for taking water, not material extraction)
+     - Attributes: a512e9a8-c374-4416-a77d-1be85f3c796e (15.5 MiB)
+     - Locations:  0adf1b75-149d-4315-bb37-a13b3f1a3d9a (5.5 MiB)
+
+SOURCE 2: QLD ARCGIS SPATIAL SERVICES
+--------------------------------------------------------------------------
+URL:      https://spatial-gis.information.qld.gov.au/arcgis/rest/services/
+Status:   NO EXTRACTION PERMIT LAYERS FOUND
+
+Checked folders:
+  - InlandWaters/ - 8 services (DrainageBasins, FloodLines, WaterManagement, etc.)
+    WaterManagement has 50+ layers for water plan areas, licence zones, etc.
+    but NO specific extraction permit or QMAN point layers.
+  - RiversApp/ - Requires authentication token (error 499). Not public.
+  - Boundaries/AdminBoundariesFramework - Has Environmental Authority layer
+    (ID: 140) but for DES environmental authorities, not water extraction.
+
+SOURCE 3: WATER MONITORING PORTAL
+--------------------------------------------------------------------------
+URL:      https://water-monitoring.information.qld.gov.au/
+Status:   NOT RELEVANT - Stream gauging and water level monitoring only.
+          No permit/licence data.
+
+SOURCE 4: BUSINESS QUEENSLAND
+--------------------------------------------------------------------------
+URL:      https://www.business.qld.gov.au/industries/mining-energy-water/water/authorisations/riverine-protection
+Status:   INFORMATIONAL ONLY - Application forms, policy guidance.
+          No searchable register. Directs to Open Data Portal for data.
+
+  Related page for quarry materials:
+  https://www.business.qld.gov.au/industries/mining-energy-water/resources/quarries/riverine-materials
+
+  RPP Application form:
+  https://www.rdmw.qld.gov.au/__data/assets/pdf_file/0003/1394436/w2f008-riverine-protection-permit.pdf
+
+================================================================================
+QUARRY MATERIAL ALLOCATION NOTICES - DATA ANALYSIS
+================================================================================
+
+Total active QMANs: 217
+Status breakdown: Predominantly "Granted" (210+), some "Under transfer"
+
+Data fields available:
+  - Product number (unique ID)
+  - Holder names (permit holder / company)
+  - Basin name, Watercode, Water name (waterway identification)
+  - LGA (local government area)
+  - Allocated volume (m3) - total permitted extraction
+  - Extracted volume (m3) - cumulative to date
+  - Remaining volume (m3) - balance available
+  - Maximum rate of take (m3) - annual limit
+  - Issue date, Expiry date
+  - Material type (Sand, Gravel, Rock, Other, or combinations)
+  - Downstream/Upstream coordinates (lat/long) - most records have these
+  - Conditions (detailed permit conditions)
+
+NOTABLE LARGE ALLOCATIONS (by allocated volume):
+  1. BERAJONDO PTY LTD - Burnett River, Bundaberg     330,000 m3 (66,000/yr)
+  2. CLANVILLE SUGAR PTY LTD - Pioneer River, Mackay   250,000 m3 (50,000/yr)
+  3. BROWN DOG CONTRACTING - Lagoon Creek, Barcaldine  225,000 m3 (45,000/yr)
+  4. MCDONNELL - Don River, Whitsunday                 180,000 m3 (36,000/yr)
+  5. GREG MCCAHILL - Burdekin River, Charters Towers   150,000 m3 (30,000/yr)
+  6. BERAJONDO PTY LTD - Burnett River, Bundaberg      140,000 m3 (28,000/yr)
+  7. BEDROCK LANDSCAPE - Star River, Charters Towers   100,000 m3 (20,000/yr)
+  8. CQS PTY LTD - Harrybrandt Creek, Isaac            100,000 m3 (20,000/yr)
+  9. ANTHONY SCRIHA - Cattle Creek, Mackay             100,000 m3 (20,000/yr)
+ 10. JUANDAH QUARRY - Juandah Creek, Western Downs      75,000 m3 (15,000/yr)
+
+KEY BASINS FOR EXTRACTION:
+  - Burdekin Basin (multiple operators)
+  - Pioneer Basin / Mackay region
+  - Fitzroy Basin / Central QLD
+  - Herbert Basin / Hinchinbrook
+  - Don Basin / Whitsunday
+  - Burnett Basin / Bundaberg
+  - Tully Basin / Cassowary Coast
+  - Flinders Basin / remote western QLD
+
+MAJOR OPERATORS (multiple allocations):
+  - BEDROCK LANDSCAPE SUPPLIES TOWNSVILLE PTY LTD (4+ sites)
+  - GREG MCCAHILL EARTHWORKS & HAULAGE PTY LTD (3+ sites)
+  - BERAJONDO PTY LTD (Bundaberg - 470,000 m3 combined)
+  - HUMPHRIES PTY LTD (Don River - 2 sites)
+  - PETER FRANCIS WELLS (3 remote western QLD sites)
+  - QCRUSH PTY LTD (Gregory River - 2 sites)
+  - TREVOR EDWARD HOWELL (Harrybrandt Creek - 2 sites)
+
+================================================================================
+RIVERINE PROTECTION PERMITS - DATA ANALYSIS
+================================================================================
+
+Total active RPPs: 18
+All status: Granted
+
+These are primarily construction/infrastructure permits, NOT commercial
+extraction. Key distinction: RPP condition 8 typically states "Any material
+removed from the watercourse must not be sold or used for beneficial purposes
+unless authorised under the Water Act 2000 by a Quarry Material Allocation
+Notice."
+
+RPPs with sand/gravel extraction relevance:
+  - RPP10000569/570 (Allan) - Boyne River, 12,500 m3 each - Sand extraction
+    (but condition says material must NOT be removed from watercourse)
+  - RPP10000599 (Bullerin) - Coomera River, 4,800 m3 - Sand, gravel, river-rock
+  - RPP10000536 (Borgna/Bosnich) - Moongera Creek, 375 m3 - Sand, rock
+  - RPP10000547 (QLD Hydro) - Yabba Creek, 540 m3 - Cobble, Gravel, Sand
+
+Most RPPs are for bank stabilisation, crossing construction, flood damage
+repair, and infrastructure projects - not commercial material supply.
+
+================================================================================
+RECOMMENDED APPROACH FOR CUT2FILL
+================================================================================
+
+1. PRIMARY DATA FEED: Use the CKAN Datastore API to pull QMAN data.
+   The SQL endpoint allows sophisticated filtering:
+
+   https://www.data.qld.gov.au/api/3/action/datastore_search_sql?sql=
+   SELECT * FROM "2a7de874-b562-4712-9407-109332464f63"
+   WHERE "Status" = 'Granted'
+   AND "Remaining volume CubicMetres" > 0
+   ORDER BY "Expiry date" DESC
+
+2. REFRESH SCHEDULE: Data updates quarterly (Jan/Apr/Jul/Oct).
+   Set up automated pull on the 1st of each quarter month.
+
+3. GEOCODING: Most QMAN records already have downstream/upstream lat/long
+   coordinates. These map directly to the extraction reach on the waterway.
+
+4. CROSS-REFERENCE: QMAN holders with remaining volume > 0 are active
+   suppliers. Cross-reference with TMR quarry register data already in
+   C:\cut2fill\docs\tmr-quarries-geocoded.json for overlap analysis.
+
+5. KEY GAP: The "Material" field often says "Other" rather than specifying
+   Sand/Gravel/Rock. The actual material is typically described in the
+   Conditions text. A text parser could extract this.
+
+6. VOLUME INTELLIGENCE: The extracted_volume vs allocated_volume ratio
+   shows actual supply activity. Operators with high extraction rates
+   are active commercial suppliers relevant to Cut2Fill.
+
+================================================================================
+RAW DATA FILES
+================================================================================
+
+  C:\cut2fill\docs\quarry-material-allocation-raw.csv    (217 records, 805 KB)
+  C:\cut2fill\docs\riverine-protection-permits-raw.csv   (18 records, 25 KB)
+  C:\cut2fill\docs\drdmw-extraction-permits.json         (structured summary)
+  C:\cut2fill\docs\drdmw-extraction-summary.txt          (this file)
+
+================================================================================
+END OF REPORT
+================================================================================
