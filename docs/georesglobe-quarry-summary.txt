@@ -1,0 +1,282 @@
+================================================================================
+QUEENSLAND QUARRY / EXTRACTIVE INDUSTRY PERMIT DATA SUMMARY
+================================================================================
+
+Data Source: Queensland Government GeoResGlobe ArcGIS REST Service
+Service URL: https://spatial-gis.information.qld.gov.au/arcgis/rest/services/
+             Economy/MinesPermitsCurrent/MapServer
+Layer: 44 (ML permit granted - Production Mining Leases)
+Extraction Date: 2026-03-25
+Data Currency: Updated nightly per service metadata
+
+--------------------------------------------------------------------------------
+OVERVIEW
+--------------------------------------------------------------------------------
+Total active/granted quarry-related Mining Leases: 138
+Additional ML applications pending: 4
+  - ML 100318 (Limestone, North Queensland Lime)
+  - ML 100397 (Sandstone, Rosehill Sandstone)
+  - ML 100417 (Sandstone, Rosenstengel)
+  - ML 100416 (Sandstone, Rosenstengel)
+Total area under granted permits: 4,586.8 hectares (45.9 sq km)
+Average permit area: 33.2 hectares
+Smallest permit: 0.50 hectares
+Largest permit: 389.0 hectares
+
+--------------------------------------------------------------------------------
+BREAKDOWN BY COMMODITY TYPE
+--------------------------------------------------------------------------------
+  LS       (Limestone      ):   64 permits
+  SST      (Sandstone      ):   25 permits
+  GYP      (Gypsum         ):   13 permits
+  SIS      (Silica Sand    ):   10 permits
+  BS       (Building Stone ):    7 permits
+  KAO      (Kaolin         ):    6 permits
+  CLAY     (Clay           ):    4 permits
+  SI       (Silica         ):    4 permits
+  GR       (Gravel         ):    3 permits
+  DO       (Dolomite       ):    2 permits
+
+--------------------------------------------------------------------------------
+BREAKDOWN BY PERMIT SUBTYPE
+--------------------------------------------------------------------------------
+  Mineral: 106
+  Mineral - Prescribed: 31
+  Corundum, gemstones and other precious stones: 1
+
+--------------------------------------------------------------------------------
+BREAKDOWN BY GEOGRAPHIC REGION (approximate, based on latitude)
+--------------------------------------------------------------------------------
+  Central QLD (-21 to -24): 27
+  Far North QLD (north of -18): 23
+  North QLD (-18 to -21): 10
+  South East QLD (south of -26): 43
+  Wide Bay/Burnett (-24 to -26): 35
+
+--------------------------------------------------------------------------------
+ALL PERMIT HOLDERS AND LOCATIONS
+--------------------------------------------------------------------------------
+Total unique holders: 56
+
+ML 80131     | A.C.N. 605 294 228 PTY LTD                    | LS              |       54.4 ha | Grant: 2007-04-05 | Expiry: 2027-04-30 | BOYNE LIMESTONE - NORTHEAST (-24.2365, 151.3064)
+ML 80132     | A.C.N. 605 294 228 PTY LTD                    | LS              |       52.7 ha | Grant: 2007-09-20 | Expiry: 2027-09-30 | BOYNE LIMESTONE - SOUTHWEST (-24.2585, 151.2881)
+ML 100200    | AEM HPA (AUSTRALIA) PTY LTD                   | KAO             |       10.0 ha | Grant: 2020-05-12 | Expiry: 2040-05-31 | Kendall River Kaolin (-13.9977, 142.2147)
+ML 95300     | AG-SPREAD NORTH QUEENSLAND PTY LTD            | GYP             |       77.6 ha | Grant: 2000-04-13 | Expiry: 2040-04-30 | TOM (-22.8168, 142.2489)
+ML 100061    | AUSTRALIAN PORPHYRY STONE PTY LTD             | BS              |        1.1 ha | Grant: 2017-10-15 | Expiry: 2038-10-31 | Rogina extended (-17.3947, 145.1747)
+ML 20144     | AUSTRALIAN PORPHYRY STONE PTY LTD             | BS              |        3.2 ha | Grant: 1993-03-18 | Expiry: 2028-03-31 | ATHSTONE (-17.3671, 145.1816)
+ML 50013     | AUSTRALIAN SANDSTONE INDUSTRIES LTD           | SST             |      129.3 ha | Grant: 1992-01-30 | Expiry: 2032-01-31 | ZACK'S (-27.4988, 152.1549)
+ML 50213     | AUSTRALIAN SANDSTONE INDUSTRIES LTD           | BS              |       35.9 ha | Grant: 2006-12-07 | Expiry: 2029-12-31 | MONTGOMERY'S QUARRY EXTENDED (-27.5010, 152.1007)
+ML 50054     | BEXTON INVESTMENTS PTY LTD                    | SST             |       12.2 ha | Grant: 1992-10-15 | Expiry: 2037-10-31 | JOVEBROOK 1 AND 2 (-27.4746, 152.0843)
+ML 50096     | BEXTON INVESTMENTS PTY LTD                    | SST             |       13.4 ha | Grant: 1995-12-07 | Expiry: 2037-12-31 | JOVEBROOK 3 (-27.4765, 152.0858)
+ML 50199     | BEXTON INVESTMENTS PTY LTD                    | SST             |       13.8 ha | Grant: 2004-03-18 | Expiry: 2029-03-31 | SANDSTONE 2 (-27.5084, 152.1093)
+ML 7246      | BEXTON INVESTMENTS PTY LTD                    | SST             |       25.9 ha | Grant: 1993-02-25 | Expiry: 2043-02-28 | COMERFORD SANDSTONE (-27.5135, 152.1075)
+ML 5184      | CAIRNS MARBLE AUSTRALIA PTY. LTD.             | LS              |       44.5 ha | Grant: 1985-11-21 | Expiry: 2027-11-30 | BIANCA (-17.2598, 144.5756)
+ML 5185      | CAIRNS MARBLE AUSTRALIA PTY. LTD.             | LS              |       32.0 ha | Grant: 1985-11-21 | Expiry: 2027-11-30 | CHILLAGOE ROSE (-17.2314, 144.5697)
+ML 5186      | CAIRNS MARBLE AUSTRALIA PTY. LTD.             | LS              |       12.5 ha | Grant: 1985-11-21 | Expiry: 2027-11-30 | ROSA (-17.2229, 144.5719)
+ML 5187      | CAIRNS MARBLE AUSTRALIA PTY. LTD.             | LS              |       12.5 ha | Grant: 1985-11-21 | Expiry: 2027-11-30 | AZZURO (-17.2260, 144.5681)
+ML 5188      | CAIRNS MARBLE AUSTRALIA PTY. LTD.             | LS              |       16.1 ha | Grant: 1985-11-21 | Expiry: 2027-11-30 | AQUAMARINA (-17.2143, 144.5700)
+ML 5189      | CAIRNS MARBLE AUSTRALIA PTY. LTD.             | LS              |       13.6 ha | Grant: 1985-11-21 | Expiry: 2027-11-30 | COBRA (-17.1920, 144.5476)
+ML 100010    | CAPRICORN STONE PRODUCTS PTY LTD              | SST             |       43.4 ha | Grant: 2015-11-16 | Expiry: 2035-11-30 | Roys Ridge (-23.5047, 150.3426)
+ML 100349    | CAPRICORN STONE PRODUCTS PTY LTD              | SST             |       30.1 ha | Grant: 2026-03-03 | Expiry: 2046-03-31 | Capricorn Sandstone East (-23.5023, 150.3464)
+ML 7341      | CAPRICORN STONE PRODUCTS PTY LTD              | SST             |        5.0 ha | Grant: 1993-06-17 | Expiry: 2033-06-30 | SCOTSMAN'S FOLLY (-23.5034, 150.3450)
+ML 80102     | CAPRICORN STONE PRODUCTS PTY LTD              | SST             |       18.8 ha | Grant: 2003-03-20 | Expiry: 2043-03-31 | SCOTSMAN FOLLY (-23.5019, 150.3440)
+ML 50007     | CATHEDRAL QUARRY HELIDON PTY LTD              | SST             |       13.9 ha | Grant: 1992-10-15 | Expiry: 2032-10-31 | SANDSTONE 1 (-27.5105, 152.1091)
+ML 3664      | CEMENT AUSTRALIA (EXPLORATION) PTY LTD        | SIS             |      213.8 ha | Grant: 1990-03-29 | Expiry: 2031-03-31 | IVERAGH 1 (-23.9756, 151.3910)
+ML 3601      | CEMENT AUSTRALIA (QUEENSLAND) PTY LIMITED     | LS              |       32.4 ha | Grant: 1973-08-02 | Expiry: 2027-08-31 | BRACEWALL MINERALS (-23.8833, 150.9125)
+ML 4705      | CHUWAR HOLDINGS PTY LTD                       | CLAY            |        6.9 ha | Grant: 1986-12-18 | Expiry: 2024-06-30 | JEEBROPILLY 18 (-27.6552, 152.6642)
+ML 95209     | CONNOLLY, Brian Malcolm                       | GYP             |       22.9 ha | Grant: 1996-05-23 | Expiry: 2026-05-31 | BRY LEASE (-23.5855, 142.0924)
+ML 95227     | CONNOLLY, Brian Malcolm                       | GYP             |       68.2 ha | Grant: 1996-11-14 | Expiry: 2026-11-30 | WINTON GYPSUM (-23.6857, 142.1006)
+ML 95239     | COUPE, Geoffrey Ivan                          | GYP             |       29.5 ha | Grant: 2006-12-07 | Expiry: 2026-12-31 | MOUNT WINDSOR (-23.5774, 142.0902)
+ML 20032     | DENSYL SANDSTONE PTY. LTD.                    | BS              |        2.5 ha | Grant: 1992-03-05 | Expiry: 2032-03-31 | GREEN'S (-17.3046, 145.0265)
+ML 20132     | DENSYL SANDSTONE PTY. LTD.                    | BS              |        2.2 ha | Grant: 1992-12-17 | Expiry: 2032-03-31 | TOP QUARRY (-17.3052, 145.0275)
+ML 1179      | DG EUREKA PTY LTD                             | SIS             |        8.9 ha | Grant: 1972-09-28 | Expiry: 2028-12-31 |  (-24.9920, 152.4853)
+ML 1180      | DG EUREKA PTY LTD                             | SIS             |       12.0 ha | Grant: 1972-08-28 | Expiry: 2029-12-31 |  (-24.9903, 152.4871)
+ML 1181      | DG EUREKA PTY LTD                             | SIS             |       19.2 ha | Grant: 1972-09-28 | Expiry: 2029-12-31 | CONNER CREEK NO. 2 (-24.9884, 152.4894)
+ML 1182      | DG EUREKA PTY LTD                             | SIS             |       50.6 ha | Grant: 1972-08-28 | Expiry: 2030-08-31 |  (-24.9780, 152.4876)
+ML 1183      | DG EUREKA PTY LTD                             | SIS             |       32.8 ha | Grant: 1972-08-28 | Expiry: 2030-08-31 |  (-24.9726, 152.4867)
+ML 1185      | DG EUREKA PTY LTD                             | SIS             |       28.7 ha | Grant: 1972-11-16 | Expiry: 2031-06-30 |  (-25.0021, 152.4918)
+ML 1228      | DG EUREKA PTY LTD                             | SIS             |       18.2 ha | Grant: 1991-09-12 | Expiry: 2021-09-30 | COONARR CREEK 2 (-25.0029, 152.4979)
+ML 1229      | DG EUREKA PTY LTD                             | SIS             |       18.2 ha | Grant: 1991-09-12 | Expiry: 2021-09-30 | COONARR CREEK 3 (-25.0067, 152.5000)
+ML 80054     | EASTERN STONE & MINERALS PTY. LTD.            | GR              |       39.5 ha | Grant: 1998-08-20 | Expiry: 2028-08-31 | MUNDUBBERA GRANITE (-25.7116, 150.9742)
+ML 80106     | EIDSVOLD SILTSTONE PTY. LTD.                  | SST             |       11.8 ha | Grant: 2003-06-27 | Expiry: 2043-06-30 | LOCHABER CREEK MINE SITE (-25.4770, 151.2142)
+ML 95105     | ENTRIKEN, Carleen Emily Margaret              | GYP             |       10.8 ha | Grant: 1994-03-24 | Expiry: 2034-03-31 | BLUEBUSH MINE (-22.7840, 142.7324)
+ML 50047     | GLOBAL SANDSTONE INDUSTRIES PTY LTD           | SST             |       50.2 ha | Grant: 1993-04-22 | Expiry: 2038-04-30 | TITAN SANDSTONE 1 (-27.4472, 152.0836)
+ML 50171     | GOSFORD QUARRIES (PROPERTIES) PTY LIMITED     | SST             |       21.4 ha | Grant: 2001-09-20 | Expiry: 2026-09-30 | HILL OF STONE (-27.9462, 152.8574)
+ML 3594      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       32.4 ha | Grant: N/A | Expiry: 2041-02-28 | MARBLESTONE NO 1 (-24.1066, 151.2391)
+ML 3595      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       15.8 ha | Grant: 1986-01-22 | Expiry: 2041-02-28 | MARBLESTONE NO 2 (-24.1026, 151.2401)
+ML 3596      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        9.1 ha | Grant: 1972-06-01 | Expiry: 2041-02-28 | MARBLESTONE NO 3 (-24.1098, 151.2453)
+ML 3597      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        2.8 ha | Grant: N/A | Expiry: 2041-12-31 | MARBLESTONE NO 4 (-24.1106, 151.2472)
+ML 3598      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       12.5 ha | Grant: 1986-01-22 | Expiry: 2041-12-31 | MARBLESTONE NO 5 (-24.1246, 151.2477)
+ML 3599      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        6.8 ha | Grant: 1976-02-19 | Expiry: 2041-12-31 | MARBLESTONE NO 6 (-24.1281, 151.2472)
+ML 3600      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        8.1 ha | Grant: 1972-09-28 | Expiry: 2041-02-28 | MARBLESTONE NO 7 (-24.1244, 151.2429)
+ML 3602      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       10.2 ha | Grant: 1988-03-07 | Expiry: 2027-03-31 | CLARK 1 (-24.0948, 151.2412)
+ML 3603      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        8.3 ha | Grant: 1988-03-07 | Expiry: 2027-03-31 | CLARK 2 (-24.0983, 151.2408)
+ML 3604      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        4.9 ha | Grant: N/A | Expiry: 2028-02-29 | MARBLESTONE 8 (-24.1099, 151.2418)
+ML 3605      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        9.4 ha | Grant: 1988-03-10 | Expiry: 2028-07-31 | DOWNING 1 (-24.1244, 151.2452)
+ML 3606      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        5.6 ha | Grant: 1988-03-07 | Expiry: 2028-07-31 | DOWNING 2 (-24.1223, 151.2462)
+ML 3608      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       60.1 ha | Grant: 1972-10-26 | Expiry: 2030-10-31 | MAURER 1 (-24.1139, 151.2400)
+ML 3609      | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       43.4 ha | Grant: 1988-04-18 | Expiry: 2030-10-31 | MAURER 2 (-24.1184, 151.2398)
+ML 80036     | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       18.7 ha | Grant: 2001-06-15 | Expiry: 2043-06-30 | MARBLESTONE NO 9 (-24.1005, 151.2353)
+ML 80189     | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       36.0 ha | Grant: 2013-05-13 | Expiry: 2043-05-31 | AREA 1 (-24.1209, 151.2367)
+ML 80190     | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |       22.5 ha | Grant: 2013-05-13 | Expiry: 2043-05-31 | AREA 2 (-24.1088, 151.2408)
+ML 80191     | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |        1.6 ha | Grant: 2013-05-13 | Expiry: 2043-05-31 | AREA 3 (-24.1030, 151.2367)
+ML 80192     | GRAYMONT (CALLIOPE) PTY LTD                   | LS              |      121.5 ha | Grant: 2013-05-14 | Expiry: 2043-05-31 | AREA 4 (-24.0966, 151.2351)
+ML 50089     | GRAYMONT (NSW) PTY LTD                        | LS              |       32.3 ha | Grant: 1995-04-20 | Expiry: 2045-04-30 | OAKWOOD (-28.7662, 151.1881)
+ML 50220     | GRAYMONT (NSW) PTY LTD                        | LS              |        2.5 ha | Grant: 2007-03-15 | Expiry: 2028-03-31 | RIVERTON BOTTLENECK (-29.0215, 151.4779)
+ML 5763      | GRAYMONT (NSW) PTY LTD                        | LS              |       16.2 ha | Grant: N/A | Expiry: 2031-03-31 | LIME NO 1 (-23.6736, 150.7089)
+ML 5764      | GRAYMONT (NSW) PTY LTD                        | LS              |       16.2 ha | Grant: N/A | Expiry: 2031-03-31 | LIME 2 (-23.6682, 150.7092)
+ML 5395      | Greenland, Paula Theresa                      | KAO             |        4.0 ha | Grant: 1981-03-12 | Expiry: 2038-03-31 | TROY 1 (-25.4097, 152.7120)
+ML 100122    | HELIDON SANDSTONE INDUSTRIES PTY LTD          | SST             |      103.4 ha | Grant: 2019-12-20 | Expiry: 2031-01-31 | Regent group (-27.5281, 152.1420)
+ML 100298    | INDUSTRIAL COMMODITIES QLD PTY LTD            | LS              |      211.0 ha | Grant: 2023-03-15 | Expiry: 2033-03-31 | Fairview Limestone (-23.9630, 151.0778)
+ML 50006     | J.H. WAGNER & SONS PTY. LTD.                  | BS              |       30.2 ha | Grant: 1994-02-17 | Expiry: 2093-02-28 | J H WAGNER AND SONS P/L (-27.5157, 152.1604)
+ML 4677      | JEEBROPILLY COLLIERIES PTY. LTD.              | CLAY            |      115.0 ha | Grant: 1982-12-09 | Expiry: 2024-06-30 | RYLANCE AMBERLEY (-27.6481, 152.6785)
+ML 50132     | JEEBROPILLY COLLIERIES PTY. LTD.              | CLAY            |      389.0 ha | Grant: 1999-08-26 | Expiry: 2024-06-30 | JEEBROPILLY NORTH (-27.6368, 152.6654)
+ML 7186      | JEEBROPILLY COLLIERIES PTY. LTD.              | CLAY            |      142.8 ha | Grant: 1993-07-22 | Expiry: 2033-07-31 | JEEBROPILLY NUMBER 22 (-27.6615, 152.6459)
+ML 100128    | JOYFUL VIEW GARDEN REAL ESTATE DEVELOPMENT RE | GR              |       17.4 ha | Grant: 2021-04-12 | Expiry: 2041-04-30 | Cherrabah Granite Mine (-28.4410, 152.0548)
+ML 100257    | JSKJ COOKSON PTY LTD                          | GYP             |       20.7 ha | Grant: 2021-10-18 | Expiry: 2031-10-31 | MULGA DOWNS GYPSUM (-28.7673, 146.9751)
+ML 5434      | MOUNT ISA MINES LIMITED                       | SI              |        4.0 ha | Grant: 1974-01-10 | Expiry: 2027-01-31 | SNOWY EXTENDED (-20.9337, 139.4506)
+ML 50145     | MUNRO, Charles Alexander                      | LS              |       25.6 ha | Grant: 1999-03-25 | Expiry: 2039-03-31 | OAKLEIGH LIME (-28.7857, 151.2728)
+ML 5564      | Myuma Pty Ltd                                 | LS              |       32.3 ha | Grant: 1985-10-17 | Expiry: 2026-10-31 | THIRD ONE (-19.5963, 138.8153)
+ML 50181     | NEVANNA STONE QUARRY PTY LTD                  | SST             |       22.2 ha | Grant: 2002-01-31 | Expiry: 2052-01-31 | NEVANNA (-27.5320, 152.1321)
+ML 50202     | NEVANNA STONE QUARRY PTY LTD                  | SST             |       44.6 ha | Grant: 2005-10-27 | Expiry: 2055-10-31 | NEVANNA II (-27.5283, 152.1306)
+ML 1360      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |       16.6 ha | Grant: 1974-02-14 | Expiry: 2032-02-29 | LIMESTONE (-19.1275, 145.3375)
+ML 1375      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |       18.2 ha | Grant: 1974-02-21 | Expiry: 2034-02-28 | MARBLE TOWERS (-19.1363, 145.3369)
+ML 1445      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |       49.6 ha | Grant: 1983-08-25 | Expiry: 2034-08-31 | CHRISTMAS CREEK LIMESTONE (-19.0578, 145.3293)
+ML 20115     | NORTH QUEENSLAND LIME PTY LTD                 | LS              |        1.8 ha | Grant: 1992-08-06 | Expiry: 2032-08-31 | BUCKLANDS NO 2 (-17.0827, 145.4919)
+ML 3902      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |        8.1 ha | Grant: 1972-06-01 | Expiry: 2029-03-31 | CRYSTAL (-17.5671, 145.3116)
+ML 4023      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |       18.2 ha | Grant: 1973-08-16 | Expiry: 2027-08-31 | CORALIME (-17.6462, 145.1454)
+ML 4249      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |        4.0 ha | Grant: 1980-06-19 | Expiry: 2031-06-30 | SUGARLIME (-17.6312, 145.1361)
+ML 4788      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |        2.0 ha | Grant: 1974-01-17 | Expiry: 2026-01-31 | CROTTY 1 (-17.4341, 144.6405)
+ML 4789      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |        2.0 ha | Grant: 1974-01-17 | Expiry: 2026-01-31 | CROTTY 2 (-17.4358, 144.6413)
+ML 4828      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |       18.2 ha | Grant: 1989-03-22 | Expiry: 2031-04-30 | FAIR CHANCE (-16.7608, 145.4027)
+ML 4957      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |        3.0 ha | Grant: 1975-07-24 | Expiry: 2038-07-31 | BIRTHDAY (-17.1520, 144.5013)
+ML 4959      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |       15.9 ha | Grant: 1975-07-24 | Expiry: 2038-07-31 | LINEDALE (-17.1469, 144.5156)
+ML 5079      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |       25.9 ha | Grant: 1983-04-21 | Expiry: 2025-04-30 | CROTTY (-17.4350, 144.6404)
+ML 5372      | NORTH QUEENSLAND LIME PTY LTD                 | LS              |      210.0 ha | Grant: 1992-01-30 | Expiry: 2034-01-31 | CROTTY 3 (-17.4380, 144.6403)
+ML 95102     | NORTH QUEENSLAND LIME PTY LTD                 | GYP             |       21.0 ha | Grant: 1994-03-03 | Expiry: 2034-03-31 | CORK NO 1 (-22.9184, 142.0537)
+ML 95106     | NORTH QUEENSLAND LIME PTY LTD                 | GYP             |       76.4 ha | Grant: 1994-06-23 | Expiry: 2034-06-30 | CORK NO 2 (-22.9201, 142.0623)
+ML 95236     | NORTH QUEENSLAND LIME PTY LTD                 | GYP             |       24.5 ha | Grant: 2006-12-07 | Expiry: 2041-12-31 | KELLS (-23.0038, 141.9603)
+ML 95261     | NORTH QUEENSLAND LIME PTY LTD                 | GYP             |       32.6 ha | Grant: 2006-12-07 | Expiry: 2026-12-31 | CORK NO 4 (-22.9356, 142.0426)
+ML 95298     | NORTH QUEENSLAND LIME PTY LTD                 | GYP             |       24.0 ha | Grant: 2006-11-23 | Expiry: 2026-11-30 | CORK NO 3 (-22.9229, 142.0750)
+ML 95509     | NORTH QUEENSLAND LIME PTY LTD                 | GYP             |       99.9 ha | Grant: 2010-05-13 | Expiry: 2025-05-31 | KELLS ONE (-23.0095, 141.9635)
+ML 95510     | NORTH QUEENSLAND LIME PTY LTD                 | GYP             |       44.0 ha | Grant: 2010-05-13 | Expiry: 2025-05-31 | CORK FIVE (-22.9269, 142.0770)
+ML 7249      | NUKINENDA GRANITE QUARRY PTY. LTD.            | GR              |      116.3 ha | Grant: 1991-10-10 | Expiry: 2033-10-31 | NUKINENDA BLACK GRANITE (-27.0419, 152.1313)
+ML 3638      | OMYA AUSTRALIA PTY LIMITED                    | LS              |       22.9 ha | Grant: 1982-02-18 | Expiry: 2032-11-30 | ULAM CARRARA MARBLE (-23.8132, 150.6534)
+ML 3662      | OMYA AUSTRALIA PTY LIMITED                    | LS              |       12.7 ha | Grant: 1992-05-21 | Expiry: 2032-05-31 | CARRARA LIME (-23.8170, 150.6559)
+ML 3666      | OMYA AUSTRALIA PTY LIMITED                    | LS              |        3.4 ha | Grant: 1992-07-30 | Expiry: 2032-07-31 | ULAM LIME (-23.8153, 150.6543)
+ML 80026     | OPTIQUARTZ PTY LTD                            | SI              |        6.0 ha | Grant: 1996-03-28 | Expiry: 2030-03-31 | SAN JOSE (-23.7027, 150.6754)
+ML 80027     | OPTIQUARTZ PTY LTD                            | SI              |       22.0 ha | Grant: 1995-04-20 | Expiry: 2030-04-30 | ULTIMO (-23.6977, 150.6394)
+ML 50200     | Oldmeadow, Michael                            | BS              |       69.2 ha | Grant: 2006-06-15 | Expiry: 2031-06-30 | BARRY GRIFFITH CLARK (-27.4398, 152.0865)
+ML 1211      | PACIFIC SILICA PTY LTD                        | SIS             |        5.1 ha | Grant: 1982-02-25 | Expiry: 2024-02-29 | LONGBEACH (-24.9861, 152.4877)
+ML 80069     | PARTRIDGE, Peter Maxwell Fitzgerald           | LS              |        4.6 ha | Grant: 1999-04-22 | Expiry: 2039-04-30 | PRINCHESTER LIME (-22.9007, 150.0773)
+ML 50163     | ROSEHILL SANDSTONE PTY LTD                    | SST             |       23.4 ha | Grant: 2001-05-17 | Expiry: 2031-05-31 | MALCOLM GUY YANGAN QUARRY (-28.2015, 152.2097)
+ML 50122     | ROSEHILL SANDSTONE QLD PTY LTD                | SST             |       10.8 ha | Grant: 1996-10-03 | Expiry: 2028-10-31 | YANGAN SANDSTONE (-28.2093, 152.2176)
+ML 10337     | S CRANK 9 PTY LTD                             | DO              |       14.2 ha | Grant: 2023-11-28 | Expiry: 2031-08-31 |  (-19.6056, 145.7777)
+ML 1248      | SCARLETT, Kevin Donn                          | LS              |        3.8 ha | Grant: 1989-11-16 | Expiry: 2031-11-30 | MARULE LIME (-25.1421, 152.0854)
+ML 50185     | SCOTBAR PTY LTD                               | SST             |       69.2 ha | Grant: 2002-11-28 | Expiry: 2027-11-30 | SANDCASTLE (-27.5045, 152.1491)
+ML 50218     | SCOTBAR PTY LTD                               | SST             |       19.8 ha | Grant: 2011-02-03 | Expiry: 2061-02-28 | SANDPIT (-27.5092, 152.1541)
+ML 1191      | SMITH, Gary Edward                            | SI              |        4.0 ha | Grant: 1974-04-18 | Expiry: 2027-04-30 | BUCKET GULLY LEASE (-24.4367, 151.9017)
+ML 50224     | SOUTH QUEENSLAND LIME PTY. LTD.               | LS              |       29.7 ha | Grant: 2006-12-07 | Expiry: 2026-12-31 | CEMENT MILLS #2 (-28.3425, 151.5091)
+ML 50097     | STEPHENS, Peter James                         | SST             |       22.7 ha | Grant: 1995-04-20 | Expiry: 2035-04-30 | HELIDON GOLD (-27.5306, 152.1516)
+ML 50285     | STEPHENS, Peter James                         | SST             |       46.3 ha | Grant: 2016-05-23 | Expiry: 2036-05-31 | STEPHENS BROS (-27.5294, 152.1489)
+ML 10313     | SYDNEY ALFRED PTY LTD                         | DO              |        0.5 ha | Grant: 2023-11-28 | Expiry: 2031-08-31 | INDY (-19.6062, 145.7770)
+ML 50177     | TANAMERAH PROPERTIES PTY LTD                  | SST             |       32.0 ha | Grant: 2001-08-30 | Expiry: 2036-08-31 | TANAMERAH SANDSTONE (-28.1640, 151.9954)
+ML 50223     | TANAMERAH PROPERTIES PTY LTD                  | SST             |       32.2 ha | Grant: 2008-08-07 | Expiry: 2028-08-31 | TANAMERAH SANDSTONE EXTENDED (-28.1667, 151.9956)
+ML 50083     | TERREQUIP ENVIRONMENTAL PTY LTD               | LS              |       22.9 ha | Grant: 1995-08-17 | Expiry: 2025-08-31 | O'DEA EXTENDED (-28.3962, 152.1085)
+ML 50130     | TERREQUIP ENVIRONMENTAL PTY LTD               | KAO             |        9.7 ha | Grant: 1998-03-05 | Expiry: 2039-03-31 | NYORA 5 (-26.6730, 151.8452)
+ML 50146     | TERREQUIP ENVIRONMENTAL PTY LTD               | LS              |       50.8 ha | Grant: 1998-12-17 | Expiry: 2028-12-31 | WARWICK PLANT (-28.3890, 152.1140)
+ML 50236     | TERREQUIP ENVIRONMENTAL PTY LTD               | LS              |        1.9 ha | Grant: 2011-12-01 | Expiry: 2032-12-31 | AREA 1 (-28.3975, 152.1062)
+ML 50237     | TERREQUIP ENVIRONMENTAL PTY LTD               | LS              |       71.3 ha | Grant: 2011-12-01 | Expiry: 2032-12-31 | AREA 2 (-28.3968, 152.1171)
+ML 50238     | TERREQUIP ENVIRONMENTAL PTY LTD               | LS              |       11.2 ha | Grant: 2011-12-01 | Expiry: 2032-12-31 | AREA 4 (-28.3991, 152.1140)
+ML 50239     | TERREQUIP ENVIRONMENTAL PTY LTD               | LS              |       13.5 ha | Grant: 2011-12-01 | Expiry: 2032-12-31 | AREA 3 (-28.3995, 152.1076)
+ML 5679      | TERREQUIP ENVIRONMENTAL PTY LTD               | KAO             |        4.0 ha | Grant: 1974-05-09 | Expiry: 2039-03-31 | GOODGER MINE (-26.6812, 151.8488)
+ML 5684      | TERREQUIP ENVIRONMENTAL PTY LTD               | KAO             |        1.9 ha | Grant: 1976-10-07 | Expiry: 2038-10-31 | NYORA (-26.6737, 151.8451)
+ML 6621      | THE AUSTRAL BRICK CO PTY LTD                  | KAO             |       21.8 ha | Grant: 1992-06-18 | Expiry: 2033-06-30 | NYORA 4 (-26.6728, 151.8498)
+ML 1051      | TINSAN PTY. LIMITED                           | LS              |       19.5 ha | Grant: 1982-03-18 | Expiry: 2024-03-31 | DELTA (-19.9051, 147.3878)
+ML 100033    | ULINOVICH, Raymond Bernard                    | SST             |        1.0 ha | Grant: 2017-10-15 | Expiry: 2027-10-31 | White Crane (-17.3628, 144.8329)
+ML 10198     | ZINABACK PTY. LTD.                            | LS              |       20.0 ha | Grant: 1995-08-17 | Expiry: 2025-08-31 | MT PODGE QUARRY (-19.2923, 145.9802)
+ML 10276     | ZINABACK PTY. LTD.                            | LS              |       18.5 ha | Grant: 2003-04-17 | Expiry: 2043-04-30 | STAR RIVER LIMESTONE (-19.4340, 146.0055)
+
+--------------------------------------------------------------------------------
+TOP 20 PERMIT HOLDERS BY NUMBER OF PERMITS
+--------------------------------------------------------------------------------
+   21 permits (     716.0 ha) - NORTH QUEENSLAND LIME PTY LTD
+   19 permits (     429.7 ha) - GRAYMONT (CALLIOPE) PTY LTD
+    9 permits (     187.2 ha) - TERREQUIP ENVIRONMENTAL PTY LTD
+    8 permits (     188.7 ha) - DG EUREKA PTY LTD
+    6 permits (     131.2 ha) - CAIRNS MARBLE AUSTRALIA PTY. LTD.
+    4 permits (      67.2 ha) - GRAYMONT (NSW) PTY LTD
+    4 permits (      97.4 ha) - CAPRICORN STONE PRODUCTS PTY LTD
+    4 permits (      65.2 ha) - BEXTON INVESTMENTS PTY LTD
+    3 permits (      39.1 ha) - OMYA AUSTRALIA PTY LIMITED
+    3 permits (     646.8 ha) - JEEBROPILLY COLLIERIES PTY. LTD.
+    2 permits (      38.5 ha) - ZINABACK PTY. LTD.
+    2 permits (       4.3 ha) - AUSTRALIAN PORPHYRY STONE PTY LTD
+    2 permits (      64.2 ha) - TANAMERAH PROPERTIES PTY LTD
+    2 permits (     107.1 ha) - A.C.N. 605 294 228 PTY LTD
+    2 permits (      91.1 ha) - CONNOLLY, Brian Malcolm
+    2 permits (       4.7 ha) - DENSYL SANDSTONE PTY. LTD.
+    2 permits (     165.2 ha) - AUSTRALIAN SANDSTONE INDUSTRIES LTD
+    2 permits (      69.0 ha) - STEPHENS, Peter James
+    2 permits (      66.8 ha) - NEVANNA STONE QUARRY PTY LTD
+    2 permits (      89.0 ha) - SCOTBAR PTY LTD
+
+--------------------------------------------------------------------------------
+MINERAL CODE REFERENCE
+--------------------------------------------------------------------------------
+Codes searched (quarry/extractive industry related):
+  BASALT   = Basalt
+  BS       = Building Stone
+  CLAY     = Clay
+  DO       = Dolomite
+  GN       = Granite
+  GR       = Gravel
+  GV       = Gravel
+  GYP      = Gypsum
+  KAO      = Kaolin
+  LS       = Limestone
+  LST      = Limestone
+  MA       = Marble
+  RC       = Rock
+  RHY      = Rhyolite
+  SD       = Sand
+  SI       = Silica
+  SIS      = Silica Sand
+  SST      = Sandstone
+  ST       = Stone
+
+--------------------------------------------------------------------------------
+DATA QUALITY AND LIMITATIONS
+--------------------------------------------------------------------------------
+1. SCOPE: This data covers Mining Leases (ML) granted under the Mineral Resources
+   Act 1989 (Qld). It does NOT include:
+   - Extractive industry permits issued by local councils under planning schemes
+   - Resource allocations under the Forestry Act (state forests)
+   - Quarry operations on freehold land not requiring an ML
+   - Some small-scale operations may exist under other permit types
+
+2. COMMODITY FILTERING: Permits were filtered by mineral commodity codes
+   associated with quarrying/extractive industries. Some permits listing
+   multiple commodities (e.g., "LS,DO") may include both quarry and non-quarry
+   minerals. Conversely, some quarry operations with unusual commodity codes
+   may have been missed.
+
+3. GEOMETRY: Centroids are approximate averages of polygon vertices, not
+   true geometric centroids. Coordinates are in EPSG:4326 (WGS84 lat/lon),
+   with GDA2020 source data. Values are (latitude, longitude) pairs.
+
+4. EXTRACTIVE/QUARRY PERMITS IN QLD: Queensland does not have a separate
+   "extractive industry" permit category in its mining tenure system.
+   Quarries operate under standard Mining Leases. The key distinction is
+   the commodity type (limestone, sandstone, gravel, etc.) rather than
+   a separate permit category.
+
+5. LOCAL GOVERNMENT EXTRACTIVE INDUSTRY APPROVALS: Many quarries in QLD
+   operate under local government extractive industry approvals rather than
+   state Mining Leases. These are NOT captured in this dataset. For a complete
+   picture, council-level data would need to be obtained separately.
+
+6. DATA CURRENCY: The MinesPermitsCurrent service is updated nightly.
+   This extract was taken on 2026-03-25.
+
+================================================================================
