@@ -1309,14 +1309,36 @@ const registeredFacilities = [
 let facilityLayerGroup = L.layerGroup();
 let facilitiesVisible = true;
 
+// Zoom-based visibility — minimum zoom level to show each facility type
+// Lower number = visible when zoomed out more (higher priority)
+const facilityZoomTiers = {
+    'quarry': 8,
+    'concrete': 9,
+    'landfill': 10,
+    'transfer': 10,
+    'cd-recycler': 11,
+    'soil-treatment': 11,
+    'pfas-treatment': 11
+};
+
+// Featured facilities appear one zoom level earlier (paying customers)
+// Set f.featured = true on any facility to bump its visibility
+function getMinZoom(f) {
+    const base = facilityZoomTiers[f.type] || 10;
+    return f.featured ? base - 1 : base;
+}
+
 function getFilteredFacilities() {
     const typeFilters = Array.from(document.querySelectorAll('[data-filter="facility"]:checked')).map(c => c.value);
     const hoursFilters = Array.from(document.querySelectorAll('[data-filter="hours"]:checked')).map(c => c.value);
     const search = document.getElementById('searchInput').value.toLowerCase();
+    const zoom = map.getZoom();
 
     return registeredFacilities.filter(f => {
         if (!typeFilters.includes(f.type)) return false;
         if (!hoursFilters.includes(f.hours)) return false;
+        // Zoom-based visibility — search overrides zoom restriction
+        if (!search && zoom < getMinZoom(f)) return false;
         if (search) {
             const haystack = `${f.name} ${f.suburb} ${f.notes} ${facilityTypeLabels[f.type] || ''}`.toLowerCase();
             if (!haystack.includes(search)) return false;
@@ -1498,6 +1520,7 @@ let waterFillLayerGroup = L.layerGroup();
 function addWaterFillMarkers() {
     waterFillLayerGroup.clearLayers();
     const search = document.getElementById('searchInput').value.toLowerCase();
+    const zoom = map.getZoom();
     const typeFilters = Array.from(document.querySelectorAll('[data-filter="facility"]:checked')).map(c => c.value);
     const showPotable = typeFilters.includes('water-potable');
     const showRecycled = typeFilters.includes('water-recycled');
@@ -1505,6 +1528,8 @@ function addWaterFillMarkers() {
     waterFillPoints.forEach(w => {
         if (w.waterType === 'potable' && !showPotable) return;
         if (w.waterType === 'recycled' && !showRecycled) return;
+        // Water fill points show at zoom 12+ (or any zoom if searching)
+        if (!search && zoom < 12) return;
         if (search) {
             const haystack = `${w.name} ${w.suburb} ${w.provider} ${w.address}`.toLowerCase();
             if (!haystack.includes(search)) return;
@@ -1764,9 +1789,12 @@ function getFilteredProjects() {
     const statusFilters = Array.from(document.querySelectorAll('[data-filter="project-status"]:checked')).map(c => c.value);
     const typeFilters = Array.from(document.querySelectorAll('[data-filter="project-type"]:checked')).map(c => c.value);
     const search = document.getElementById('searchInput').value.toLowerCase();
+    const zoom = map.getZoom();
     return majorProjects.filter(p => {
         if (!statusFilters.includes(p.status)) return false;
         if (!typeFilters.includes(p.projectType)) return false;
+        // Major projects visible at zoom 7+ (or any zoom if searching)
+        if (!search && zoom < 7) return false;
         if (search) {
             const haystack = `${p.name} ${p.suburb} ${p.description} ${p.authority} ${p.projectType} major project`.toLowerCase();
             if (!haystack.includes(search)) return false;
@@ -2230,6 +2258,12 @@ document.addEventListener('DOMContentLoaded', () => {
     map.on('click', () => {
         document.getElementById('infoPanel').classList.remove('visible');
         clearRouteLine();
+    });
+
+    // Re-render markers when zoom changes (zoom-based visibility)
+    map.on('zoomend', () => {
+        applyFacilityFilters();
+        applyProjectFilters();
     });
 
     // SEQ region boundary replaced by individual LGA boundaries loaded from QLD Government data
