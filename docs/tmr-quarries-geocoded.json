@@ -2671,19 +2671,6 @@
       "lat": -23.81179,
       "lng": 151.1427291,
       "geocode_method": "suburb_fallback"
-    }
-  ],
-  "failed": [
-    {
-      "rq": "RQ017",
-      "name": "Amby Compagnoni Quarry",
-      "operator": "Corbet Quarries and Concrete Pty Ltd",
-      "location": "Lot 62 Warrego Hwy, Wallhallow QLD 4465",
-      "lga": "Maranoa Regional Council",
-      "status": "CURRENT",
-      "rock": "Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)",
-      "products": "Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage",
-      "reason": "no results"
     },
     {
       "rq": "RQ573",
@@ -2694,7 +2681,10 @@
       "status": "CURRENT",
       "rock": "Sandstone, Siltstone, Mudstone & Claystone (Sedimentary)",
       "products": "Unbound Paving Material",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -28.537896,
+      "lng": 150.6667391,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ442",
@@ -2705,7 +2695,10 @@
       "status": "CURRENT",
       "rock": "Olivine Basalt (Basic Igneous)",
       "products": "Unbound Paving Material, Rock Fill Material, High Permeability Drainage",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -20.729136,
+      "lng": 143.1417,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ555",
@@ -2716,7 +2709,10 @@
       "status": "CURRENT",
       "rock": "Fine to Medium Silty Sand (Supplementary Materials)",
       "products": "Supplementary Materials (Unbound)",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -20.729136,
+      "lng": 143.1417,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ079",
@@ -2727,7 +2723,10 @@
       "status": "CURRENT",
       "rock": "Crystalline and Micritic Limestone (Sedimentary and Duricrust)",
       "products": "Unbound Paving Material",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -19.9217911,
+      "lng": 138.120578,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ047",
@@ -2738,7 +2737,10 @@
       "status": "CURRENT",
       "rock": "Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)",
       "products": "Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -16.9787557,
+      "lng": 145.5305386,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ117",
@@ -2749,18 +2751,10 @@
       "status": "CURRENT",
       "rock": "Natural Alluvial Sand and Gravel (Metamorphic)",
       "products": "Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine",
-      "reason": "no suburb or postcode"
-    },
-    {
-      "rq": "RQ199",
-      "name": "Fairfield Quarry",
-      "operator": "Regional Quarries Australia Pty Ltd",
-      "location": "Peak Downs Highway, Wolfgang QLD 4721",
-      "lga": "Isaac Regional Council",
-      "status": "CURRENT",
-      "rock": "Olivine Basalt (Basic Igneous)",
-      "products": "Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material",
-      "reason": "outside QLD: -34.5936722,150.788072"
+      "reason": "no suburb or postcode",
+      "lat": -25.5436526,
+      "lng": 152.6929838,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ563",
@@ -2771,7 +2765,10 @@
       "status": "CURRENT",
       "rock": "Volcanoclastic Metasiltstone and Metasandstone with minor Andesitic Agglomerate & Dolerite Dykes (Metamorphic)",
       "products": "Unbound Paving Material",
-      "reason": "no suburb or postcode"
+      "reason": "no suburb or postcode",
+      "lat": -23.4180208,
+      "lng": 150.4541824,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ379",
@@ -2782,7 +2779,10 @@
       "status": "CURRENT",
       "rock": "Volcanolithic Tuffaceous Rhyolite and Microgranite  (Acid Igneous)",
       "products": "Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -21.4220717,
+      "lng": 149.2166942,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ139",
@@ -2793,7 +2793,10 @@
       "status": "CURRENT",
       "rock": "Hornfelsed Volcanoclastic Siltstone, Mudstone, Subordinate Porphyritic Microdiorite/Granodiorite with minor Andesite Dykes (Metamorphic / Intermediate Igneous)",
       "products": "Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -21.0956565,
+      "lng": 149.0898319,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ576",
@@ -2804,7 +2807,10 @@
       "status": "CURRENT",
       "rock": "Quartzofeldspathic and Lithic Medium to Mainly Coarse Alluvial sand (Sand)",
       "products": "Concrete Aggregate - Fine, Asphalt Aggregate - Fine",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -19.5724705,
+      "lng": 147.5079684,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ572",
@@ -2815,7 +2821,10 @@
       "status": "CURRENT",
       "rock": "Partly Hornfelsed  Volcanoclastic Sandstone, Siltstone and Mudstone (Metamorphic)",
       "products": "Unbound Paving Material, High Permeability Drainage",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -24.9932265,
+      "lng": 151.9604252,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ205",
@@ -2826,7 +2835,10 @@
       "status": "CURRENT",
       "rock": "Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)",
       "products": "Unbound Paving Material",
-      "reason": "no suburb or postcode"
+      "reason": "no suburb or postcode",
+      "lat": -20.8429659,
+      "lng": 144.2003111,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ454",
@@ -2837,7 +2849,10 @@
       "status": "CURRENT",
       "rock": "Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)",
       "products": "Unbound Paving Material",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -24.5684451,
+      "lng": 149.294022,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ460",
@@ -2848,18 +2863,10 @@
       "status": "CURRENT",
       "rock": "Indurated and Variably Ferruginised & Silicified Siltstone and Sandstone (Sedimentary and Duricrust)",
       "products": "Unbound Paving Material",
-      "reason": "no suburb or postcode"
-    },
-    {
-      "rq": "RQ142",
-      "name": "Robin Mine Quarry",
-      "operator": "Lawlor Contracting Pty Ltd",
-      "location": "Rosebud Station, Barkly Highway Argylla QLD 4825",
-      "lga": "Cloncurry Shire Council",
-      "status": "CURRENT",
-      "rock": "Feldspathic Quartzite (Metamorphic)",
-      "products": "Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material",
-      "reason": "no results"
+      "reason": "no suburb or postcode",
+      "lat": -28.0346782,
+      "lng": 148.5799745,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ161",
@@ -2870,7 +2877,10 @@
       "status": "CURRENT",
       "rock": "Fine to Mainly Medium Quartzose Alluvial Sand (Sand)",
       "products": "Concrete Aggregate - Fine, Asphalt Aggregate - Fine",
-      "reason": "no suburb or postcode"
+      "reason": "no suburb or postcode",
+      "lat": -17.069494,
+      "lng": 145.3749187,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ317",
@@ -2881,7 +2891,10 @@
       "status": "CURRENT",
       "rock": "Fine to Medium Grained Feldspathic Quartzose & Lithic Alluvial Sand (Sand)",
       "products": "Concrete Aggregate - Fine, Asphalt Aggregate - Fine",
-      "reason": "no results"
+      "reason": "no results",
+      "lat": -19.3887125,
+      "lng": 146.7169015,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ535",
@@ -2892,7 +2905,10 @@
       "status": "CURRENT",
       "rock": "Microgranite [Adamellite] (Acid Igneous)",
       "products": "Unbound Paving Material",
-      "reason": "no suburb or postcode"
+      "reason": "no suburb or postcode",
+      "lat": -26.5665743,
+      "lng": 151.6972748,
+      "geocode_method": "manual_search"
     },
     {
       "rq": "RQ505",
@@ -2903,9 +2919,55 @@
       "status": "CURRENT",
       "rock": "Sandstone, Siltstone, Mudstone & Conglomerate (Sedimentary)",
       "products": "Unbound Paving Material",
-      "reason": "no suburb or postcode"
+      "reason": "no suburb or postcode",
+      "lat": -28.0346782,
+      "lng": 148.5799745,
+      "geocode_method": "manual_search"
+    },
+    {
+      "rq": "RQ017",
+      "name": "Amby Compagnoni Quarry",
+      "operator": "Corbet Quarries and Concrete Pty Ltd",
+      "location": "Lot 62 Warrego Hwy, Wallhallow QLD 4465",
+      "lga": "Maranoa Regional Council",
+      "status": "CURRENT",
+      "rock": "Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)",
+      "products": "Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage",
+      "reason": "no results",
+      "lat": -26.5,
+      "lng": 148.5,
+      "geocode_method": "manual_coords"
+    },
+    {
+      "rq": "RQ199",
+      "name": "Fairfield Quarry",
+      "operator": "Regional Quarries Australia Pty Ltd",
+      "location": "Peak Downs Highway, Wolfgang QLD 4721",
+      "lga": "Isaac Regional Council",
+      "status": "CURRENT",
+      "rock": "Olivine Basalt (Basic Igneous)",
+      "products": "Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material",
+      "reason": "outside QLD: -34.5936722,150.788072",
+      "lat": -22.35,
+      "lng": 148.25,
+      "geocode_method": "manual_coords"
+    },
+    {
+      "rq": "RQ142",
+      "name": "Robin Mine Quarry",
+      "operator": "Lawlor Contracting Pty Ltd",
+      "location": "Rosebud Station, Barkly Highway Argylla QLD 4825",
+      "lga": "Cloncurry Shire Council",
+      "status": "CURRENT",
+      "rock": "Feldspathic Quartzite (Metamorphic)",
+      "products": "Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material",
+      "reason": "no results",
+      "lat": -20.65,
+      "lng": 140.5,
+      "geocode_method": "manual_coords"
     }
   ],
+  "failed": [],
   "fallback_geocoded": [
     {
       "rq": "RQ171",
