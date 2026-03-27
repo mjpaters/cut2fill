@@ -8,8 +8,15 @@ const CUT2FILL_API_URL = 'https://cut2fill.onrender.com/api/v1';
 // ===== SUPABASE AUTH =====
 const SUPABASE_URL = 'https://ajcbtrufifqttcfekjyd.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqY2J0cnVmaWZxdHRjZmVranlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0ODkzMzYsImV4cCI6MjA5MDA2NTMzNn0.L_F6l-avqASdP01w464Iqh4zNppBA9pQl_qM7oaqUIU';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let supabaseClient = null;
 let currentSession = null;
+try {
+    if (window.supabase && window.supabase.createClient) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+} catch (e) {
+    console.warn('[Cut2Fill] Supabase client failed to load:', e.message);
+}
 
 // ===== MATERIAL TOOLTIPS =====
 const materialTooltips = {
@@ -2404,21 +2411,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Check for existing session on load
-    supabase.auth.getSession().then(({ data: { session } }) => {
-        updateAuthUI(session);
-    });
-
-    // Listen for auth state changes
-    supabase.auth.onAuthStateChange((_event, session) => {
-        updateAuthUI(session);
-    });
+    if (supabaseClient) {
+        supabaseClient.auth.getSession().then(({ data: { session } }) => {
+            updateAuthUI(session);
+        });
+        supabaseClient.auth.onAuthStateChange((_event, session) => {
+            updateAuthUI(session);
+        });
+    }
 
     // Open modal
     btnLogin.addEventListener('click', () => {
+        if (!supabaseClient) {
+            showToast('Sign in is temporarily unavailable — please refresh the page.');
+            return;
+        }
         if (currentSession) {
-            // Already signed in — show sign out option
             if (confirm('Sign out?')) {
-                supabase.auth.signOut().then(() => {
+                supabaseClient.auth.signOut().then(() => {
                     updateAuthUI(null);
                     showToast('Signed out.');
                 });
@@ -2464,7 +2474,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
         loginError.style.display = 'none';
 
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
             email: document.getElementById('loginEmail').value,
             password: document.getElementById('loginPassword').value,
         });
@@ -2496,7 +2506,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('registerEmail').value;
         const password = document.getElementById('registerPassword').value;
 
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabaseClient.auth.signUp({
             email,
             password,
             options: {
