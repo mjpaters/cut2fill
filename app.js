@@ -5,6 +5,12 @@
 // ===== API CONFIGURATION =====
 const CUT2FILL_API_URL = 'https://cut2fill.onrender.com/api/v1';
 
+// ===== SUPABASE AUTH =====
+const SUPABASE_URL = 'https://ajcbtrufifqttcfekjyd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqY2J0cnVmaWZxdHRjZmVranlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0ODkzMzYsImV4cCI6MjA5MDA2NTMzNn0.L_F6l-avqASdP01w464Iqh4zNppBA9pQl_qM7oaqUIU';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentSession = null;
+
 // ===== MATERIAL TOOLTIPS =====
 const materialTooltips = {
     'clean-fill': 'No testing required under EP Act for clean earth. Suitable for general fill purposes.',
@@ -2374,9 +2380,159 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ===== SIGN IN / REGISTER =====
+    const loginModal = document.getElementById('loginModal');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const loginModalTitle = document.getElementById('loginModalTitle');
+    const loginError = document.getElementById('loginError');
+    const registerError = document.getElementById('registerError');
+    const registerSuccess = document.getElementById('registerSuccess');
+    const btnLogin = document.getElementById('btnLogin');
+
+    function updateAuthUI(session) {
+        currentSession = session;
+        if (session) {
+            const email = session.user.email;
+            const name = email.split('@')[0];
+            btnLogin.innerHTML = `<i class="fas fa-user-check"></i> ${name}`;
+            btnLogin.title = email;
+        } else {
+            btnLogin.innerHTML = '<i class="fas fa-user"></i> Sign In';
+            btnLogin.title = '';
+        }
+    }
+
+    // Check for existing session on load
+    supabase.auth.getSession().then(({ data: { session } }) => {
+        updateAuthUI(session);
+    });
+
+    // Listen for auth state changes
+    supabase.auth.onAuthStateChange((_event, session) => {
+        updateAuthUI(session);
+    });
+
+    // Open modal
+    btnLogin.addEventListener('click', () => {
+        if (currentSession) {
+            // Already signed in — show sign out option
+            if (confirm('Sign out?')) {
+                supabase.auth.signOut().then(() => {
+                    updateAuthUI(null);
+                    showToast('Signed out.');
+                });
+            }
+            return;
+        }
+        loginModal.classList.add('visible');
+        loginForm.style.display = '';
+        registerForm.style.display = 'none';
+        loginModalTitle.innerHTML = '<i class="fas fa-user"></i> Sign In';
+        loginError.style.display = 'none';
+        registerError.style.display = 'none';
+        registerSuccess.style.display = 'none';
+    });
+
+    // Close modal
+    document.getElementById('loginModalClose').addEventListener('click', () => {
+        loginModal.classList.remove('visible');
+    });
+    loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) loginModal.classList.remove('visible');
+    });
+
+    // Toggle between sign in / register
+    document.getElementById('loginToggleRegister').addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.style.display = 'none';
+        registerForm.style.display = '';
+        loginModalTitle.innerHTML = '<i class="fas fa-user-plus"></i> Register';
+    });
+    document.getElementById('loginToggleSignin').addEventListener('click', (e) => {
+        e.preventDefault();
+        registerForm.style.display = 'none';
+        loginForm.style.display = '';
+        loginModalTitle.innerHTML = '<i class="fas fa-user"></i> Sign In';
+    });
+
     // Sign in
-    document.getElementById('btnLogin').addEventListener('click', () => {
-        showToast('Sign In — coming in full release');
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('loginSubmitBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+        loginError.style.display = 'none';
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: document.getElementById('loginEmail').value,
+            password: document.getElementById('loginPassword').value,
+        });
+
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+
+        if (error) {
+            loginError.textContent = error.message;
+            loginError.style.display = 'block';
+        } else {
+            loginModal.classList.remove('visible');
+            loginForm.reset();
+            showToast(`Signed in as ${data.user.email}`);
+        }
+    });
+
+    // Register
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('registerSubmitBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
+        registerError.style.display = 'none';
+        registerSuccess.style.display = 'none';
+
+        const name = document.getElementById('registerName').value;
+        const company = document.getElementById('registerCompany').value;
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+
+        const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: { display_name: name, company: company }
+            }
+        });
+
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-user-plus"></i> Register';
+
+        if (error) {
+            registerError.textContent = error.message;
+            registerError.style.display = 'block';
+        } else {
+            // Create profile row in backend
+            if (data.session) {
+                try {
+                    await fetch(`${CUT2FILL_API_URL}/profile`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${data.session.access_token}`
+                        },
+                        body: JSON.stringify({ display_name: name, company: company })
+                    });
+                } catch (err) { /* profile creation is best-effort */ }
+                loginModal.classList.remove('visible');
+                registerForm.reset();
+                showToast(`Welcome to Cut2Fill, ${name}!`);
+            } else {
+                // Email confirmation required
+                registerSuccess.textContent = 'Check your email to confirm your account.';
+                registerSuccess.style.display = 'block';
+                registerForm.reset();
+            }
+        }
     });
 
     // Map click to close info panel
