@@ -1,8 +1,10 @@
 import uuid
 
+import httpx
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jose import JWTError, jwt
+from jose.utils import base64url_decode
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -12,6 +14,32 @@ from app.models.profile import Profile
 
 bearer_scheme = HTTPBearer(auto_error=False)
 
+# Cache for JWKS public keys — fetched once, reused
+_jwks_cache: dict | None = None
+
+
+async def _get_jwks() -> dict:
+    """Fetch and cache Supabase JWKS public keys."""
+    global _jwks_cache
+    if _jwks_cache is not None:
+        return _jwks_cache
+    jwks_url = f"{settings.supabase_url}/auth/v1/.well-known/jwks.json"
+    async with httpx.AsyncClient(timeout=10.0) as client:
+        resp = await client.get(jwks_url)
+        resp.raise_for_status()
+        _jwks_cache = resp.json()
+        return _jwks_cache
+
+
+def _get_signing_key(jwks: dict, token: str) -> dict:
+    """Match the token's kid to the correct JWKS key."""
+    unverified_header = jwt.get_unverified_header(token)
+    kid = unverified_header.get("kid")
+    for key in jwks.get("keys", []):
+        if key["kid"] == kid:
+            return key
+    raise JWTError("No matching key found in JWKS")
+
 
 async def get_current_user(
     credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
@@ -19,11 +47,14 @@ async def get_current_user(
     """Decode Supabase JWT. Returns None if no token provided."""
     if credentials is None:
         return None
+    token = credentials.credentials
     try:
+        jwks = await _get_jwks()
+        signing_key = _get_signing_key(jwks, token)
         payload = jwt.decode(
-            credentials.credentials,
-            settings.supabase_jwt_secret,
-            algorithms=["HS256"],
+            token,
+            signing_key,
+            algorithms=["ES256"],
             audience="authenticated",
         )
         return payload
