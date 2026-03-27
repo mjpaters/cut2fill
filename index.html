@@ -17,48 +17,148 @@
       gtag('js', new Date());
       gtag('config', 'G-EFFZRDLYK7');
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 
-<!-- Password Gate -->
+<!-- Supabase Auth Gate -->
 <div id="authGate" style="position:fixed;inset:0;z-index:99999;background:#1a1814;display:flex;align-items:center;justify-content:center;">
-    <div style="text-align:center;max-width:360px;padding:24px;">
+    <div style="text-align:center;max-width:380px;padding:24px;width:100%;">
         <i class="fas fa-recycle" style="font-size:36px;color:#6b8f5e;margin-bottom:12px;"></i>
         <h1 style="font-size:20px;font-weight:700;color:#e0dbd3;margin-bottom:4px;">Cut2Fill</h1>
-        <p style="font-size:11px;color:#6b6358;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;">Beta Access</p>
-        <form id="authForm" style="display:flex;flex-direction:column;gap:10px;">
-            <input type="password" id="authPassword" placeholder="Enter access code" autocomplete="off"
-                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;text-align:center;outline:none;">
-            <button type="submit" style="padding:10px;border:none;border-radius:6px;background:#6b8f5e;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">
-                <i class="fas fa-lock"></i> Enter
+        <p style="font-size:11px;color:#6b6358;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;">QLD Construction Material Sourcing</p>
+
+        <!-- Sign In Form -->
+        <form id="gateLoginForm" style="display:flex;flex-direction:column;gap:10px;">
+            <input type="email" id="gateEmail" placeholder="Email" required autocomplete="email"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <input type="password" id="gatePassword" placeholder="Password" required autocomplete="current-password" minlength="6"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <button type="submit" id="gateLoginBtn" style="padding:10px;border:none;border-radius:6px;background:#6b8f5e;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">
+                <i class="fas fa-sign-in-alt"></i> Sign In
             </button>
-            <p id="authError" style="color:#b85c4a;font-size:12px;display:none;">Incorrect access code</p>
+            <p id="gateError" style="color:#b85c4a;font-size:12px;display:none;margin:0;"></p>
         </form>
+
+        <!-- Register Form (hidden by default) -->
+        <form id="gateRegisterForm" style="display:none;flex-direction:column;gap:10px;">
+            <input type="text" id="gateRegName" placeholder="Your name" required
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <input type="text" id="gateRegCompany" placeholder="Company (optional)"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <input type="email" id="gateRegEmail" placeholder="Email" required autocomplete="email"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <input type="password" id="gateRegPassword" placeholder="Password (min 6 characters)" required minlength="6"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <button type="submit" id="gateRegBtn" style="padding:10px;border:none;border-radius:6px;background:#6b8f5e;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
+            <p id="gateRegError" style="color:#b85c4a;font-size:12px;display:none;margin:0;"></p>
+            <p id="gateRegSuccess" style="color:#6b8f5e;font-size:12px;display:none;margin:0;"></p>
+        </form>
+
+        <p id="gateToggle" style="font-size:13px;color:#9c9488;margin-top:14px;">
+            Don't have an account? <a href="#" id="gateToggleLink" style="color:#d4a853;">Register</a>
+        </p>
         <p style="font-size:10px;color:#6b6358;margin-top:20px;">&copy; 2025 Archers Group Pty Ltd</p>
     </div>
 </div>
 
 <script>
 (function() {
-    var PASS_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
-    async function sha256(str) {
-        var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-        return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
-    }
-    if (sessionStorage.getItem('cut2fill_auth') === 'true') {
-        document.getElementById('authGate').style.display = 'none';
-    }
-    document.getElementById('authForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        var hash = await sha256(document.getElementById('authPassword').value);
-        if (hash === PASS_HASH) {
-            sessionStorage.setItem('cut2fill_auth', 'true');
-            document.getElementById('authGate').style.display = 'none';
-        } else {
-            document.getElementById('authError').style.display = 'block';
-            document.getElementById('authPassword').value = '';
+    // Wait for Supabase to load, then check session
+    function initGate() {
+        if (!window.supabase || !window.supabase.createClient) {
+            setTimeout(initGate, 100);
+            return;
         }
-    });
+        var sb = window.supabase.createClient(
+            'https://ajcbtrufifqttcfekjyd.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqY2J0cnVmaWZxdHRjZmVranlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0ODkzMzYsImV4cCI6MjA5MDA2NTMzNn0.L_F6l-avqASdP01w464Iqh4zNppBA9pQl_qM7oaqUIU'
+        );
+        window._cut2fill_sb = sb;
+
+        function hideGate() { document.getElementById('authGate').style.display = 'none'; }
+
+        // Check existing session
+        sb.auth.getSession().then(function(res) {
+            if (res.data.session) hideGate();
+        });
+        sb.auth.onAuthStateChange(function(event, session) {
+            if (session) hideGate();
+        });
+
+        // Toggle sign in / register
+        var showingLogin = true;
+        document.getElementById('gateToggleLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            showingLogin = !showingLogin;
+            document.getElementById('gateLoginForm').style.display = showingLogin ? 'flex' : 'none';
+            document.getElementById('gateRegisterForm').style.display = showingLogin ? 'none' : 'flex';
+            document.getElementById('gateToggle').innerHTML = showingLogin
+                ? 'Don\'t have an account? <a href="#" id="gateToggleLink" style="color:#d4a853;">Register</a>'
+                : 'Already have an account? <a href="#" id="gateToggleLink" style="color:#d4a853;">Sign In</a>';
+            document.getElementById('gateToggleLink').addEventListener('click', arguments.callee.bind(this));
+        });
+
+        // Sign in
+        document.getElementById('gateLoginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('gateLoginBtn');
+            var err = document.getElementById('gateError');
+            btn.disabled = true; btn.textContent = 'Signing in...'; err.style.display = 'none';
+            var result = await sb.auth.signInWithPassword({
+                email: document.getElementById('gateEmail').value,
+                password: document.getElementById('gatePassword').value,
+            });
+            btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+            if (result.error) {
+                err.textContent = result.error.message;
+                err.style.display = 'block';
+            } else {
+                hideGate();
+            }
+        });
+
+        // Register
+        document.getElementById('gateRegisterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('gateRegBtn');
+            var err = document.getElementById('gateRegError');
+            var success = document.getElementById('gateRegSuccess');
+            btn.disabled = true; btn.textContent = 'Registering...';
+            err.style.display = 'none'; success.style.display = 'none';
+            var result = await sb.auth.signUp({
+                email: document.getElementById('gateRegEmail').value,
+                password: document.getElementById('gateRegPassword').value,
+                options: {
+                    data: {
+                        display_name: document.getElementById('gateRegName').value,
+                        company: document.getElementById('gateRegCompany').value
+                    }
+                }
+            });
+            btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Register';
+            if (result.error) {
+                err.textContent = result.error.message;
+                err.style.display = 'block';
+            } else if (result.data.session) {
+                // Auto-confirmed — create profile and enter
+                try {
+                    fetch('https://cut2fill.onrender.com/api/v1/profile', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + result.data.session.access_token },
+                        body: JSON.stringify({ display_name: document.getElementById('gateRegName').value, company: document.getElementById('gateRegCompany').value })
+                    });
+                } catch(e) {}
+                hideGate();
+            } else {
+                success.textContent = 'Check your email to confirm your account.';
+                success.style.display = 'block';
+            }
+        });
+    }
+    initGate();
 })();
 </script>
 
@@ -698,7 +798,6 @@
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
