@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
 from app.middleware.auth import require_admin
 from app.models.facility import Facility
+from app.models.profile import Profile
 from app.models.submission import Submission
 from app.schemas.facility import FacilityCreate, FacilityUpdate
 from app.schemas.submission import SubmissionOut, SubmissionReview
@@ -187,3 +188,22 @@ async def run_health_checks(
     db: AsyncSession = Depends(get_db),
 ):
     return await run_all_checks(db)
+
+
+@router.get("/users")
+async def list_users(
+    user: dict = Depends(require_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(select(Profile).order_by(Profile.created_at.desc()))
+    profiles = result.scalars().all()
+    return [
+        {
+            "id": str(p.id),
+            "display_name": p.display_name,
+            "company": p.company,
+            "role": p.role,
+            "created_at": p.created_at.isoformat() if p.created_at else None,
+        }
+        for p in profiles
+    ]

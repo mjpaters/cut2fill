@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut2Fill — Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #1a1814; --bg-card: #242019; --bg-card-hover: #2e2a22;
+            --border: #3d3830; --text: #e0dbd3; --text-muted: #9c9488; --text-dim: #6b6358;
+            --green: #6b8f5e; --amber: #c4843e; --blue: #5c8a97; --red: #b85c4a;
+            --radius: 6px; --shadow: 0 4px 20px rgba(0,0,0,0.35);
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        a { color: var(--green); }
+
+        /* Header */
+        .admin-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 24px; background: var(--bg-card); border-bottom: 1px solid var(--border);
+        }
+        .admin-header h1 { font-size: 18px; font-weight: 600; }
+        .admin-header h1 i { color: var(--green); margin-right: 6px; }
+        .admin-header .header-right { display: flex; gap: 10px; align-items: center; }
+        .admin-user { color: var(--text-muted); font-size: 13px; }
+
+        /* Tabs */
+        .tab-bar {
+            display: flex; gap: 0; background: var(--bg-card); border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+        }
+        .tab-btn {
+            padding: 12px 20px; background: none; border: none; border-bottom: 2px solid transparent;
+            color: var(--text-muted); cursor: pointer; font-size: 14px; font-family: inherit; font-weight: 500;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { color: var(--text); }
+        .tab-btn.active { color: var(--green); border-bottom-color: var(--green); }
+
+        /* Content */
+        .admin-content { padding: 24px; max-width: 1200px; margin: 0 auto; }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* Cards */
+        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px; }
+        .stat-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 16px; text-align: center;
+        }
+        .stat-card .stat-num { font-size: 32px; font-weight: 700; color: var(--green); }
+        .stat-card .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+        /* Table */
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .admin-table th {
+            text-align: left; padding: 10px 12px; background: var(--bg-card); border-bottom: 1px solid var(--border);
+            color: var(--text-muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .admin-table td {
+            padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top;
+        }
+        .admin-table tr:hover td { background: var(--bg-card-hover); }
+
+        /* Badges */
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600;
+        }
+        .badge-pending { background: rgba(196,132,62,0.15); color: var(--amber); }
+        .badge-approved { background: rgba(107,143,94,0.15); color: var(--green); }
+        .badge-rejected { background: rgba(184,92,74,0.15); color: var(--red); }
+        .badge-ok { background: rgba(107,143,94,0.15); color: var(--green); }
+        .badge-error { background: rgba(184,92,74,0.15); color: var(--red); }
+
+        /* Buttons */
+        .btn {
+            padding: 6px 14px; border-radius: var(--radius); border: 1px solid var(--border);
+            background: var(--bg-card); color: var(--text); cursor: pointer; font-size: 12px;
+            font-family: inherit; transition: all 0.15s;
+        }
+        .btn:hover { background: var(--bg-card-hover); }
+        .btn-sm { padding: 4px 10px; font-size: 11px; }
+        .btn-green { background: var(--green); color: #fff; border-color: var(--green); }
+        .btn-green:hover { opacity: 0.9; }
+        .btn-red { background: var(--red); color: #fff; border-color: var(--red); }
+        .btn-red:hover { opacity: 0.9; }
+        .btn-back { text-decoration: none; color: var(--text-muted); font-size: 13px; }
+        .btn-back:hover { color: var(--text); }
+
+        /* Filter bar */
+        .filter-bar { display: flex; gap: 10px; margin-bottom: 16px; align-items: center; }
+        .filter-bar select {
+            padding: 6px 12px; background: var(--bg-card); border: 1px solid var(--border);
+            color: var(--text); border-radius: var(--radius); font-size: 13px; font-family: inherit;
+        }
+
+        /* Review panel */
+        .review-panel {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 20px; margin-top: 16px;
+        }
+        .review-panel h3 { margin-bottom: 12px; font-size: 15px; }
+        .data-grid { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px; font-size: 13px; margin-bottom: 16px; }
+        .data-grid .label { color: var(--text-muted); font-weight: 500; }
+        .review-actions { display: flex; gap: 10px; margin-top: 16px; align-items: center; }
+        .review-actions textarea {
+            flex: 1; padding: 8px; background: var(--bg); border: 1px solid var(--border);
+            color: var(--text); border-radius: var(--radius); font-size: 13px; font-family: inherit;
+            resize: vertical; min-height: 36px;
+        }
+
+        /* Health table */
+        .health-grid { display: grid; gap: 12px; }
+        .health-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .health-card .source-name { font-weight: 500; font-size: 14px; }
+        .health-card .source-url { font-size: 11px; color: var(--text-dim); margin-top: 2px; word-break: break-all; }
+        .health-right { display: flex; gap: 10px; align-items: center; }
+
+        /* Login gate */
+        .login-gate {
+            display: flex; align-items: center; justify-content: center; min-height: 80vh;
+            flex-direction: column; gap: 16px;
+        }
+        .login-gate form {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 32px; width: 100%; max-width: 380px;
+        }
+        .login-gate h2 { text-align: center; margin-bottom: 20px; font-size: 20px; }
+        .login-gate .form-group { margin-bottom: 14px; }
+        .login-gate label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+        .login-gate input {
+            width: 100%; padding: 10px; background: var(--bg); border: 1px solid var(--border);
+            color: var(--text); border-radius: var(--radius); font-size: 14px; font-family: inherit;
+        }
+        .login-gate input:focus { outline: none; border-color: var(--green); }
+        .login-gate .btn-login {
+            width: 100%; padding: 10px; background: var(--green); color: #fff; border: none;
+            border-radius: var(--radius); font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+        }
+        .login-error { color: var(--red); font-size: 13px; text-align: center; margin-top: 10px; display: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-content { padding: 16px; }
+            .stat-row { grid-template-columns: 1fr 1fr; }
+            .admin-table { font-size: 12px; }
+            .admin-table th, .admin-table td { padding: 8px; }
+        }
+
+        /* Empty state */
+        .empty-state { text-align: center; padding: 48px; color: var(--text-muted); }
+        .empty-state i { font-size: 36px; margin-bottom: 12px; display: block; }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 10px 20px; font-size: 13px; z-index: 9999; box-shadow: var(--shadow);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .toast.visible { opacity: 1; }
+    </style>
+</head>
+<body>
+
+<!-- Login Gate -->
+<div id="loginGate" class="login-gate">
+    <form id="adminLoginForm">
+        <h2><i class="fas fa-shield-alt" style="color:var(--green);"></i> Cut2Fill Admin</h2>
+        <div class="form-group">
+            <label for="adminEmail">Email</label>
+            <input type="email" id="adminEmail" required placeholder="admin@archers.group">
+        </div>
+        <div class="form-group">
+            <label for="adminPassword">Password</label>
+            <input type="password" id="adminPassword" required placeholder="Password">
+        </div>
+        <button type="submit" class="btn-login" id="adminLoginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+        <p class="login-error" id="adminLoginError"></p>
+    </form>
+    <a href="/" class="btn-back"><i class="fas fa-arrow-left"></i> Back to map</a>
+</div>
+
+<!-- Admin Dashboard (hidden until authenticated) -->
+<div id="adminDashboard" style="display:none;">
+    <div class="admin-header">
+        <h1><i class="fas fa-shield-alt"></i> Cut2Fill Admin</h1>
+        <div class="header-right">
+            <a href="/" class="btn-back"><i class="fas fa-map"></i> Map</a>
+            <span class="admin-user" id="adminUserLabel"></span>
+            <button class="btn btn-sm" id="adminLogout"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+        </div>
+    </div>
+
+    <div class="tab-bar">
+        <button class="tab-btn active" data-tab="submissions"><i class="fas fa-inbox"></i> Submissions</button>
+        <button class="tab-btn" data-tab="facilities"><i class="fas fa-map-marker-alt"></i> Facilities</button>
+        <button class="tab-btn" data-tab="health"><i class="fas fa-heartbeat"></i> Data Health</button>
+        <button class="tab-btn" data-tab="users"><i class="fas fa-users"></i> Users</button>
+    </div>
+
+    <div class="admin-content">
+        <!-- Stats -->
+        <div class="stat-row" id="statsRow"></div>
+
+        <!-- Submissions Tab -->
+        <div class="tab-panel active" id="panel-submissions">
+            <div class="filter-bar">
+                <select id="submissionFilter">
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+                <button class="btn btn-sm" id="refreshSubmissions"><i class="fas fa-sync-alt"></i> Refresh</button>
+            </div>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Submitted</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="submissionsBody"></tbody>
+            </table>
+            <div id="submissionsEmpty" class="empty-state" style="display:none;">
+                <i class="fas fa-inbox"></i>
+                <p>No submissions found</p>
+            </div>
+            <div id="reviewPanel" class="review-panel" style="display:none;"></div>
+        </div>
+
+        <!-- Facilities Tab -->
+        <div class="tab-panel" id="panel-facilities">
+            <div class="filter-bar">
+                <select id="facilityTypeFilter">
+                    <option value="">All Types</option>
+                    <option value="quarry">Quarry</option>
+                    <option value="concrete">Concrete</option>
+                    <option value="landfill">Landfill</option>
+                    <option value="transfer-station">Transfer Station</option>
+                    <option value="recycler">Recycler</option>
+                    <option value="soil-treatment">Soil Treatment</option>
+                    <option value="pfas-treatment">PFAS Treatment</option>
+                </select>
+                <button class="btn btn-sm" id="refreshFacilities"><i class="fas fa-sync-alt"></i> Refresh</button>
+                <span id="facilityCount" style="color:var(--text-muted);font-size:12px;"></span>
+            </div>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Suburb</th>
+                        <th>Source</th>
+                        <th>Verified</th>
+                    </tr>
+                </thead>
+                <tbody id="facilitiesBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Health Tab -->
+        <div class="tab-panel" id="panel-health">
+            <div class="filter-bar">
+                <button class="btn btn-sm btn-green" id="runHealthChecks"><i class="fas fa-heartbeat"></i> Run All Health Checks</button>
+            </div>
+            <div class="health-grid" id="healthGrid"></div>
+        </div>
+
+        <!-- Users Tab -->
+        <div class="tab-panel" id="panel-users">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Role</th>
+                        <th>Joined</th>
+                    </tr>
+                </thead>
+                <tbody id="usersBody"></tbody>
+            </table>
+            <div id="usersEmpty" class="empty-state" style="display:none;">
+                <i class="fas fa-users"></i>
+                <p>No users registered yet</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const API = 'https://cut2fill.onrender.com/api/v1';
+const SUPABASE_URL = 'https://ajcbtrufifqttcfekjyd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqY2J0cnVmaWZxdHRjZmVranlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0ODkzMzYsImV4cCI6MjA5MDA2NTMzNn0.L_F6l-avqASdP01w464Iqh4zNppBA9pQl_qM7oaqUIU';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let token = null;
+
+// ===== UTILS =====
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('visible');
+    setTimeout(() => t.classList.remove('visible'), 3000);
+}
+
+async function api(path, opts = {}) {
+    const resp = await fetch(`${API}${path}`, {
+        ...opts,
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json', ...(opts.headers || {}) }
+    });
+    if (resp.status === 401 || resp.status === 403) {
+        showToast('Session expired — please sign in again.');
+        showLogin();
+        throw new Error('Unauthorized');
+    }
+    return resp;
+}
+
+function timeAgo(dateStr) {
+    const d = new Date(dateStr);
+    const now = new Date();
+    const mins = Math.floor((now - d) / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    const days = Math.floor(hrs / 24);
+    return `${days}d ago`;
+}
+
+function badgeClass(status) {
+    if (status === 'approved' || status === true) return 'badge-approved';
+    if (status === 'rejected') return 'badge-rejected';
+    if (status === 'pending') return 'badge-pending';
+    if (status === 'ok' || status === 'healthy') return 'badge-ok';
+    return 'badge-error';
+}
+
+// ===== AUTH =====
+function showLogin() {
+    document.getElementById('loginGate').style.display = '';
+    document.getElementById('adminDashboard').style.display = 'none';
+}
+
+function showDashboard(session) {
+    token = session.access_token;
+    document.getElementById('loginGate').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = '';
+    document.getElementById('adminUserLabel').textContent = session.user.email;
+    loadStats();
+    loadSubmissions();
+}
+
+// Check existing session
+sb.auth.getSession().then(({ data: { session } }) => {
+    if (session) {
+        // Verify admin access
+        fetch(`${API}/admin/submissions?status=pending`, {
+            headers: { 'Authorization': `Bearer ${session.access_token}` }
+        }).then(r => {
+            if (r.ok) showDashboard(session);
+            else showLogin();
+        }).catch(() => showLogin());
+    }
+});
+
+// Login form
+document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('adminLoginBtn');
+    const err = document.getElementById('adminLoginError');
+    btn.disabled = true;
+    btn.textContent = 'Signing in...';
+    err.style.display = 'none';
+
+    const { data, error } = await sb.auth.signInWithPassword({
+        email: document.getElementById('adminEmail').value,
+        password: document.getElementById('adminPassword').value,
+    });
+
+    if (error) {
+        err.textContent = error.message;
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+        return;
+    }
+
+    // Verify admin role
+    const resp = await fetch(`${API}/admin/submissions?status=pending`, {
+        headers: { 'Authorization': `Bearer ${data.session.access_token}` }
+    });
+    if (!resp.ok) {
+        err.textContent = 'Access denied — admin role required.';
+        err.style.display = 'block';
+        await sb.auth.signOut();
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+        return;
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+    showDashboard(data.session);
+});
+
+// Logout
+document.getElementById('adminLogout').addEventListener('click', async () => {
+    await sb.auth.signOut();
+    token = null;
+    showLogin();
+});
+
+// ===== TABS =====
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(`panel-${btn.dataset.tab}`).classList.add('active');
+
+        if (btn.dataset.tab === 'facilities') loadFacilities();
+        if (btn.dataset.tab === 'health') loadHealth();
+        if (btn.dataset.tab === 'users') loadUsers();
+    });
+});
+
+// ===== STATS =====
+async function loadStats() {
+    try {
+        const resp = await api('/health/detail');
+        const data = await resp.json();
+        document.getElementById('statsRow').innerHTML = `
+            <div class="stat-card"><div class="stat-num">${data.counts.facilities}</div><div class="stat-label">Facilities</div></div>
+            <div class="stat-card"><div class="stat-num">${data.counts.water_points}</div><div class="stat-label">Water Points</div></div>
+            <div class="stat-card"><div class="stat-num">${data.counts.major_projects}</div><div class="stat-label">Major Projects</div></div>
+        `;
+    } catch (e) {}
+}
+
+// ===== SUBMISSIONS =====
+let submissionsCache = [];
+
+async function loadSubmissions() {
+    const status = document.getElementById('submissionFilter').value;
+    try {
+        const resp = await api(`/admin/submissions?status=${status}`);
+        submissionsCache = await resp.json();
+        renderSubmissions();
+    } catch (e) {}
+}
+
+function renderSubmissions() {
+    const tbody = document.getElementById('submissionsBody');
+    const empty = document.getElementById('submissionsEmpty');
+    document.getElementById('reviewPanel').style.display = 'none';
+
+    if (submissionsCache.length === 0) {
+        tbody.innerHTML = '';
+        empty.style.display = '';
+        return;
+    }
+    empty.style.display = 'none';
+    tbody.innerHTML = submissionsCache.map((s, i) => `
+        <tr>
+            <td>${s.submission_type}</td>
+            <td>${s.contact_name || '—'}</td>
+            <td>${s.contact_email || '—'}</td>
+            <td>${timeAgo(s.created_at)}</td>
+            <td><span class="badge ${badgeClass(s.status)}">${s.status}</span></td>
+            <td><button class="btn btn-sm" onclick="reviewSubmission(${i})"><i class="fas fa-eye"></i> Review</button></td>
+        </tr>
+    `).join('');
+}
+
+window.reviewSubmission = function(index) {
+    const s = submissionsCache[index];
+    const panel = document.getElementById('reviewPanel');
+    const dataRows = s.data ? Object.entries(s.data).map(([k, v]) =>
+        `<span class="label">${k}</span><span>${v === true ? 'Yes' : v === false ? 'No' : (v || '—')}</span>`
+    ).join('') : '<span class="label">No data</span><span>—</span>';
+
+    panel.innerHTML = `
+        <h3><i class="fas fa-file-alt"></i> ${s.submission_type} — ${s.contact_name || 'Anonymous'}</h3>
+        <div class="data-grid">${dataRows}</div>
+        ${s.contact_email ? `<p style="font-size:13px;color:var(--text-muted);"><i class="fas fa-envelope"></i> ${s.contact_email}</p>` : ''}
+        ${s.status === 'pending' ? `
+        <div class="review-actions">
+            <textarea id="reviewNotes" placeholder="Review notes (optional)"></textarea>
+            <label style="font-size:12px;color:var(--text-muted);white-space:nowrap;">
+                <input type="checkbox" id="reviewCreateFacility"> Create facility
+            </label>
+            <button class="btn btn-sm btn-green" onclick="approveSubmission('${s.id}')"><i class="fas fa-check"></i> Approve</button>
+            <button class="btn btn-sm btn-red" onclick="rejectSubmission('${s.id}')"><i class="fas fa-times"></i> Reject</button>
+        </div>` : `
+        <p style="font-size:13px;margin-top:12px;"><strong>Review notes:</strong> ${s.review_notes || '—'}</p>
+        `}
+    `;
+    panel.style.display = '';
+};
+
+window.approveSubmission = async function(id) {
+    const notes = document.getElementById('reviewNotes')?.value || '';
+    const createFacility = document.getElementById('reviewCreateFacility')?.checked || false;
+    try {
+        await api(`/admin/submissions/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ status: 'approved', review_notes: notes, create_facility: createFacility })
+        });
+        showToast('Submission approved' + (createFacility ? ' — facility created' : ''));
+        loadSubmissions();
+    } catch (e) { showToast('Error approving submission'); }
+};
+
+window.rejectSubmission = async function(id) {
+    const notes = document.getElementById('reviewNotes')?.value || '';
+    try {
+        await api(`/admin/submissions/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ status: 'rejected', review_notes: notes })
+        });
+        showToast('Submission rejected');
+        loadSubmissions();
+    } catch (e) { showToast('Error rejecting submission'); }
+};
+
+document.getElementById('submissionFilter').addEventListener('change', loadSubmissions);
+document.getElementById('refreshSubmissions').addEventListener('click', loadSubmissions);
+
+// ===== FACILITIES =====
+async function loadFacilities() {
+    const type = document.getElementById('facilityTypeFilter').value;
+    const url = type ? `/facilities?type=${type}` : '/facilities';
+    try {
+        const resp = await api(url);
+        const data = await resp.json();
+        const features = data.features || [];
+        document.getElementById('facilityCount').textContent = `${features.length} facilities`;
+        const tbody = document.getElementById('facilitiesBody');
+        tbody.innerHTML = features.map(f => {
+            const p = f.properties;
+            return `<tr>
+                <td><strong>${p.name}</strong></td>
+                <td>${p.facility_type}</td>
+                <td>${p.suburb || '—'}</td>
+                <td style="font-size:11px;color:var(--text-dim);">${p.source || '—'}</td>
+                <td><span class="badge ${badgeClass(p.verified)}">${p.verified ? 'Yes' : 'No'}</span></td>
+            </tr>`;
+        }).join('');
+    } catch (e) {}
+}
+
+document.getElementById('facilityTypeFilter').addEventListener('change', loadFacilities);
+document.getElementById('refreshFacilities').addEventListener('click', loadFacilities);
+
+// ===== HEALTH =====
+async function loadHealth() {
+    document.getElementById('healthGrid').innerHTML = '<p style="color:var(--text-muted);">Loading...</p>';
+    try {
+        const resp = await api('/admin/sources/health');
+        const results = await resp.json();
+        document.getElementById('healthGrid').innerHTML = results.map(r => `
+            <div class="health-card">
+                <div>
+                    <div class="source-name">${r.source_name || r.source_id}</div>
+                    <div class="source-url">${r.primary_url || ''}</div>
+                    ${r.issues && r.issues.length > 0 ? `<div style="color:var(--red);font-size:11px;margin-top:4px;">${r.issues.join(', ')}</div>` : ''}
+                </div>
+                <div class="health-right">
+                    <span class="badge ${r.primary_ok ? 'badge-ok' : 'badge-error'}">${r.primary_ok ? 'OK' : 'FAIL'}</span>
+                    <button class="btn btn-sm" onclick="refreshSource('${r.source_id}')"><i class="fas fa-sync-alt"></i></button>
+                </div>
+            </div>
+        `).join('');
+    } catch (e) {
+        document.getElementById('healthGrid').innerHTML = '<p style="color:var(--red);">Failed to load health data</p>';
+    }
+}
+
+window.refreshSource = async function(sourceId) {
+    showToast(`Refreshing ${sourceId}...`);
+    try {
+        await api(`/admin/refresh/${sourceId}`, { method: 'POST' });
+        showToast(`${sourceId} refreshed`);
+        loadHealth();
+    } catch (e) { showToast('Refresh failed'); }
+};
+
+document.getElementById('runHealthChecks').addEventListener('click', loadHealth);
+
+// ===== USERS =====
+async function loadUsers() {
+    try {
+        const resp = await api('/admin/users');
+        const users = await resp.json();
+        const tbody = document.getElementById('usersBody');
+        const empty = document.getElementById('usersEmpty');
+        if (users.length === 0) {
+            tbody.innerHTML = '';
+            empty.style.display = '';
+            return;
+        }
+        empty.style.display = 'none';
+        tbody.innerHTML = users.map(u => `
+            <tr>
+                <td>${u.display_name || '—'}</td>
+                <td>${u.company || '—'}</td>
+                <td><span class="badge ${u.role === 'admin' ? 'badge-approved' : 'badge-pending'}">${u.role}</span></td>
+                <td>${timeAgo(u.created_at)}</td>
+            </tr>
+        `).join('');
+    } catch (e) {
+        document.getElementById('usersBody').innerHTML = '';
+        document.getElementById('usersEmpty').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>Failed to load users</p>';
+        document.getElementById('usersEmpty').style.display = '';
+    }
+}
+</script>
+</body>
+</html>
