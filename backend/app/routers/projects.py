@@ -48,8 +48,15 @@ def _project_to_dict(project: MajorProject, lng: float | None, lat: float | None
 async def list_projects(
     status: str | None = None,
     type: str | None = None,
+    limit: int = 1000,
+    offset: int = 0,
     db: AsyncSession = Depends(get_db),
 ):
+    if limit > 1000:
+        limit = 1000
+    if limit < 1:
+        limit = 1
+
     query = (
         select(
             MajorProject,
@@ -63,6 +70,7 @@ async def list_projects(
     if type:
         query = query.where(MajorProject.project_type == type)
 
+    query = query.offset(offset).limit(limit)
     result = await db.execute(query)
     rows = result.unique().all()
     return [_project_to_dict(proj, lng, lat) for proj, lng, lat in rows]

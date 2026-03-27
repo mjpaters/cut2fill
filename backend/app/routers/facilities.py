@@ -39,8 +39,15 @@ async def list_facilities(
     type: str | None = None,
     bbox: str | None = None,
     near: str | None = None,
+    limit: int = 10000,
+    offset: int = 0,
     db: AsyncSession = Depends(get_db),
 ):
+    if limit > 10000:
+        limit = 10000
+    if limit < 1:
+        limit = 1
+
     query = select(
         Facility,
         geo_func.ST_X(Facility.location).label("lng"),
@@ -61,6 +68,7 @@ async def list_facilities(
             raise HTTPException(400, "near values must be numeric")
         query = query.where(nearest_filter(Facility.location, lat, lng, radius))
 
+    query = query.offset(offset).limit(limit)
     result = await db.execute(query)
     rows = result.all()
     features = [_facility_to_feature(row) for row in rows]
