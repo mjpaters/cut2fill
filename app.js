@@ -2,6 +2,9 @@
 // Cut2Fill — MVP App
 // ============================================================
 
+// ===== API CONFIGURATION =====
+const CUT2FILL_API_URL = 'https://cut2fill.onrender.com/api/v1';
+
 // ===== MATERIAL TOOLTIPS =====
 const materialTooltips = {
     'clean-fill': 'No testing required under EP Act for clean earth. Suitable for general fill purposes.',
@@ -520,7 +523,7 @@ function showToast(msg) {
 }
 
 // ===== REGISTERED FACILITIES =====
-const registeredFacilities = [
+let registeredFacilities = [
     // Quarries (all business hours)
     // Brisbane City Council
     { name: 'BCC — Mt Coot-tha Quarry', type: 'quarry', lat: -27.4860, lng: 152.9540, suburb: 'Mt Coot-tha', icon: 'fa-gem', color: '#8a8478', hours: 'business', notes: 'Council-owned quarry operating since 1890s. Metamorphic rock — ~400,000t/yr. Supplies 90%+ of BCC asphalt aggregate. ~10 years remaining resource.' },
@@ -1306,6 +1309,30 @@ const registeredFacilities = [
     { name: 'Hymix — Brendale', type: 'concrete', lat: -27.3220, lng: 152.9550, suburb: 'Brendale', icon: 'fa-industry', color: '#d4a05a', hours: 'business', notes: 'McDonald Rd, Brendale. Adbri/CRH group. Structural and decorative concrete.' },
 ];
 
+// --- Live API fetch: facilities ---
+(async () => {
+    try {
+        const resp = await fetch(`${CUT2FILL_API_URL}/facilities`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const geo = await resp.json();
+        registeredFacilities = geo.features.map(f => ({
+            name: f.properties.name,
+            type: f.properties.facility_type,
+            lat: f.geometry ? f.geometry.coordinates[1] : null,
+            lng: f.geometry ? f.geometry.coordinates[0] : null,
+            suburb: f.properties.suburb,
+            icon: f.properties.icon,
+            color: f.properties.color,
+            hours: f.properties.hours,
+            notes: f.properties.notes
+        }));
+        console.log(`[Cut2Fill API] Loaded ${registeredFacilities.length} facilities from backend`);
+        if (typeof renderFacilities === 'function') renderFacilities();
+    } catch (e) {
+        console.warn('[Cut2Fill API] Facilities fetch failed, using hardcoded data:', e.message);
+    }
+})();
+
 let facilityLayerGroup = L.layerGroup();
 let facilitiesVisible = true;
 
@@ -1430,7 +1457,7 @@ function showFacilityPanel(facility) {
 }
 
 // ===== WATER FILL POINTS =====
-const waterFillPoints = [
+let waterFillPoints = [
     // QUU — Queensland Urban Utilities (23 stations)
     { name: 'QUU — Murarrie Fill Station', code: 'TF001', provider: 'QUU', lat: -27.4600, lng: 153.1000, suburb: 'Murarrie', address: '188 Paringa Road, Murarrie', access: 'Card required', waterType: 'potable' },
     { name: 'QUU — Rocklea Fill Station', code: 'TF003', provider: 'QUU', lat: -27.5370, lng: 153.0060, suburb: 'Rocklea', address: '32 Dunn Road, Rocklea', access: 'Card required', waterType: 'potable' },
@@ -1514,6 +1541,30 @@ const waterFillPoints = [
     { name: 'Redland CC — Mount Cotton', provider: 'Redland CC', lat: -27.6240, lng: 153.2310, suburb: 'Mount Cotton', address: '11 Valley Way, Mount Cotton', access: '24/7', waterType: 'potable' },
 ];
 
+// --- Live API fetch: water points ---
+(async () => {
+    try {
+        const resp = await fetch(`${CUT2FILL_API_URL}/water-points`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const geo = await resp.json();
+        waterFillPoints = geo.features.map(f => ({
+            name: f.properties.name,
+            code: f.properties.code,
+            provider: f.properties.provider,
+            lat: f.geometry ? f.geometry.coordinates[1] : null,
+            lng: f.geometry ? f.geometry.coordinates[0] : null,
+            suburb: f.properties.suburb,
+            address: f.properties.address,
+            access: f.properties.access,
+            waterType: f.properties.water_type
+        }));
+        console.log(`[Cut2Fill API] Loaded ${waterFillPoints.length} water points from backend`);
+        if (typeof renderWaterFillPoints === 'function') renderWaterFillPoints();
+    } catch (e) {
+        console.warn('[Cut2Fill API] Water points fetch failed, using hardcoded data:', e.message);
+    }
+})();
+
 const waterFillColor = '#2196F3';
 let waterFillLayerGroup = L.layerGroup();
 
@@ -1578,7 +1629,7 @@ function showWaterFillPanel(w) {
 }
 
 // ===== MAJOR PROJECTS (Brisbane 2032 Olympics Pipeline) =====
-const majorProjects = [
+let majorProjects = [
     {
         name: 'Brisbane Stadium (Victoria Park)',
         lat: -27.4500, lng: 153.0230,
@@ -1778,6 +1829,39 @@ const majorProjects = [
         sourceUrl: 'https://economic.development.qld.gov.au/northshore-hamilton'
     }
 ];
+
+// --- Live API fetch: projects ---
+(async () => {
+    try {
+        const resp = await fetch(`${CUT2FILL_API_URL}/projects`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        majorProjects = data.map(p => ({
+            name: p.name,
+            lat: p.lat,
+            lng: p.lng,
+            suburb: p.suburb,
+            description: p.description,
+            status: p.status,
+            projectType: p.project_type,
+            cost: p.cost,
+            authority: p.authority,
+            startDate: p.start_date,
+            expectedEndDate: p.expected_end,
+            phases: (p.phases || []).map(ph => ({
+                name: ph.name,
+                start: ph.start_date,
+                end: ph.end_date
+            })),
+            estimatedVolume: p.estimated_volume,
+            sourceUrl: p.source_url
+        }));
+        console.log(`[Cut2Fill API] Loaded ${majorProjects.length} projects from backend`);
+        if (typeof renderProjects === 'function') renderProjects();
+    } catch (e) {
+        console.warn('[Cut2Fill API] Projects fetch failed, using hardcoded data:', e.message);
+    }
+})();
 
 const projectStatusColors = { active: '#22c55e', upcoming: '#f59e0b', planning: '#3b82f6' };
 const projectStatusLabels = { active: 'Active', upcoming: 'Upcoming', planning: 'Planning' };
