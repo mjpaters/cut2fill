@@ -2399,11 +2399,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateAuthUI(session) {
         currentSession = session;
+        // Remove existing dashboard link if any
+        const existingLink = document.getElementById('btnDashboard');
+        if (existingLink) existingLink.remove();
+
         if (session) {
             const email = session.user.email;
             const name = email.split('@')[0];
             btnLogin.innerHTML = `<i class="fas fa-user-check"></i> ${name}`;
             btnLogin.title = email;
+            // Add dashboard link
+            const dashLink = document.createElement('a');
+            dashLink.id = 'btnDashboard';
+            dashLink.href = '/dashboard.html';
+            dashLink.className = 'btn btn-outline';
+            dashLink.style.cssText = 'text-decoration:none;font-size:13px;';
+            dashLink.innerHTML = '<i class="fas fa-tachometer-alt"></i> Dashboard';
+            btnLogin.parentNode.insertBefore(dashLink, btnLogin);
         } else {
             btnLogin.innerHTML = '<i class="fas fa-user"></i> Sign In';
             btnLogin.title = '';

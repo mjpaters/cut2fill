@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut2Fill — My Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #1a1814; --bg-card: #242019; --bg-card-hover: #2e2a22;
+            --border: #3d3830; --text: #e0dbd3; --text-muted: #9c9488; --text-dim: #6b6358;
+            --green: #6b8f5e; --green-bg: rgba(107,143,94,0.15);
+            --amber: #c4843e; --amber-bg: rgba(196,132,62,0.12);
+            --blue: #5c8a97; --red: #b85c4a;
+            --radius: 6px; --shadow: 0 4px 20px rgba(0,0,0,0.35);
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        a { color: var(--green); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Header */
+        .dash-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 24px; background: var(--bg-card); border-bottom: 1px solid var(--border);
+        }
+        .dash-header h1 { font-size: 18px; font-weight: 600; }
+        .dash-header h1 i { color: var(--green); margin-right: 6px; }
+        .header-right { display: flex; gap: 10px; align-items: center; }
+
+        /* Layout */
+        .dash-content { max-width: 900px; margin: 0 auto; padding: 24px; }
+
+        /* Buttons */
+        .btn {
+            padding: 8px 16px; border-radius: var(--radius); border: 1px solid var(--border);
+            background: var(--bg-card); color: var(--text); cursor: pointer; font-size: 13px;
+            font-family: inherit; transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn:hover { background: var(--bg-card-hover); }
+        .btn-sm { padding: 5px 12px; font-size: 12px; }
+        .btn-green { background: var(--green); color: #fff; border-color: var(--green); }
+        .btn-green:hover { opacity: 0.9; }
+        .btn-primary { background: var(--green); color: #fff; border-color: var(--green); font-weight: 500; }
+
+        /* Action bar */
+        .action-bar { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+
+        /* Badges */
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+        .badge-pending { background: rgba(196,132,62,0.15); color: var(--amber); }
+        .badge-approved { background: rgba(107,143,94,0.15); color: var(--green); }
+        .badge-rejected { background: rgba(184,92,74,0.15); color: var(--red); }
+
+        /* Submission cards */
+        .sub-list { display: flex; flex-direction: column; gap: 12px; }
+        .sub-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 16px; transition: border-color 0.15s;
+        }
+        .sub-card:hover { border-color: #555; }
+        .sub-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .sub-card-type { font-weight: 600; font-size: 14px; }
+        .sub-card-date { font-size: 12px; color: var(--text-dim); }
+        .sub-card-data { font-size: 13px; color: var(--text-muted); }
+        .sub-card-data .data-row { display: flex; gap: 8px; margin-top: 4px; }
+        .sub-card-data .data-key { color: var(--text-dim); min-width: 100px; }
+        .sub-card-review { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); }
+
+        /* Empty state */
+        .empty-state { text-align: center; padding: 60px 24px; color: var(--text-muted); }
+        .empty-state i { font-size: 42px; margin-bottom: 16px; display: block; color: var(--text-dim); }
+        .empty-state p { margin-bottom: 16px; }
+
+        /* Modal */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+            z-index: 2000; align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-overlay.visible { display: flex; }
+        .modal {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow);
+        }
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 20px; border-bottom: 1px solid var(--border);
+        }
+        .modal-header h2 { font-size: 16px; font-weight: 600; }
+        .modal-close { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; }
+        .modal-body { padding: 20px; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; font-weight: 500; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 9px 12px; background: var(--bg); border: 1px solid var(--border);
+            color: var(--text); border-radius: var(--radius); font-size: 13px; font-family: inherit;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--green); }
+        .form-group textarea { resize: vertical; min-height: 70px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .form-actions { display: flex; gap: 10px; margin-top: 16px; justify-content: flex-end; }
+        .form-hint { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+
+        /* Login gate */
+        .login-gate {
+            display: flex; align-items: center; justify-content: center; min-height: 80vh;
+            flex-direction: column; gap: 16px;
+        }
+        .login-gate form {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 32px; width: 100%; max-width: 380px;
+        }
+        .login-gate h2 { text-align: center; margin-bottom: 20px; font-size: 20px; }
+        .login-gate .btn-login {
+            width: 100%; padding: 10px; background: var(--green); color: #fff; border: none;
+            border-radius: var(--radius); font-size: 14px; cursor: pointer; font-family: inherit; font-weight: 600;
+        }
+        .login-error { color: var(--red); font-size: 13px; text-align: center; margin-top: 10px; display: none; }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 10px 20px; font-size: 13px; z-index: 9999; box-shadow: var(--shadow);
+            opacity: 0; transition: opacity 0.3s; pointer-events: none;
+        }
+        .toast.visible { opacity: 1; }
+
+        /* Tabs */
+        .tab-bar { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+        .tab-btn {
+            padding: 10px 18px; background: none; border: none; border-bottom: 2px solid transparent;
+            color: var(--text-muted); cursor: pointer; font-size: 13px; font-family: inherit; font-weight: 500;
+        }
+        .tab-btn:hover { color: var(--text); }
+        .tab-btn.active { color: var(--green); border-bottom-color: var(--green); }
+
+        @media (max-width: 600px) {
+            .dash-content { padding: 16px; }
+            .form-row { grid-template-columns: 1fr; }
+            .action-bar { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Login Gate -->
+<div id="loginGate" class="login-gate">
+    <form id="dashLoginForm">
+        <h2><i class="fas fa-hard-hat" style="color:var(--green);"></i> Cut2Fill</h2>
+        <p style="text-align:center;color:var(--text-muted);font-size:13px;margin-bottom:20px;">Sign in to manage your submissions</p>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="dashLoginEmail" required placeholder="you@company.com.au">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="dashLoginPassword" required placeholder="Password">
+        </div>
+        <button type="submit" class="btn-login" id="dashLoginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+        <p class="login-error" id="dashLoginError"></p>
+        <p style="text-align:center;margin-top:14px;font-size:13px;color:var(--text-dim);">
+            Don't have an account? <a href="/">Register on the map</a>
+        </p>
+    </form>
+    <a href="/" style="color:var(--text-muted);font-size:13px;"><i class="fas fa-arrow-left"></i> Back to map</a>
+</div>
+
+<!-- Dashboard -->
+<div id="dashboard" style="display:none;">
+    <div class="dash-header">
+        <h1><i class="fas fa-hard-hat"></i> My Dashboard</h1>
+        <div class="header-right">
+            <a href="/" class="btn btn-sm"><i class="fas fa-map"></i> Map</a>
+            <span id="userLabel" style="color:var(--text-muted);font-size:13px;"></span>
+            <button class="btn btn-sm" id="dashLogout"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </div>
+
+    <div class="dash-content">
+        <div class="action-bar">
+            <button class="btn btn-primary" id="btnNewSite"><i class="fas fa-map-marker-alt"></i> Submit a Tip Site</button>
+            <button class="btn btn-primary" id="btnNewProject"><i class="fas fa-project-diagram"></i> Submit a Project</button>
+        </div>
+
+        <div class="tab-bar">
+            <button class="tab-btn active" data-tab="all">All</button>
+            <button class="tab-btn" data-tab="site-registration">Tip Sites</button>
+            <button class="tab-btn" data-tab="source-tip">Source Tips</button>
+            <button class="tab-btn" data-tab="project">Projects</button>
+        </div>
+
+        <div id="subList" class="sub-list"></div>
+        <div id="subEmpty" class="empty-state" style="display:none;">
+            <i class="fas fa-inbox"></i>
+            <p>No submissions yet</p>
+            <button class="btn btn-green" onclick="document.getElementById('btnNewSite').click()"><i class="fas fa-plus"></i> Submit your first tip site</button>
+        </div>
+    </div>
+</div>
+
+<!-- Submit Tip Site Modal -->
+<div class="modal-overlay" id="siteModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2><i class="fas fa-map-marker-alt"></i> Submit a Tip Site</h2>
+            <button class="modal-close" id="siteModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="siteForm" class="modal-body">
+            <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;"><i class="fas fa-shield-alt"></i> Submissions are reviewed by the Archers team before going live on the map.</p>
+            <div class="form-group">
+                <label>Site Name *</label>
+                <input type="text" id="siteName" required placeholder="e.g. Smith's Quarry, Gatton Borrow Pit">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Type *</label>
+                    <select id="siteType" required>
+                        <option value="">Select...</option>
+                        <option value="quarry">Quarry</option>
+                        <option value="borrow-pit">Borrow Pit</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="transfer-station">Transfer Station</option>
+                        <option value="recycler">C&D Recycler</option>
+                        <option value="concrete">Concrete Plant</option>
+                        <option value="soil-treatment">Soil Treatment</option>
+                        <option value="water-fill">Water Fill Point</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Material</label>
+                    <select id="siteMaterial">
+                        <option value="">Select...</option>
+                        <option value="clean-fill">Clean Fill</option>
+                        <option value="rock">Rock / Aggregate</option>
+                        <option value="sand">Sand</option>
+                        <option value="gravel">Gravel</option>
+                        <option value="topsoil">Topsoil</option>
+                        <option value="concrete">Concrete</option>
+                        <option value="mixed">Mixed Materials</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Town / Suburb *</label>
+                    <input type="text" id="siteTown" required placeholder="e.g. Gatton">
+                </div>
+                <div class="form-group">
+                    <label>LGA / Council</label>
+                    <input type="text" id="siteLGA" placeholder="e.g. Lockyer Valley">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Address or Location Description</label>
+                <input type="text" id="siteAddress" placeholder="e.g. Corner of Smith Rd & Main St, or GPS coords">
+                <p class="form-hint">Street address, intersection, lot number, or GPS coordinates</p>
+            </div>
+            <div class="form-group">
+                <label>Operator / Owner (if known)</label>
+                <input type="text" id="siteOperator" placeholder="e.g. BCC, private, Boral">
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="siteNotes" placeholder="Access details, opening hours, volume available, anything useful..."></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn" id="siteCancelBtn">Cancel</button>
+                <button type="submit" class="btn btn-green" id="siteSubmitBtn"><i class="fas fa-paper-plane"></i> Submit for Review</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Submit Project Modal -->
+<div class="modal-overlay" id="projectModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2><i class="fas fa-project-diagram"></i> Submit a Project</h2>
+            <button class="modal-close" id="projectModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="projectForm" class="modal-body">
+            <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;"><i class="fas fa-info-circle"></i> Know about an upcoming project that will need materials? Let us know.</p>
+            <div class="form-group">
+                <label>Project Name *</label>
+                <input type="text" id="projName" required placeholder="e.g. Bruce Highway Upgrade - Caboolture">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Type</label>
+                    <select id="projType">
+                        <option value="">Select...</option>
+                        <option value="road">Road / Highway</option>
+                        <option value="rail">Rail</option>
+                        <option value="dam">Dam / Water</option>
+                        <option value="residential">Residential Development</option>
+                        <option value="commercial">Commercial / Industrial</option>
+                        <option value="olympics">Olympics 2032</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="projStatus">
+                        <option value="">Select...</option>
+                        <option value="planning">Planning</option>
+                        <option value="approved">Approved</option>
+                        <option value="construction">Under Construction</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Location / Suburb *</label>
+                    <input type="text" id="projLocation" required placeholder="e.g. Caboolture">
+                </div>
+                <div class="form-group">
+                    <label>Authority / Client</label>
+                    <input type="text" id="projAuthority" placeholder="e.g. TMR, BCC, private">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Estimated Start</label>
+                    <input type="date" id="projStart">
+                </div>
+                <div class="form-group">
+                    <label>Estimated End</label>
+                    <input type="date" id="projEnd">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Estimated Volume</label>
+                <input type="text" id="projVolume" placeholder="e.g. 50,000m³ fill required">
+            </div>
+            <div class="form-group">
+                <label>Source / Link</label>
+                <input type="url" id="projURL" placeholder="https://...">
+                <p class="form-hint">Link to project announcement, tender, or news article</p>
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="projNotes" placeholder="Material types needed, timeline details, contacts..."></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn" id="projCancelBtn">Cancel</button>
+                <button type="submit" class="btn btn-green" id="projSubmitBtn"><i class="fas fa-paper-plane"></i> Submit for Review</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const API = 'https://cut2fill.onrender.com/api/v1';
+const SUPABASE_URL = 'https://ajcbtrufifqttcfekjyd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqY2J0cnVmaWZxdHRjZmVranlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0ODkzMzYsImV4cCI6MjA5MDA2NTMzNn0.L_F6l-avqASdP01w464Iqh4zNppBA9pQl_qM7oaqUIU';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let token = null;
+let activeTab = 'all';
+
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('visible');
+    setTimeout(() => t.classList.remove('visible'), 3000);
+}
+
+function timeAgo(dateStr) {
+    const d = new Date(dateStr), now = new Date(), mins = Math.floor((now - d) / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    const days = Math.floor(hrs / 24);
+    if (days < 30) return `${days}d ago`;
+    return d.toLocaleDateString();
+}
+
+function typeLabel(t) {
+    const labels = {
+        'site-registration': 'Tip Site',
+        'source-tip': 'Source Tip',
+        'project': 'Project',
+        'feedback': 'Feedback'
+    };
+    return labels[t] || t;
+}
+
+function typeIcon(t) {
+    const icons = {
+        'site-registration': 'fa-map-marker-alt',
+        'source-tip': 'fa-map-pin',
+        'project': 'fa-project-diagram',
+        'feedback': 'fa-comment-dots'
+    };
+    return icons[t] || 'fa-file';
+}
+
+// ===== AUTH =====
+function showLogin() {
+    document.getElementById('loginGate').style.display = '';
+    document.getElementById('dashboard').style.display = 'none';
+}
+
+function showDashboard(session) {
+    token = session.access_token;
+    document.getElementById('loginGate').style.display = 'none';
+    document.getElementById('dashboard').style.display = '';
+    document.getElementById('userLabel').textContent = session.user.email;
+    loadSubmissions();
+}
+
+sb.auth.getSession().then(({ data: { session } }) => {
+    if (session) showDashboard(session);
+});
+
+sb.auth.onAuthStateChange((_event, session) => {
+    if (session) showDashboard(session);
+    else showLogin();
+});
+
+document.getElementById('dashLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('dashLoginBtn');
+    const err = document.getElementById('dashLoginError');
+    btn.disabled = true; btn.textContent = 'Signing in...'; err.style.display = 'none';
+
+    const { data, error } = await sb.auth.signInWithPassword({
+        email: document.getElementById('dashLoginEmail').value,
+        password: document.getElementById('dashLoginPassword').value,
+    });
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+    if (error) { err.textContent = error.message; err.style.display = 'block'; }
+    else showDashboard(data.session);
+});
+
+document.getElementById('dashLogout').addEventListener('click', async () => {
+    await sb.auth.signOut(); token = null; showLogin();
+});
+
+// ===== TABS =====
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTab = btn.dataset.tab;
+        renderSubmissions();
+    });
+});
+
+// ===== SUBMISSIONS =====
+let allSubmissions = [];
+
+async function loadSubmissions() {
+    try {
+        const resp = await fetch(`${API}/submissions/mine`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (resp.ok) allSubmissions = await resp.json();
+        else allSubmissions = [];
+    } catch (e) { allSubmissions = []; }
+    renderSubmissions();
+}
+
+function renderSubmissions() {
+    const filtered = activeTab === 'all' ? allSubmissions : allSubmissions.filter(s => s.submission_type === activeTab);
+    const list = document.getElementById('subList');
+    const empty = document.getElementById('subEmpty');
+
+    if (filtered.length === 0) {
+        list.innerHTML = '';
+        empty.style.display = '';
+        return;
+    }
+    empty.style.display = 'none';
+
+    list.innerHTML = filtered.map(s => {
+        const dataHtml = s.data ? Object.entries(s.data)
+            .filter(([k, v]) => v && v !== '' && v !== false)
+            .slice(0, 6)
+            .map(([k, v]) => `<div class="data-row"><span class="data-key">${k}</span><span>${v === true ? 'Yes' : v}</span></div>`)
+            .join('') : '';
+
+        return `<div class="sub-card">
+            <div class="sub-card-header">
+                <span class="sub-card-type"><i class="fas ${typeIcon(s.submission_type)}"></i> ${typeLabel(s.submission_type)}</span>
+                <div style="display:flex;gap:8px;align-items:center;">
+                    <span class="badge badge-${s.status}">${s.status}</span>
+                    <span class="sub-card-date">${timeAgo(s.created_at)}</span>
+                </div>
+            </div>
+            <div class="sub-card-data">${dataHtml}</div>
+            ${s.review_notes ? `<div class="sub-card-review"><i class="fas fa-comment"></i> <strong>Review:</strong> ${s.review_notes}</div>` : ''}
+        </div>`;
+    }).join('');
+}
+
+// ===== MODAL HELPERS =====
+function openModal(id) { document.getElementById(id).classList.add('visible'); }
+function closeModal(id) { document.getElementById(id).classList.remove('visible'); }
+
+// ===== SUBMIT TIP SITE =====
+document.getElementById('btnNewSite').addEventListener('click', () => openModal('siteModal'));
+document.getElementById('siteModalClose').addEventListener('click', () => closeModal('siteModal'));
+document.getElementById('siteCancelBtn').addEventListener('click', () => closeModal('siteModal'));
+document.getElementById('siteModal').addEventListener('click', (e) => { if (e.target.id === 'siteModal') closeModal('siteModal'); });
+
+document.getElementById('siteForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('siteSubmitBtn');
+    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+    const payload = {
+        contact_name: document.getElementById('userLabel').textContent,
+        contact_email: document.getElementById('userLabel').textContent,
+        data: {
+            name: document.getElementById('siteName').value,
+            facility_type: document.getElementById('siteType').value,
+            material: document.getElementById('siteMaterial').value,
+            town: document.getElementById('siteTown').value,
+            lga: document.getElementById('siteLGA').value,
+            address: document.getElementById('siteAddress').value,
+            operator: document.getElementById('siteOperator').value,
+            notes: document.getElementById('siteNotes').value,
+        }
+    };
+
+    try {
+        const resp = await fetch(`${API}/submissions/site`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        if (resp.ok) {
+            showToast('Tip site submitted for review!');
+            closeModal('siteModal');
+            document.getElementById('siteForm').reset();
+            loadSubmissions();
+        } else {
+            showToast('Failed to submit — please try again.');
+        }
+    } catch (err) { showToast('Network error — please try again.'); }
+
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit for Review';
+});
+
+// ===== SUBMIT PROJECT =====
+document.getElementById('btnNewProject').addEventListener('click', () => openModal('projectModal'));
+document.getElementById('projectModalClose').addEventListener('click', () => closeModal('projectModal'));
+document.getElementById('projCancelBtn').addEventListener('click', () => closeModal('projectModal'));
+document.getElementById('projectModal').addEventListener('click', (e) => { if (e.target.id === 'projectModal') closeModal('projectModal'); });
+
+document.getElementById('projectForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('projSubmitBtn');
+    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+    const payload = {
+        contact_name: document.getElementById('userLabel').textContent,
+        contact_email: document.getElementById('userLabel').textContent,
+        data: {
+            name: document.getElementById('projName').value,
+            project_type: document.getElementById('projType').value,
+            status: document.getElementById('projStatus').value,
+            location: document.getElementById('projLocation').value,
+            authority: document.getElementById('projAuthority').value,
+            start_date: document.getElementById('projStart').value,
+            expected_end: document.getElementById('projEnd').value,
+            estimated_volume: document.getElementById('projVolume').value,
+            source_url: document.getElementById('projURL').value,
+            notes: document.getElementById('projNotes').value,
+        }
+    };
+
+    try {
+        const resp = await fetch(`${API}/submissions/source`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        if (resp.ok) {
+            showToast('Project submitted for review!');
+            closeModal('projectModal');
+            document.getElementById('projectForm').reset();
+            loadSubmissions();
+        } else {
+            showToast('Failed to submit — please try again.');
+        }
+    } catch (err) { showToast('Network error — please try again.'); }
+
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit for Review';
+});
+</script>
+</body>
+</html>
