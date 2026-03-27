@@ -7,9 +7,12 @@ from app.config import settings
 _is_production = settings.app_env == "production"
 
 # Build SSL context for production database connections
+# Supabase pooler uses a self-signed cert — require encryption but skip cert verification
 _connect_args = {}
 if _is_production:
     ssl_ctx = ssl.create_default_context()
+    ssl_ctx.check_hostname = False
+    ssl_ctx.verify_mode = ssl.CERT_NONE
     _connect_args["ssl"] = ssl_ctx
 
 engine = create_async_engine(
