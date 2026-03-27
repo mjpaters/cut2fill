@@ -2179,42 +2179,56 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form submit
+    // Form submit — site registration
     document.getElementById('postForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button[type="submit"]');
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        const formData = {
+            listingType: document.querySelector('input[name="listingType"]:checked')?.value,
+            company: document.getElementById('formCompany').value,
+            project: document.getElementById('formProject').value,
+            material: document.getElementById('formMaterial').value,
+            volume: document.getElementById('formVolume').value,
+            dateFrom: document.getElementById('formDateFrom').value,
+            dateTo: document.getElementById('formDateTo').value,
+            pricing: document.querySelector('input[name="formPricing"]:checked')?.value,
+            address: document.getElementById('formAddress').value,
+            notes: document.getElementById('formNotes').value,
+            tested: document.getElementById('formTested').checked,
+            pickup: document.getElementById('formPickup').checked,
+            delivery: document.getElementById('formDelivery').checked
+        };
+        const payload = {
+            contact_name: document.getElementById('formCompany').value,
+            contact_email: document.getElementById('formEmail').value,
+            contact_phone: document.getElementById('formPhone').value,
+            data: formData
+        };
         try {
-            const resp = await fetch('https://formspree.io/f/xdawqlvg', {
+            const resp = await fetch(`${CUT2FILL_API_URL}/submissions/site`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({
-                    _subject: 'Cut2Fill — New Site Registration',
-                    listingType: document.querySelector('input[name="listingType"]:checked')?.value,
-                    company: document.getElementById('formCompany').value,
-                    phone: document.getElementById('formPhone').value,
-                    email: document.getElementById('formEmail').value,
-                    project: document.getElementById('formProject').value,
-                    material: document.getElementById('formMaterial').value,
-                    volume: document.getElementById('formVolume').value,
-                    dateFrom: document.getElementById('formDateFrom').value,
-                    dateTo: document.getElementById('formDateTo').value,
-                    pricing: document.querySelector('input[name="formPricing"]:checked')?.value,
-                    address: document.getElementById('formAddress').value,
-                    notes: document.getElementById('formNotes').value,
-                    tested: document.getElementById('formTested').checked,
-                    pickup: document.getElementById('formPickup').checked,
-                    delivery: document.getElementById('formDelivery').checked
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
             });
             if (resp.ok) {
                 showToast('Site submitted for verification — the Archers team will review and be in touch.');
             } else {
-                showToast('Failed to send — please try again.');
+                throw new Error('API error');
             }
         } catch (err) {
-            showToast('Network error — please try again.');
+            // Fallback to Formspree
+            try {
+                await fetch('https://formspree.io/f/xdawqlvg', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ _subject: 'Cut2Fill — New Site Registration', ...formData, email: payload.contact_email, phone: payload.contact_phone })
+                });
+                showToast('Site submitted for verification — the Archers team will review and be in touch.');
+            } catch (err2) {
+                showToast('Network error — please try again.');
+            }
         }
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit for Verification';
@@ -2243,31 +2257,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = e.target.querySelector('button[type="submit"]');
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        const formData = {
+            sourceType: document.getElementById('sourceType').value,
+            location: document.getElementById('sourceLocation').value,
+            town: document.getElementById('sourceTown').value,
+            lga: document.getElementById('sourceLGA').value,
+            name: document.getElementById('sourceName').value,
+            material: document.getElementById('sourceMaterial').value,
+            operator: document.getElementById('sourceOperator').value,
+            notes: document.getElementById('sourceNotes').value
+        };
+        const payload = {
+            contact_name: document.getElementById('sourceContactName').value,
+            contact_email: document.getElementById('sourceContactInfo').value,
+            data: formData
+        };
         try {
-            const resp = await fetch('https://formspree.io/f/xdawqlvg', {
+            const resp = await fetch(`${CUT2FILL_API_URL}/submissions/source`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({
-                    _subject: 'Cut2Fill — New Material Source Submitted',
-                    sourceType: document.getElementById('sourceType').value,
-                    location: document.getElementById('sourceLocation').value,
-                    town: document.getElementById('sourceTown').value,
-                    lga: document.getElementById('sourceLGA').value,
-                    name: document.getElementById('sourceName').value,
-                    material: document.getElementById('sourceMaterial').value,
-                    operator: document.getElementById('sourceOperator').value,
-                    notes: document.getElementById('sourceNotes').value,
-                    contactName: document.getElementById('sourceContactName').value,
-                    contactInfo: document.getElementById('sourceContactInfo').value
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
             });
             if (resp.ok) {
                 showToast('Thanks! Source submitted — the Archers team will verify and add it to the map.');
             } else {
-                showToast('Failed to send — please try again.');
+                throw new Error('API error');
             }
         } catch (err) {
-            showToast('Network error — please try again.');
+            // Fallback to Formspree
+            try {
+                await fetch('https://formspree.io/f/xdawqlvg', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ _subject: 'Cut2Fill — New Material Source Submitted', ...formData, contactName: payload.contact_name, contactInfo: payload.contact_email })
+                });
+                showToast('Thanks! Source submitted — the Archers team will verify and add it to the map.');
+            } catch (err2) {
+                showToast('Network error — please try again.');
+            }
         }
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Source';
@@ -2295,24 +2322,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = e.target.querySelector('button[type="submit"]');
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        const formData = {
+            type: document.getElementById('feedbackType').value,
+            message: document.getElementById('feedbackMessage').value
+        };
+        const payload = {
+            contact_name: document.getElementById('feedbackName').value,
+            contact_email: document.getElementById('feedbackEmail').value,
+            data: formData
+        };
         try {
-            const resp = await fetch('https://formspree.io/f/xdawqlvg', {
+            const resp = await fetch(`${CUT2FILL_API_URL}/submissions/feedback`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({
-                    name: document.getElementById('feedbackName').value,
-                    email: document.getElementById('feedbackEmail').value,
-                    type: document.getElementById('feedbackType').value,
-                    message: document.getElementById('feedbackMessage').value
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
             });
             if (resp.ok) {
                 showToast('Thanks for your feedback! We\'ll review it shortly.');
             } else {
-                showToast('Failed to send — please try again.');
+                throw new Error('API error');
             }
         } catch (err) {
-            showToast('Network error — please try again.');
+            // Fallback to Formspree
+            try {
+                await fetch('https://formspree.io/f/xdawqlvg', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ _subject: 'Cut2Fill — Feedback', name: payload.contact_name, email: payload.contact_email, ...formData })
+                });
+                showToast('Thanks for your feedback! We\'ll review it shortly.');
+            } catch (err2) {
+                showToast('Network error — please try again.');
+            }
         }
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Feedback';
