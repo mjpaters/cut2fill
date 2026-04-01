@@ -3,7 +3,7 @@ import asyncio
 import json
 import sys
 
-sys.path.insert(0, "C:/cut2fill/backend")
+sys.path.insert(0, "C:/dev/cut2fill/backend")
 
 from app.database import async_session, engine
 from app.services.source_health import run_all_checks
@@ -12,7 +12,7 @@ from sqlalchemy import text
 
 async def main():
     # Load registry
-    with open("C:/cut2fill/data/source-registry.json") as f:
+    with open("C:/dev/cut2fill/data/source-registry.json") as f:
         registry = json.load(f)
 
     sources = registry["sources"]

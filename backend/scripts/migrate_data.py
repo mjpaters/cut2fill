@@ -26,7 +26,7 @@ def parse_date(s: str | None) -> date | None:
 from app.database import async_session, engine
 
 SEED_DIR = Path(__file__).resolve().parent.parent / "seed"
-SOURCE_REGISTRY = Path("C:/cut2fill/scripts/source-registry.json")
+SOURCE_REGISTRY = Path("C:/dev/cut2fill/scripts/source-registry.json")
 
 
 async def migrate_facilities(session: AsyncSession):

@@ -1,0 +1,2483 @@
+================================================================================
+TMR REGISTERED SUPPLIERS - QUARRY PRODUCTS
+Queensland Department of Transport and Main Roads
+================================================================================
+
+Source: https://www.tmr.qld.gov.au/_/media/busind/businesswithus/approved-products-and-suppliers/pavements-materials-and-geotechnical/registered_suppliers_quarries.xlsx
+Data current as at: 25th February 2026
+Downloaded: 2026-03-25 19:57
+Saved to: C:\dev\cut2fill\docs	mr-registered-quarries.xlsx
+
+--------------------------------------------------------------------------------
+SUMMARY
+--------------------------------------------------------------------------------
+Total registered quarries: 296
+  Current: 280
+  Temporary Extension: 15
+  Interim: 1
+Local Government Areas represented: 59
+Unique operators: 181
+
+--------------------------------------------------------------------------------
+BREAKDOWN BY LOCAL GOVERNMENT AREA
+--------------------------------------------------------------------------------
+  Mackay Regional Council: 18
+  Isaac Regional Council: 15
+  Townsville City Council: 14
+  Gold Coast City Council: 14
+  Whitsunday Regional Council: 13
+  Central Highlands Regional Council: 12
+  Rockhampton Regional Council: 12
+  Burdekin Shire Council: 11
+  Toowoomba Regional Council: 10
+  Bundaberg Regional Council: 10
+  Brisbane City Council: 9
+  Mareeba Shire Council: 9
+  Fraser Coast Regional Council: 8
+  Sunshine Coast Regional Council: 7
+  Maranoa Regional Council: 6
+  Moreton Bay Regional Council: 6
+  Gladstone Regional Council: 6
+  Banana Shire Council: 6
+  Cloncurry Shire Council: 6
+  Gympie Regional Council: 5
+  Goondiwindi Regional Council: 5
+  North Burnett Regional Council: 5
+  Western Downs Regional Council: 5
+  Southern Downs Regional Council: 5
+  Cassowary Coast Regional Council: 5
+  Balonne Shire Council: 5
+  Cairns Regional Council: 5
+  Somerset Regional Council: 4
+  Scenic Rim Regional Council: 4
+  Lockyer Valley Regional Council: 4
+  Tablelands Regional Council: 4
+  South Burnett Regional Council: 4
+  Livingstone Shire Council: 4
+  Hinchinbrook Shire Council: 3
+  Charters Towers Regional Council: 3
+  Flinders Shire Council: 2
+  Richmond Shire Council: 2
+  Croydon Shire Council: 2
+  Mount Isa City Council: 2
+  Ipswich City Council: 2
+  Burke Shire Council: 2
+  Boulia Shire Council: 2
+  Douglas Shire Council: 2
+  Tweed Shire Council: 2
+  Carpentaria Shire Council: 2
+  Winton Shire Council: 1
+  Bourke Shire Council: 1
+  Barcaldine Regional Council: 1
+  Logan City Council: 1
+  Byron Bay Council : 1
+  Ballina Shire Council: 1
+  Redland City Council: 1
+  Murweh Shire Council: 1
+  Longreach Regional Council: 1
+  Cook Shire Council: 1
+  Etheridge Shire Council: 1
+  Noosa Shire Council: 1
+  Barcoo Shire Council: 1
+  Livingstone Regional Council: 1
+
+--------------------------------------------------------------------------------
+FULL QUARRY LIST
+--------------------------------------------------------------------------------
+
+1. Abbot Point Quarry (RQ163)
+   Operator: L D & L J Hillery Pty Ltd T/A Hillery Group
+   Location: Abbot Point Road, Abbot Point QLD 4805
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2024-048 | Expiry: 2026-04-15
+   Rock Type: Microgabbro/Dolerite with minor Micro-Monzodiorite/Dacite/Basalt Intrusions (Basic igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+2. Adbri Cape Cleveland Sand Pit (RQ352)
+   Operator: Hy-Tec Industries (Queensland) Pty Ltd
+   Location: 159 Meehan Road, Cape Cleveland QLD 4816
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-115 | Expiry: 2027-09-18
+   Rock Type: Quartzofeldspathic & Lithic Fine to Medium Aeolian Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A5+1. Adbri Fernvale Sand Plant (RQ078)
+   Operator: Hy-Tec Industries (Queensland) Pty Ltd
+   Location: Powell's Road (Off Brisbane Valley Highway), Fernvale QLD 4306
+   LGA: Somerset Regional Council
+   Status: CURRENT | Cert: 2025-130 | Expiry: 2027-10-24
+   Rock Type: Sand and Gravel (Intermediate Igneous)
+   Approved Products: Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A6+1. Adbri Goomeri Quarry (RQ171)
+   Operator: HY-Tec Industries (Queensland) Pty Ltd
+   Location: Adjacent to the Burnett Highway at CH51.86Km, Goomeri QLD 4601
+(8Kms south of Goomeri Township)
+   LGA: Gympie Regional Council
+   Status: CURRENT | Cert: 2024-157 | Expiry: 2026-11-19
+   Rock Type: Silica Undersaturated Glassy Andesitic lapilli Tuff (See comments below) (Intermediate Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material
+
+=A7+1. Adbri Kalbar Quarry (RQ364)
+   Operator: Hy-Tec Industries (Queensland) Pty Ltd trading as Zanow Concrete and Quarries Pty Ltd
+   Location: 637 Frazerview Road, Frazerview QLD 4309
+   LGA: Scenic Rim Regional Council
+   Status: CURRENT | Cert: 2024-153 | Expiry: 2026-11-22
+   Rock Type: Silica Undersaturated Glassy Trachyandesite /Trachyte/Latite (Intermediate Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A8+1. Adbri Quarries Bay Sand (RQ522)
+   Operator: Hy-Tec Industries (Queensland) Pty Ltd
+   Location: 50 Farrer Road, Pinkenba QLD 4008
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2025-137 | Expiry: 2027-07-21
+   Rock Type: Mainly Fine to Medium Grained Quartzose & Lithic Marine Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A9+1. Adbri Scotchy Pocket Quarry (RQ365)
+   Operator: HY-Tec Industries (Queensland) Pty Ltd
+   Location: Lindley's Lane, Off Bruce Highway, Curra QLD 4570
+   LGA: Gympie Regional Council
+   Status: CURRENT | Cert: 2025-111 | Expiry: 2026-11-26
+   Rock Type: Andesite Porphyry (Intermediate Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A10+1. Alex Fraser Archerfield Recycle Site (RQ527)
+   Operator: Queensland Recycling Pty Ltd T/A Alex Fraser Queensland
+   Location: 40-50 Beaufighter Avenue, Archerfield QLD 4108
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2024-116 | Expiry: 2026-09-30
+   Rock Type: Recycled Material  (Recycled Material Blend)
+   Approved Products: Unbound Paving Material
+
+=A11+1. Alex Fraser Nudgee Recycle Site (RQ526)
+   Operator: Queensland Recycling T/A Alex Fraser Queensland
+   Location: 1512 Nudgee Road, Nudgee Beach QLD 4014
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2024-117 | Expiry: 2026-09-30
+   Rock Type: Recycled Material  (Recycled Material Blend)
+   Approved Products: Unbound Paving Material
+
+=A12+1. Amby Compagnoni Quarry (RQ017)
+   Operator: Corbet Quarries and Concrete Pty Ltd
+   Location: Lot 62 Warrego Hwy, Wallhallow QLD 4465
+   LGA: Maranoa Regional Council
+   Status: CURRENT | Cert: 2025-145 | Expiry: 2027-11-24
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A13+1. Andrews M & K Quarry (RQ573)
+   Operator: M & K Andrews Transport (QLD) Pty Ltd
+   Location: Avenel Merton Road Yelarbon QLD 4388
+   LGA: Goondiwindi Regional Council
+   Status: CURRENT | Cert: 2024-034 | Expiry: 2026-04-04
+   Rock Type: Sandstone, Siltstone, Mudstone & Claystone (Sedimentary)
+   Approved Products: Unbound Paving Material
+
+=A14+1. Australian Sandstone Quarry (RQ590)
+   Operator: Batana Pty Ltd
+   Location: 215 Seventeen Mile Road Helidon QLD 4344
+   LGA: Lockyer Valley Regional Council
+   Status: CURRENT | Cert: 2025-054 | Expiry: 2027-05-09
+   Rock Type: Medium to Coarse Grained Residual Quartzo and Lithic Sand Derived from Weathered Quartzose Sandstone (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A15+1. Ayrshire Hills Quarry (RQ470)
+   Operator: Qcrush Pty Ltd
+   Location: Ayrshire Downs, Landsborough Highway Winton QLD 4735
+   LGA: Winton Shire Council
+   Status: CURRENT | Cert: 2024-051 | Expiry: 2026-04-26
+   Rock Type: Siltstone & Mudstone / Ferricrete & Silcrete (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A16+1. Bakers Creek Fine Sand (RQ185)
+   Operator: Johnny Farming Company
+   Location: Off Connors Rd, Bakers Creek, QLD 4740
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2024-032 | Expiry: 2026-05-07
+   Rock Type: Fine Grained Quartzofeldspathic & Lithic Tidal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A17+1. Baldwin's Cattle Creek Coarse Sand (RQ361)
+   Operator: Baldwins and Sons Pty Ltd
+   Location: Old Rawbelle Road, Rawbelle QLD 4630 
+   LGA: North Burnett Regional Council
+   Status: CURRENT | Cert: 2024-087 | Expiry: 2026-06-27
+   Rock Type: Quartzofeldspathic and Lithic Mainly Medium to Coarse Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A18+1. Barabon Quarry (RQ241)
+   Operator: Gromac Quarries (NQ) Pty Ltd
+   Location: Barabon Road, Richmond QLD 4821
+   LGA: Flinders Shire Council
+   Status: CURRENT | Cert: 2025-006 | Expiry: 2027-02-24
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A19+1. Bassridge Quarry (RQ442)
+   Operator: Bassridge Pty Ltd trading as Lillyman Earthmoving
+   Location: Stewart Park, Villadale Road, Off Flinders Highway QLD 4822
+   LGA: Richmond Shire Council
+   Status: CURRENT | Cert: 2025-052 | Expiry: 2027-05-28
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A20+1. Bassridge Quarry Supplementary Material Pit (RQ555)
+   Operator: Bassridge Pty Ltd trading as Lillyman Earthmoving
+   Location: Stewart Park, Villadale Road, Off Flinders Highway QLD 4822
+   LGA: Richmond Shire Council
+   Status: CURRENT | Cert: 2025-002 | Expiry: 2027-06-03
+   Rock Type: Fine to Medium Silty Sand (Supplementary Materials)
+   Approved Products: Supplementary Materials (Unbound)
+
+=A21+1. Bauhinia Quarry (RQ362)
+   Operator: Thomas Plant Hire
+   Location:  Lot 1 Dawson Highway, Bauhinia QLD 4718
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2024-080 | Expiry: 2026-04-23
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material
+
+=A22+1. Bay City Sand and Stone Pty Ltd (RQ088)
+   Operator: Bay City Sand and Stone Pty Ltd
+   Location: 23 Janet Road, Maryborough QLD 4650
+   LGA: Fraser Coast Regional Council
+   Status: CURRENT | Cert: 2024-137 | Expiry: 2026-10-28
+   Rock Type: Mainly Medium to Coarse Quartzofeldspathic and Lithic  Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A23+1. Bell Quarry (RQ578)
+   Operator: Kingaroy Quarry Supplies Pty Ltd
+   Location: 5750 Bunya Highway Cooranga QLD 4408
+   LGA: Western Downs Regional Council
+   Status: CURRENT | Cert: 2025-131 | Expiry: 2027-11-01
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A24+1. Belmore Creek Gravel Pit (RQ303)
+   Operator: Wells Plant Hire Pty Ltd
+   Location: Access via Belmore Road, adjacent to Gulf Developmental Road, Croydon QLD 4871
+   LGA: Croydon Shire Council
+   Status: Temporary Extension | Cert: 2024-009 | Expiry: 2026-03-10
+   Rock Type: Alluvial Gravel and Cobbles Derived Predominantly from Porphyritic Rhyodacite (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse
+
+=A25+1. Belmore Quarry (Basalt Source Pit) (RQ132)
+   Operator: L D & L J Hillery Pty Ltd T/A Hillery Group
+   Location: Weir Road, Adjacent to Collinsville Road, Collinsville QLD 4804
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2025-023 | Expiry: 2027-05-27
+   Rock Type: Hydrothermally Altered Basalt with infilled vein materials (Basic Igneous)
+   Approved Products: Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A26+1. Bengalla Sand Quarry (RQ584)
+   Operator: Johnstone Concrete and Quarries Pty Ltd
+   Location: "Bengalla", Kildonan Yelarbon Road, Yelarbon QLD 4388 
+   LGA: Goondiwindi Regional Council
+   Status: CURRENT | Cert: 2024-130 | Expiry: 2026-10-10
+   Rock Type: Quartzofeldspathic and Lithic Medium to Coarse Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Supplementary Materials (Unbound)
+
+=A27+1. Biboohra Sands (RQ468)
+   Operator: CQB Services Pty Ltd
+   Location: 225 Pickford Road, Biboohra QLD 4738
+   LGA: Mareeba Shire Council
+   Status: CURRENT | Cert: 2025-056 | Expiry: 2027-04-24
+   Rock Type: Medium to Mainly Coarse Grained Quartzofeldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A28+1. Big One Mine (Thorntonia Quarry) (RQ079)
+   Operator: Myuma Pty Ltd
+   Location: Yelvertoft Road, Thorntonia Station via Camooweal QLD 4828
+   LGA: Mount Isa City Council
+   Status: CURRENT | Cert: 2024-128 | Expiry: 2026-10-16
+   Rock Type: Crystalline and Micritic Limestone (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A29+1. Biggenden Quarry (RQ021)
+   Operator: Gregory (Tom) McIntyre
+   Location: 446 Biggenden Mines Road, Biggenden QLD 4621
+   LGA: North Burnett Regional Council
+   Status: (INTERIM ONLY) | Cert: 2025-130 | Expiry: 2026-02-28
+   Rock Type: Hornfelsed Calcsilicate Skarn (Refer Comments for details of source rock assemblage) (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A30+1. Black Hill Quarry (RQ334)
+   Operator: Blackwater Quarries Pty Ltd
+   Location: Walton Road, Bluff QLD 4702
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2025-022 | Expiry: 2027-03-04
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse)
+
+=A31+1. Black River Quarry (Barro Group Pty Ltd) (RQ022)
+   Operator: Barro Group Pty Ltd
+   Location: Gieseman Road, off Black River Road, Black River QLD 4818
+   LGA: Townsville City Council
+   Status: Temporary Extension | Cert: 2023-172 | Expiry: 2026-02-06
+   Rock Type: Rhyolite & Microgranite (See Comment 1 below) (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse)
+
+=A32+1. Blackwater (Bedford Weir) Quarry (RQ188)
+   Operator: Blackwater Quarries Pty Ltd
+   Location: 2403 Blackwater-Cooroorah Road, Blackwater QLD 4717
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2024-099 | Expiry: 2026-07-30
+   Rock Type: Olivine Basalt and Gabbro (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A33+1. Bland Residual Sand (Millmerran) (RQ095)
+   Operator: PearlJaney Pty Ltd
+   Location: 8884 Gore Highway, Millmerran QLD 4357
+   LGA: Toowoomba Regional Council
+   Status: CURRENT | Cert: 2024-085 | Expiry: 2026-07-15
+   Rock Type: Fine to Mainly Medium Grained Residual Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A34+1. Blue Rock Quarry (RQ001)
+   Operator: Fulton Hogan Quarries Pty Ltd
+   Location: Tamaree Road, Cedar Creek QLD 4207
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-150 | Expiry: 2026-11-22
+   Rock Type: Greenstone and Subordinate Metagreywacke (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A35+1. Bluff Quarry (RQ472)
+   Operator: Qcrush Pty Ltd
+   Location: Adjacent to Leichhardt River Road/ Lake Moondarra Drive, Mount Isa QLD 4825
+   LGA: Mount Isa City Council
+   Status: CURRENT | Cert: 2024-020 | Expiry: 2026-02-07
+   Rock Type: Metasandstone/Quartzite with minor metasiltstone & phyllite interbeds (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material
+
+=A36+1. Blyth Creek Sand (The Bend) (RQ404)
+   Operator: Roma Sands Pty Ltd
+   Location: The Bend Road, off Blythdale Road, Roma QLD 4455
+   LGA: Maranoa Regional Council
+   Status: CURRENT | Cert: 2024-105 | Expiry: 2026-07-15
+   Rock Type: Fine to Mainly Medium Grained Quartzofeldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A37+1. Bolzan Sand Supplies (Allora) (RQ108)
+   Operator: Bolzan Pty Ltd
+   Location: 1157 Dalrymple Creek Rd, Allora QLD 4362
+   LGA: Southern Downs Regional Council
+   Status: CURRENT | Cert: 2024-038 | Expiry: 2026-03-01
+   Rock Type: Fine to Coarse Quartzose Residual Sand Sourced from Weathered Sandstone (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A38+1. Bonassi Tully River Sand (Ikes Sand Deposit) (RQ538)
+   Operator: FA & J Bonassi Farming Pty Ltd
+   Location: Tully Hull Road, Lower Tully QLD 4854
+   LGA: Cassowary Coast Regional Council
+   Status: CURRENT | Cert: 2025-151 | Expiry: 2027-12-18
+   Rock Type: Medium to Coarse Grained Quartzose and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A39+1. Bonassi's Bilyana Quarry (RQ187)
+   Operator: FA & J Bonassi Farming Pty Ltd
+   Location: Lauder Road, Off Middle Murray Road, Off Upper Murray Road, Murray Upper QLD 4854
+   LGA: Cassowary Coast Regional Council
+   Status: CURRENT | Cert: 2025-020 | Expiry: 2027-03-03
+   Rock Type: Porphyritic Rhyodacite with minor Dolerite/Andesite Dykes (Acid Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A40+1. Bonathorne Quarry (RQ402)
+   Operator: K & D Hadenfeldt Pty Ltd
+   Location: 7785 Castlereagh Highway, Dirranbandi QLD 4486
+   LGA: Balonne Shire Council
+   Status: CURRENT | Cert: 2025-134 | Expiry: 2027-11-07
+   Rock Type: Siltstone (White) and Ridge Gravel (Red) (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A41+1. Boral Booyal Quarry (RQ198)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: 196 Ringwood Road, Booyal QLD 4671
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2024-066 | Expiry: 2026-02-06
+   Rock Type: Hornfelsed Volcanoclastic Metasiltstone with Minor Meta-arenite Interbeds (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A42+1. Boral Cedars Quarry (RQ110)
+   Operator: Boral Resources (QLD) Pty Ltd
+   Location: Woodwards Road, Off Holts Road, Mackay QLD 4502
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2024-075 | Expiry: 2026-05-09
+   Rock Type: Microdiorite/Andesite and Granodiorite with minor  dolerite dykes. (Intermediate Igneous )
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A43+1. Boral Dundowran Quarry (RQ028)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: Lower Mountain Road, Dundowran QLD 4655
+   LGA: Fraser Coast Regional Council
+   Status: Temporary Extension | Cert: 2024-018 | Expiry: 2026-03-03
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A44+1. Boral Malu Quarry (RQ036)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: Malu Road, Off Warrego Highway, Malu QLD 4403
+   LGA: Toowoomba Regional Council
+   Status: CURRENT | Cert: 2024-152 | Expiry: 2026-11-22
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material
+
+=A45+1. Boral Moy Pocket Quarry (RQ037)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: 720 Moy Pocket Road, Kenilworth QLD 4574
+   LGA: Gympie Regional Council
+   Status: CURRENT | Cert: 2025-060 | Expiry: 2027-05-02
+   Rock Type: Latite porphyry (Intermediate Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A46+1. Boral Narangba Quarry (RQ009)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: 485 Raynbird Road, Raynbird, Narangba, QLD 4504
+   LGA: Moreton Bay Regional Council
+   Status: CURRENT | Cert: 2026-007 | Expiry: 2028-01-27
+   Rock Type: Greenstone/Hornfelsed Greenstone (Metamorphic)
+   Approved Products: Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A47+1. Boral Ormeau Quarry (RQ010)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: 578 Upper Ormeau Road, Kingsholme QLD 4208
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-156 | Expiry: 2026-10-29
+   Rock Type: Metagreywacke (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A48+1. Boral Petrie Quarry (RQ011)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: 645 Dayboro Road, Whiteside QLD 4502
+   LGA: Moreton Bay Regional Council
+   Status: CURRENT | Cert: 2024-120 | Expiry: 2026-10-01
+   Rock Type: Greenstone (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A49+1. Boral Purga Quarry (RQ012)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: T Morrows Road, Purga QLD 4356
+   LGA: Ipswich City Council
+   Status: CURRENT | Cert: 2024-068 | Expiry: 2026-06-28
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse)
+
+=A50+1. Boral Redlynch Quarry (RQ013)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: 622 Redlynch Intake Road, Redlynch QLD 4870
+   LGA: Cairns Regional Council
+   Status: CURRENT | Cert: 2025-084 | Expiry: 2027-07-04
+   Rock Type: Metagreywacke (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A51+1. Boral Roseneath Quarry (RQ190)
+   Operator: Boral Resources (QLD) Pty Ltd
+   Location: 720 Stuart Drive, Roseneath QLD 4816
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2024-146 | Expiry: 2026-11-20
+   Rock Type: Rhyodacitic Acid Tuff with subordinate Rhyolite & Andesite (Acid Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A52+1. Boral Tichum Creek Quarry (RQ047)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: 3445 Kennedy Highway, Tichum Creek QLD 4880
+   LGA: Tablelands Regional Council
+   Status: CURRENT | Cert: 2025-061 | Expiry: 2027-06-05
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A53+1. Boral Tomato Island Quarry (RQ092)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: Tomato Island Road (off Branyan Road), Bundaberg QLD 4670
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2025-164 | Expiry: 2027-10-23
+   Rock Type: Medium to Coarse Quartzofeldspathic and Lithic  Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A54+1. Boral Wellcamp Quarry (RQ049)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: Toowoomba-Cecils Plains Road, Wellcamp (via Toowoomba) QLD 4350
+   LGA: Toowoomba Regional Council
+   Status: CURRENT | Cert: 2024-140 | Expiry: 2026-10-03
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A55+1. Boral West Burleigh Quarry (RQ016)
+   Operator: Boral Resources (Qld) Pty Ltd
+   Location: Lot 9, Bermuda Street, Burleigh Heads QLD 4220
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2026-008 | Expiry: 2027-12-12
+   Rock Type: Metagreywacke and Carbonaceous Metasiltstone (Argillite) (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A56+1. BQC Sands Pty Ltd (RQ082)
+   Operator: BQC Sands Pty Ltd
+   Location: Bed of Burdekin River, 5-11 Mackenzie Street, Off Old Ayr-Home Hill Road, McDesme QLD 4807 and 5-11 MacKenzie Street, Ayr QLD4807
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2025-068 | Expiry: 2027-06-12
+   Rock Type: Mainly Medium to Coarse Quartzofeldspathic and Lithic  Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A57+1. Bracalba Quarry (RQ002)
+   Operator: Brisbane City Council, Asphalt and Aggregate Branch
+   Location: 1865 D'Aguilar Highway, Bracalba QLD 4514
+   LGA: Moreton Bay Regional Council
+   Status: CURRENT | Cert: 2025-069 | Expiry: 2027-06-19
+   Rock Type: Greenstone & Granite with minor hornfels (Metamorphic and Acid Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A58+1. Braeside Quarry (RQ150)
+   Operator: Australian Crushing Services (ACS) Pty Ltd
+   Location: 21229 New England Highway, Braeside QLD 4370 
+   LGA: Southern Downs Regional Council
+   Status: CURRENT | Cert: 2024-122 | Expiry: 2026-10-18
+   Rock Type: Hornfels (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A59+1. Brendale Sand & Gravel Operation (RQ025)
+   Operator: Neilsens Quality Gravels Pty Ltd
+   Location: Johnstone Road, Brendale QLD 4500
+   LGA: Moreton Bay Regional Council
+   Status: CURRENT | Cert: 2025-036 | Expiry: 2027-04-29
+   Rock Type: Natural Sand and Gravel derived mainly from Quartzite, Metasiltstone, Vein Quartz, Metagreywacke and Greenstone sources. (Metamorphic)
+   Approved Products: Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A60+1. Bromelton North Quarry (RQ191)
+   Operator: Neilsens Quality Gravels Pty Ltd
+   Location: Sandy Creek Road, Bromelton QLD 4285
+   LGA: Scenic Rim Regional Council
+   Status: CURRENT | Cert: 2025-142 | Expiry: 2027-11-17
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material
+
+=A61+1. Bromelton Quarry (RQ053)
+   Operator: Bromelton Quarry Pty Ltd
+   Location: 325 Sandy Creek Road, Bromelton QLD 4285
+   LGA: Scenic Rim Regional Council
+   Status: CURRENT | Cert: 2025-140 | Expiry: 2027-12-09
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A62+1. Brookhill Quarry (RQ133)
+   Operator: Stradacon Penna Pty Ltd
+   Location: 1-3 Pats Road, Brookhill QLD 4816
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-095 | Expiry: 2027-09-16
+   Rock Type: Porphyritic Rhyolite with minor Quartz Latite/Microgranite Intrusions and Andesite/Trachy Andesite/Dolerite Dykes (Acid Igneous)
+   Approved Products: Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A63+1. Brookview Quarry (Pittsworth) (RQ333)
+   Operator: Pearljaney Pty Ltd
+Trading as PK & BT Bland Rural Enterprises Pty Ltd
+   Location: Jentz Road, Scrubby Mountain QLD 4356
+   LGA: Toowoomba Regional Council
+   Status: Temporary Extension | Cert: 2023-113 | Expiry: 2026-02-23
+   Rock Type: Silica Undersaturated Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A64+1. Brumby Quarry (RQ239)
+   Operator: QCrush Pty Ltd
+   Location: Wills Development Road, Gregory QLD 4830 (26km west from Gregory Township)
+   LGA: Burke Shire Council
+   Status: CURRENT | Cert: 2025-033 | Expiry: 2027-05-02
+   Rock Type: Partially Duricrustic Ferruginous and Silicified Siltstone (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A65+1. Buckley Concrete Recycling Site (RQ541)
+   Operator: Buckley Concrete Recycling Pty Ltd
+   Location: 5 Buckley Drive, Gympie QLD 4570
+   LGA: Gympie Regional Council
+   Status: CURRENT | Cert: 2025-028 | Expiry: 2027-03-10
+   Rock Type: Recycled Material  (Recycled Material Blend)
+   Approved Products: Unbound Paving Material
+
+=A66+1. Burke River Sand Deposit (RQ520)
+   Operator: PE & GC Harris Road Contractors Pty Ltd
+   Location: Burke River, Winton-Boulia Road, Boulia QLD 4829
+   LGA: Boulia Shire Council
+   Status: CURRENT | Cert: 2025-092 | Expiry: 2027-07-30
+   Rock Type: Mainly Medium to Coarse Grained Quartzose-Feldspathic & Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A67+1. Burnett River Sand (RQ230)
+   Operator: Coeur D’Alene Pty Ltd and Calbeninka Pty Ltd T/A Boodle's Concrete
+   Location: Located in bed  off Burnett River, Lot 64 Richards Rd, Gayndah QLD 4625
+   LGA: North Burnett Regional Council
+   Status: CURRENT | Cert: 2025-049 | Expiry: 2027-05-23
+   Rock Type: Medium to Coarse Grained Quartzofeldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A68+1. Bussey (Palmyra) Quarry (RQ218)
+   Operator: Summit Construction Materials Pty Ltd
+   Location: Boomerang Road, Palmyra QLD 4751  
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-150 | Expiry: 2027-12-17
+   Rock Type: Hornfelsed Carbonaceous Mudstone/ Siltstone/Arenite with minor Diorite (Feldspar Porphyry) & Andesite Dyke/Sill Intrusions (Metamorphic)
+   Approved Products: Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A69+1. Byrne Bros Mary River Quarry (RQ117)
+   Operator: Byrne Bros Pty Ltd
+   Location: Jupiter Street (off Queen St), 344 Queen Street, Maryborough Qld 4650
+   LGA: Fraser Coast Regional Council
+   Status: CURRENT | Cert: 2023-116 | Expiry: 2027-01-06
+   Rock Type: Natural Alluvial Sand and Gravel (Metamorphic)
+   Approved Products: Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A70+1. Byrock (Boral) Quarry (RQ146)
+   Operator: Boral  Resources (Country) Pty Ltd
+   Location: Coronga Peak Road, Cobar, (Via Cobar Street Byrock NSW 2831)
+   LGA: Bourke Shire Council
+   Status: CURRENT | Cert: 2024-022 | Expiry: 2026-04-03
+   Rock Type: Felspathoid Olivine Basalt (Leucite Basanite) (Basic Igneous)
+   Approved Products: Cover Aggregate
+
+=A71+1. Calliope Pit (RQ392)
+   Operator: Grycan Pty Ltd, T/A Blomfield Excavations
+   Location: Carrara Road, Calliope QLD 4680 (approximately 8km northwest of Calliope)
+   LGA: Gladstone Regional Council
+   Status: CURRENT | Cert: 2025-101 | Expiry: 2027-09-17
+   Rock Type: Mainly Medium to Coarse Quartzofeldspathic & Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A72+1. CAMM North Quarry (RQ347)
+   Operator: CAMM North Pty Ltd
+   Location: via Toomulla Road, Off Bruce Highway, Rollingstone QLD 4816
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-004 | Expiry: 2027-01-15
+   Rock Type: Porphyritic Rhyolite/Microgranite and Granitic Porphyry (Acid Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material
+
+=A73+1. CAMM Roseneath Quarry (RQ480)
+   Operator: CAMM Quarries Pty Ltd
+   Location: 36 Curley Circuit, Roseneath QLD 4811
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-004 | Expiry: 2027-01-15
+   Rock Type: Rhyodacitic Acid Tuff with Rhyolite/Microgranite Intrusions and minor Microdiorite/ Dacite/Andesite Dykes (Acid Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A74+1. Cape Fine Sands (CFS) (RQ294)
+   Operator: Bedrock Landscape Suppliers Townsville Pty Ltd 
+   Location: 159 Carty Road, Cape Cleveland QLD 4810 
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-044 | Expiry: 2027-04-15
+   Rock Type: Mainly Fine to Medium Quartzofeldspathic and Lithic Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A75+1. Captains Mountain Quarry (RQ253)
+   Operator: Corbet Quarries and Concrete Pty Ltd
+   Location: 113 -117 Blackwell Road,  Captains Mountain QLD 4357
+   LGA: Toowoomba Regional Council
+   Status: CURRENT | Cert: 2024-058 | Expiry: 2026-06-25
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A76+1. Castle Creek Quarry (RQ135)
+   Operator: Regional Group Australia (RGA) Pty Ltd
+   Location: 499 Defence Road, Castle Creek QLD 4718
+   LGA: Banana Shire Council
+   Status: CURRENT | Cert: 2025-128 | Expiry: 2027-11-26
+   Rock Type: Andesite (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material
+
+=A77+1. Castlereagh Quarry (RQ224)
+   Operator: Wagners Quarries Pty Ltd
+   Location: Zingari Road, Cloncurry QLD 4824
+   LGA: Cloncurry Shire Council
+   Status: CURRENT | Cert: 2025-109 | Expiry: 2027-11-13
+   Rock Type: Calc-Silicate Hornfels (Granofels) and Hornfelsed Calcareous Metasiltstone (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A78+1. Central Highlands Quarry (RQ399)
+   Operator: Crystal Mining Pty Ltd
+   Location: Off Rubyvale - Sapphire Road (Old Quarry Road), Rubyvale QLD 4702
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2022-034 | Expiry: 2026-04-04
+   Rock Type: Fine to coarse quartzose and lithic alluvial sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A79+1. Chesalon (Alpha) Quarry (RQ112)
+   Operator: Michael Horman Transport Pty Ltd
+   Location: 2027 Alpha-Tambo Road, Alpha QLD 4725 (Approximately 19km south of Alpha)
+   LGA: Barcaldine Regional Council
+   Status: CURRENT | Cert: 2025-072 | Expiry: 2027-06-30
+   Rock Type: Porphyritic Andesite (Intermediate Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Asphalt Aggregate - Fine, Unbound Paving Material
+
+=A80+1. Chevallum Sand Plant (RQ219)
+   Operator: Cordwell Resources Pty Ltd
+   Location: Winston Road South, Off Chevallum Road, Chevallum QLD 4555
+   LGA: Sunshine Coast Regional Council
+   Status: CURRENT | Cert: 2024-078 | Expiry: 2026-06-27
+   Rock Type: Fine to Medium Quartz Residual Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A81+1. Cloncurry River Sand & Gravel Operation (RQ225)
+   Operator: Lawlor Contracting Pty Ltd
+   Location: Burke Development Road, Cloncurry QLD 4824
+   LGA: Cloncurry Shire Council
+   Status: CURRENT | Cert: 2025-027 | Expiry: 2027-12-05
+   Rock Type: Alluvial Sand and Gravel (Metamorphic)
+   Approved Products: Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material
+
+=A82+1. Clutha Creek Sands (CCS Group) (RQ165)
+   Operator: CCS Materials Pty Ltd
+   Location: Clutha Creek Road (Off Tamborine Waterford Road), Tamborine QLD 4270
+   LGA: Logan City Council
+   Status: CURRENT | Cert: 2025-035 | Expiry: 2027-03-19
+   Rock Type: Fine to coarse quartzose and lithic residual sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A83+1. Coastal Quarries Pty Ltd (RQ565)
+   Operator: Ross Dorrens Garnsey
+   Location: Mossman Daintree Road, Rocky Point QLD 4873
+   LGA: Douglas Shire Council
+   Status: CURRENT | Cert: 2025-148 | Expiry: 2027-10-21
+   Rock Type: Loamy Sandy Silt/Silty Sand (Supplementary Materials )
+   Approved Products: Supplementary Materials (Unbound)
+
+=A84+1. Coastal Sands (RQ194)
+   Operator: Genesis Holdings (QLD) Pty Ltd
+   Location: 150 Mill Road, Steiglitz QLD 4207
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-057 | Expiry: 2026-06-25
+   Rock Type: Fine to Medium Grained Quartzose Coastal Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A85+1. Coles Quarry (RQ419)
+   Operator: Coles Quarry Supplies Pty Ltd
+   Location: Lot 178 & Lot 179 Mount Goonaneman Road, Dallarnil QLD 4621
+   LGA: North Burnett Regional Council
+   Status: CURRENT | Cert: 2024-061 | Expiry: 2026-04-22
+   Rock Type: Hornfelsed Volcanoclastic Siltstone and Sandstone (Metamorphic)
+   Approved Products: Cover Aggregate, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A86+1. Conondale Quarry (RQ495)
+   Operator: SMSF Property Resources Pty Ltd
+   Location: 2316 Maleny-Kenilworth Rd, Conondale QLD 4552
+   LGA: Sunshine Coast Regional Council
+   Status: CURRENT | Cert: 2025-082 | Expiry: 2027-07-23
+   Rock Type: Fine to Coarse Grained Quartzofeldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A87+1. Coominya Sand Plant (RQ325)
+   Operator: Hy-Tec Industries (Qld) Pty Ltd
+   Location: Fox's Road, Off Coominya-Connection Road, Coominya QLD 4311
+   LGA: Somerset Regional Council
+   Status: CURRENT | Cert: 2024-072 | Expiry: 2026-05-08
+   Rock Type: Mainly Medium to Coarse Grained Quartzose & Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A88+1. Coorooman Quarry (RQ531)
+   Operator: Barlows Earthmoving Pty Ltd
+   Location: 2816 Emu Park Road, Coorooman QLD 4702
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2024-123 | Expiry: 2026-08-01
+   Rock Type: Volcanoclastic Metasiltstone/Metasandstone (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Supplementary Materials (Unbound)
+
+=A89+1. Corridor Sands Pty Ltd (RQ166)
+   Operator: Corridor Sands Pty Ltd
+   Location: 71 Marks Road, Woongoolba QLD 4207
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-094 | Expiry: 2026-05-30
+   Rock Type: Fine to Medium Quartzofeldspathic & Lithic Alluvial sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A90+1. Cryna Road Quarry (RQ097)
+   Operator: Neilsens Quality Gravels Pty Ltd
+   Location: 468 Cryna Road, Beaudesert QLD 4285
+   LGA: Scenic Rim Regional Council
+   Status: CURRENT | Cert: 2025-141 | Expiry: 2027-11-17
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A91+1. Cullen Island - Ron Camm Sand (RQ215)
+   Operator: Mobile Crushing Co. Pty. Ltd T/A Mackay Sand and Gravel Sales
+   Location: Access via Hume Street, West Mackay QLD 4740  
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2024-088 | Expiry: 2026-09-06
+   Rock Type: Quartzofeldspathic and Lithic Medium to Coarse Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A92+1. Cungulla Fine Sand (RQ027)
+   Operator: Hanson Construction Materials Pty Ltd
+   Location: Carty Road, Cape Cleveland QLD 4810 (Off Goodsell Road)
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2024-106 | Expiry: 2026-09-16
+   Rock Type: Mainly Fine to Medium Quartzofeldspathic Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A93+1. Currumbin Minerals Sand (RQ494)
+   Operator: Currumbin Minerals Pty Ltd
+   Location: Lot 101, Stewart Road, Currumbin QLD 4223
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2025-139 | Expiry: 2027-11-14
+   Rock Type: Fine to Medium Quartz Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A94+1. Cutler's Sand Pit - St George (RQ257)
+   Operator: St George Excavators Pty Ltd
+   Location: Whyenbah Road, St George QLD 4487
+   LGA: Balonne Shire Council
+   Status: CURRENT | Cert: 2024-045 | Expiry: 2026-03-25
+   Rock Type: Mainly Medium to Coarse Quartzose Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A95+1. Daunia Quarry (RQ421)
+   Operator: Moorvale Earthmoving Pty Ltd
+   Location: 1566 Barada Barna Road Valkyrie QLD 4742. (Previously 2503 Annandale Road, Coppabella QLD 4741)
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2024-040 | Expiry: 2026-05-28
+   Rock Type: Feldspar Porphyry (Acid Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A96+1. Don River (Bowen) Sand Deposit (RQ311)
+   Operator: L D & L J Hillery Pty Ltd T/A Hillery Group
+   Location: Near Russel's Crossing, Off Lower Don Road, Millers Lane, Don River, Bowen QLD 4805
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2024-100 | Expiry: 2026-07-15
+   Rock Type: Mainly Medium to Coarse Grained Lithic and Quartzofeldspathic Alluvial Sand with Granitic Derivation. (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A97+1. Don River Mouth Sand (RQ436)
+   Operator: Mirthill Pty Ltd / Pat McDonnell Earthmoving
+   Location: Bed of Don River near mouth, Off Lower Don Road, Bowen QLD 4805
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2024-071 | Expiry: 2026-07-16
+   Rock Type: Fine to Mainly Medium Quartzofeldspathic & Lithic Alluvial Sand of mainly granitoid derivation (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A98+1. Donsford Crossing Sand (RQ372)
+   Operator: Pat McDonnell Earthmoving
+   Location: Adjacent to Lot 1 and Lot 46 on Plan B6611, Off Bowen Developmental Road, Bowen QLD 4805
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2025-046 | Expiry: 2027-05-12
+   Rock Type: Mainly Medium to Coarse Quartzofeldspathic and Lithic Alluvial Sand of Granitoid Derivation (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A99+1. Dulong Quarry (RQ197)
+   Operator: Sunshine Coast Regional Council
+   Location: Sherwell Road (near Dulong School Rd intersection), Dulong QLD 4560
+   LGA: Sunshine Coast Regional Council
+   Status: CURRENT | Cert: 2025-057 | Expiry: 2026-04-26
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A100+1. Dundowran West Quarry (Barro Group) (RQ055)
+   Operator: Dundowran Blue Metal Quarries Pty Ltd
+   Location: 351 Hornes Road, Takura QLD 4655
+   LGA: Fraser Coast Regional Council
+   Status: CURRENT | Cert: 2024-136 | Expiry: 2026-10-23
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material, High Permeability Drainage
+
+=A101+1. Dunloe Sands (RQ423)
+   Operator: Holcim Australia Pty Ltd
+   Location: Kellehers Road & Pottsville Road, Dunloe Park, Pottsville NSW 2484
+   LGA: Byron Bay Council 
+   Status: CURRENT | Cert: 2023-100 | Expiry: 2027-09-17
+   Rock Type: Fine to Medium Quartz Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A102+1. Eagleby Sand Deposit (RQ196)
+   Operator: Carbrook Sands Pty Ltd
+   Location: 625 Beenleigh-Redland Bay Road, Carbrook QLD 4127
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-059 | Expiry: 2026-05-07
+   Rock Type: Fine to Mainly Medium Quartzofeldspathic & Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A103+1. Emu Creek Sand Quarry (RQ550)
+   Operator: Conmat Pty Ltd
+   Location: ML20663 Tinaroo Creek Road, Mareeba QLD 4880
+   LGA: Mareeba Shire Council
+   Status: CURRENT | Cert: 2025-039 | Expiry: 2027-04-14
+   Rock Type: Medium to Mainly Coarse Grained Quartzofeldspathic and Lithic Alluvial/Colluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A104+1. Eureka Quarry (RQ340)
+   Operator: Quarries of Queensland Pty Ltd
+   Location: 2098 Yan Yan Road, Capella QLD 4723
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2024-082 | Expiry: 2026-10-03
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material
+
+=A105+1. Fairfield Quarry (RQ199)
+   Operator: Regional Quarries Australia Pty Ltd
+   Location: Peak Downs Highway, Wolfgang QLD 4721
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-058 | Expiry: 2027-06-04
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A106+1. Fairview Quarry (RQ220)
+   Operator: Regional Group Australia (RGA) Pty Ltd
+   Location: 310 Fairview Road, Banana QLD 4702
+   LGA: Banana Shire Council
+   Status: CURRENT | Cert: 2025-086 | Expiry: 2027-09-16
+   Rock Type: Andesitic Porphyry (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A107+1. Fairy Bower Quarry (RQ563)
+   Operator: Lewdalla Group Pty Ltd T/A QVC Operations
+   Location: 247 McLaughlin Street Gracemere QLD4700
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2024-121 | Expiry: 2026-10-09
+   Rock Type: Volcanoclastic Metasiltstone and Metasandstone with minor Andesitic Agglomerate & Dolerite Dykes (Metamorphic)
+   Approved Products: Unbound Paving Material
+
+=A108+1. Farleigh Quarry (RQ136)
+   Operator: Heidelberg Materials Australia Pty Ltd
+   Location: 398 Farleigh Habana Road, Habana QLD 4740
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-093 | Expiry: 2027-08-01
+   Rock Type: Meta-basalt / Meta-andesitic Porphyry and Subordinate Meta-microdiorite Dykes (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A109+1. Ferny Grove Quarry (RQ056)
+   Operator: Heidelberg Materials Australia Pty Ltd
+   Location: 164 Upper Kedron Road, Ferny Grove QLD 4055
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2025-063 | Expiry: 2027-07-03
+   Rock Type: Pelitic hornfels with minor granite intrusions and quartz veins (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse)
+
+=A110+1. Foxdale Quarry (RQ267)
+   Operator: Whitsunday Regional Council
+   Location: Quarry Road, Proserpine QLD 4800
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2024-147 | Expiry: 2026-11-21
+   Rock Type: Andesitic Tuff and Microdiorite (See Comments 1 & 2 below) (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A111+1. Fraser Coast Sand & Gravel (RQ071)
+   Operator: Yougro Pty Ltd
+   Location: 12 Toogoom Cane Road, Takura QLD 4655
+   LGA: Fraser Coast Regional Council
+   Status: CURRENT | Cert: 2024-144 | Expiry: 2026-11-01
+   Rock Type: Fine Grained Dunal Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A112+1. Gladstone Park Sand Quarry (RQ464)
+   Operator: Humphries Pty Ltd
+   Location: Bed of the Don River, Gladstone Park Road, Bowen QLD 4806
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2026-015 | Expiry: 2028-01-27
+   Rock Type: Medium to Coarse Quartzofeldspathic and Lithic Alluvial Sand derived from a granitoid origin (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A113+1. Glasshouse Quarry (RQ031)
+   Operator: Hanson Construction Materials Pty Ltd
+   Location: Corner Old Gympie Road & Beerwah Mountain Road, Glass House Mountains QLD 4518
+   LGA: Sunshine Coast Regional Council
+   Status: CURRENT | Cert: 2024-104 | Expiry: 2026-09-16
+   Rock Type: Latite Tuff (Intermediate Igneous)
+   Approved Products: Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A114+1. Glendon Quarry (RQ201)
+   Operator: Regional Quarries Australia Pty Ltd
+   Location: Glendon Road, Anakie QLD 4702  
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2025-107 | Expiry: 2027-10-20
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A115+1. Gordonbrook Sand Quarry (RQ476)
+   Operator: Second Chance (AUST) Pty Ltd T/A Mick Johnson Haulage
+   Location: Wilson Road, Gordonbrook QLD 4610
+   LGA: South Burnett Regional Council
+   Status: CURRENT | Cert: 2026-003 | Expiry: 2028-01-07
+   Rock Type: Fine to Coarse Quartzofeldspathic Alluvial and Eluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A116+1. Gordon's Quarry Bowen (RQ085)
+   Operator: L D & L J Hillery Pty Ltd T/A Hillery Group
+   Location: 2204, Bowen Developmental Road, Bowen QLD 4804
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2024-096 | Expiry: 2026-10-02
+   Rock Type: Micro-granodiorite / Microgranite with minor Andesite Dykes (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A117+1. Granton (Boulia) Quarry (RQ518)
+   Operator: PE & GC Harris Road Contractors Pty Ltd
+   Location: Granton Station, Winton-Boulia Road, Boulia QLD 4829 (54km east of Boulia)
+   LGA: Boulia Shire Council
+   Status: CURRENT | Cert: 2025-030 | Expiry: 2027-03-18
+   Rock Type: Micritic Limestone (Sedimentary)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A118+1. Graymont (Calliope) Quarry (RQ075)
+   Operator: Graymont (Calliope) Pty Limited
+   Location: MS24 Taragoola Road, Calliope QLD 4680
+   LGA: Gladstone Regional Council
+   Status: CURRENT | Cert: 2025-113 | Expiry: 2027-10-23
+   Rock Type: Recrystallized Fossiliferous Limestone (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A119+1. Grosvenor Quarry (RQ202)
+   Operator: Quarrico Products Pty Ltd
+   Location: Off Moranbah Access Road, Moranbah QLD 4744
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-099 | Expiry: 2027-07-25
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material
+
+=A120+1. Gulera Road Pit (RQ545)
+   Operator: Tierney Crushing & Transport Pty Ltd
+   Location: 234 Gulera Road, Kumbarilla, QLD 4405
+   LGA: Western Downs Regional Council
+   Status: CURRENT | Cert: 2024-079 | Expiry: 2026-05-16
+   Rock Type: Sandstone, Siltstone, Mudstone with Partly Ferruginised and Silicified Zones (Sedimentary)
+   Approved Products: Unbound Paving Material, Supplementary Materials (Unbound)
+
+=A121+1. Hard Rock Quarries (Yerra - Black Pit) (RQ437)
+   Operator: Quarry Boys Gympie Pty Ltd
+   Location: 776 Yerra Road, Yerra QLD 4650
+   LGA: Fraser Coast Regional Council
+   Status: CURRENT | Cert: 2024-097 | Expiry: 2026-07-30
+   Rock Type: Trachyte (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A122+1. Harlaxton Quarry (RQ005)
+   Operator: Quarry Products Pty Ltd
+   Location: 3 Munro Street, off New England Highway Harlaxton QLD 4350
+   LGA: Toowoomba Regional Council
+   Status: CURRENT | Cert: 2024-160 | Expiry: 2026-12-19
+   Rock Type:  Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A123+1. Harlin Toogoolawah Hardrock Quarry (Karreman) (RQ271)
+   Operator: Karreman Quarries Pty Ltd
+   Location: Sinnamon Lane, Harlin QLD 4306
+   LGA: Somerset Regional Council
+   Status: CURRENT | Cert: 2025-059 | Expiry: 2027-03-26
+   Rock Type: Andesitic Lithic Tuff and Microdiorite Porphyry (Intermediate Igneous )
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A124+1. Harris (Palmyra) Quarry (RQ137)
+   Operator: Summit Construction Materials Pty Ltd
+   Location: 303 Bells Road, Palmyra QLD 4751
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2024-134 | Expiry: 2026-11-18
+   Rock Type: Hornfelsed Volcanoclastic Arenite/Siltstone/Ash tuff and minor andesite intrusions  (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A125+1. Harrybrandt Sand Quarry (RQ438)
+   Operator: Glenn Howell - HB Contractors Pty Ltd
+   Location: Harrybrandt Creek, Off Fitzroy Development Road, Nebo QLD 4742
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-038 | Expiry: 2027-04-29
+   Rock Type: Fine to Mainly Medium Quartzose Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A126+1. Hart Street Sand Plant (Oxenford Quarry) (RQ512)
+   Operator: Nucrush Pty Ltd
+   Location: 19 Hart Street, Upper Coomera QLD 4210
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-115 | Expiry: 2026-07-30
+   Rock Type: Fine to Medium Quartz Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A127+1. Haughton River Sand (Burdekin Transport Services) (RQ501)
+   Operator: Burdekin Transport Services Pty Ltd
+   Location: Bed of Haughton River, off Coach road, Adjacent to 1004 Upper Haughton Road, Upper Haughton, QLD 4809
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2024-083 | Expiry: 2026-09-06
+   Rock Type: Medium to Coarse Lithic-Quartzose Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A128+1. Haughton River Sand Deposit (McCahill) (RQ489)
+   Operator: Greg McCahill Earthworks & Haulage Pty Ltd operating as Bulk Sand and Natural Aggregates (BSNA)
+   Location: Corner of Poletti Road & Upper Haughton Road, Giru QLD 4809
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2024-143 | Expiry: 2026-11-18
+   Rock Type: Medium to Coarse Quartzose Feldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A129+1. Haughton River Sand Pit (Barro Group) (RQ270)
+   Operator: Barro Group Pty Ltd
+   Location: Bahrs Road, Giru QLD 4809
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2024-154 | Expiry: 2026-11-22
+   Rock Type: Medium to Coarse Quartzose Feldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A130+1. Hemmant Sand Plant (RQ156)
+   Operator: Riverside Industrial Sands Pty Ltd
+   Location: Sand is dredged from the Spitfire Channel in the Northern Moreton Bay and processed at 168 Anton Road, Hemmant QLD 4174
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2024-118 | Expiry: 2026-10-30
+   Rock Type: Fine to Mainly Medium Grained Quartz Marine Bay Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A131+1. Herbert River (Spina) Sand Pit (RQ126)
+   Operator: Zanghi Earthmoving Pty Ltd for Holcim (Australia) Pty Ltd
+   Location: Access via Ingham-Abergowrie Road, Abergowrie QLD 4850
+   LGA: Hinchinbrook Shire Council
+   Status: CURRENT | Cert: 2025-048 | Expiry: 2027-05-26
+   Rock Type: Mainly Medium to Coarse Grained Quartzofeldspathic and Lithic  Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Coarse)
+
+=A132+1. Hewitt's Pit (RQ114)
+   Operator: Mobile Crushing Co. Pty Ltd
+   Location: The bank of the Pioneer River, via Mia Mia Connection Road, QLD, Pinevale QLD 4754
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2024-091 | Expiry: 2026-07-26
+   Rock Type: Mainly Medium to Coarse Feldspathic Quartzose Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A133+1. Hiles Pit (Woodlands Station) (RQ398)
+   Operator: Townsville Mini Loads
+   Location: Lot 172 Woodlands Road, Barringha QLD 4816
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2022-052 | Expiry: 2026-06-19
+   Rock Type: Fine to Medium Quartz Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A134+1. Hodgleigh Quarry (South Burnett Quarries) (RQ100)
+   Operator: South Burnett Quarries Pty Ltd
+   Location: 22 Hodgleigh North Road, Hodgleigh QLD 4615
+   LGA: South Burnett Regional Council
+   Status: CURRENT | Cert: 2024-161 | Expiry: 2026-12-20
+   Rock Type: Hornfels and Quartzite (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A135+1. Holcim Alligator Creek Sand Deposit (RQ216)
+   Operator: Holcim (Australia) Pty Ltd
+   Location: Off Bruce Highway, Sarina QLD 4737 (Approximately 20km South of Mackay)
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-055 | Expiry: 2027-04-22
+   Rock Type: Mainly Fine Grained Quartzofeldspathic and Lithic  Alluvial/Tidal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A136+1. Holcim Beenleigh Quarry (RQ147)
+   Operator: Holcim Australia Pty Ltd
+   Location: 134 Peachy Road, Luscombe QLD 4207
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2025-126 | Expiry: 2027-09-22
+   Rock Type: Metagreywacke and Metasiltstone (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A137+1. Holcim Bli Bli Quarry (RQ023)
+   Operator: Holcim (Australia) Pty Ltd
+   Location: 110 Cooney Road, Bli Bli QLD 4560
+   LGA: Sunshine Coast Regional Council
+   Status: CURRENT | Cert: 2026-002 | Expiry: 2028-01-06
+   Rock Type: Hydrothermally Altered Latite (Intermediate Igneous)
+   Approved Products: Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Supplementary Materials (Unbound)
+
+=A138+1. Holcim Bohle Quarry (RQ024)
+   Operator: Holcim Australia Pty Ltd
+   Location: Lot 42, Off Woolcock Street, Bruce Highway, Bohle QLD 4818
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-029 | Expiry: 2027-03-13
+   Rock Type: Rhyodacitic Ash Tuff and Subordinate Altered Dykes/Sills with various lithological compositions (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A139+1. Holcim Cleveland Sands (RQ069)
+   Operator: Holcim Australia Pty Ltd
+   Location: Cape Cleveland Road, Cape Cleveland QLD 4810
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-094 | Expiry: 2027-08-06
+   Rock Type: Quartzofeldspathic and Lithic Fine Grained Aeolian Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A140+1. Holcim Lytton Sand Plant (RQ152)
+   Operator: Holcim (Australia) Pty Ltd
+   Location:  158 Anton Road, Hemmant QLD 4178
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2025-018 | Expiry: 2027-02-28
+   Rock Type: Mainly Fine to Medium Quartzose Marine Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A141+1. Holcim Nerimbera Quarry (RQ478)
+   Operator: Holcim Australia Pty Ltd
+   Location: 4 Arnold Drive, Nerimbera QLD 4701
+   LGA: Livingstone Shire Council
+   Status: CURRENT | Cert: 2024-076 | Expiry: 2026-07-24
+   Rock Type: Indurated Volcanoclastic Meta-arenite / Metasiltstone with minor Acid Feldspar Porphyry, Microdiorite and Andesite dykes. (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A142+1. Holcim Petrie Quarry (RQ207)
+   Operator: Holcim (Australia) Pty Ltd
+   Location: Corner of Dayboro Road & Dunlop Lane, Kurwongbah QLD 4503
+   LGA: Moreton Bay Regional Council
+   Status: Temporary Extension | Cert: 2024-004 | Expiry: 2026-02-06
+   Rock Type: Greenstone (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Supplementary Materials (Unbound), Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A143+1. Holcim Teven Quarry (RQ443)
+   Operator: Holcim (Australia) Pty Ltd
+   Location: 129 Stokers Lane, Teven NSW 2478
+   LGA: Ballina Shire Council
+   Status: CURRENT | Cert: 2024-159 | Expiry: 2026-12-02
+   Rock Type: Meta-argillite with minor metagreywacke interbeds and andesitic dykes (Metamorphic)
+   Approved Products: Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A144+1. Huddy's Sand Deposit (Isaac River) (RQ553)
+   Operator: Quarrico Products Pty Ltd
+   Location: Grosvenor Downs, Moranbah QLD 4744 (Via Moranbah Access Road)
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-117 | Expiry: 2027-09-18
+   Rock Type: Medium to Coarse Grained Alluvial Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A145+1. Huston's Road Quarry (RQ101)
+   Operator: RSA Construction Materials Pty Ltd
+   Location: Lot 290 Hustons Road, Pirrinuan QLD 4405 
+   LGA: Western Downs Regional Council
+   Status: CURRENT | Cert: 2026-010 | Expiry: 2028-01-12
+   Rock Type: Silica Oversaturated Glassy Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse)
+
+=A146+1. Hutchison Quarries (Leslie Dam Quarry) (RQ060)
+   Operator: Hutchison Quarries Pty Ltd
+   Location: 518 Pink Gum Lane, Leslie Dam QLD 4370 (Via Rabbit Road) 
+   LGA: Southern Downs Regional Council
+   Status: CURRENT | Cert: 2025-076 | Expiry: 2027-07-04
+   Rock Type: Hornfelsed Metasandstone & Metasiltstone (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A147+1. Adbri Manton Road Quarry (RQ313)
+   Operator: HY-Tec Industries (QLD) Pty Ltd
+   Location: Manton Road, Calcium QLD 4816
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-155 | Expiry: 2027-12-22
+   Rock Type: Partly Metamorphosed Limestone with subordinate Greenstone and Clusters of Igneous Sills and Dykes of Dacite, Microdiorite & Andesite. (Metamorphic)
+   Approved Products: Armourstones, Cover Aggregate, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A148+1. Image Flat Quarry (RQ057)
+   Operator: Sunshine Coast Regional Council
+   Location: 178 Image Flat Road, Image Flat QLD4560
+   LGA: Sunshine Coast Regional Council
+   Status: CURRENT | Cert: 2025-045 | Expiry: 2027-04-16
+   Rock Type: Rhyolite / Rhyolitic Tuff (Acid Igneous)
+   Approved Products: Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A149+1. Inglewood Quarry (RQ006)
+   Operator: Johnstone Concrete and Quarries Pty Ltd
+   Location: 23266 Cunningham Highway, Coolmunda QLD 4387
+   LGA: Goondiwindi Regional Council
+   Status: Temporary Extension | Cert: 2023-132 | Expiry: 2026-02-06
+   Rock Type: Silica Undersaturated Glassy Leucite Olivine Basalt (Leucitite) (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A150+1. Inkerman Fine Sand Quarry (RQ482)
+   Operator: Humphries Pty Ltd
+   Location: 226 Gladys Road, Grouper Creek, QLD 4806
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2026-016 | Expiry: 2028-01-27
+   Rock Type: Mainly Fine to Medium Quartzofeldspathic and Lithic Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A151+1. JGI Oxenford Recycling Site (RQ533)
+   Operator: JGI Quarry Pty Ltd
+   Location: 34 Maudsland Road, Oxenford QLD 4210
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-113 | Expiry: 2026-09-27
+   Rock Type: Recycled Material  (Recycled Material Blend)
+   Approved Products: Unbound Paving Material
+
+=A152+1. Jimbour Quarry (Western Downs Regional Council) (RQ151)
+   Operator: Western Downs Regional Council
+   Location: 666 Jimbour Station Road, Jimbour QLD 4406
+   LGA: Western Downs Regional Council
+   Status: CURRENT | Cert: 2025-012 | Expiry: 2027-02-26
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material
+
+=A153+1. Jondaryan Quarry (RQ374)
+   Operator: Tierney Crushing & Transport Pty Ltd
+   Location: Jondaryan-Muldu Road, Jondaryan QLD 4403
+   LGA: Toowoomba Regional Council
+   Status: CURRENT | Cert: 2024-050 | Expiry: 2026-05-16
+   Rock Type: Silica Oversaturated Glassy Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A154+1. Juandah Sand and Gravel Quarry (RQ335)
+   Operator: Juandah Quarry Pty Ltd
+   Location: 208 Giligulgul Road, Woleebee QLD 4426
+   LGA: Western Downs Regional Council
+   Status: Temporary Extension | Cert: 2024-012 | Expiry: 2026-03-03
+   Rock Type: Fine to Mainly Medium Grained Quartzose and Lithic Alluvial Sand. (Sand / Sedimentary and Duricrust)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A155+1. Jubilee Quarry (RQ034)
+   Operator: Bolwarra Enterprises Pty Ltd 
+   Location: Clothilda Road, Off Gulf Development Road, Croydon QLD 4871
+   LGA: Croydon Shire Council
+   Status: CURRENT | Cert: 2024-021 | Expiry: 2026-04-04
+   Rock Type: Rhyolite (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A156+1. Karreman Mount Cotton Quarry (RQ035)
+   Operator: Karreman Quarries Pty Ltd
+   Location: 616-632 West Mount Cotton Road, Mt Cotton QLD 4165
+   LGA: Redland City Council
+   Status: CURRENT | Cert: 2025-051 | Expiry: 2027-06-20
+   Rock Type: Metagreywacke and Minor Argillite (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A157+1. Keatings Quarry (RQ379)
+   Operator: Crush-It Pty Ltd
+   Location: 90365 Bruce Highway Sarina QLD 4737
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2024-129 | Expiry: 2026-10-09
+   Rock Type: Volcanolithic Tuffaceous Rhyolite and Microgranite  (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A158+1. Kianga Quarries (RQ411)
+   Operator: Kianga Quarries Pty Ltd
+   Location: Lot 80 Leichhardt Highway, Banana QLD 4702 (On Leichhardt Highway approximately 20.2km south of Banana)
+   LGA: Banana Shire Council
+   Status: CURRENT | Cert: 2024-098 | Expiry: 2026-07-29
+   Rock Type: Silica Undersaturated Glassy Porphyritic Andesite (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A159+1. Kildonan Quarry (RQ173)
+   Operator: Wagners Quarries Pty Ltd
+   Location: Lot 14, Kildonan Road, Kurumbul QLD 4388
+   LGA: Goondiwindi Regional Council
+   Status: Temporary Extension | Cert: 2023-137 | Expiry: 2026-02-03
+   Rock Type: Quartzofeldspathic and Lithic Alluvial Sand and Gravel (Acid Igneous)
+   Approved Products: Unbound Paving Material, Supplementary Materials (Unbound)
+
+=A160+1. Kings (Barrie Lane) Quarry (RQ264)
+   Operator: Mobile Crushing Co Pty Ltd
+   Location: 627 Barrie Lane, Homebush QLD 4740 
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-082 | Expiry: 2027-09-16
+   Rock Type: Variably Metamorphosed Tuffaceous Volcanoclastic Arenite/Meta-sandstone, Hornfelsed Siltstone, Lithic Andesitic Welded Tuff /Rhyodacitic Tuff, Tonalite and Vein Rock Fragments. (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A161+1. Kingscliff Sands (RQ532)
+   Operator: JBM Development Group Pty Ltd
+   Location: 103 Altona Road Cudgen NSW 2487
+   LGA: Tweed Shire Council
+   Status: CURRENT | Cert: 2025-079 | Expiry: 2027-03-26
+   Rock Type: Mainly Fine to Medium Grained Alluvial Quartzose Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A162+1. Kinka Beach Sand Pit (RQ115)
+   Operator: Barlows Earthmoving Pty Ltd
+   Location: 230 Kinka Beach Road, Tanby QLD 4702
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2025-067 | Expiry: 2027-06-18
+   Rock Type: Fine to Medium Grained Quartz Reworked Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A163+1. Kleicon Hardrock Quarry (Gin-Gin Quarries Pty Ltd) (RQ586)
+   Operator: Gin Gin Quarries Pty Ltd
+   Location: Lot 4 Clarkes Road Delan QLD 4671
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2025-124 | Expiry: 2026-10-01
+   Rock Type: Partly Hornfelsed  Volcanoclastic Sandstone, Siltstone and Mudstone (Metamorphic)
+   Approved Products: Unbound Paving Material
+
+=A164+1. Koorrooeenah Quarry (RQ203)
+   Operator: Berajondo Pty Ltd ATF Sal Bonanno Family Trust trading as Berajondo Earthmoving and Haulage
+   Location: 785 Tableland Road, (off Koorrooeenah Rd) Taunton QLD 4674
+   LGA: Gladstone Regional Council
+   Status: CURRENT | Cert: 2025-080 | Expiry: 2026-11-21
+   Rock Type: Hydrothermally Altered Silica Oversaturated Glassy Andesite Breccia / Porphyritic Andesite (Intermediate Igneous)
+   Approved Products: Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A165+1. Kunwarara Quarry (RQ530)
+   Operator: Grycan Pty Ltd, T/A Blomfield Excavations
+   Location: Kunwarara Road, Canoona QLD 4702 (4.4km south of the Stanage Bay Road of Bruce Highway or 1.4km north of the North Access Road to the Qmag Magnesia Mine)
+   LGA: Livingstone Shire Council
+   Status: CURRENT | Cert: 2025-102 | Expiry: 2027-10-21
+   Rock Type: Hydrothermally Altered Amphibolite & Quartzite (Metamorphic)
+   Approved Products: Unbound Paving Material
+
+=A166+1. Leichhardt River Quarry (RQ238)
+   Operator: Lawlor Contracting Pty Ltd
+   Location: Coolullah Station, Kajabii, Off Burke Development Road, QLD 4824
+   LGA: Cloncurry Shire Council
+   Status: Temporary Extension | Cert: 2023-173 | Expiry: 2026-01-30
+   Rock Type: Alluvial Sand and Gravel (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A167+1. Lesdale Quarry (RQ276)
+   Operator: Tickell Grazing Pty Ltd ATF the Tickell Family Trust 
+   Location: "Lesdale" 69450 Warrego Highway, Sommariva QLD 4470 (via Charleville)
+   LGA: Murweh Shire Council
+   Status: CURRENT | Cert: 2025-073 | Expiry: 2027-08-05
+   Rock Type: Ferruginous and Silicified Sandstone (Sedimentary and Duricrust)
+   Approved Products: Cover Aggregate, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A168+1. Longford Creek (Eden Lassie) Quarry (RQ064)
+   Operator: W Wall & Sons
+   Location: 15864 Off Bruce Highway, Longford Creek, Bowen QLD 4805
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2024-053 | Expiry: 2026-05-13
+   Rock Type: Alluvial Gravel (Acid Igneous)
+   Approved Products: Unbound Paving Material
+
+=A169+1. Longreach Sand Quarry (RQ499)
+   Operator: Champion Contracting Pty Ltd
+   Location: 600 Cramsie-Muttaburra Road Longreach Qld 4730 (site access via a right hand turnoff, approximately 25km north of Longreach Town.)
+   LGA: Longreach Regional Council
+   Status: CURRENT | Cert: 2025-070 | Expiry: 2027-06-30
+   Rock Type: Medium to Coarse Grained Quartzose Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A170+1. Luxor Quarry (RQ412)
+   Operator: Regional Quarries Australia Pty Ltd
+   Location: Near Saraji Coal Mine, Off 2251 Saraji Station Road (24km North of Dysart), Dysart QLD 4745
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-097 | Expiry: 2027-07-30
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A171+1. Lytton Sand Plant (Hanson/Boral) (RQ102)
+   Operator: Boral Resources (Qld) Pty Ltd / 
+Hanson Construction Materials Pty Ltd
+   Location: 141-142 Anton Road, Lytton QLD 4178
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2024-142 | Expiry: 2026-10-31
+   Rock Type: Fine to Mainly Medium Grained Quartzose Marine Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A172+1. Mackay Harbour Board Reserve 483 (RQ103)
+   Operator: C & J C Camilleri
+   Location: Off Edmund Casey Drive, Mackay Harbour QLD 4740  
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-104 | Expiry: 2027-09-18
+   Rock Type: Medium Grained Quartzofeldspathic and Lithic Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A173+1. Mailmans Quarry (RQ310)
+   Operator: Berajondo Earthmoving and Haulage Pty Ltd trading as Berajondo Earthmoving and Haulage
+   Location: 210 Mailmans Road via Monduran Road, Monduran QLD 4671
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2025-081 | Expiry: 2026-04-24
+   Rock Type: Andesitic Tuff / Andesitic Agglomerate (Intermediate Igneous)
+   Approved Products: Unbound Paving Material
+
+=A174+1. Maitland Road Quarry (Zappala Quarries) (RQ391)
+   Operator: Zappala Quarries Pty Ltd
+   Location: 209-211 Maitland Road, Gordonvale QLD 4865
+   LGA: Cairns Regional Council
+   Status: CURRENT | Cert: 2024-162 | Expiry: 2026-12-19
+   Rock Type: Metagreywacke, Greenschist and Metasiltstone (See comments for details) (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material
+
+=A175+1. Malchi Quarry (RQ589)
+   Operator: Galilee Crushing & Civil Pty Ltd
+   Location: Lot 3 Nine Mile Road, Gracemere QLD 4702 (5km off Capricorn Highway)
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2025-143 | Expiry: 2027-11-18
+   Rock Type: Metagreywacke and metasiltstone (Metamorphic)
+   Approved Products: Unbound Paving Material
+
+=A176+1. Mal's Plant Hire Pty Ltd (RQ176)
+   Operator: Mal's Plant Hire Pty Ltd
+   Location: Red Hill Road, Moranbah  4744
+(Extracted from the bed of The Isaac River, Moranbah QLD 4744)
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-043 | Expiry: 2027-06-06
+   Rock Type: Medium to Coarse Grained Alluvial Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A177+1. Mandarana Quarry (RQ139)
+   Operator: Summit Construction Materials Pty Ltd
+   Location: 296 Balnagowan Mandarana Road Farleigh QLD 4740
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-050 | Expiry: 2027-05-27
+   Rock Type: Hornfelsed Volcanoclastic Siltstone, Mudstone, Subordinate Porphyritic Microdiorite/Granodiorite with minor Andesite Dykes (Metamorphic / Intermediate Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A178+1. Maranoa River Sands (RQ462)
+   Operator: Roma Sands Pty Ltd
+   Location: Lot 192, Mitchell Road, Mitchell QLD 4465
+   LGA: Maranoa Regional Council
+   Status: CURRENT | Cert: 2025-062 | Expiry: 2027-06-09
+   Rock Type: Mainly Medium to Coarse Alluvial Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A179+1. Marino Kanimbla Quarry (RQ458)
+   Operator: Marino Quarry Pty Ltd
+   Location: McFarlane Drive, Kanimbla QLD 4870 (Via Ramsey Drive, Kanimbla QLD 4870)
+   LGA: Cairns Regional Council
+   Status: CURRENT | Cert: 2025-066 | Expiry: 2027-06-11
+   Rock Type:  Siliceous Phyllite and Metagreywacke with minor Quartzite and Meta-argillite (Metamorphic)
+   Approved Products: Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A180+1. Marlborough Quarry (RQ425)
+   Operator: RC Contracting (QLD) Pty Ltd
+   Location: “Woodstock Station”, 1668 Marlborough Road, Marlborough QLD 4705
+   LGA: Livingstone Shire Council
+   Status: CURRENT | Cert: 2025-085 | Expiry: 2026-09-25
+   Rock Type: Greenstone (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A181+1. Marmor Quarry (RQ140)
+   Operator: Capricorn Quarries Pty Ltd
+   Location: 129 Bills Road, Marmor QLD 4702
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2024-044 | Expiry: 2026-05-30
+   Rock Type: Meta-volcanoclastic Sandstone (Arenite) (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A182+1. Maryborough Quarries (Antigua) (RQ018)
+   Operator: Maryborough Quarries
+   Location: 6 Gilmers Road, Antigua QLD 4650
+   LGA: Fraser Coast Regional Council
+   Status: CURRENT | Cert: 2024-093 | Expiry: 2026-07-29
+   Rock Type:  Porphyritic Dacite (Intermediate Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A183+1. May Downs Quarry (RQ547)
+   Operator:  CNN Resources Pty Ltd
+   Location: 1548 May Downs Road, May Downs QLD 4746
+   LGA: Isaac Regional Council
+   Status: Temporary Extension | Cert: 2024-006 | Expiry: 2026-03-03
+   Rock Type: Hydrothermally Altered Trachyte & Andesite with Minor Brecciated Latite.  (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse)
+
+=A184+1. Mazeppa Quarry (RQ260)
+   Operator: Quarries of Queensland Pty Ltd
+   Location: 5998 Gregory Developmental Road, Frankfield QLD 4721 (Near Mazeppa Park) 
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2024-026 | Expiry: 2026-02-16
+   Rock Type: Vein Quartz (Acid Igneous)
+   Approved Products: Unbound Paving Material
+
+=A185+1. McDonald Road Sand Lease (Goodshell) - Burdekin River (RQ576)
+   Operator: Goodshell Earthmoving  Pty Ltd
+   Location: Adjacent to 33 McDonald Road Jarvisified QLD 4807
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2024-086 | Expiry: 2026-09-06
+   Rock Type: Quartzofeldspathic and Lithic Medium to Mainly Coarse Alluvial sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A186+1. McIlwraith Quarry (LCB Quarry) (RQ572)
+   Operator: LCB Civil Pty Ltd
+   Location: 547 McIlwraith Road Gin Gin QLD 4671
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2025-021 | Expiry: 2026-10-09
+   Rock Type: Partly Hornfelsed  Volcanoclastic Sandstone, Siltstone and Mudstone (Metamorphic)
+   Approved Products: Unbound Paving Material, High Permeability Drainage
+
+=A187+1. McKinlay Sand Quarry (Weir River) (RQ457)
+   Operator: McKinlays Western Creek Sand Pty Ltd
+   Location: Lot 18 Cecil Plains Moonie Road, Dunmore QLD 4407
+   LGA: Toowoomba Regional Council
+   Status: CURRENT | Cert: 2025-024 | Expiry: 2027-03-31
+   Rock Type: Fine to  Coarse Quartz Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A188+1. McNulty's Road Pit (Bulmers) (RQ247)
+   Operator: L. Bulmer & Co Pty Ltd
+   Location: McNultys Road, Beebo QLD 4385
+   LGA: Goondiwindi Regional Council
+   Status: CURRENT | Cert: 2024-095 | Expiry: 2026-07-24
+   Rock Type: Silcrete / Ridge Gravel (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A189+1. Mindie Alluvial Gravel Quarry (RQ544)
+   Operator: Lawlor Contracting Pty Ltd
+   Location: The bed of Cloncurry River, Mindie Station, Zingarie Road, Cloncurry QLD 4824
+   LGA: Cloncurry Shire Council
+   Status: CURRENT | Cert: 2024-069 | Expiry: 2026-04-22
+   Rock Type: Alluvial Sand and Gravel (Acid Igneous)
+   Approved Products: Unbound Paving Material
+
+=A190+1. Mindie Hard Rock Quarry (RQ414)
+   Operator: Lawlor Contracting Pty Ltd
+   Location: Mindie Station, Zingarie Road, Cloncurry QLD 4824
+   LGA: Cloncurry Shire Council
+   Status: CURRENT | Cert: 2024-060 | Expiry: 2026-04-22
+   Rock Type: Granite (Adamellite) with minor Hydrothermally Altered Skarn Intrusions  (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A191+1. Moonford Quarry (RQ232)
+   Operator: Baldwins Sand Gravel & Concrete Pty Ltd
+   Location: 1364 Youlambi Road, Monto QLD 4630
+   LGA: North Burnett Regional Council
+   Status: CURRENT | Cert: 2024-046 | Expiry: 2026-04-15
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A192+1. Moranbah South Quarry (RQ154)
+   Operator: Quarrico Products Pty Ltd
+   Location: 9566 Peak Downs Highway, Moranbah QLD 4744
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-013 | Expiry: 2027-02-25
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse)
+
+=A193+1. Morton's Quarry (RQ463)
+   Operator: Mortons Earthmoving Pty Ltd
+   Location: Woolley's Road, Lannercost QLD 4850
+   LGA: Hinchinbrook Shire Council
+   Status: CURRENT | Cert: 2025-120 | Expiry: 2027-10-15
+   Rock Type: Granite with minor andesite & microdiorite dykes (Acid Igneous)
+   Approved Products: Unbound Paving Material
+
+=A194+1. Mossman Quarry (RQ252)
+   Operator: Mossman Quarry Pty Ltd
+   Location: Mountain View Drive, Mossman QLD 4873
+   LGA: Douglas Shire Council
+   Status: CURRENT | Cert: 2025-127 | Expiry: 2027-11-26
+   Rock Type: Metagreywacke (Metamorphic)
+   Approved Products: Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A195+1. Mount Carbine Quarry (RQ242)
+   Operator: Owner - State Government of Queensland
+Lessee - Mt Carbine Quarries Pty Ltd
+   Location: 6888 Mulligan Highway, Mt Carbine QLD 4871
+   LGA: Mareeba Shire Council
+   Status: Temporary Extension | Cert: 2023-123 | Expiry: 2026-02-03
+   Rock Type: Pelitic Hornfels (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A196+1. MRP Sand Quarry (RQ534)
+   Operator: Chevron Sands Pty Ltd Trading as MRP Sand Quarry
+   Location: 391 Hendon Victoria Hill Road, Talgai QLD 4362
+   LGA: Southern Downs Regional Council
+   Status: CURRENT | Cert: 2024-112 | Expiry: 2026-09-27
+   Rock Type: Fine to Coarse Quartzose Lithic Residual & Colluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A197+1. Mt Curio (Pinnacle) Quarry  (RQ236)
+   Operator: Quarries of Queensland Pty Ltd
+   Location: Gap Road, Springsure QLD 4722
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2024-027 | Expiry: 2026-02-16
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material
+
+=A198+1. Mt Marrow Blue Metal Quarries (RQ039)
+   Operator: Mt. Marrow Blue Metal Quarries Pty Ltd
+   Location: 237 Mt Marrow Quarry Road, Mt Marrow QLD 4306 (via Haigslea)
+   LGA: Ipswich City Council
+   Status: Temporary Extension | Cert: 2024-003 | Expiry: 2026-02-09
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse)
+
+=A199+1. Mt. Amos Quarry (RQ278)
+   Operator: Nambal Resources and Quarries Pty Ltd
+   Location: 41 Mt Amos Road, Cooktown QLD 4895
+   LGA: Cook Shire Council
+   Status: CURRENT | Cert: 2025-075 | Expiry: 2027-07-01
+   Rock Type: Metagreywacke (Metamorphic)
+   Approved Products: Cover Aggregate, Unbound Paving Material
+
+=A200+1. Mt. Bassett Quarry (RQ177)
+   Operator: CJD Investments (NQ) Pty Ltd
+   Location: 22, Ron Searle Drive, Mackay QLD 4740
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2024-043 | Expiry: 2026-04-03
+   Rock Type: Microdiorite and Andesite (Intermediate Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A201+1. Mt. Beckford Quarry (RQ205)
+   Operator: Gromac Quarries (NQ) Pty Ltd
+   Location: 1042  Kennedy Development Road, Hughenden Qld 4821 
+   LGA: Flinders Shire Council
+   Status: CURRENT | Cert: 2025-007 | Expiry: 2027-01-14
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material
+
+=A202+1. Mt. Chelona Quarry (Parklands Blue Metal) (RQ432)
+   Operator: Parklands Blue Metal Pty Ltd
+   Location: 125 Malins Road, Sarina QLD 4737
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2026-006 | Expiry: 2028-01-08
+   Rock Type: Tonalite/Granite/Monzogranite with Minor Andesite and Microdiorite dykes (Acid Igneous)
+   Approved Products: Concrete Aggregate - Coarse, Concrete Aggregate - Fine
+
+=A203+1. Mt. Coot-tha Quarry (RQ038)
+   Operator: Brisbane City Council
+   Location: 200 Mt Coot-tha Road, Toowong QLD 4066
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2024-167 | Expiry: 2026-12-23
+   Rock Type: Hornfelsed Phyllite (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Asphalt Aggregate - Fine
+
+=A204+1. Mt. Inkerman Quarry (RQ431)
+   Operator: L. D. and L. J. Hillery T/A Hillery Group
+   Location: 37 Mt Inkerman Road (via Home Hill), Inkerman QLD 4806
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2024-063 | Expiry: 2026-05-28
+   Rock Type: Granite (Adamellite) (Acid Igneous)
+   Approved Products: Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A205+1. Mt. Kelly Red Binder Pit (RQ503)
+   Operator: BQC Quarries Pty Ltd
+   Location: Warana Road, Mt. Kelly QLD 4807
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2025-160 | Expiry: 2027-11-07
+   Rock Type: Fine to Coarse Quartzofeldspathic and Lithic Residual Silty Clayey Sand (Supplementary Materials)
+   Approved Products: Supplementary Materials (Unbound)
+
+=A206+1. Mt. Kelly White Binder Pit (RQ504)
+   Operator: BQC Quarries Pty Ltd
+   Location: Warana Road,  Mt. Kelly QLD 4807
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2025-161 | Expiry: 2027-11-07
+   Rock Type: Medium to Coarse Quartzofeldspathic and Lithic Residual Clayey Sand (Supplementary Materials)
+   Approved Products: Supplementary Materials (Unbound)
+
+=A207+1. Mungabunda (CHRC) Quarry (RQ454)
+   Operator: Central Highlands Regional Council
+   Location: ‘Cowandilla’ 1203 Mungabunda Road, Via Bauhinia QLD 4718
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2025-019 | Expiry: 2027-05-13
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material
+
+=A208+1. Narcotic Creek Sand Quarry (RQ551)
+   Operator: Conmat Pty Ltd
+   Location: 303 Narcotic Creek Road Mareeba Qld 4880
+   LGA: Mareeba Shire Council
+   Status: CURRENT | Cert: 2025-040 | Expiry: 2027-10-07
+   Rock Type: Fine to Coarse Grained Quartzose Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A209+1. Nerang Quarry (RQ074)
+   Operator: Heidelberg Materials Australia Pty Ltd
+   Location: Hymix Road, Gaven QLD 4211
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2025-132 | Expiry: 2027-11-27
+   Rock Type: Metagreywacke (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A210+1. Nevanna Stone Quarry Pty Ltd t/as Locker Valley Quarry (RQ167)
+   Operator: Nevanna Stone Quarry Pty Ltd t/as Lockyer Valley Quarry
+   Location: 93 McErlean Road, Helidon QLD 4344
+   LGA: Lockyer Valley Regional Council
+   Status: CURRENT | Cert: 2025-053 | Expiry: 2027-04-10
+   Rock Type: Fine to Coarse Grained Residual Quartz Sand Derived from Weathered Quartzose Sandstone (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A211+1. Nine Mile Quarry (RQ326)
+   Operator: Heidelberg Materials Australia Pty Ltd
+   Location: Corner Forgarty road & Nile Mile Road, Pink Lily QLD 4702
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2025-025 | Expiry: 2026-07-15
+   Rock Type: Fine to Medium Grained Quartzose and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A212+1. North Gregory Quarry (RQ206)
+   Operator: L D & L J Hillery Pty Ltd
+   Location: Lot 78 & Lot 313, Patullo Road, Gregory River QLD 4800
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2025-016 | Expiry: 2027-02-26
+   Rock Type: Porphyritic Andesite (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A213+1. North Wall Dunes (RQ223)
+   Operator: Mackay Sand & Gravel Sales
+   Location: Spiller Avenue via Edmond Casey Drive, Mackay Harbour  QLD 4740
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-011 | Expiry: 2027-02-25
+   Rock Type: Fine to Mainly Medium Grained Quartzofeldspathic and Lithic Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A214+1. Oxenford Quarry (RQ040)
+   Operator: Nucrush Pty Ltd
+   Location: 33 Maudsland Road, Upper Coomera QLD 4210
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-166 | Expiry: 2026-12-23
+   Rock Type: Metagreywacke and Minor Meta-argillite (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A215+1. Paverock Quarry (RQ041)
+   Operator: Paveways Pty Ltd T/A Paverock Quarry
+   Location: 1485 Goodwood Road, Redridge QLD 4660
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2025-144 | Expiry: 2027-12-22
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A216+1. Schaffers Road Quarry (RQ548)
+   Operator: Mckey Earthmoving Pty Ltd
+   Location: 47 Schaffers Road, Apple Tree Creek QLD 4660
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2025-152 | Expiry: 2026-10-09
+   Rock Type: Residual Silty Sand derived from Decomposed Granite (Supplementary Materials)
+   Approved Products: Supplementary Materials (Unbound)
+
+=A217+1. Peak Hill Quarry (RQ122)
+   Operator: Vynque Pty Ltd 
+   Location: 184 Rockhampton-Yeppoon Road, North Rockhampton QLD 4701
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2025-077 | Expiry: 2027-07-18
+   Rock Type: Diorite Porphyry and Rhyodacitic Tuff (Intermediate Igneous)
+   Approved Products: Unbound Paving Material
+
+=A218+1. Peppercorn Quarry (RQ460)
+   Operator: Graham Jackson Wippell and Helen Gayle Wippell
+   Location: 28477 Moonie Highway, St. George QLD4487
+   LGA: Balonne Shire Council
+   Status: CURRENT | Cert: 2025-125 | Expiry: 2027-11-01
+   Rock Type: Indurated and Variably Ferruginised & Silicified Siltstone and Sandstone (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A219+1. Pinevale Sand Pit (RQ158)
+   Operator: C & J C Camilleri
+   Location: Access via Pinevale Road, Pinevale QLD 4745
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-105 | Expiry: 2027-09-18
+   Rock Type: Mainly Medium to Coarse Quartzofeldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A220+1. Pink Lily Sands (RQ123)
+   Operator: Heidelberg Materials Australia Pty Ltd
+   Location: 205 Pink Lily Road, Pink Lily QLD 4702
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2025-026 | Expiry: 2026-11-21
+   Rock Type: Mainly Medium to Coarse Quartzose and Lithic Alluvial Sand ( Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A221+1. Pinnacles Quarry (Townsville) (RQ090)
+   Operator: Gromac Quarries (NQ) Pty Ltd
+   Location: Moncrieff Road, Gumlow QLD 4817 (or Gumlow Road, Gumlow QLD 4817)
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2025-088 | Expiry: 2027-07-24
+   Rock Type: Microgranite and Dacite with minor Rhyolitic-Lithic Tuff intrusions and Andesite/ Microdiorite/Diorite Dykes (Please Refer to Comments 1, 2 and 3 below). (Acid Igneous / Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Lean Mix/Concrete Pavement (Fine)
+
+=A222+1. Plum Tree Quarry (Gromac Quarries) (RQ042)
+   Operator: Gromac Quarries (NQ) Pty Ltd
+   Location: 11343 Flinders Highway, Charters Towers QLD 4820
+   LGA: Charters Towers Regional Council
+   Status: CURRENT | Cert: 2025-032 | Expiry: 2027-03-18
+   Rock Type: Microgranite, Granodiorite, Granite with minor Rhyolite/Rhyodacite, Andesite and Diorite Dykes (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A223+1. PNQ Barron Sands (RQ020)
+   Operator: Pioneer North Queensland Pty Ltd
+   Location: Stewarts Road, Caravonica QLD 4870
+   LGA: Cairns Regional Council
+   Status: CURRENT | Cert: 2024-145 | Expiry: 2026-11-19
+   Rock Type: Quartzofeldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A224+1. PNQ Dimbulah Sands (RQ574)
+   Operator: Pioneer North Queensland Pty Ltd
+   Location: Leafgold Wier Road, Dimbulah QLD 4872
+   LGA: Mareeba Shire Council
+   Status: CURRENT | Cert: 2024-031 | Expiry: 2026-05-08
+   Rock Type: Fine to Mainly Medium Grained Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A225+1. PNQ Edmonton Quarry (RQ029)
+   Operator: Pioneer North Queensland Pty Ltd
+   Location: Hussey Road, Edmonton QLD 4869
+   LGA: Cairns Regional Council
+   Status: CURRENT | Cert: 2024-102 | Expiry: 2026-09-12
+   Rock Type: Metagreywacke and Carbonaceous Meta-Siltstone (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A226+1. PNQ Innisfail Quarry (RQ043)
+   Operator: Pioneer North Queensland Pty Ltd
+   Location: 6 Coorumba Road, Off Palmerston Highway, Innisfail QLD 4860
+   LGA: Cassowary Coast Regional Council
+   Status: CURRENT | Cert: 2024-139 | Expiry: 2026-10-23
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A227+1. QCrush Horse Creek Quarry (RQ227)
+   Operator: QCrush Pty Ltd
+   Location: Gregory Downs - Camooweal Road,  Gregory QLD 4830 (Approximately 19.7 km south of Gregory Township)
+   LGA: Burke Shire Council
+   Status: CURRENT | Cert: 2025-122 | Expiry: 2027-11-14
+   Rock Type: Ferricrete (Sedimentary and Duricrust)
+   Approved Products: Supplementary Materials (Unbound)
+
+=A228+1. Quarry at Midgee (RQ124)
+   Operator: Hopkins Brothers Pty Ltd
+   Location: 5943 Bruce Highway, Midgee QLD 4702
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2024-073 | Expiry: 2026-04-23
+   Rock Type: Hornfelsed and Indurated Volcanoclastic Siltstone and Arenite  (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A229+1. Quarrybrook Quarry (RQ086)
+   Operator: Jaycat Earthmoving Pty Ltd
+   Location: 125 Quarry Road, Cordelia QLD 4850 (Off Cook's Lane)
+   LGA: Hinchinbrook Shire Council
+   Status: CURRENT | Cert: 2025-031 | Expiry: 2027-03-25
+   Rock Type: Acid/Rhyolite Porphyry (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A230+1. R. Watt Road Site (RQ127)
+   Operator: Mobile Crushing Co. Pty Ltd
+   Location: The bank of the Cattle Creek, 174 Watts Road, Benholme QLD 4754
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2024-090 | Expiry: 2026-07-26
+   Rock Type: Medium to Coarse Feldspathic Quartzose and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A231+1. Ravensbourne Sand Quarry (RQ061)
+   Operator: Heidelberg Materials Australia Pty Ltd
+   Location: 124 Philp Road, Ravensbourne QLD 4352
+   LGA: Toowoomba Regional Council
+   Status: CURRENT | Cert: 2025-129 | Expiry: 2027-11-10
+   Rock Type: Fine to Coarse Quartz Sand possibly from a Pyroclastic Origin (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A232+1. Red Rock Quarry (RQ208)
+   Operator: Blackwater Quarries Pty Ltd
+   Location: 2403 Blackwater Rolleston Road, Comet QLD 4702
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2025-123 | Expiry: 2027-10-30
+   Rock Type: Silica Oversaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A233+1. Regional Quarries Australia – Gladstone Quarry (RQ184)
+   Operator: Regional Quarries Australia Pty Ltd
+   Location: 94 Quarry Road, Yarwun QLD 4694
+   LGA: Gladstone Regional Council
+   Status: CURRENT | Cert: 2024-110 | Expiry: 2026-10-18
+   Rock Type: Hornfelsed Volcanoclastic Siltstone/Sandstone/Limestone and minor Metadolerite /Meta-andesite/Microdiorite (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A234+1. Rino Pinkenba Recycling Site (RQ562)
+   Operator: Pinkenba Operations Pty Ltd
+   Location: 45 Eagle Farm Road, Pinkenba QLD 4008
+   LGA: Brisbane City Council
+   Status: CURRENT | Cert: 2025-042 | Expiry: 2027-01-08
+   Rock Type: Recycled Material  (Recycled Material Blend)
+   Approved Products: Unbound Paving Material
+
+=A235+1. Robin Mine Quarry (RQ142)
+   Operator: Lawlor Contracting Pty Ltd
+   Location: Rosebud Station, Barkly Highway Argylla QLD 4825
+   LGA: Cloncurry Shire Council
+   Status: CURRENT | Cert: 2024-024 | Expiry: 2026-04-04
+   Rock Type: Feldspathic Quartzite (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A236+1. Rockhampton Sands (RQ510)
+   Operator: Nine Mile Sands Pty Ltd T/A Rockhampton Sands
+   Location: 250 Fogarty Road, Fairy Bower QLD 4702
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2024-070 | Expiry: 2026-06-17
+   Rock Type: Fine to Coarse Grained Lithic and Quartzose Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A237+1. Rockville Pit (RQ523)
+   Operator: Tierney Crushing & Transport Pty Ltd
+   Location: Balonne Highway, Bollon QLD 4488 (24km west of Bollon)
+   LGA: Balonne Shire Council
+   Status: CURRENT | Cert: 2025-017 | Expiry: 2027-02-26
+   Rock Type: Indurated and Variably Ferruginised & Silicified Sandstone / Sandstone & Siltstone (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A238+1. Rockwell Quarry (RQ209)
+   Operator: Rockwell Concrete and Quarries
+   Location: 156 Skew Gully Road, Buaraba QLD 4311
+   LGA: Somerset Regional Council
+   Status: CURRENT | Cert: 2024-065 | Expiry: 2026-05-30
+   Rock Type: Fine to Coarse Quartzose Lithic Residual Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A239+1. Roma Quarry (Maranoa Regional Council) (RQ143)
+   Operator:  Maranoa Regional Council
+   Location: 3401 Carnarvon Highway, Eumamurrin QLD 4455
+   LGA: Maranoa Regional Council
+   Status: CURRENT | Cert: 2024-135 | Expiry: 2026-10-23
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A240+1. Routh Quarry (RQ266)
+   Operator: Bolwarra Enterprises Pty Ltd
+   Location: Routh Creek Station, Lot 5277 Gulf Development Road, Georgetown QLD 4871
+   LGA: Etheridge Shire Council
+   Status: CURRENT | Cert: 2025-110 | Expiry: 2027-11-26
+   Rock Type:  Rhyodacite (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A241+1. Salmon's Quarry (RQ400)
+   Operator: Gavin Salmon – Salmon’s Quarry and Mining Pty Ltd
+   Location: "Poinsetta", Quarry Road, Off Rubyvale - Sapphire Road, Rubyvale QLD 4702
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2024-158 | Expiry: 2026-12-19
+   Rock Type: Fine to Coarse Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A242+1. Sandstone Australia Quarries (Comerford & Gosford Pits) (RQ585)
+   Operator: Bexton Investments Pty Ltd T/A Paradise Bushrocks
+   Location: 521 Airforce Road, Helidon QLD 4344
+   LGA: Lockyer Valley Regional Council
+   Status: CURRENT | Cert: 2024-133 | Expiry: 2026-10-21
+   Rock Type: Weathered Quartzose Sandstone (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A243+1. Schneider Sand and Stone (RQ502)
+   Operator: Scott Schneider
+   Location: 333 Flood Road Yaamba QLD 4704
+   LGA: Livingstone Shire Council
+   Status: CURRENT | Cert: 2024-036 | Expiry: 2026-03-25
+   Rock Type: Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A244+1. Scriha Sand Site (RQ581)
+   Operator: Mobile Crushing Co Pty Ltd
+   Location: 3084 Mackay-Eungella Road Benholme QLD 4754
+   LGA: Mackay Regional Council
+   Status: CURRENT | Cert: 2025-078 | Expiry: 2027-07-01
+   Rock Type: Mainly Medium to Coarse Grained Quartzofeldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A245+1. Sellheim Sand Plant (RQ360)
+   Operator: Bulk Sand and Natural Aggregates (BSNA)
+   Location: Corner of Flinders Highway & Archers Road, Sellheim QLD 4820
+   LGA: Charters Towers Regional Council
+   Status: CURRENT | Cert: 2024-138 | Expiry: 2026-11-18
+   Rock Type: Medium to Coarse Quartzose Feldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A246+1. Shady Lagoon Quarry (RQ304)
+   Operator: Wells Plant Hire Pty Ltd
+   Location: Access via an unsealed road via Gulf Development Road, Normanton, QLD 4890 
+   LGA: Carpentaria Shire Council
+   Status: Temporary Extension | Cert: 2024-008 | Expiry: 2026-03-10
+   Rock Type: Indurated Ferruginous Silcrete (Sedimentary and Duricrust)
+   Approved Products: Unbound Paving Material
+
+=A247+1. Shamrock Quarry (Tully) (RQ087)
+   Operator: Shamrock Quarry
+   Location: 19 Lloyd Bell Road, off Tully-Beach Rd (via South Mission Beach Road), Merryburn QLD 4854
+   LGA: Cassowary Coast Regional Council
+   Status: CURRENT | Cert: 2025-087 | Expiry: 2027-07-28
+   Rock Type: Granite [Adamellite/Monzogranite] (Acid Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material
+
+=A248+1. Sheppersons (Cordwell's) Quarry (RQ368)
+   Operator: Cordwell Resources Pty Ltd
+   Location: Sheppersons Lane, Kin Kin QLD 4571 (Off Kin-Kin Pomona Road, Pomona QLD 4568)
+   LGA: Noosa Shire Council
+   Status: CURRENT | Cert: 2024-023 | Expiry: 2026-02-16
+   Rock Type: Altered Latite & Latite Breccia (Intermediate Igneous)
+   Approved Products: Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A249+1. Shepton Quarry (RQ125)
+   Operator: Wagners Quarries Pty Ltd
+   Location: 3/1143 Montrose Road, Capella QLD 4723
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2024-111 | Expiry: 2026-07-31
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A250+1. Silica Road Pit (RQ377)
+   Operator: Grycan Pty Ltd, T/A Blomfield Excavations
+   Location: Silica Road, via Bruce Highway, Benaraby QLD 4680
+   LGA: Gladstone Regional Council
+   Status: CURRENT | Cert: 2025-098 | Expiry: 2027-09-17
+   Rock Type: Medium to Mainly Coarse Lithic and Quartzofeldspathic Residual Sand of Granitoid Origin (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A251+1. Singh Pit Quarry (RQ543)
+   Operator: Zappala Quarries Pty Ltd
+   Location: 361 Stephenson Road, McCutcheon QLD 4856
+   LGA: Cassowary Coast Regional Council
+   Status: CURRENT | Cert: 2025-009 | Expiry: 2027-02-24
+   Rock Type: Fine Grained Quartzose Natural Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A252+1. Skyville Quarry (RQ488)
+   Operator: Quarries of Queensland Pty Ltd
+   Location: 7905 Peak Downs Highway, Moranbah QLD 4744
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-010 | Expiry: 2027-04-04
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A253+1. Smithburne River Sand Quarry (RQ560)
+   Operator: Wells Plant Hire Pty Ltd
+   Location: Lot 221, Lotusvale Station, Lotus Vale - Stirling Road, Howitt QLD 4890
+   LGA: Carpentaria Shire Council
+   Status: CURRENT | Cert: 2025-064 | Expiry: 2027-06-16
+   Rock Type: Mainly Medium to Coarse Quartzofeldspathic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A254+1. Sole Resources - Mt. Garnet Alluvial Quarry (RQ393)
+   Operator: Sole Resources (Mt. Garnet) Pty Ltd
+   Location: 324 Nymbool Road, Mt Garnet QLD 4872
+   LGA: Tablelands Regional Council
+   Status: CURRENT | Cert: 2025-096 | Expiry: 2027-08-07
+   Rock Type: Metasandstone & Intermediate Tuff  (Metamorphic & Intermediate Igneous)
+   Approved Products: Unbound Paving Material
+
+=A255+1. Sole Resources - Mt. Garnet Hardrock Quarry (RQ300)
+   Operator: Sole Resources (Mt. Garnet) Pty Ltd
+   Location: 324 Nymbool Road, Mt Garnet QLD 4872
+   LGA: Tablelands Regional Council
+   Status: CURRENT | Cert: 2025-121 | Expiry: 2027-09-24
+   Rock Type: Andesite / Andesitic Tuff (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material
+
+=A256+1. Southern Pacific Sands (RQ089)
+   Operator: Pacific Silica Pty Ltd t/a Southern Pacific Sands
+   Location: 565 Bestmann Road, Ningi QLD 4511
+   LGA: Moreton Bay Regional Council
+   Status: CURRENT | Cert: 2025-065 | Expiry: 2027-05-27
+   Rock Type: Fine to Mainly Medium Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Lean Mix/Concrete Pavement (Fine)
+
+=A257+1. Stanthorpe Sands (RQ179)
+   Operator: Twin Towns Sand and Gravel Pty Ltd T/As Stanthorpe Sands
+   Location: Access via Dalcouth and Sugarloaf Roads, Dalcouth QLD 4380
+   LGA: Southern Downs Regional Council
+   Status: CURRENT | Cert: 2024-089 | Expiry: 2026-09-06
+   Rock Type: Medium to Coarse Quartzofeldspathic and Lithic Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A258+1. Stanwell Quarry (RQ160)
+   Operator: Regional Group Australia (RGA) Pty Ltd
+   Location: Access from Capricorn Highway, via Power Plant Road, Stanwell QLD 4702.
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2026-001 | Expiry: 2028-01-06
+   Rock Type: Quartz Microdiorite / Quartz Diorite (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A259+1. Stokes Range Quarry (RQ076)
+   Operator: BQC Quarries Pty Ltd
+   Location: Rifle Range Road, Kirknie QLD 4806
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2024-124 | Expiry: 2026-10-01
+   Rock Type: Microdiorite and Andesitic Porphyry with minor Rhyolite and Andesite Dykes (Intermediate Igneous)
+   Approved Products: Rock Fill Material, High Permeability Drainage
+
+=A260+1. Stonehenge Quarry (RQ453)
+   Operator: Champion Contracting Pty Ltd
+   Location: "Hillview Park", Thomson Developmental Road, Stonehenge QLD 4730
+   LGA: Barcoo Shire Council
+   Status: CURRENT | Cert: 2024-030 | Expiry: 2026-02-26
+   Rock Type: Ferruginised Silcrete (Sedimentary and Duricrust)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Lean Mix/Concrete Pavement (Coarse)
+
+=A261+1. Sunrock (Holcim) Quarry (RQ015)
+   Operator: Holcim (Australia) Pty Ltd
+   Location: Nursery Road, Beerburrum QLD 4518
+   LGA: Sunshine Coast Regional Council
+   Status: CURRENT | Cert: 2026-004 | Expiry: 2028-01-12
+   Rock Type: Trachyte (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Supplementary Materials (Unbound), Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A262+1. Sunstate Sands Bundaberg (RQ246)
+   Operator: Sunstate Sands Bundaberg
+   Location: Palm Beach Road, Coonarr QLD 4670
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2025-106 | Expiry: 2027-09-18
+   Rock Type: Mainly Fine to Medium Quartz Dunal Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A263+1. Takura Quarry (Byrne Bros Quarries Pty Ltd) (RQ144)
+   Operator: Byrne Bros Quarries Pty Ltd
+   Location: Cork Road, Off Hornes Road, Takura QLD 4650
+   LGA: Fraser Coast Regional Council
+   Status: CURRENT | Cert: 2025-041 | Expiry: 2027-05-12
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Concrete Aggregate - Coarse, Unbound Paving Material, Lean Mix/Concrete Pavement (Coarse)
+
+=A264+1. Tatti Sand (RQ161)
+   Operator: Senport Pty Ltd
+   Location: 897-994 Chewko Rd, Chewko Qld 4880
+   LGA: Mareeba Shire Council
+   Status: CURRENT | Cert: 2025-055 | Expiry: 2027-05-30
+   Rock Type: Fine to Mainly Medium Quartzose Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A265+1. The Caves Quarry QLD (RQ109)
+   Operator: RC Contracting (QLD) Pty Ltd
+   Location: Mt Charlton Road, The Caves QLD 4702
+   LGA: Livingstone Regional Council
+   Status: CURRENT | Cert: 2025-114 | Expiry: 2027-09-24
+   Rock Type: Hornfelsed Volcanoclastic Metasiltstone (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A266+1. The Rocks (BQC) Quarry (RQ046)
+   Operator: BQC Quarries Pty Ltd
+   Location: 1464 Ayr Dalbeg Road, Ayr QLD 4807 (via Mona Park)
+   LGA: Burdekin Shire Council
+   Status: CURRENT | Cert: 2025-133 | Expiry: 2026-03-01
+   Rock Type: Granite (Adamellite) and Microgranite (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse)
+
+=A267+1. Theodore (Shoecraft) Quarry (RQ594)
+   Operator: Shoecraft Plant Hire Pty Ltd
+   Location: 514 Defence Road, Castle Creek QLD 4718
+   LGA: Banana Shire Council
+   Status: CURRENT | Cert: 2025-136 | Expiry: 2027-11-03
+   Rock Type: Andesite (Intermediate Igneous)
+   Approved Products: Unbound Paving Material
+
+=A268+1. Thirsty Creek Quarry (RQ591)
+   Operator: Thomas Plant Hire
+   Location: 802 Thirsty Creek Road, Gogango QLD 4702
+   LGA: Rockhampton Regional Council
+   Status: CURRENT | Cert: 2026-005 | Expiry: 2028-01-08
+   Rock Type: Heavily altered amygdaloidal basalt, brecciated basalt and dolerite (Basic Igneous)
+   Approved Products: Unbound Paving Material
+
+=A269+1. Tinaroo Creek Quarry (RQ511)
+   Operator: Conmat Pty Ltd
+   Location: 936 Tinaroo Creek Road, Mareeba QLD 4880
+   LGA: Mareeba Shire Council
+   Status: CURRENT | Cert: 2025-149 | Expiry: 2027-12-12
+   Rock Type: Granite (Acid Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A270+1. Top Rock Quarry (RQ323)
+   Operator: FGF Developments Pty Ltd
+   Location: Lot 46 Kennedy Highway Kuranda QLD 4881
+   LGA: Mareeba Shire Council
+   Status: CURRENT | Cert: 2025-112 | Expiry: 2027-09-23
+   Rock Type: Metagreywacke with minor hornfelsed carbonaceous metasiltstone / metamudstone (argillite) and metadolerite dykes. (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A271+1. Townsville Graded Sands – Kelso Plant (RQ317)
+   Operator: Townsville Graded Sands Pty Ltd
+   Location: Lot 1, Upper Ross River Road Kelso QLD 4815
+   LGA: Townsville City Council
+   Status: CURRENT | Cert: 2024-092 | Expiry: 2026-07-29
+   Rock Type: Fine to Medium Grained Feldspathic Quartzose & Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A272+1. Townsville Graded Sands - Macrossan Sand Plant (RQ564)
+   Operator: Townsville Graded Sands Pty Ltd
+   Location: Flinders Highway Breddan QLD 4820
+   LGA: Charters Towers Regional Council
+   Status: CURRENT | Cert: 2024-033 | Expiry: 2026-02-28
+   Rock Type: Medium to Coarse Quartzose Feldspathic Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A273+1. Traveston (Corbet) Quarry (RQ459)
+   Operator: Corbet Quarries and Concrete Pty Ltd
+   Location: 1944, Corner of Mary Valley Link Road and the Old Bruce Highway, Traveston QLD 4570
+   LGA: Gympie Regional Council
+   Status: CURRENT | Cert: 2024-049 | Expiry: 2026-09-11
+   Rock Type: Brecciated and Altered Metabasalt (Greenstone) and Chert/Jasper with minor andesite/dacite dykes. (Metamorphic)
+   Approved Products: Unbound Paving Material
+
+=A274+1. Tweed Sands Deposit (RQ099)
+   Operator: Heidelberg Materials Australia Pty Ltd
+   Location: Altona Road, Cudgen NSW 2487
+   LGA: Tweed Shire Council
+   Status: CURRENT | Cert: 2025-008 | Expiry: 2027-01-14
+   Rock Type: Mainly Fine to medium grained reworked dunal quartz sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A275+1. Umina Quarry (RQ213)
+   Operator: L D & L J Hillery Pty Ltd T/A Hillery Group
+   Location: 7430 Bowen Developmental Road, Collinsville QLD 4804
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2024-103 | Expiry: 2026-09-09
+   Rock Type: Altered Porphyritic Trachyandesite (Latite) (Intermediate Igneous)
+   Approved Products: Unbound Paving Material
+
+=A276+1. Waitara (Braeside) Quarry (RQ093)
+   Operator: W Wall & Sons
+   Location: Braeside Road, Nebo QLD 4742
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2024-125 | Expiry: 2026-10-02
+   Rock Type: Rhyolite (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Supplementary Materials (Unbound)
+
+=A277+1. Waitara (BRW) Quarry (RQ105)
+   Operator: BRW Transport & Quarries Pty Ltd
+   Location: 24 Braeside Road, Nebo QLD 4742
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-074 | Expiry: 2027-07-03
+   Rock Type: Rhyolite (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material
+
+=A278+1. Wallaby Hill Quarry (Springsure) (RQ378)
+   Operator: Krit Co Pty Ltd t/a Lanes Land Developments
+   Location: 2380 Dawson Development Road, Springsure QLD 4722 (Access along Cona Creek School Bus Road)
+   LGA: Central Highlands Regional Council
+   Status: CURRENT | Cert: 2024-109 | Expiry: 2026-09-18
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material, Supplementary Materials (Unbound)
+
+=A279+1. Walsh River Quarry (RQ273)
+   Operator: CQB Services Pty Ltd
+   Location: 450, Borzi Road, Mareeba QLD 4880
+   LGA: Mareeba Shire Council
+   Status: CURRENT | Cert: 2024-029 | Expiry: 2026-04-03
+   Rock Type: Hornfelsed Metagreywacke /Hornfels (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A280+1. Warrians Quarry (RQ062)
+   Operator: Corbet Quarries and Concrete Pty Ltd
+   Location: Roma-Taroom Road, Euthulla 4455
+   LGA: Maranoa Regional Council
+   Status: Temporary Extension | Cert: 2023-155 | Expiry: 2026-01-30
+   Rock Type: Silica Oversaturated Glassy Basalt (Basic Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A281+1. Waterfall Quarry (RQ322)
+   Operator: Scotbar Pty Ltd T/A Rock Trade Industries
+   Location: 613 Seventeen Mile Road, Helidon, QLD 4344
+   LGA: Lockyer Valley Regional Council
+   Status: CURRENT | Cert: 2024-081 | Expiry: 2026-04-16
+   Rock Type: Weathered Quartzose Sandstone (Sedimentary and Duricrust)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material
+
+=A282+1. Wattlegrove Quarry (RQ535)
+   Operator: Kingaroy Quarry Supplies Pty Ltd
+   Location: 1304 Wattlegrove Road, Wattlegrove Qld 4610
+   LGA: South Burnett Regional Council
+   Status: CURRENT | Cert: 2024-108 | Expiry: 2026-07-23
+   Rock Type: Microgranite [Adamellite] (Acid Igneous)
+   Approved Products: Unbound Paving Material
+
+=A283+1. Wellcamp Quarry - Pit 3 (RQ351)
+   Operator: Wagners Quarries Pty Ltd
+   Location: 1215-1511 Toowoomba-Cecil Plains Road QLD 4350
+   LGA: Toowoomba Regional Council
+   Status: Temporary Extension | Cert: 2023-054 | Expiry: 2026-01-12
+   Rock Type: Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A284+1. West Euri Creek (BQC) Quarry (RQ050)
+   Operator: BQC Quarries Pty Ltd
+   Location: 500 West Euri Road, Bowen QLD 4805
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2024-067 | Expiry: 2026-05-29
+   Rock Type: Granodiorite/Tonalite and Rhyolite with minor Microgranite, Microdiorite Dykes/Amphibolite zones. (Acid Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Bituminous Slurry/Microsurfacing, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A285+1. Westwood Quarry (RQ067)
+   Operator: Regional Quarries Australia Pty Ltd
+   Location: Corner Capricorn Highway & Leichardt Highway, Westwood QLD 4702
+   LGA: Banana Shire Council
+   Status: CURRENT | Cert: 2025-119 | Expiry: 2027-09-24
+   Rock Type: Altered Silica Undersaturated Glassy Basalt (Basic Igneous)
+   Approved Products: Unbound Paving Material
+
+=A286+1. Whitsunday Quarry (RQ121)
+   Operator: L D & L J Hillery Pty Ltd
+   Location: 824 Shute-Harbour Rd, Mt Marlow QLD 4800
+   LGA: Whitsunday Regional Council
+   Status: CURRENT | Cert: 2025-015 | Expiry: 2027-02-26
+   Rock Type: Altered Andesitic Ash Tuff and minor Pyroxene Basalt (Intermediate Igneous)
+   Approved Products: Unbound Paving Material
+
+=A287+1. Whymere Sands (Extraction Area A) (RQ575)
+   Operator: McBrides Sands
+   Location: Gooburrum Road, Fairymead QLD 4670 
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2024-041 | Expiry: 2026-03-27
+   Rock Type: Mainly Medium Quartzose Aeolian Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A288+1. Whymere Sands (Extraction Area D) (RQ319)
+   Operator: McBrides Sands
+   Location: Hills Road, off Fairydale Road, Fairymead QLD 4670 
+   LGA: Bundaberg Regional Council
+   Status: CURRENT | Cert: 2024-042 | Expiry: 2026-03-27
+   Rock Type: Fine to Medium Grained Quartzofeldspathic Aeolian Sand (Possible Reworked Delta Deposit) (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A289+1. Wilgatoo Pit (RQ505)
+   Operator: Tierney Crushing & Transport Pty Ltd
+   Location: "Wilgatoo",  Moonie Highway, St. George QLD4487
+   LGA: Balonne Shire Council
+   Status: CURRENT | Cert: 2026-011 | Expiry: 2028-01-27
+   Rock Type: Sandstone, Siltstone, Mudstone & Conglomerate (Sedimentary)
+   Approved Products: Unbound Paving Material
+
+=A290+1. Winchester Downs Sand Deposit (Isaac River) (RQ554)
+   Operator: Quarrico Products Pty Ltd
+   Location: Winchester Downs, Moranbah QLD 4745 (Access via Winchester Access Road)
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-118 | Expiry: 2027-09-18
+   Rock Type: Mainly Medium to Coarse Grained Alluvial Quartz Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+=A291+1. Winchester Quarry (RQ183)
+   Operator: Quarrico Products Pty Ltd
+   Location: Winchester Road, Moranbah QLD 4744
+   LGA: Isaac Regional Council
+   Status: CURRENT | Cert: 2025-089 | Expiry: 2027-07-28
+   Rock Type: Porphyritic Quartz microdiorite (Intermediate Igneous)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Lean Mix/Concrete Pavement (Coarse)
+
+=A292+1. Wolffdene Quarry (RQ051)
+   Operator: Heidelberg Materials Australia Pty Ltd
+   Location: 145 Harts Road, Luscombe QLD 4207
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2025-135 | Expiry: 2027-11-27
+   Rock Type: Metagreywacke (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A293+1. Wondai (Corbet) Quarry (RQ030)
+   Operator: Corbet Quarries and Concrete Pty Ltd
+   Location: 12653 Wondai - Chinchilla Rd, Ballogie QLD 4610
+   LGA: South Burnett Regional Council
+   Status: CURRENT | Cert: 2025-100 | Expiry: 2027-10-07
+   Rock Type: Silica Undersaturated Glassy Olivine Basalt (Basic Igneous)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A294+1. Wongabel Quarry  (RQ063)
+   Operator: Wongabel Quarries and Concrete
+   Location: 458 Wongabel Road, Atherton QLD 4883
+   LGA: Tablelands Regional Council
+   Status: CURRENT | Cert: 2024-019 | Expiry: 2026-04-03
+   Rock Type: Granite [Adamellite] (Acid Igneous)
+   Approved Products: Cover Aggregate, Unbound Paving Material
+
+=A295+1. Yalkara Quarry (RQ222)
+   Operator: Heidelberg Materials Australia Pty Ltd.
+   Location: Orange Creek Road, Orange Creek QLD 4715
+   LGA: Banana Shire Council
+   Status: CURRENT | Cert: 2025-001 | Expiry: 2027-01-06
+   Rock Type: Hornfelsed Volcanoclastic Arenite & Siltstone (Metamorphic)
+   Approved Products: Cover Aggregate, Concrete Aggregate - Coarse, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Lean Mix/Concrete Pavement (Coarse)
+
+=A296+1. Yarwun Quarries (RQ162)
+   Operator: Butlers Yarwun Quarries Pty Ltd
+   Location: Lot 31, Off Guerassimoff Road, Yarwun QLD 4694
+   LGA: Gladstone Regional Council
+   Status: CURRENT | Cert: 2025-047 | Expiry: 2027-05-21
+   Rock Type: Hornfelsed Volcanoclastic Sandstone and Siltstone (Meta-Pelite) with minor Chert Bands (Metamorphic)
+   Approved Products: Armourstones, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage, Reinforced Fill Materials, Lean Mix/Concrete Pavement (Coarse), Lean Mix/Concrete Pavement (Fine)
+
+=A297+1. Yatala Quarry (RQ106)
+   Operator: Crushing Dynamics (QLD) Pty Ltd
+   Location: Lot 1, Darlington Park Industrial Estate, Peachy Road, Luscombe QLD 4207
+   LGA: Gold Coast City Council
+   Status: CURRENT | Cert: 2024-132 | Expiry: 2026-10-18
+   Rock Type: Metagreywacke & Metasiltstone (Metamorphic)
+   Approved Products: Asphalt Aggregate - Coarse, Cover Aggregate, Concrete Aggregate - Coarse, Concrete Aggregate - Fine, Asphalt Aggregate - Fine, Unbound Paving Material, Rock Fill Material, High Permeability Drainage
+
+=A298+1. Yuleba Creek Sand (RQ408)
+   Operator: Roma Sands Pty Ltd
+   Location: Lot 43, Yuleba -Taroom Road, Yuleba QLD 4427
+   LGA: Maranoa Regional Council
+   Status: CURRENT | Cert: 2024-047 | Expiry: 2026-04-03
+   Rock Type: Fine to Coarse Grained Quartzofeldspathic and Lithic Alluvial Sand (Sand)
+   Approved Products: Concrete Aggregate - Fine, Asphalt Aggregate - Fine
+
+--------------------------------------------------------------------------------
+TOP OPERATORS BY NUMBER OF QUARRIES
+--------------------------------------------------------------------------------
+  Boral Resources (Qld) Pty Ltd: 13
+  Heidelberg Materials Australia Pty Ltd: 8
+  Holcim (Australia) Pty Ltd: 6
+  L D & L J Hillery Pty Ltd T/A Hillery Group: 5
+  Corbet Quarries and Concrete Pty Ltd: 5
+  Lawlor Contracting Pty Ltd: 5
+  Holcim Australia Pty Ltd: 5
+  Regional Quarries Australia Pty Ltd: 5
+  Quarrico Products Pty Ltd: 5
+  BQC Quarries Pty Ltd: 5
+  Gromac Quarries (NQ) Pty Ltd: 4
+  Wagners Quarries Pty Ltd: 4
+  Quarries of Queensland Pty Ltd: 4
+  Tierney Crushing & Transport Pty Ltd: 4
+  Pioneer North Queensland Pty Ltd: 4
+  Hy-Tec Industries (Queensland) Pty Ltd: 3
+  Wells Plant Hire Pty Ltd: 3
+  Blackwater Quarries Pty Ltd: 3
+  Roma Sands Pty Ltd: 3
+  Neilsens Quality Gravels Pty Ltd: 3

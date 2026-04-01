@@ -181,7 +181,7 @@ RECOMMENDED APPROACH FOR CUT2FILL
 
 4. CROSS-REFERENCE: QMAN holders with remaining volume > 0 are active
    suppliers. Cross-reference with TMR quarry register data already in
-   C:\cut2fill\docs\tmr-quarries-geocoded.json for overlap analysis.
+   C:\dev\cut2fill\docs\tmr-quarries-geocoded.json for overlap analysis.
 
 5. KEY GAP: The "Material" field often says "Other" rather than specifying
    Sand/Gravel/Rock. The actual material is typically described in the
@@ -195,10 +195,10 @@ RECOMMENDED APPROACH FOR CUT2FILL
 RAW DATA FILES
 ================================================================================
 
-  C:\cut2fill\docs\quarry-material-allocation-raw.csv    (217 records, 805 KB)
-  C:\cut2fill\docs\riverine-protection-permits-raw.csv   (18 records, 25 KB)
-  C:\cut2fill\docs\drdmw-extraction-permits.json         (structured summary)
-  C:\cut2fill\docs\drdmw-extraction-summary.txt          (this file)
+  C:\dev\cut2fill\docs\quarry-material-allocation-raw.csv    (217 records, 805 KB)
+  C:\dev\cut2fill\docs\riverine-protection-permits-raw.csv   (18 records, 25 KB)
+  C:\dev\cut2fill\docs\drdmw-extraction-permits.json         (structured summary)
+  C:\dev\cut2fill\docs\drdmw-extraction-summary.txt          (this file)
 
 ================================================================================
 END OF REPORT
