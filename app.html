@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut2Fill | Connect. Reuse. Sustain.</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFFZRDLYK7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EFFZRDLYK7');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+
+<!-- Supabase Auth Gate -->
+<div id="authGate" style="position:fixed;inset:0;z-index:99999;background:#1a1814;display:flex;align-items:center;justify-content:center;">
+    <div style="text-align:center;max-width:380px;padding:24px;width:100%;">
+        <i class="fas fa-recycle" style="font-size:36px;color:#6b8f5e;margin-bottom:12px;"></i>
+        <h1 style="font-size:20px;font-weight:700;color:#e0dbd3;margin-bottom:4px;">Cut2Fill</h1>
+        <p style="font-size:11px;color:#6b6358;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;">QLD Construction Material Sourcing</p>
+
+        <!-- Sign In Form -->
+        <form id="gateLoginForm" style="display:flex;flex-direction:column;gap:10px;">
+            <input type="email" id="gateEmail" placeholder="Email" required autocomplete="email"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <input type="password" id="gatePassword" placeholder="Password" required autocomplete="current-password" minlength="6"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <button type="submit" id="gateLoginBtn" style="padding:10px;border:none;border-radius:6px;background:#6b8f5e;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+            <p id="gateError" style="color:#b85c4a;font-size:12px;display:none;margin:0;"></p>
+        </form>
+
+        <!-- Register Form (hidden by default) -->
+        <form id="gateRegisterForm" style="display:none;flex-direction:column;gap:10px;">
+            <input type="text" id="gateRegName" placeholder="Your name" required
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <input type="text" id="gateRegCompany" placeholder="Company (optional)"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <input type="email" id="gateRegEmail" placeholder="Email" required autocomplete="email"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <input type="password" id="gateRegPassword" placeholder="Password (min 6 characters)" required minlength="6"
+                style="padding:10px 14px;border:1px solid #3d3830;border-radius:6px;background:#242019;color:#e0dbd3;font-size:14px;font-family:inherit;outline:none;">
+            <button type="submit" id="gateRegBtn" style="padding:10px;border:none;border-radius:6px;background:#6b8f5e;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
+            <p id="gateRegError" style="color:#b85c4a;font-size:12px;display:none;margin:0;"></p>
+            <p id="gateRegSuccess" style="color:#6b8f5e;font-size:12px;display:none;margin:0;"></p>
+        </form>
+
+        <p id="gateToggle" style="font-size:13px;color:#9c9488;margin-top:14px;">
+            Don't have an account? <a href="#" id="gateToggleLink" style="color:#d4a853;">Register</a>
+        </p>
+        <p style="font-size:10px;color:#6b6358;margin-top:20px;">&copy; 2025 Archers Group Pty Ltd</p>
+    </div>
+</div>
+
+<script>
+(function() {
+    // Wait for Supabase to load, then check session
+    function initGate() {
+        if (!window.supabase || !window.supabase.createClient) {
+            setTimeout(initGate, 100);
+            return;
+        }
+        var sb = window.supabase.createClient(
+            'https://ajcbtrufifqttcfekjyd.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqY2J0cnVmaWZxdHRjZmVranlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0ODkzMzYsImV4cCI6MjA5MDA2NTMzNn0.L_F6l-avqASdP01w464Iqh4zNppBA9pQl_qM7oaqUIU'
+        );
+        window._cut2fill_sb = sb;
+
+        function hideGate() { document.getElementById('authGate').style.display = 'none'; }
+
+        // Check existing session
+        sb.auth.getSession().then(function(res) {
+            if (res.data.session) hideGate();
+        });
+        sb.auth.onAuthStateChange(function(event, session) {
+            if (session) hideGate();
+        });
+
+        // Toggle sign in / register
+        var showingLogin = true;
+        document.getElementById('gateToggleLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            showingLogin = !showingLogin;
+            document.getElementById('gateLoginForm').style.display = showingLogin ? 'flex' : 'none';
+            document.getElementById('gateRegisterForm').style.display = showingLogin ? 'none' : 'flex';
+            document.getElementById('gateToggle').innerHTML = showingLogin
+                ? 'Don\'t have an account? <a href="#" id="gateToggleLink" style="color:#d4a853;">Register</a>'
+                : 'Already have an account? <a href="#" id="gateToggleLink" style="color:#d4a853;">Sign In</a>';
+            document.getElementById('gateToggleLink').addEventListener('click', arguments.callee.bind(this));
+        });
+
+        // Sign in
+        document.getElementById('gateLoginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('gateLoginBtn');
+            var err = document.getElementById('gateError');
+            btn.disabled = true; btn.textContent = 'Signing in...'; err.style.display = 'none';
+            var result = await sb.auth.signInWithPassword({
+                email: document.getElementById('gateEmail').value,
+                password: document.getElementById('gatePassword').value,
+            });
+            btn.disabled = false; btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+            if (result.error) {
+                err.textContent = result.error.message;
+                err.style.display = 'block';
+            } else {
+                hideGate();
+            }
+        });
+
+        // Register
+        document.getElementById('gateRegisterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('gateRegBtn');
+            var err = document.getElementById('gateRegError');
+            var success = document.getElementById('gateRegSuccess');
+            btn.disabled = true; btn.textContent = 'Registering...';
+            err.style.display = 'none'; success.style.display = 'none';
+            var result = await sb.auth.signUp({
+                email: document.getElementById('gateRegEmail').value,
+                password: document.getElementById('gateRegPassword').value,
+                options: {
+                    data: {
+                        display_name: document.getElementById('gateRegName').value,
+                        company: document.getElementById('gateRegCompany').value
+                    }
+                }
+            });
+            btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Register';
+            if (result.error) {
+                err.textContent = result.error.message;
+                err.style.display = 'block';
+            } else if (result.data.session) {
+                // Auto-confirmed — create profile and enter
+                try {
+                    fetch('https://cut2fill.onrender.com/api/v1/profile', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + result.data.session.access_token },
+                        body: JSON.stringify({ display_name: document.getElementById('gateRegName').value, company: document.getElementById('gateRegCompany').value })
+                    });
+                } catch(e) {}
+                hideGate();
+            } else {
+                success.textContent = 'Check your email to confirm your account.';
+                success.style.display = 'block';
+            }
+        });
+    }
+    initGate();
+})();
+</script>
+
+<!-- Header -->
+<header class="header">
+    <div class="header-left">
+        <div class="logo">
+            <i class="fas fa-recycle logo-icon"></i>
+            <div>
+                <span class="logo-text">Cut2Fill <span style="font-size:10px;font-weight:600;background:rgba(245,158,11,0.15);color:#f59e0b;padding:2px 6px;border-radius:4px;vertical-align:middle;margin-left:4px;">BETA</span></span>
+                <span class="logo-tagline">Connect. Reuse. Sustain.</span>
+            </div>
+        </div>
+    </div>
+    <nav class="header-nav">
+        <button class="nav-btn active" data-view="map"><i class="fas fa-map-marked-alt"></i> Map</button>
+        <button class="nav-btn" data-view="dashboard"><i class="fas fa-chart-bar"></i> Dashboard</button>
+    </nav>
+    <div class="header-right">
+        <button class="btn btn-outline" id="btnFeedback"><i class="fas fa-comment-dots"></i> Feedback</button>
+        <button class="btn btn-outline" id="btnLogin"><i class="fas fa-user"></i> Sign In</button>
+        <button class="btn btn-match" id="btnSubmitSource"><i class="fas fa-map-pin"></i> Know a Source?</button>
+        <button class="btn btn-primary" id="btnPostListing"><i class="fas fa-plus"></i> Register My Site</button>
+    </div>
+    <button class="btn btn-outline mobile-filter-btn" id="btnMobileFilters"><i class="fas fa-filter"></i></button>
+</header>
+
+<!-- Mobile sidebar backdrop -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<!-- Fire Ant Zone Warning Banner -->
+<div class="zone-warning-banner" id="zoneWarningBanner">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Fire ant biosecurity zone crossing — BIP may be required.</span>
+    <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/invasive-plants-animals/animals/fire-ants/zone-checker" target="_blank" rel="noopener">Check zones on BQCC <i class="fas fa-external-link-alt"></i></a>
+    <button class="zone-warning-close" id="zoneWarningClose"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- Main Content -->
+<div class="main-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-filter"></i> Filters</h3>
+            <button class="btn-text" id="clearFilters">Clear All</button>
+        </div>
+
+        <!-- Search -->
+        <div class="filter-group">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search facility, suburb, operator...">
+        </div>
+
+        <!-- Facility Type Filter -->
+        <div class="filter-group">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <h4 class="filter-title">Facility Type</h4>
+                <button class="btn-text" id="clearFacilityFilters">Clear</button>
+            </div>
+            <div class="filter-checks">
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="quarry">
+                    <span class="check-dot" style="background: #8a8478;"></span>
+                    Quarry
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="landfill">
+                    <span class="check-dot" style="background: #a0734a;"></span>
+                    Landfill
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="transfer">
+                    <span class="check-dot" style="background: #5c8a97;"></span>
+                    Transfer Station
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="cd-recycler">
+                    <span class="check-dot" style="background: #6a9e8f;"></span>
+                    C&amp;D Recycler
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="soil-treatment">
+                    <span class="check-dot" style="background: #8b7eb5;"></span>
+                    Soil Treatment
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="pfas-treatment">
+                    <span class="check-dot" style="background: #b85c4a;"></span>
+                    PFAS Treatment
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="concrete">
+                    <span class="check-dot" style="background: #d4a05a;"></span>
+                    Concrete Supplier
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="water-potable">
+                    <span class="check-dot" style="background: #2196F3;"></span>
+                    Water Fill — Potable
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="facility" value="water-recycled">
+                    <span class="check-dot" style="background: #9C27B0;"></span>
+                    Water Fill — Recycled
+                </label>
+            </div>
+        </div>
+
+        <!-- Major Projects Filter -->
+        <div class="filter-group">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <h4 class="filter-title">Major Projects — Status</h4>
+                <button class="btn-text" id="clearProjectFilters">Clear</button>
+            </div>
+            <div class="filter-checks">
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-status" value="active">
+                    <span class="check-dot" style="background: #22c55e;"></span>
+                    Active
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-status" value="upcoming">
+                    <span class="check-dot" style="background: #f59e0b;"></span>
+                    Upcoming
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-status" value="planning">
+                    <span class="check-dot" style="background: #3b82f6;"></span>
+                    Planning
+                </label>
+            </div>
+            <h4 class="filter-title" style="margin-top:10px;">Major Projects — Type</h4>
+            <div class="filter-checks">
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-type" value="rail">
+                    <i class="fas fa-train" style="color:var(--blue);font-size:12px;"></i>
+                    Rail
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-type" value="road">
+                    <i class="fas fa-road" style="color:var(--amber);font-size:12px;"></i>
+                    Road
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-type" value="venue">
+                    <i class="fas fa-building" style="color:var(--green);font-size:12px;"></i>
+                    Venue
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="project-type" value="precinct">
+                    <i class="fas fa-city" style="color:var(--purple);font-size:12px;"></i>
+                    Precinct
+                </label>
+            </div>
+        </div>
+
+        <!-- Opening Hours Filter -->
+        <div class="filter-group">
+            <h4 class="filter-title">Opening Hours</h4>
+            <div class="filter-checks">
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="hours" value="business">
+                    <i class="fas fa-sun" style="color:var(--amber);font-size:12px;"></i>
+                    Business Hours
+                </label>
+                <label class="check-label">
+                    <input type="checkbox" checked data-filter="hours" value="24/7">
+                    <i class="fas fa-clock" style="color:var(--green);font-size:12px;"></i>
+                    24/7
+                </label>
+            </div>
+        </div>
+
+        <!-- Stats Summary -->
+        <div class="sidebar-stats">
+            <h4 class="filter-title">SEQ Overview</h4>
+            <div class="stat-row"><span>Facilities Shown</span><strong id="statShown">0</strong></div>
+            <div class="stat-row"><span>Quarries</span><strong id="statQuarries">0</strong></div>
+            <div class="stat-row"><span>Landfills</span><strong id="statLandfills">0</strong></div>
+            <div class="stat-row"><span>Transfer Stations</span><strong id="statTransfer">0</strong></div>
+            <div class="stat-row"><span>Recyclers</span><strong id="statRecyclers">0</strong></div>
+        </div>
+
+        <button class="btn btn-secondary btn-full" id="btnToggleSidebar">
+            <i class="fas fa-chevron-left"></i> Collapse
+        </button>
+    </aside>
+
+    <!-- Map Area -->
+    <div class="map-container" id="mapView">
+        <div id="map"></div>
+
+        <!-- Address Search Bar -->
+        <div class="address-search" id="addressSearch">
+            <i class="fas fa-search address-search-icon"></i>
+            <input type="text" id="addressInput" placeholder="Search your project site address..." autocomplete="off">
+            <div class="address-results" id="addressResults"></div>
+        </div>
+
+        <!-- Map Controls -->
+        <div class="map-controls">
+            <button class="map-ctrl-btn" id="btnMyLocation" title="My Location"><span class="ctrl-label">My Location</span> <i class="fas fa-crosshairs"></i></button>
+            <button class="map-ctrl-btn" id="btnSatellite" title="Toggle Satellite"><span class="ctrl-label">Satellite</span> <i class="fas fa-satellite"></i></button>
+            <button class="map-ctrl-btn active" id="btnLGA" title="Council Boundaries"><span class="ctrl-label">Councils</span> <i class="fas fa-draw-polygon"></i></button>
+            <button class="map-ctrl-btn" id="btnFireAnts" title="Fire Ant Biosecurity Zones"><span class="ctrl-label">Fire Ants</span> <i class="fas fa-bug"></i></button>
+            <button class="map-ctrl-btn active" id="btnProjects" title="Major Projects"><span class="ctrl-label">Projects</span> <i class="fas fa-hard-hat"></i></button>
+            <button class="map-ctrl-btn" id="btnHeatmap" title="Toggle Heatmap"><span class="ctrl-label">Heatmap</span> <i class="fas fa-fire"></i></button>
+        </div>
+
+        <!-- Info Panel (shows when marker clicked) -->
+        <div class="info-panel" id="infoPanel">
+            <button class="info-close" id="infoPanelClose"><i class="fas fa-times"></i></button>
+            <div id="infoPanelContent"></div>
+        </div>
+    </div>
+
+    <!-- Dashboard View (hidden by default) -->
+    <div class="dashboard-container" id="dashboardView" style="display:none;">
+        <h2>Cut2Fill Dashboard</h2>
+        <div class="dashboard-grid">
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h3>Registered Sites</h3>
+                    <span class="dash-period">Current</span>
+                </div>
+                <div class="dash-stat-big" id="dashSiteStats">
+                    <!-- Populated by JS from actual data -->
+                </div>
+            </div>
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h3>Volume Summary</h3>
+                    <span class="dash-period">Active Listings</span>
+                </div>
+                <div class="dash-stat-big" id="dashVolumeStats">
+                    <!-- Populated by JS from actual data -->
+                </div>
+            </div>
+            <div class="dash-card full-width">
+                <div class="dash-card-header">
+                    <h3>Top Materials</h3>
+                </div>
+                <div class="material-chart" id="materialChart">
+                    <!-- Populated by JS from actual data -->
+                </div>
+            </div>
+            <div class="dash-card full-width">
+                <div class="dash-card-header">
+                    <h3>Registered Facilities</h3>
+                </div>
+                <div class="region-bars" id="facilityBars">
+                    <!-- Populated by JS from actual data -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sign In / Register Modal -->
+<div class="modal-overlay" id="loginModal">
+    <div class="modal" style="max-width:420px;">
+        <div class="modal-header">
+            <h2 id="loginModalTitle"><i class="fas fa-user"></i> Sign In</h2>
+            <button class="modal-close" id="loginModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="loginForm" class="modal-body">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" required placeholder="you@company.com.au">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required placeholder="Your password" minlength="6">
+            </div>
+            <p id="loginError" style="color:#b85c4a;font-size:13px;display:none;margin:0;"></p>
+            <div class="form-actions" style="display:flex;gap:10px;margin-top:8px;">
+                <button type="submit" class="btn btn-primary" id="loginSubmitBtn" style="flex:1;"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+            </div>
+            <p style="text-align:center;margin:12px 0 0;font-size:13px;color:#a09888;">
+                Don't have an account? <a href="#" id="loginToggleRegister" style="color:#d4a853;">Register</a>
+            </p>
+        </form>
+        <form id="registerForm" class="modal-body" style="display:none;">
+            <div class="form-group">
+                <label for="registerName">Name</label>
+                <input type="text" id="registerName" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label for="registerCompany">Company</label>
+                <input type="text" id="registerCompany" placeholder="Company name (optional)">
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" required placeholder="you@company.com.au">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" required placeholder="Min 6 characters" minlength="6">
+            </div>
+            <p id="registerError" style="color:#b85c4a;font-size:13px;display:none;margin:0;"></p>
+            <p id="registerSuccess" style="color:#22c55e;font-size:13px;display:none;margin:0;"></p>
+            <div class="form-actions" style="display:flex;gap:10px;margin-top:8px;">
+                <button type="submit" class="btn btn-primary" id="registerSubmitBtn" style="flex:1;"><i class="fas fa-user-plus"></i> Register</button>
+            </div>
+            <p style="text-align:center;margin:12px 0 0;font-size:13px;color:#a09888;">
+                Already have an account? <a href="#" id="loginToggleSignin" style="color:#d4a853;">Sign In</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<!-- Post Listing Modal -->
+<div class="modal-overlay" id="postModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2><i class="fas fa-map-marker-alt"></i> Register My Site</h2>
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <p class="modal-notice"><i class="fas fa-shield-alt"></i> All registrations are manually verified by the Archers team before going live.</p>
+        <form id="postForm" class="modal-body">
+            <!-- Step 1: Type -->
+            <div class="form-section">
+                <h3>What does your site have or need?</h3>
+                <div class="type-selector">
+                    <label class="type-option">
+                        <input type="radio" name="listingType" value="fill-available" checked>
+                        <div class="type-card">
+                            <i class="fas fa-truck-loading" style="color:#22c55e;"></i>
+                            <strong>Fill Available</strong>
+                            <span>Material available for pickup or delivery</span>
+                        </div>
+                    </label>
+                    <label class="type-option">
+                        <input type="radio" name="listingType" value="fill-wanted">
+                        <div class="type-card">
+                            <i class="fas fa-truck-moving" style="color:#f59e0b;"></i>
+                            <strong>Fill Wanted</strong>
+                            <span>Looking for material to be delivered</span>
+                        </div>
+                    </label>
+                    <label class="type-option">
+                        <input type="radio" name="listingType" value="private-dump">
+                        <div class="type-card">
+                            <i class="fas fa-mountain" style="color:#8b5cf6;"></i>
+                            <strong>Accepting Material</strong>
+                            <span>Private site accepting fill</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Step 2: Details -->
+            <div class="form-section">
+                <h3>Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Company / Contact Name *</label>
+                        <input type="text" id="formCompany" required placeholder="e.g. Smith Earthworks">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" id="formPhone" required placeholder="04XX XXX XXX">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="formEmail" placeholder="name@company.com.au">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" id="formProject" placeholder="e.g. Springfield Lakes Subdivision">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Material -->
+            <div class="form-section">
+                <h3>Material</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Material Type *</label>
+                        <select id="formMaterial" required>
+                            <option value="">Select material...</option>
+                            <option value="clean-fill">Clean Fill / Earth</option>
+                            <option value="rock">Rock / Rubble</option>
+                            <option value="sand">Sand</option>
+                            <option value="topsoil">Topsoil</option>
+                            <option value="concrete">Concrete / Asphalt</option>
+                            <option value="mixed">Mixed C&amp;D Waste</option>
+                            <option value="acid-sulfate">Acid Sulfate Soil</option>
+                            <option value="contaminated">Contaminated Soil</option>
+                        </select>
+                        <div class="material-tooltip" id="materialTooltip"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Estimated Volume (m³) *</label>
+                        <input type="number" id="formVolume" required placeholder="e.g. 500 (minimum 100m³)" min="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Available From *</label>
+                        <input type="date" id="formDateFrom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Available Until</label>
+                        <input type="date" id="formDateTo">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Pricing *</label>
+                        <div class="pricing-radios">
+                            <label class="pricing-radio">
+                                <input type="radio" name="formPricing" value="free" checked>
+                                <span class="pricing-radio-card free"><i class="fas fa-gift"></i> Free</span>
+                            </label>
+                            <label class="pricing-radio">
+                                <input type="radio" name="formPricing" value="quote">
+                                <span class="pricing-radio-card quote"><i class="fas fa-file-invoice-dollar"></i> Quote Required</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Location -->
+            <div class="form-section">
+                <h3>Location</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Address / Suburb *</label>
+                        <input type="text" id="formAddress" required placeholder="e.g. 123 Main St, Springfield QLD 4300">
+                    </div>
+                </div>
+                <p class="form-hint"><i class="fas fa-info-circle"></i> Your exact address won't be shown — only the suburb will appear on the map.</p>
+            </div>
+
+            <!-- Step 5: Additional -->
+            <div class="form-section">
+                <h3>Additional Info</h3>
+                <div class="form-group full-width">
+                    <label>Notes</label>
+                    <textarea id="formNotes" rows="3" placeholder="Access conditions, testing results, delivery requirements..."></textarea>
+                </div>
+                <div class="form-checks-row">
+                    <div class="form-group">
+                        <label class="check-label">
+                            <input type="checkbox" id="formTested">
+                            <i class="fas fa-flask" style="color:var(--green);font-size:13px;"></i>
+                            Material Tested / Classified
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="check-label">
+                            <input type="checkbox" id="formPickup" checked>
+                            <i class="fas fa-box-open" style="color:var(--amber);font-size:13px;"></i>
+                            Available for Pickup
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="check-label">
+                            <input type="checkbox" id="formDelivery">
+                            <i class="fas fa-truck" style="color:var(--blue);font-size:13px;"></i>
+                            Delivery Available
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="formCancel">Cancel</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit for Verification</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Submit a Source Modal -->
+<div class="modal-overlay" id="sourceModal">
+    <div class="modal" style="max-width:540px;">
+        <div class="modal-header">
+            <h2><i class="fas fa-map-pin"></i> Know a Material Source?</h2>
+            <button class="modal-close" id="sourceModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <p class="modal-notice" style="background:rgba(196,132,62,0.12);border-color:rgba(196,132,62,0.15);color:#c4843e;">
+            <i class="fas fa-hands-helping"></i> Help QLD's construction industry. If you know where material comes from — a quarry, gravel pit, borrow pit, sand source, or water point — tell us. Local knowledge builds better maps.
+        </p>
+        <form id="sourceForm" class="modal-body">
+            <div class="form-section">
+                <h3>What kind of source?</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Source Type *</label>
+                        <select id="sourceType" required>
+                            <option value="">Select...</option>
+                            <option value="quarry">Quarry (registered or unregistered)</option>
+                            <option value="gravel-pit">Gravel Pit / Borrow Pit</option>
+                            <option value="sand-source">Sand / River Extraction</option>
+                            <option value="water-source">Water Source / Bore / Standpipe</option>
+                            <option value="recycled">Recycled Material Source</option>
+                            <option value="other">Other Material Source</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Location</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Where is it? *</label>
+                        <input type="text" id="sourceLocation" required placeholder="e.g. 5km south of Longreach on the Landsborough Hwy, or a street address">
+                    </div>
+                    <div class="form-group">
+                        <label>Nearest Town / Suburb</label>
+                        <input type="text" id="sourceTown" placeholder="e.g. Longreach">
+                    </div>
+                    <div class="form-group">
+                        <label>Council / LGA</label>
+                        <input type="text" id="sourceLGA" placeholder="e.g. Longreach Regional">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Details</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Source Name (if known)</label>
+                        <input type="text" id="sourceName" placeholder="e.g. Old Bill's gravel pit, Council Pit #3, Smiths Bore">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Material Available</label>
+                        <input type="text" id="sourceMaterial" placeholder="e.g. road base gravel, river sand, bore water, blue metal">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Who operates it? (if known)</label>
+                        <input type="text" id="sourceOperator" placeholder="e.g. Council works dept, private landowner, commercial operator">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Anything else we should know?</label>
+                        <textarea id="sourceNotes" rows="3" placeholder="Access conditions, quality, availability, seasonal limits, contact info..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Your Details (optional)</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="sourceContactName" placeholder="Optional">
+                    </div>
+                    <div class="form-group">
+                        <label>Email or Phone</label>
+                        <input type="text" id="sourceContactInfo" placeholder="Optional — if we need to clarify">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="sourceCancel">Cancel</button>
+                <button type="submit" class="btn btn-match"><i class="fas fa-paper-plane"></i> Submit Source</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Feedback Modal -->
+<div class="modal-overlay" id="feedbackModal">
+    <div class="modal" style="max-width:500px;">
+        <div class="modal-header">
+            <h2><i class="fas fa-comment-dots"></i> Send Feedback</h2>
+            <button class="modal-close" id="feedbackModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="feedbackForm" class="modal-body">
+            <div class="form-section">
+                <div class="form-group full-width">
+                    <label>Your Name</label>
+                    <input type="text" id="feedbackName" placeholder="Optional">
+                </div>
+                <div class="form-group full-width">
+                    <label>Email</label>
+                    <input type="email" id="feedbackEmail" placeholder="Optional — if you'd like a response">
+                </div>
+                <div class="form-group full-width">
+                    <label>Feedback Type</label>
+                    <select id="feedbackType">
+                        <option value="general">General Feedback</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="data">Data Correction</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label>Your Feedback *</label>
+                    <textarea id="feedbackMessage" rows="5" required placeholder="Tell us what's working, what's not, or what you'd like to see..."></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="feedbackCancel">Cancel</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Feedback</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+
+<!-- Footer -->
+<footer style="position:fixed;bottom:0;left:0;right:0;z-index:800;background:rgba(28,25,23,0.95);border-top:1px solid rgba(255,255,255,0.06);padding:6px 16px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgba(168,162,158,0.7);backdrop-filter:blur(8px);">
+    <div>&copy; 2025 Archers Group Pty Ltd. All rights reserved. <span style="margin-left:8px;background:rgba(245,158,11,0.12);color:#f59e0b;padding:1px 6px;border-radius:3px;font-weight:600;">BETA v0.1</span></div>
+    <div style="text-align:right;max-width:60%;line-height:1.4;">
+        <span style="cursor:pointer;text-decoration:underline;text-decoration-style:dotted;" id="disclaimerToggle">Legal Disclaimer</span>
+    </div>
+</footer>
+
+<!-- Disclaimer Modal -->
+<div class="modal-overlay" id="disclaimerModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;">
+    <div style="background:#1c1917;border:1px solid rgba(255,255,255,0.1);border-radius:12px;max-width:600px;width:90%;padding:24px;color:#e0dbd3;max-height:80vh;overflow-y:auto;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <h3 style="margin:0;font-size:16px;"><i class="fas fa-balance-scale" style="color:var(--amber);margin-right:6px;"></i>Legal Disclaimer</h3>
+            <button id="disclaimerClose" style="background:none;border:none;color:#a8a29e;font-size:18px;cursor:pointer;"><i class="fas fa-times"></i></button>
+        </div>
+        <div style="font-size:13px;line-height:1.7;color:#a8a29e;">
+            <p><strong style="color:#e0dbd3;">Map Data &amp; Accuracy</strong><br>
+            The information displayed on Cut2Fill is provided for general planning purposes only and should not be relied upon as a substitute for professional advice. Facility locations, boundaries, and zone data are approximate and may not reflect current conditions. Always verify critical information directly with the relevant facility operator, local council, or regulatory authority before making decisions.</p>
+            <p><strong style="color:#e0dbd3;">Delivery Estimator</strong><br>
+            Fuel consumption, truck hours, and emissions estimates are indicative only, based on generalised vehicle profiles and straight-line distance calculations with a road correction factor. Actual values will vary based on route, terrain, traffic, vehicle condition, load configuration, and driving behaviour. Estimates use National Greenhouse Account (NGA) Factors 2024 for CO₂-e calculations.</p>
+            <p><strong style="color:#e0dbd3;">Biosecurity Zones</strong><br>
+            Fire ant biosecurity zone boundaries shown are simplified representations of Queensland Government data. For official zone checks and Biosecurity Instrument Permit (BIP) requirements, always consult the <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/invasive-plants-animals/animals/fire-ants/zone-checker" target="_blank" rel="noopener" style="color:#6b8f5e;">Queensland Government Fire Ant Zone Checker</a>.</p>
+            <p><strong style="color:#e0dbd3;">Third-Party Data</strong><br>
+            Cut2Fill incorporates data from OpenStreetMap, CARTO, Queensland Government, local councils, and water utility providers. This data is used under their respective licences and terms. Cut2Fill does not guarantee the accuracy or completeness of third-party data.</p>
+            <p><strong style="color:#e0dbd3;">Intellectual Property</strong><br>
+            The Cut2Fill platform, including its design, curated datasets, and original content, is &copy; 2025 Archers Group Pty Ltd. All rights reserved. The Cut2Fill name and branding are proprietary to Archers Group.</p>
+            <p><strong style="color:#e0dbd3;">Limitation of Liability</strong><br>
+            To the maximum extent permitted by law, Archers Group Pty Ltd accepts no liability for any loss, damage, or cost arising from the use of or reliance on information provided through Cut2Fill. Use of this platform is at your own risk.</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
