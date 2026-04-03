@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut2Fill | Connect. Reuse. Sustain.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0f0d0a;
+            --bg-elevated: #1a1814;
+            --bg-card: #242019;
+            --bg-card-hover: #2e2a22;
+            --border: #3d3830;
+            --border-subtle: #2a2520;
+            --text: #e8e4dc;
+            --text-muted: #9c9488;
+            --text-dim: #6b6358;
+            --green: #6b8f5e;
+            --green-light: #7da86e;
+            --green-glow: rgba(107, 143, 94, 0.3);
+            --amber: #c4843e;
+            --amber-bg: rgba(196, 132, 62, 0.12);
+            --blue: #5c8a97;
+        }
+
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0 40px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s, border-color 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+        .nav.scrolled {
+            background: rgba(15, 13, 10, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom-color: var(--border-subtle);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-logo i {
+            font-size: 24px;
+            color: var(--green);
+        }
+        .nav-logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--green);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-cta:hover {
+            background: var(--green-light);
+            box-shadow: 0 0 30px var(--green-glow);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 0%, rgba(107, 143, 94, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(196, 132, 62, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--green-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 32px;
+            background: rgba(107, 143, 94, 0.08);
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        .hero-badge i { font-size: 10px; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            max-width: 800px;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease 0.15s forwards;
+            opacity: 0;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--green-light), var(--amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease 0.45s forwards;
+            opacity: 0;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: var(--green);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s;
+            font-family: inherit;
+        }
+        .btn-primary:hover {
+            background: var(--green-light);
+            box-shadow: 0 0 40px var(--green-glow), 0 8px 32px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s;
+            font-family: inherit;
+        }
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-2px);
+        }
+        .hero-visual {
+            margin-top: 80px;
+            width: 100%;
+            max-width: 1000px;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+        }
+        .hero-map-frame {
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(107, 143, 94, 0.05);
+            background: var(--bg-card);
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+        .hero-map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            opacity: 0.85;
+        }
+        .hero-map-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%);
+            pointer-events: none;
+        }
+        .hero-map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            color: var(--text-dim);
+        }
+        .hero-map-placeholder i { font-size: 48px; color: var(--green); opacity: 0.5; }
+
+        /* ===== PROBLEM ===== */
+        .problem {
+            padding: 120px 24px;
+            text-align: center;
+        }
+        .problem-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--amber);
+            margin-bottom: 20px;
+        }
+        .problem h2 {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            max-width: 700px;
+            margin: 0 auto 48px;
+            line-height: 1.15;
+        }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .problem-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 36px 28px;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        .problem-card:hover {
+            border-color: var(--border);
+            background: var(--bg-card);
+            transform: translateY(-4px);
+        }
+        .problem-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .problem-card:nth-child(1) .icon { background: rgba(184, 92, 74, 0.15); color: #b85c4a; }
+        .problem-card:nth-child(2) .icon { background: var(--amber-bg); color: var(--amber); }
+        .problem-card:nth-child(3) .icon { background: rgba(92, 138, 151, 0.12); color: var(--blue); }
+        .problem-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+        .problem-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: 120px 24px;
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--green-light);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
+            line-height: 1.15;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+        }
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 28px;
+            color: var(--green);
+            transition: all 0.3s;
+        }
+        .step:hover .step-number {
+            border-color: var(--green);
+            box-shadow: 0 0 30px var(--green-glow);
+        }
+        .step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+        .step p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            padding: 120px 24px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 36px 28px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--green), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--border);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+        }
+        .feature-card:hover::before { opacity: 1; }
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(107, 143, 94, 0.12);
+            color: var(--green-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ===== MAP PREVIEW ===== */
+        .map-preview {
+            padding: 120px 24px;
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+        .map-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+            background: var(--bg-card);
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+        .map-container .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background:
+                linear-gradient(135deg, var(--bg-card) 0%, #1e2a1a 50%, var(--bg-card) 100%);
+        }
+        .map-explore-cta {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            padding: 120px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% 100%, rgba(107, 143, 94, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .cta h2 {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.15;
+        }
+        .cta p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 48px 24px;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+        .footer-logo i { font-size: 18px; color: var(--green); opacity: 0.6; }
+        .footer-logo span { font-weight: 700; font-size: 15px; }
+        .footer-copy {
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text-muted); }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav { padding: 0 20px; }
+            .nav-links a:not(.nav-cta) { display: none; }
+            .hero { padding: 100px 20px 60px; }
+            .steps { grid-template-columns: 1fr; gap: 40px; }
+            .steps::before { display: none; }
+            .hero-visual { margin-top: 48px; }
+            .footer-content { flex-direction: column; gap: 20px; }
+            .footer-links { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+        <i class="fas fa-recycle"></i>
+        <span class="nav-logo-text">Cut2Fill</span>
+    </a>
+    <div class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#features">Features</a>
+        <a href="#explore">Explore Map</a>
+        <a href="index.html" class="nav-cta">Sign In <i class="fas fa-arrow-right" style="font-size:12px;"></i></a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge"><i class="fas fa-circle"></i> Queensland Construction</div>
+    <h1>Stop Searching.<br><span class="highlight">Start Sourcing.</span></h1>
+    <p class="hero-sub">
+        Cut2Fill is the intelligent platform that connects construction projects
+        with verified fill material — no more Facebook posts, no more phone tag.
+    </p>
+    <div class="hero-actions">
+        <a href="#explore" class="btn-primary">
+            <i class="fas fa-map-location-dot"></i> Explore the Map
+        </a>
+        <a href="index.html" class="btn-secondary">
+            <i class="fas fa-user-plus"></i> Create Free Account
+        </a>
+    </div>
+
+    <div class="hero-visual">
+        <div class="hero-map-frame">
+            <div id="hero-map" style="width:100%;height:100%;"></div>
+            <div class="hero-map-overlay"></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem reveal">
+    <div class="problem-label">The Problem</div>
+    <h2>You're still finding fill material on Facebook?</h2>
+    <div class="problem-grid">
+        <div class="problem-card">
+            <div class="icon"><i class="fas fa-question-circle"></i></div>
+            <h3>Unverified Material</h3>
+            <p>Someone posts "general fill available" — but what does that actually mean? No geotech data, no classification, no certainty about what you're getting.</p>
+        </div>
+        <div class="problem-card">
+            <div class="icon"><i class="fas fa-phone-slash"></i></div>
+            <h3>Endless Phone Tag</h3>
+            <p>You spend hours calling around, chasing availability, checking if sites are open. Half the time the fill is gone before you get there.</p>
+        </div>
+        <div class="problem-card">
+            <div class="icon"><i class="fas fa-route"></i></div>
+            <h3>No Logistics Intelligence</h3>
+            <p>Is the site in a fire ant zone? Is it accessible after rain? What's the haul distance? You're left figuring it all out yourself.</p>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+    <div class="section-label reveal">How It Works</div>
+    <h2 class="section-title reveal">From search to site<br>in three steps</h2>
+    <div class="steps">
+        <div class="step reveal">
+            <div class="step-number"><i class="fas fa-map-marker-alt"></i></div>
+            <h3>Find or List Sites</h3>
+            <p>Browse the interactive map for fill sources near your project, or list your own material for others to find.</p>
+        </div>
+        <div class="step reveal">
+            <div class="step-number"><i class="fas fa-microscope"></i></div>
+            <h3>Verified Data</h3>
+            <p>Every listing includes material classification, geotech data, fire ant zone status, and real-time access conditions.</p>
+        </div>
+        <div class="step reveal">
+            <div class="step-number"><i class="fas fa-handshake"></i></div>
+            <h3>Connect & Manage</h3>
+            <p>Connect directly with suppliers, manage logistics, and track material movement — all in one platform.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+    <div class="section-label reveal">Platform Features</div>
+    <h2 class="section-title reveal">Built for how construction<br>actually works</h2>
+    <div class="features-grid">
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+            <h3>Material Classification</h3>
+            <p>Not just "general fill" — we break down material types with engineering-grade classifications so you know exactly what you're getting.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-bug"></i></div>
+            <h3>Fire Ant Zone Mapping</h3>
+            <p>Biosecurity zones overlaid on every site. Know your compliance requirements before you move a single cubic metre.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+            <h3>Live Site Status</h3>
+            <p>Sites update in real time — closed after rain, capacity changes, access restrictions. No more wasted trips.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-vial"></i></div>
+            <h3>Geotech Integration</h3>
+            <p>Attach and view geotechnical test results directly on listings. More data, more confidence, fewer surprises.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-truck"></i></div>
+            <h3>Haul Distance Calculator</h3>
+            <p>Instantly see cartage distances and estimated costs from any fill source to your project site.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+            <h3>Vetted Listings</h3>
+            <p>Every submitted site goes through our verification process before it goes live. Quality you can trust.</p>
+        </div>
+    </div>
+</section>
+
+<!-- MAP PREVIEW -->
+<section class="map-preview" id="explore">
+    <div class="section-label reveal">See It In Action</div>
+    <h2 class="section-title reveal">Explore fill sources<br>across Queensland</h2>
+    <div class="map-container reveal">
+        <div id="explore-map" style="width:100%;height:100%;"></div>
+        <div class="map-explore-cta">
+            <a href="index.html" class="btn-primary"><i class="fas fa-arrow-right"></i> Open Full Map</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="section-label reveal">Get Started</div>
+    <h2 class="reveal">Ready to source<br>smarter?</h2>
+    <p class="reveal">Join the platform that's bringing construction material sourcing into the 21st century. Free to explore.</p>
+    <div class="cta-actions reveal">
+        <a href="#explore" class="btn-primary">
+            <i class="fas fa-map-location-dot"></i> Explore the Map
+        </a>
+        <a href="index.html" class="btn-secondary">
+            <i class="fas fa-user-plus"></i> Create Free Account
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <a href="#" class="footer-logo">
+            <i class="fas fa-recycle"></i>
+            <span>Cut2Fill</span>
+        </a>
+        <div class="footer-links">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#features">Features</a>
+            <a href="index.html">Sign In</a>
+        </div>
+        <div class="footer-copy">&copy; 2025 Archers Group Pty Ltd</div>
+    </div>
+</footer>
+
+<style>
+    /* Warm tint on map tiles to match brand */
+    .map-tiles-warm { filter: sepia(0.15) saturate(0.85) brightness(0.9); }
+    #hero-map .leaflet-control-zoom,
+    #explore-map .leaflet-control-zoom { display: none; }
+    #hero-map .leaflet-control-attribution,
+    #explore-map .leaflet-control-attribution { font-size: 9px; opacity: 0.5; }
+</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    const CUT2FILL_API_URL = 'https://cut2fill.onrender.com/api/v1';
+
+    // Facility type styling — matches the main app
+    const typeColors = {
+        quarry: '#c4843e', concrete: '#5c8a97', landfill: '#8b7eb5',
+        transfer: '#5c8a97', 'cd-recycler': '#6b8f5e', 'soil-treatment': '#9c9488',
+        'pfas-treatment': '#b85c4a'
+    };
+    const typeIcons = {
+        quarry: 'fa-mountain', concrete: 'fa-building', landfill: 'fa-dumpster',
+        transfer: 'fa-recycle', 'cd-recycler': 'fa-recycle', 'soil-treatment': 'fa-flask',
+        'pfas-treatment': 'fa-biohazard'
+    };
+
+    function createMarker(f) {
+        const color = f.color || typeColors[f.type] || '#6b8f5e';
+        const icon = f.icon || typeIcons[f.type] || 'fa-map-marker-alt';
+        return L.marker([f.lat, f.lng], {
+            icon: L.divIcon({
+                className: '',
+                html: `<div style="width:28px;height:28px;border-radius:50%;background:${color};border:2px solid rgba(224,219,211,0.5);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.5);"><i class="fas ${icon}"></i></div>`,
+                iconSize: [28, 28],
+                iconAnchor: [14, 14]
+            })
+        }).bindTooltip(`<strong>${f.name}</strong><br>${f.suburb || ''}${f.hours ? ' · ' + f.hours : ''}`, {
+            direction: 'top', offset: [0, -16]
+        });
+    }
+
+    function initMap(id, interactive) {
+        const map = L.map(id, {
+            center: [-27.47, 153.02],
+            zoom: 10,
+            zoomControl: interactive,
+            dragging: interactive,
+            scrollWheelZoom: interactive,
+            doubleClickZoom: interactive,
+            touchZoom: interactive,
+            attributionControl: true
+        });
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; CARTO &copy; OSM',
+            maxZoom: 19,
+            className: 'map-tiles-warm'
+        }).addTo(map);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            pane: 'overlayPane'
+        }).addTo(map);
+        return map;
+    }
+
+    // Fetch real facilities from the API and add to maps
+    let facilities = [];
+
+    // Loading indicator for maps
+    function showMapLoading(mapEl) {
+        const loader = document.createElement('div');
+        loader.className = 'map-loading';
+        loader.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading facilities...';
+        loader.style.cssText = 'position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:1000;background:rgba(26,24,20,0.9);color:#9c9488;padding:8px 20px;border-radius:8px;font-size:13px;border:1px solid #3d3830;display:flex;align-items:center;gap:8px;';
+        mapEl.parentElement.style.position = 'relative';
+        mapEl.parentElement.appendChild(loader);
+        return loader;
+    }
+
+    async function loadFacilities(retries = 2) {
+        for (let attempt = 0; attempt <= retries; attempt++) {
+            try {
+                const resp = await fetch(`${CUT2FILL_API_URL}/facilities`);
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const geo = await resp.json();
+                facilities = geo.features
+                    .filter(f => f.geometry && f.geometry.coordinates)
+                    .map(f => ({
+                        name: f.properties.name,
+                        type: f.properties.facility_type,
+                        lat: f.geometry.coordinates[1],
+                        lng: f.geometry.coordinates[0],
+                        suburb: f.properties.suburb,
+                        icon: f.properties.icon,
+                        color: f.properties.color,
+                        hours: f.properties.hours
+                    }));
+                console.log(`[Landing] Loaded ${facilities.length} facilities`);
+                return;
+            } catch (e) {
+                console.warn(`[Landing] API fetch attempt ${attempt + 1} failed:`, e.message);
+                if (attempt < retries) await new Promise(r => setTimeout(r, 5000));
+            }
+        }
+    }
+
+    function addMarkersToMap(map) {
+        facilities.forEach(f => createMarker(f).addTo(map));
+        if (facilities.length > 0) {
+            const bounds = L.latLngBounds(facilities.map(f => [f.lat, f.lng]));
+            map.fitBounds(bounds, { padding: [40, 40], maxZoom: 11 });
+        }
+    }
+
+    // Hero map — non-interactive, just visual
+    const heroMap = initMap('hero-map', false);
+
+    // Explore map — fully interactive, lazy-loaded on scroll
+    const exploreMapEl = document.getElementById('explore-map');
+    let exploreMap = null;
+    const exploreObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !exploreMap) {
+            exploreMap = initMap('explore-map', true);
+            if (facilities.length > 0) {
+                addMarkersToMap(exploreMap);
+            } else {
+                const loader = showMapLoading(document.getElementById('explore-map'));
+                loadFacilities().then(() => {
+                    loader.remove();
+                    addMarkersToMap(exploreMap);
+                });
+            }
+            exploreObserver.disconnect();
+        }
+    }, { threshold: 0.1 });
+    exploreObserver.observe(exploreMapEl);
+
+    // Load data, then populate hero map
+    const heroLoader = showMapLoading(document.getElementById('hero-map'));
+    loadFacilities().then(() => {
+        heroLoader.remove();
+        addMarkersToMap(heroMap);
+    });
+</script>
+
+<script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
