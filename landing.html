@@ -601,6 +601,7 @@
             .hero { padding: 100px 20px 60px; }
             .steps { grid-template-columns: 1fr; gap: 40px; }
             .steps::before { display: none; }
+            .features-grid { grid-template-columns: 1fr; }
             .hero-visual { margin-top: 48px; }
             .footer-content { flex-direction: column; gap: 20px; }
             .footer-links { gap: 16px; }
@@ -616,7 +617,7 @@
         <span class="nav-logo-text">Cut2Fill</span>
     </a>
     <div class="nav-links">
-        <a href="#how-it-works">How It Works</a>
+        <a href="#how-it-works">Who It's For</a>
         <a href="#features">Features</a>
         <a href="#explore">Explore Map</a>
         <a href="index.html" class="nav-cta">Sign In <i class="fas fa-arrow-right" style="font-size:12px;"></i></a>
@@ -628,8 +629,8 @@
     <div class="hero-badge"><i class="fas fa-circle"></i> Queensland Construction</div>
     <h1>Stop Searching.<br><span class="highlight">Start Sourcing.</span></h1>
     <p class="hero-sub">
-        Cut2Fill is the intelligent platform that connects construction projects
-        with verified fill material — no more Facebook posts, no more phone tag.
+        The circular economy platform for construction earthworks. Classify your material,
+        find verified fill, and connect with the right people — all in one place.
     </p>
     <div class="hero-actions">
         <a href="#explore" class="btn-primary">
@@ -648,48 +649,53 @@
     </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- CIRCULAR ECONOMY -->
 <section class="problem reveal">
-    <div class="problem-label">The Problem</div>
-    <h2>You're still finding fill material on Facebook?</h2>
+    <div class="problem-label">Circular Economy</div>
+    <h2>Every cubic metre reused is one<br>that doesn't go to landfill</h2>
     <div class="problem-grid">
         <div class="problem-card">
+            <div class="icon"><i class="fas fa-recycle"></i></div>
+            <h3>Material Sitting Idle</h3>
+            <p>Millions of cubic metres of usable fill are stockpiled, dumped, or buried every year across Queensland — simply because there's no easy way to connect it with projects that need it.</p>
+        </div>
+        <div class="problem-card">
+            <div class="icon"><i class="fas fa-coins"></i></div>
+            <h3>Untapped Value</h3>
+            <p>Your excess cut isn't waste — it's a product. With the right geotechnical classification, material that costs you to dispose of becomes something you can sell. Testing pays for itself.</p>
+        </div>
+        <div class="problem-card">
             <div class="icon"><i class="fas fa-question-circle"></i></div>
-            <h3>Unverified Material</h3>
-            <p>Someone posts "general fill available" — but what does that actually mean? No geotech data, no classification, no certainty about what you're getting.</p>
-        </div>
-        <div class="problem-card">
-            <div class="icon"><i class="fas fa-phone-slash"></i></div>
-            <h3>Endless Phone Tag</h3>
-            <p>You spend hours calling around, chasing availability, checking if sites are open. Half the time the fill is gone before you get there.</p>
-        </div>
-        <div class="problem-card">
-            <div class="icon"><i class="fas fa-route"></i></div>
-            <h3>No Logistics Intelligence</h3>
-            <p>Is the site in a fire ant zone? Is it accessible after rain? What's the haul distance? You're left figuring it all out yourself.</p>
+            <h3>"General Fill" Means Nothing</h3>
+            <p>Without proper classification, buyers don't know what they're getting and sellers can't prove what they have. Cut2Fill standardises material data so both sides can trade with confidence.</p>
         </div>
     </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- WHO IT'S FOR -->
 <section class="how-it-works" id="how-it-works">
-    <div class="section-label reveal">How It Works</div>
-    <h2 class="section-title reveal">From search to site<br>in three steps</h2>
-    <div class="steps">
-        <div class="step reveal">
-            <div class="step-number"><i class="fas fa-map-marker-alt"></i></div>
-            <h3>Find or List Sites</h3>
-            <p>Browse the interactive map for fill sources near your project, or list your own material for others to find.</p>
+    <div class="section-label reveal">Who It's For</div>
+    <h2 class="section-title reveal">One platform,<br>four ways to use it</h2>
+    <div class="features-grid" style="max-width:1100px;margin:0 auto;">
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-search-location"></i></div>
+            <h3>Finding Fill</h3>
+            <p>Browse verified fill sources on the map — filter by material type, distance, and availability. See what's open now and what's coming online. Know what you're getting before you send a truck.</p>
         </div>
-        <div class="step reveal">
-            <div class="step-number"><i class="fas fa-microscope"></i></div>
-            <h3>Verified Data</h3>
-            <p>Every listing includes material classification, geotech data, fire ant zone status, and real-time access conditions.</p>
+        <div class="feature-card reveal">
+            <div class="feature-icon" style="background:rgba(196,132,62,0.12);color:var(--amber);"><i class="fas fa-flask"></i></div>
+            <h3>Selling Fill</h3>
+            <p>Turn your excess material into a commodity. Get it tested, get it classified, list it on the platform. Cut2Fill connects you with geotech providers and gives your material a verified profile that buyers trust.</p>
         </div>
-        <div class="step reveal">
-            <div class="step-number"><i class="fas fa-handshake"></i></div>
-            <h3>Connect & Manage</h3>
-            <p>Connect directly with suppliers, manage logistics, and track material movement — all in one platform.</p>
+        <div class="feature-card reveal">
+            <div class="feature-icon" style="background:rgba(92,138,151,0.12);color:var(--blue);"><i class="fas fa-building"></i></div>
+            <h3>Managing Your Own Sites</h3>
+            <p>Trucking companies and large operators — run Cut2Fill as your own internal platform. List private sites, manage your fleet's fill sources, and track material movement without going public.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-icon" style="background:rgba(139,126,181,0.10);color:#8b7eb5;"><i class="fas fa-truck-moving"></i></div>
+            <h3>Connecting Haulage</h3>
+            <p>Some sites have fill but no trucks. Some projects need fill but no fleet. Cut2Fill helps trucking companies find work by connecting them with sites that need material moved.</p>
         </div>
     </div>
 </section>
@@ -697,12 +703,17 @@
 <!-- FEATURES -->
 <section class="features" id="features">
     <div class="section-label reveal">Platform Features</div>
-    <h2 class="section-title reveal">Built for how construction<br>actually works</h2>
+    <h2 class="section-title reveal">The intelligence layer<br>that construction is missing</h2>
     <div class="features-grid">
         <div class="feature-card reveal">
             <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
             <h3>Material Classification</h3>
-            <p>Not just "general fill" — we break down material types with engineering-grade classifications so you know exactly what you're getting.</p>
+            <p>Standardised geotechnical classifications — not "general fill". Buyers know exactly what they're getting, sellers can prove exactly what they have. Material becomes a commodity, not a gamble.</p>
+        </div>
+        <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-vial"></i></div>
+            <h3>Geotech Testing Framework</h3>
+            <p>We connect you with testing providers and standardise what tests are needed. Spend the money on classification and it pays for itself — verified material sells, unverified material gets dumped.</p>
         </div>
         <div class="feature-card reveal">
             <div class="feature-icon"><i class="fas fa-bug"></i></div>
@@ -712,12 +723,7 @@
         <div class="feature-card reveal">
             <div class="feature-icon"><i class="fas fa-cloud-sun-rain"></i></div>
             <h3>Live Site Status</h3>
-            <p>Sites update in real time — closed after rain, capacity changes, access restrictions. No more wasted trips.</p>
-        </div>
-        <div class="feature-card reveal">
-            <div class="feature-icon"><i class="fas fa-vial"></i></div>
-            <h3>Geotech Integration</h3>
-            <p>Attach and view geotechnical test results directly on listings. More data, more confidence, fewer surprises.</p>
+            <p>Sites update in real time — closed after rain, capacity changes, access restrictions. No more wasted trips to sites that aren't accessible.</p>
         </div>
         <div class="feature-card reveal">
             <div class="feature-icon"><i class="fas fa-truck"></i></div>
@@ -728,6 +734,29 @@
             <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
             <h3>Vetted Listings</h3>
             <p>Every submitted site goes through our verification process before it goes live. Quality you can trust.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ADDITIONAL USE CASES -->
+<section class="how-it-works">
+    <div class="section-label reveal">Also Built For</div>
+    <h2 class="section-title reveal">More ways Cut2Fill<br>adds value</h2>
+    <div class="problem-grid" style="max-width:1000px;margin:0 auto;">
+        <div class="problem-card reveal">
+            <div class="icon" style="background:rgba(92,138,151,0.12);color:var(--blue);"><i class="fas fa-landmark"></i></div>
+            <h3>Councils & Government</h3>
+            <p>Track material movement across LGAs, enforce fire ant compliance, reduce illegal dumping, and support circular economy reporting.</p>
+        </div>
+        <div class="problem-card reveal">
+            <div class="icon" style="background:rgba(139,126,181,0.10);color:#8b7eb5;"><i class="fas fa-hard-hat"></i></div>
+            <h3>Developers</h3>
+            <p>Managing a subdivision with excess cut? Find buyers before you break ground. Need fill for pad levels? Source it before the project starts.</p>
+        </div>
+        <div class="problem-card reveal">
+            <div class="icon"><i class="fas fa-leaf"></i></div>
+            <h3>Environmental Consultants</h3>
+            <p>Verify material classification, maintain chain-of-custody documentation, and ensure contamination compliance across projects.</p>
         </div>
     </div>
 </section>
@@ -748,7 +777,7 @@
 <section class="cta">
     <div class="section-label reveal">Get Started</div>
     <h2 class="reveal">Ready to source<br>smarter?</h2>
-    <p class="reveal">Join the platform that's bringing construction material sourcing into the 21st century. Free to explore.</p>
+    <p class="reveal">Join Queensland's circular economy platform for construction earthworks. Free to explore.</p>
     <div class="cta-actions reveal">
         <a href="#explore" class="btn-primary">
             <i class="fas fa-map-location-dot"></i> Explore the Map
@@ -767,7 +796,7 @@
             <span>Cut2Fill</span>
         </a>
         <div class="footer-links">
-            <a href="#how-it-works">How It Works</a>
+            <a href="#how-it-works">Who It's For</a>
             <a href="#features">Features</a>
             <a href="index.html">Sign In</a>
         </div>
