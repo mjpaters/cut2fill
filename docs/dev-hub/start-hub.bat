@@ -1,0 +1,6 @@
+@echo off
+echo Cut2Fill Dev Hub starting...
+echo Opening http://localhost:8060 in 2 seconds...
+start "" "http://localhost:8060"
+python "%~dp0server.py"
+pause

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/cut2fill/backend/app/schemas -type f -name *.py)"
+    ]
+  }
+}

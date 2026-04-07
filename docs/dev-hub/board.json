@@ -1,0 +1,427 @@
+{
+  "columns": [
+    {
+      "id": "backlog",
+      "title": "Backlog",
+      "cards": [
+        {
+          "id": "c-015",
+          "title": "Material testing guidance",
+          "description": "Standardised testing framework per material type. What tests, what labs, what it costs. Educational content.",
+          "category": "platform",
+          "priority": "low"
+        },
+        {
+          "id": "c-016",
+          "title": "Standardised classification selector",
+          "description": "Replace free-text material with structured classification. MRTS04 general earthworks as primary, MRTS05 unbound pavements for quarried materials, AS3798 for residential/commercial. Needs compliance documentation framework (c-070) first.",
+          "category": "platform",
+          "priority": "low"
+        },
+        {
+          "id": "c-017",
+          "title": "Routing API integration",
+          "description": "Replace haversine distance with real driving distance. HERE Routing API v8 validated in prototype (prototype-truck-routing.html). HERE truck restrictions don't differentiate vehicle types in AU but real road distance + NHVR overlay is the value. Parked from soft launch.",
+          "category": "platform",
+          "priority": "low"
+        },
+        {
+          "id": "c-018",
+          "title": "Analytics dashboard",
+          "description": "Track platform usage: page views, map interactions, listing views, registration funnel.",
+          "category": "platform",
+          "priority": "low"
+        },
+        {
+          "id": "c-030",
+          "title": "Logo: engage designer for C2F monogram refinement",
+          "description": "Take favourite concept (db9383e3.svg) to a freelance designer for production-ready vector files, all lockups, colour variations. Budget $500-1,500.",
+          "category": "branding",
+          "priority": "medium"
+        },
+        {
+          "id": "c-031",
+          "title": "Create LinkedIn banner",
+          "description": "Logo + tagline + map visual for company page banner. Needs production logo first.",
+          "category": "branding",
+          "priority": "low"
+        },
+        {
+          "id": "c-032",
+          "title": "Business cards design",
+          "description": "Dark card stock, matte finish. Logo on front, contact details on back. Needs production logo.",
+          "category": "branding",
+          "priority": "low"
+        },
+        {
+          "id": "c-033",
+          "title": "Conference pull-up banner",
+          "description": "850x2000mm. Logo, tagline, value props, map screenshot, QR code. For FWD Festival and future events.",
+          "category": "branding",
+          "priority": "low"
+        },
+        {
+          "id": "c-040",
+          "title": "Ignite Ideas Fund application",
+          "description": "Up to $100K for commercialisation. Investigate Q3 2026 round. advance.qld.gov.au/grants-and-programs/ignite-ideas-fund",
+          "category": "ops",
+          "priority": "medium"
+        },
+        {
+          "id": "c-073",
+          "title": "Recycling and Jobs Fund EOI",
+          "description": "Industry Development stream, up to $10M. EOI still open. Medium fit for Cut2Fill.",
+          "category": "ops",
+          "priority": "medium"
+        },
+        {
+          "id": "c-074",
+          "title": "ReMade in Queensland application",
+          "description": "$50K-$2.5M. Medium fit. Lower priority than Circular Economy Investment Program.",
+          "category": "ops",
+          "priority": "low"
+        },
+        {
+          "id": "c-076",
+          "title": "Truck routing integration (HERE API)",
+          "description": "Prototype validated (prototype-truck-routing.html). HERE API works for real road distance in SEQ. NHVR overlay works. Truck-specific restrictions don't differentiate in AU. Parked from soft launch — integrate when cost engine is built.",
+          "category": "platform",
+          "priority": "low"
+        },
+        {
+          "id": "c-077",
+          "title": "Spec & drawing parsing feature",
+          "description": "Phase 3. Receivers upload their project specification, platform parses and interprets material requirements. Clarifies ambiguities for supervisors who don't know spec details. See doc 06 section 5.2.",
+          "category": "platform",
+          "priority": "low"
+        }
+      ]
+    },
+    {
+      "id": "todo",
+      "title": "To Do",
+      "cards": [
+        {
+          "id": "c-061",
+          "title": "Rebuild backend venv (Python 3.12 → 3.13)",
+          "description": "Backend venv was built on Python 3.12, system now has 3.13. Rebuild venv before migration can run locally. Required before deploy.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-062",
+          "title": "Run migration 003 on Supabase",
+          "description": "003_add_listings.py creates listings table with GIST index, status index, material_type index. Must run before listing system works in production.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-063",
+          "title": "Deploy listing system to Render",
+          "description": "Backend has new listing model, schemas, router, admin endpoints. Frontend has listing markers, post form, admin tab. Review code then deploy. NOT deployed yet.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-010",
+          "title": "Listing expiry",
+          "description": "Listings auto-expire when end date passes. Cron or check-on-load. Verify this works after deploy.",
+          "category": "platform",
+          "priority": "high"
+        },
+        {
+          "id": "c-011",
+          "title": "User profile after registration",
+          "description": "After first login, prompt for company name, role, phone. Currently registration creates auth but no profile context.",
+          "category": "platform",
+          "priority": "medium"
+        },
+        {
+          "id": "c-012",
+          "title": "Facility claim for suppliers",
+          "description": "A supplier (e.g., Remondis) can claim their existing facility listing and manage it. Requires admin approval.",
+          "category": "platform",
+          "priority": "medium"
+        },
+        {
+          "id": "c-013",
+          "title": "Listing notifications",
+          "description": "Email when a new listing matches your area/material interest. Even a daily digest to admin would be a start.",
+          "category": "platform",
+          "priority": "medium"
+        },
+        {
+          "id": "c-014",
+          "title": "Move facility data to API",
+          "description": "Frontend hardcodes 604 facilities in app.js. Move to fetching from backend API (data already in schema).",
+          "category": "platform",
+          "priority": "medium"
+        },
+        {
+          "id": "c-020",
+          "title": "Update website tagline",
+          "description": "Replace 'Connect. Reuse. Sustain.' with 'Source. Verify. Build.' across index.html and app.html.",
+          "category": "branding",
+          "priority": "critical"
+        },
+        {
+          "id": "c-021",
+          "title": "Update LinkedIn company bio",
+          "description": "New tagline + functional descriptor: 'QLD's construction material platform.'",
+          "category": "branding",
+          "priority": "medium"
+        },
+        {
+          "id": "c-022",
+          "title": "Create Remondis info pack",
+          "description": "One-page PDF or email. Screenshot of map near their facilities, 3 bullet points, platform link, meeting CTA. See soft launch playbook section 5.",
+          "category": "launch",
+          "priority": "high"
+        },
+        {
+          "id": "c-023",
+          "title": "Seed 2-3 listings from Archers network",
+          "description": "Need visible listings on the map before demoing to Tier 2 contacts. Source from current Archers projects.",
+          "category": "launch",
+          "priority": "high"
+        },
+        {
+          "id": "c-024",
+          "title": "FWD Festival application",
+          "description": "Advance QLD Innovation Event Delegation. 7-9 May, Sunshine Coast. Apply at advance.qld.gov.au. Free tickets, travel at own cost.",
+          "category": "launch",
+          "priority": "high"
+        },
+        {
+          "id": "c-064",
+          "title": "Circular Economy Investment Program application",
+          "description": "$250-750K. High fit for Cut2Fill. Active grant program. Apply now.",
+          "category": "ops",
+          "priority": "high"
+        },
+        {
+          "id": "c-065",
+          "title": "ASPIRE partnership approach",
+          "description": "Not a competitor — general-purpose waste exchange. Council-funded across 5+ SEQ councils. Strong partnership opportunity: Cut2Fill = construction vertical, ASPIRE = general circular economy. Joint council pitches. Active partnership program at aspiresme.com.",
+          "category": "launch",
+          "priority": "medium"
+        },
+        {
+          "id": "c-066",
+          "title": "QLD Waste Strategy engagement",
+          "description": "New QLD Waste Strategy (2025-2030) being developed NOW — policy window for engagement. Cut2Fill data could support waste diversion targets. No existing mechanism for levy credits for demonstrated diversion — gap to propose filling.",
+          "category": "launch",
+          "priority": "medium"
+        },
+        {
+          "id": "c-067",
+          "title": "CCF QLD partnership outreach",
+          "description": "Civil Contractors Federation QLD. Peak body — members are primary Cut2Fill users. Highest-value relationship for platform credibility and adoption. See doc 06 section 8.2.",
+          "category": "launch",
+          "priority": "medium"
+        },
+        {
+          "id": "c-068",
+          "title": "Payment facilitation investigation",
+          "description": "Critical strategic insight: contractors can't easily pay non-registered sources. Haulage companies bundle material into per-m3 rate as workaround. Level 2 model: Cut2Fill invoices contractor, pays source minus fee. Investigate legal/financial requirements.",
+          "category": "ops",
+          "priority": "medium"
+        },
+        {
+          "id": "c-070",
+          "title": "Compliance documentation framework",
+          "description": "Map the full specification landscape (MRTS, AS, project-specific). Define testing tiers. Clarify MRTS04/05 relationship for material classification. Build compliance matrix. Prerequisite for spec matching engine. Don't over-complicate too early.",
+          "category": "foundation",
+          "priority": "medium"
+        },
+        {
+          "id": "c-050",
+          "title": "Write purpose/mission/vision statements",
+          "description": "Draft exists in 00-Purpose-Mission-Vision.md. Needs founder review and refinement. Should feel like Cut2Fill, not corporate.",
+          "category": "foundation",
+          "priority": "medium"
+        },
+        {
+          "id": "c-051",
+          "title": "Review and lock canon doc",
+          "description": "00-Canon.md created with all known locked decisions. Review for accuracy and completeness.",
+          "category": "foundation",
+          "priority": "medium"
+        },
+        {
+          "id": "c-052",
+          "title": "Split doc 07 cleanup",
+          "description": "07-Product-Roadmap.md and 07b-Material-Tracking-Vision.md created. Review both, update cross-references in other docs.",
+          "category": "foundation",
+          "priority": "low"
+        }
+      ]
+    },
+    {
+      "id": "in-progress",
+      "title": "In Progress",
+      "cards": [
+        {
+          "id": "c-060",
+          "title": "Soft launch preparation",
+          "description": "Platform readiness checklist from playbook. Critical punch list items mostly done. Remaining: deploy listing system, rebuild venv, run migration, update tagline, seed listings.",
+          "category": "launch",
+          "priority": "high"
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "Done",
+      "cards": [
+        {
+          "id": "c-001",
+          "title": "Listing model + router",
+          "description": "Built 7 April. Model, schemas, router (POST auth'd, GET public GeoJSON, GET /mine, GET /:id). Migration 003.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-002",
+          "title": "Admin listing approval",
+          "description": "Built 7 April. Admin panel listings tab with pending/approved/rejected filter, approve/reject buttons.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-003",
+          "title": "Listing markers on map",
+          "description": "Built 7 April. Diamond-shaped markers (green=available, blue=wanted). Detail panel with volume, dates, material, contact, tested badge, fire ant zone check.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-004",
+          "title": "Connect post form to listing system",
+          "description": "Built 7 April. Post form creates Listing via API if logged in, falls back to submission if not.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-005",
+          "title": "Hide water fill points",
+          "description": "Done 7 April. addTo commented out, code and data retained.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-006",
+          "title": "Fix 'Create Free Account' flow",
+          "description": "Done 7 April. Links to app.html#register, auto-opens register form.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-007",
+          "title": "Fix footer copyright",
+          "description": "Done 7 April. 2025 → 2026 across index.html, app.html (3 instances).",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-008",
+          "title": "Hide heatmap button",
+          "description": "Done 7 April. display:none applied.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-009",
+          "title": "Update landing page feature claims",
+          "description": "Done 7 April. 'Geotech Testing Framework' → 'Material Classification'. 'Live Site Status' → 'Logistics Calculator'.",
+          "category": "platform",
+          "priority": "critical"
+        },
+        {
+          "id": "c-100",
+          "title": "Brand brief created",
+          "description": "docs/12-Brand-Brief.md — logo direction, tagline, colours, typography, tone, applications.",
+          "category": "branding",
+          "priority": "high"
+        },
+        {
+          "id": "c-101",
+          "title": "Tagline locked: Source. Verify. Build.",
+          "description": "Primary tagline approved. Secondary: Find it. Verify it. Fill it. Old tagline retired.",
+          "category": "branding",
+          "priority": "critical"
+        },
+        {
+          "id": "c-102",
+          "title": "AI logo exploration (30+ concepts)",
+          "description": "Recraft MCP. Favourite: db9383e3.svg (C2 monogram). Parked for designer refinement.",
+          "category": "branding",
+          "priority": "medium"
+        },
+        {
+          "id": "c-103",
+          "title": "Documentation overhaul",
+          "description": "Business plan, MVP spec, product decisions, feasibility, data sources, marketing plan, regulatory framework, competitive intel, material classifications all updated 7 April.",
+          "category": "foundation",
+          "priority": "high"
+        },
+        {
+          "id": "c-104",
+          "title": "Soft launch playbook created",
+          "description": "docs/12-Soft-Launch-Playbook.md — 3 tiers of contacts, demo sequence, IP protection, readiness checklist. Government engagement strategy added.",
+          "category": "launch",
+          "priority": "high"
+        },
+        {
+          "id": "c-105",
+          "title": "Dev Hub created",
+          "description": "Local document manager with editing, git integration, journal viewer. Trello board added 7 April.",
+          "category": "foundation",
+          "priority": "medium"
+        },
+        {
+          "id": "c-106",
+          "title": "Canon doc created",
+          "description": "00-Canon.md — single source of truth for all locked decisions.",
+          "category": "foundation",
+          "priority": "high"
+        },
+        {
+          "id": "c-107",
+          "title": "Purpose/mission/vision drafted",
+          "description": "00-Purpose-Mission-Vision.md — draft statements ready for review.",
+          "category": "foundation",
+          "priority": "medium"
+        },
+        {
+          "id": "c-108",
+          "title": "Product roadmap extracted",
+          "description": "07-Product-Roadmap.md created. 07b-Material-Tracking-Vision.md split out. Old doc removed.",
+          "category": "foundation",
+          "priority": "medium"
+        },
+        {
+          "id": "c-109",
+          "title": "Competitor & strategic analysis",
+          "description": "Soil Connect deep dive, ASPIRE analysis (partnership not competitor), Rubbl clarification (equipment rental, irrelevant). Payment facilitation insight. Revenue model reframed. Grant programs identified.",
+          "category": "foundation",
+          "priority": "high"
+        },
+        {
+          "id": "c-110",
+          "title": "Truck routing prototype",
+          "description": "prototype-truck-routing.html. HERE API v8 validated for SEQ. NHVR overlay working. Parked from soft launch — preserved for future integration.",
+          "category": "platform",
+          "priority": "medium"
+        },
+        {
+          "id": "c-111",
+          "title": "Cost Intelligence doc updated (06)",
+          "description": "MRTS04/05 corrected, risk alerts expanded (8→20), spec parsing added, partnerships broadened (section 8), pre-contract sustainability value, neat-to-loose conversion noted, cost comparison example fixed.",
+          "category": "foundation",
+          "priority": "medium"
+        }
+      ]
+    }
+  ]
+}

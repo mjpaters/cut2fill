@@ -1,7 +1,8 @@
-# Cut2Fill — Material Tracking, Compliance Automation & Long-Term Vision
+# Cut2Fill — Material Tracking & Compliance Vision
 
-**Version:** 1.0
-**Date:** 23 March 2026
+**Version:** 1.1
+**Date:** 7 April 2026 *(roadmap extracted to 07-Product-Roadmap.md)*
+**Scope:** Phase 3-4 feature specifications — material tracking, agreements, compliance certificates, treatment pathways, government data value.
 
 ---
 
@@ -308,7 +309,7 @@ SOURCE ──────► TREATMENT FACILITY ──────► DESTINATIO
 3. Contractor B needs 5,000m³ of Type 2.1 fill, willing to pay $15/m³
 
 **Cost comparison:**
-- Without treatment: Contractor A pays $115/t levy to landfill = ~$977,500. Contractor B buys virgin quarry material at $30/m³ = $150,000. **Total: $1,127,500**
+- Without treatment: Contractor A pays $125/t levy to landfill = ~$977,500. Contractor B buys virgin quarry material at $30/m³ = $150,000. **Total: $1,127,500**
 - With Cut2Fill treatment pathway: Treatment $125,000 + cartage. Contractor B gets fill at $15/m³ = $75,000. **Total: ~$300,000. Saving: $827,500**
 
 ### 5.4 Whole-of-Life Material Decisions
@@ -325,7 +326,7 @@ The platform helps engineers make **whole-of-life decisions** by comparing:
 | Transport | Long-haul from quarry | Potentially shorter from nearby site |
 | Embodied carbon | High (quarrying, crushing, transport) | Lower (no extraction) |
 | Landfill diversion | None | Full volume diverted |
-| Waste levy avoided | None | $115/t saved by source |
+| Waste levy avoided | None | $125/t saved by source |
 | Specification compliance | Guaranteed by quarry | Verified by testing post-treatment |
 | Sustainability score | Low | High |
 
@@ -333,54 +334,11 @@ Sometimes the treated reused material is genuinely cheaper. Sometimes it's sligh
 
 ---
 
-## 6. Platform Evolution Roadmap
+## 6. Why Landfills Aren't Always the Answer
 
-```
-NOW ──────────────────────────────────────────────────► FUTURE
+> **Note:** The product roadmap has been moved to `07-Product-Roadmap.md`.
 
-PHASE 1: MAP & MATCH (MVP — delivered)
-├─ Listings, map, matching, fire ant zones
-├─ Compliance tooltips, pricing badges
-├─ Registered facilities layer
-└─ FREE — useable immediately
-
-PHASE 2: COST & SPECIFICATION (Q3-Q4 2026)
-├─ True cost calculator with routing
-├─ Material specification fields
-├─ Confidence/risk scoring
-├─ Premium subscriptions launch
-└─ CSIRO Kick-Start collaboration begins
-
-PHASE 3: INTELLIGENCE (Q1-Q2 2027)
-├─ Geotech/contamination report upload
-├─ AI document parsing
-├─ Treatment pathway recommendations
-├─ Sustainability reporting
-└─ Government pilot (2-3 councils)
-
-PHASE 4: TRACKING (Q3-Q4 2027)
-├─ Digital agreements between parties
-├─ Truck driver GPS tracking app
-├─ Automated load counting
-├─ Compliance certificate generation
-├─ Form B auto-population
-└─ Government data feed
-
-PHASE 5: ECOSYSTEM (2028+)
-├─ API for estimating software integration
-├─ Weighbridge data integration
-├─ Treatment facility booking
-├─ National expansion (NSW, VIC regulations)
-├─ EOW code advocacy (data-driven submission)
-├─ Real-time regional material balance dashboard (government)
-└─ Automated material passport (blockchain optional)
-```
-
----
-
-## 7. Why Landfills Aren't Always the Answer
-
-### 7.1 The Default Behaviour Problem
+### 6.1 The Default Behaviour Problem
 
 The construction industry defaults to landfill because:
 1. It's simple — call a tip truck, send it to the nearest licensed site
@@ -388,7 +346,7 @@ The construction industry defaults to landfill because:
 3. The alternatives are unknown — "I didn't know there was a treatment option"
 4. Time pressure — finding a reuse option takes effort; landfill takes a phone call
 
-### 7.2 When Reuse/Treatment Is Better Than Landfill
+### 6.2 When Reuse/Treatment Is Better Than Landfill
 
 | Scenario | Landfill | Reuse/Treatment | Winner |
 |----------|---------|-----------------|--------|
@@ -397,15 +355,15 @@ The construction industry defaults to landfill because:
 | 500m³ contaminated soil, PFAS detected | $120K levy + gate fee + $30K cartage | $90K treatment (HiQ Yatala) + $20K cartage | Treatment saves $40K + material recovered |
 | 5,000m³ mixed C&D | $575K levy + $60K cartage | $125K sorting/recycling + $40K cartage | Recycling saves $470K |
 
-### 7.3 Cut2Fill Makes the Alternative Visible
+### 6.3 Cut2Fill Makes the Alternative Visible
 
 The platform doesn't tell people they can't use a landfill. It shows them what the alternatives are, what they cost, and what the compliance requirements are — then lets them make an informed decision. Most of the time, the numbers speak for themselves.
 
 ---
 
-## 8. Data Value to Government
+## 7. Data Value to Government
 
-### 8.1 What Government Gets From Cut2Fill Data
+### 7.1 What Government Gets From Cut2Fill Data
 
 | Data | Government Use |
 |------|---------------|
@@ -418,7 +376,7 @@ The platform doesn't tell people they can't use a landfill. It shows them what t
 | Transport patterns | Road planning, truck route management |
 | Carbon emissions avoided | Climate action reporting |
 
-### 8.2 The Government Partnership Pitch
+### 7.2 The Government Partnership Pitch
 
 > "We're building the data infrastructure that your waste strategy needs but doesn't currently have. Every material exchange on Cut2Fill generates data that helps you track progress against circular economy targets, enforce biosecurity compliance, and plan infrastructure investment. We're not asking for a handout — we're offering a data partnership where the platform serves industry and government simultaneously."
 

@@ -146,7 +146,8 @@
 <body>
 
 <!-- Login Gate -->
-<div id="loginGate" class="login-gate">
+<!-- TEMP: hidden for preview -->
+<div id="loginGate" class="login-gate" style="display:none;">
     <form id="dashLoginForm">
         <h2><i class="fas fa-hard-hat" style="color:var(--green);"></i> Cut2Fill</h2>
         <p style="text-align:center;color:var(--text-muted);font-size:13px;margin-bottom:20px;">Sign in to manage your submissions</p>
@@ -168,7 +169,8 @@
 </div>
 
 <!-- Dashboard -->
-<div id="dashboard" style="display:none;">
+<!-- TEMP: remove display:none to preview without login -->
+<div id="dashboard" style="">
     <div class="dash-header">
         <h1><i class="fas fa-hard-hat"></i> My Dashboard</h1>
         <div class="header-right">
@@ -180,8 +182,9 @@
 
     <div class="dash-content">
         <div class="action-bar">
-            <button class="btn btn-primary" id="btnNewSite"><i class="fas fa-map-marker-alt"></i> Submit a Tip Site</button>
+            <button class="btn btn-primary" id="btnNewSite"><i class="fas fa-map-marker-alt"></i> Submit a Site</button>
             <button class="btn btn-primary" id="btnNewProject"><i class="fas fa-project-diagram"></i> Submit a Project</button>
+            <button class="btn" id="btnStuckInMud" style="background:var(--blue);color:#fff;border-color:var(--blue);"><i class="fas fa-life-ring"></i> Stuck in the Mud?</button>
         </div>
 
         <div class="tab-bar">
@@ -189,6 +192,7 @@
             <button class="tab-btn" data-tab="site-registration">Tip Sites</button>
             <button class="tab-btn" data-tab="source-tip">Source Tips</button>
             <button class="tab-btn" data-tab="project">Projects</button>
+            <button class="tab-btn" data-tab="consultation">Consultations</button>
         </div>
 
         <div id="subList" class="sub-list"></div>
@@ -200,72 +204,257 @@
     </div>
 </div>
 
-<!-- Submit Tip Site Modal -->
+<!-- Submit a Site Modal -->
 <div class="modal-overlay" id="siteModal">
-    <div class="modal">
+    <div class="modal" style="max-width:620px;">
         <div class="modal-header">
-            <h2><i class="fas fa-map-marker-alt"></i> Submit a Tip Site</h2>
+            <h2><i class="fas fa-map-marker-alt"></i> Submit a Site</h2>
             <button class="modal-close" id="siteModalClose"><i class="fas fa-times"></i></button>
         </div>
         <form id="siteForm" class="modal-body">
-            <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;"><i class="fas fa-shield-alt"></i> Submissions are reviewed by the Archers team before going live on the map.</p>
+            <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;"><i class="fas fa-shield-alt"></i> Reviewed by the Archers team before going live. Min 100 m³.</p>
+
+            <!-- SITE TYPE -->
+            <div class="form-group">
+                <label>What type of site? *</label>
+                <div style="display:flex;gap:10px;">
+                    <label style="flex:1;cursor:pointer;">
+                        <input type="radio" name="siteDirection" value="cut" required style="display:none;" id="siteDirectionCut">
+                        <div class="site-type-card" id="cardCut" style="border:2px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;transition:all 0.15s;">
+                            <i class="fas fa-truck-loading" style="font-size:20px;color:var(--green);display:block;margin-bottom:6px;"></i>
+                            <strong style="font-size:14px;">Cut Site</strong>
+                            <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:2px;">Material available</span>
+                        </div>
+                    </label>
+                    <label style="flex:1;cursor:pointer;">
+                        <input type="radio" name="siteDirection" value="fill" style="display:none;" id="siteDirectionFill">
+                        <div class="site-type-card" id="cardFill" style="border:2px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;transition:all 0.15s;">
+                            <i class="fas fa-truck-moving" style="font-size:20px;color:var(--amber);display:block;margin-bottom:6px;"></i>
+                            <strong style="font-size:14px;">Fill Site</strong>
+                            <span style="display:block;font-size:11px;color:var(--text-muted);margin-top:2px;">Material needed</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label>Site Name *</label>
                 <input type="text" id="siteName" required placeholder="e.g. Smith's Quarry, Gatton Borrow Pit">
             </div>
+
+            <!-- MATERIAL — CUT SITE (dropdowns) -->
+            <div id="materialCutSection" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px;">
+                <label style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:10px;display:block;"><i class="fas fa-layer-group"></i> Material</label>
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Category *</label>
+                        <select id="siteMaterialCat">
+                            <option value="">Select category...</option>
+                            <option value="earthworks">Earthworks & Fill</option>
+                            <option value="recycled">Recycled Materials</option>
+                            <option value="contaminated">Contaminated / Regulated</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Grade / Type</label>
+                        <select id="siteMaterialGrade">
+                            <option value="">Select category first...</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="materialTooltip" style="font-size:12px;color:var(--text-muted);padding:6px 0 0;display:none;">
+                    <i class="fas fa-info-circle" style="color:var(--blue);"></i> <span id="materialTooltipText"></span>
+                </div>
+            </div>
+
+            <!-- MATERIAL — FILL SITE (checkboxes, accepting multiple types) -->
+            <div id="materialFillSection" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px;display:none;">
+                <label style="font-size:13px;font-weight:600;color:var(--amber);margin-bottom:6px;display:block;"><i class="fas fa-layer-group"></i> Accepting Materials</label>
+                <p class="form-hint" style="margin-bottom:12px;">Tick all material types this site can accept. Buyer beware — it's the receiver's responsibility to verify quality.</p>
+                <div id="fillCheckboxes" style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;"></div>
+            </div>
+
+            <!-- VOLUME & TESTING (testing only for cut) -->
             <div class="form-row">
                 <div class="form-group">
-                    <label>Type *</label>
-                    <select id="siteType" required>
-                        <option value="">Select...</option>
-                        <option value="quarry">Quarry</option>
-                        <option value="borrow-pit">Borrow Pit</option>
-                        <option value="landfill">Landfill</option>
-                        <option value="transfer-station">Transfer Station</option>
-                        <option value="recycler">C&D Recycler</option>
-                        <option value="concrete">Concrete Plant</option>
-                        <option value="soil-treatment">Soil Treatment</option>
-                        <option value="water-fill">Water Fill Point</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <label>Volume (m³) *</label>
+                    <input type="number" id="siteVolume" required min="100" step="1" placeholder="Min 100">
+                    <p class="form-hint">Minimum 100 m³</p>
                 </div>
-                <div class="form-group">
-                    <label>Material</label>
-                    <select id="siteMaterial">
-                        <option value="">Select...</option>
-                        <option value="clean-fill">Clean Fill</option>
-                        <option value="rock">Rock / Aggregate</option>
-                        <option value="sand">Sand</option>
-                        <option value="gravel">Gravel</option>
-                        <option value="topsoil">Topsoil</option>
-                        <option value="concrete">Concrete</option>
-                        <option value="mixed">Mixed Materials</option>
-                        <option value="other">Other</option>
+                <div class="form-group" id="testedGroup">
+                    <label>Tested?</label>
+                    <select id="siteTested">
+                        <option value="">Unknown</option>
+                        <option value="yes-geotech">Yes — geotech testing done</option>
+                        <option value="yes-contamination">Yes — contamination testing done</option>
+                        <option value="yes-both">Yes — both geotech & contamination</option>
+                        <option value="no">No testing done</option>
                     </select>
                 </div>
             </div>
+
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px;">
+                <label style="font-size:13px;font-weight:600;color:var(--blue);margin-bottom:10px;display:block;"><i class="fas fa-calendar-alt"></i> Availability</label>
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Start</label>
+                        <select id="siteStartType">
+                            <option value="asap">As soon as possible</option>
+                            <option value="on">Must be on (specific date)</option>
+                            <option value="no-later">No later than</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Start Date</label>
+                        <input type="date" id="siteStartDate">
+                        <p class="form-hint" id="startHint">Leave blank for ASAP</p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>End</label>
+                        <select id="siteEndType">
+                            <option value="open">Open-ended</option>
+                            <option value="before">Must end before</option>
+                            <option value="approx">Approximately</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>End Date</label>
+                        <input type="date" id="siteEndDate">
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOCATION -->
             <div class="form-row">
                 <div class="form-group">
                     <label>Town / Suburb *</label>
-                    <input type="text" id="siteTown" required placeholder="e.g. Gatton">
+                    <input type="text" id="siteTown" required placeholder="e.g. Gatton" list="suburbList" autocomplete="off">
+                    <datalist id="suburbList"></datalist>
                 </div>
                 <div class="form-group">
                     <label>LGA / Council</label>
-                    <input type="text" id="siteLGA" placeholder="e.g. Lockyer Valley">
+                    <select id="siteLGA">
+                        <option value="">Auto-detected...</option>
+                    </select>
+                    <p class="form-hint">Auto-fills from suburb</p>
                 </div>
             </div>
             <div class="form-group">
-                <label>Address or Location Description</label>
-                <input type="text" id="siteAddress" placeholder="e.g. Corner of Smith Rd & Main St, or GPS coords">
-                <p class="form-hint">Street address, intersection, lot number, or GPS coordinates</p>
+                <label>Address or Location</label>
+                <input type="text" id="siteAddress" placeholder="Street address, intersection, or GPS coords">
             </div>
-            <div class="form-group">
-                <label>Operator / Owner (if known)</label>
-                <input type="text" id="siteOperator" placeholder="e.g. BCC, private, Boral">
+
+            <!-- SITE ACCESS -->
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin:14px 0;">
+                <label style="font-size:13px;font-weight:600;color:var(--amber);margin-bottom:10px;display:block;"><i class="fas fa-truck"></i> Site Access</label>
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Max Truck Size</label>
+                        <select id="siteTruckSize">
+                            <option value="">Not sure</option>
+                            <option value="b-double">B-Double (26m, ~34t payload)</option>
+                            <option value="semi">Semi Trailer (19m, ~28t)</option>
+                            <option value="truck-dog">Truck & Dog (19m, ~32t)</option>
+                            <option value="rigid-10">Rigid 10-wheeler (12.5m, ~15t)</option>
+                            <option value="rigid-6">Rigid 6-wheeler (8.8m, ~10t)</option>
+                            <option value="small-rigid">Small Rigid / Tipper (6.4m, ~6t)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Haulage</label>
+                        <select id="siteHaulage">
+                            <option value="">Not sure</option>
+                            <option value="supplier-provides">Supplier provides trucks</option>
+                            <option value="receiver-provides">Receiver provides trucks</option>
+                            <option value="either">Either / negotiable</option>
+                            <option value="self-collect">Self collect only</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Weather Access</label>
+                        <select id="siteWeatherAccess">
+                            <option value="">Not sure</option>
+                            <option value="all-weather">All weather (sealed road in)</option>
+                            <option value="dry-only">Dry weather only (unsealed)</option>
+                            <option value="limited-wet">Limited wet weather (part gravel)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label>Operating Hours</label>
+                        <select id="siteHours">
+                            <option value="">Not sure</option>
+                            <option value="24-7">24/7</option>
+                            <option value="extended">Extended (6am-6pm)</option>
+                            <option value="standard">Standard (7am-5pm Mon-Fri)</option>
+                            <option value="restricted">Restricted / by arrangement</option>
+                        </select>
+                    </div>
+                </div>
             </div>
+
+            <!-- CONTACT -->
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px;">
+                <label style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;display:block;"><i class="fas fa-user"></i> Contact</label>
+                <div class="form-group" style="margin-bottom:8px;">
+                    <label>Name</label>
+                    <input type="text" id="siteContactName" readonly style="opacity:0.7;">
+                    <p class="form-hint">From your account</p>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Mobile</label>
+                        <input type="tel" id="siteContactMobile" placeholder="04XX XXX XXX">
+                    </div>
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Email</label>
+                        <input type="email" id="siteContactEmail" readonly style="opacity:0.7;">
+                    </div>
+                </div>
+                <p class="form-hint" style="color:var(--amber);"><i class="fas fa-exclamation-circle"></i> At least one contact method required (mobile or email)</p>
+            </div>
+
+            <!-- FILE UPLOADS — CUT SITE -->
+            <div id="uploadsCutSection" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px;">
+                <label style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;display:block;"><i class="fas fa-file-alt"></i> Documents & Photos (optional)</label>
+                <div class="form-group" style="margin-bottom:8px;">
+                    <label>Geotech Testing</label>
+                    <input type="file" id="siteGeotechFile" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" style="font-size:12px;">
+                    <p class="form-hint">PDF, Word, Excel, or image. Max 10MB.</p>
+                </div>
+                <div class="form-group" style="margin-bottom:8px;">
+                    <label>Contamination Results</label>
+                    <input type="file" id="siteContamFile" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" style="font-size:12px;">
+                    <p class="form-hint">PDF, Word, Excel, or image. Max 10MB.</p>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label>Site Photos</label>
+                    <input type="file" id="siteCutPhotos" accept=".jpg,.jpeg,.png,.heic,.webp" multiple style="font-size:12px;">
+                    <p class="form-hint">Photos of the material, stockpile, access road. Multiple allowed.</p>
+                </div>
+            </div>
+
+            <!-- FILE UPLOADS — FILL SITE -->
+            <div id="uploadsFillSection" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px;display:none;">
+                <label style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;display:block;"><i class="fas fa-camera"></i> Site Photos (optional)</label>
+                <div class="form-group" style="margin-bottom:8px;">
+                    <label>Photos</label>
+                    <input type="file" id="siteFillPhotos" accept=".jpg,.jpeg,.png,.heic,.webp" multiple style="font-size:12px;">
+                    <p class="form-hint">Photos of the fill area, access road, site conditions. Multiple allowed.</p>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label>Specification / Drawings (if applicable)</label>
+                    <input type="file" id="siteFillSpec" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" style="font-size:12px;">
+                    <p class="form-hint">Fill specification, site drawings, or project requirements.</p>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label>Notes</label>
-                <textarea id="siteNotes" placeholder="Access details, opening hours, volume available, anything useful..."></textarea>
+                <textarea id="siteNotes" placeholder="Anything else — load limits, permits, access restrictions, special conditions..."></textarea>
             </div>
             <div class="form-actions">
                 <button type="button" class="btn" id="siteCancelBtn">Cancel</button>
@@ -354,6 +543,95 @@
     </div>
 </div>
 
+<!-- Stuck in the Mud Modal -->
+<div class="modal-overlay" id="mudModal">
+    <div class="modal" style="max-width:540px;">
+        <div class="modal-header" style="background:var(--blue-bg,rgba(92,138,151,0.12));border-bottom-color:var(--blue);">
+            <h2 style="color:var(--blue);"><i class="fas fa-life-ring"></i> Stuck in the Mud?</h2>
+            <button class="modal-close" id="mudModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="mudForm" class="modal-body">
+            <p style="font-size:14px;color:var(--text);margin-bottom:4px;font-weight:500;">Let us get you on firm ground.</p>
+            <p style="font-size:12px;color:var(--text-muted);margin-bottom:18px;">Not sure what you've got, what you need, or how to get it right? Our experienced team can help with testing, material classification, specifications, disposal options — whatever's holding you up.</p>
+
+            <div class="form-group">
+                <label>What do you need help with? *</label>
+                <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+                    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                        <input type="checkbox" name="mudHelp" value="testing"> I've got material but don't know what testing is needed
+                    </label>
+                    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                        <input type="checkbox" name="mudHelp" value="classification"> I've got test results but don't know what classification it is
+                    </label>
+                    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                        <input type="checkbox" name="mudHelp" value="spec"> I need fill but don't know what spec to request
+                    </label>
+                    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                        <input type="checkbox" name="mudHelp" value="disposal"> I've got material to get rid of and don't know my options
+                    </label>
+                    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                        <input type="checkbox" name="mudHelp" value="contamination"> I think my material might be contaminated
+                    </label>
+                    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                        <input type="checkbox" name="mudHelp" value="reuse"> I want to know if my material can be reused somewhere
+                    </label>
+                    <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+                        <input type="checkbox" name="mudHelp" value="other"> Something else
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tell us what you know</label>
+                <textarea id="mudSituation" rows="4" placeholder="Describe your situation — what material you have or need, where the site is, what the project is, anything that helps us understand what you're dealing with..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Site Location (if applicable)</label>
+                <input type="text" id="mudLocation" placeholder="e.g. Gatton, or site address">
+            </div>
+
+            <div class="form-group">
+                <label>Photos</label>
+                <input type="file" id="mudPhotos" accept=".jpg,.jpeg,.png,.heic,.webp" multiple style="font-size:12px;">
+                <p class="form-hint">Show us what you've got — stockpiles, site conditions, test results. Often more useful than a description.</p>
+            </div>
+
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin:14px 0;">
+                <label style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;display:block;"><i class="fas fa-phone-alt"></i> How should we reach you? *</label>
+                <div class="form-group" style="margin-bottom:8px;">
+                    <label>Name</label>
+                    <input type="text" id="mudContactName" readonly style="opacity:0.7;">
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Preferred contact</label>
+                        <select id="mudContactPref" required>
+                            <option value="">Select...</option>
+                            <option value="call">Call me</option>
+                            <option value="email">Email me</option>
+                            <option value="either">Either is fine</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label>Mobile</label>
+                        <input type="tel" id="mudContactMobile" placeholder="04XX XXX XXX">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label>Email</label>
+                    <input type="email" id="mudContactEmail" readonly style="opacity:0.7;">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn" id="mudCancelBtn">Cancel</button>
+                <button type="submit" class="btn" id="mudSubmitBtn" style="background:var(--blue);color:#fff;border-color:var(--blue);"><i class="fas fa-life-ring"></i> Get Help</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -384,10 +662,11 @@ function timeAgo(dateStr) {
 
 function typeLabel(t) {
     const labels = {
-        'site-registration': 'Tip Site',
-        'source-tip': 'Source Tip',
+        'site-registration': 'Site Submission',
+        'source-tip': 'Project',
         'project': 'Project',
-        'feedback': 'Feedback'
+        'feedback': 'Consultation',
+        'consultation': 'Consultation'
     };
     return labels[t] || t;
 }
@@ -395,17 +674,19 @@ function typeLabel(t) {
 function typeIcon(t) {
     const icons = {
         'site-registration': 'fa-map-marker-alt',
-        'source-tip': 'fa-map-pin',
+        'source-tip': 'fa-project-diagram',
         'project': 'fa-project-diagram',
-        'feedback': 'fa-comment-dots'
+        'feedback': 'fa-life-ring',
+        'consultation': 'fa-life-ring'
     };
     return icons[t] || 'fa-file';
 }
 
 // ===== AUTH =====
 function showLogin() {
-    document.getElementById('loginGate').style.display = '';
-    document.getElementById('dashboard').style.display = 'none';
+    // TEMP: disabled for local preview
+    // document.getElementById('loginGate').style.display = '';
+    // document.getElementById('dashboard').style.display = 'none';
 }
 
 function showDashboard(session) {
@@ -505,31 +786,292 @@ function renderSubmissions() {
 function openModal(id) { document.getElementById(id).classList.add('visible'); }
 function closeModal(id) { document.getElementById(id).classList.remove('visible'); }
 
-// ===== SUBMIT TIP SITE =====
-document.getElementById('btnNewSite').addEventListener('click', () => openModal('siteModal'));
+// ===== MATERIAL CLASSIFICATION DATA =====
+const MATERIALS = {
+    earthworks: {
+        label: 'Earthworks & Fill',
+        grades: [
+            { value: 'class-a1', label: 'Class A1 — Structural Fill (Premium)', tip: 'MRTS04. Low plasticity, non-dispersive. Top 500mm of embankments, bridge approaches. Becoming scarce statewide — TMR now prefers Class B where both meet requirements (TN216, Nov 2025).' },
+            { value: 'class-b', label: 'Class B — Standard Fill', tip: 'MRTS04. Good quality earth fill. Now the preferred specification over Class A1 for most embankment work.' },
+            { value: 'class-c', label: 'Class C — General Fill', tip: 'MRTS04. Acceptable quality for bulk fill. Higher plasticity tolerance. Lower embankment zones, non-structural areas.' },
+            { value: 'class-d', label: 'Class D — Bulk Fill', tip: 'MRTS04. Lower-quality fill for deep embankment zones, areas away from pavement.' },
+            { value: 'rock-fill', label: 'Rock Fill', tip: 'MRTS04. Predominantly rock fragments from blasting/ripping. Rock embankments, drainage blankets, stable fill in wet areas.' },
+            { value: 'select-fill', label: 'Select Fill (Subgrade Improvement)', tip: 'MRTS04/MRTS05. Specific-quality material placed directly under pavement. Properties specified per project.' },
+            { value: 'clean-fill', label: 'Clean Fill / VENM', tip: 'Uncontaminated natural soil. No QLD End of Waste code exists — legally "waste" once excavated even when clean. VENM = Virgin Excavated Natural Material.' },
+            { value: 'topsoil', label: 'Topsoil', tip: 'Organic-rich surface soil for revegetation. Not structural. Screened or unscreened.' },
+            { value: 'sand-fill', label: 'Sand Fill', tip: 'Clean sand for fill, drainage, or bedding.' },
+            { value: 'unclassified', label: 'Unclassified / Not Yet Tested', tip: 'Material not yet tested or classified. Will need assessment before placement. Specify what you know in notes.' },
+        ]
+    },
+    recycled: {
+        label: 'Recycled Materials',
+        grades: [
+            { value: 'rcc-20', label: '20mm Recycled Crushed Concrete', tip: 'Crushed concrete screened to 20mm minus. Subbase, backfill, drainage. Requires asbestos clearance.' },
+            { value: 'rcc-40', label: '40mm Recycled Road Base', tip: 'Crushed concrete at road base grading. Driveways, carparks, temporary access.' },
+            { value: 'rcc-75', label: '75mm Recycled Aggregate', tip: 'Coarser crushed material. Haul road base, temporary platforms.' },
+            { value: 'rap', label: 'Recycled Asphalt (RAP)', tip: 'Milled or crushed asphalt from road rehab. Can blend with virgin aggregate. Bitumen content limits apply.' },
+            { value: 'recycled-sand', label: 'Recycled Sand', tip: 'Fine fraction from crushing operations. Pipe bedding, backfill.' },
+            { value: 'recycled-blend', label: 'Recycled Blend (mixed C&D)', tip: 'Combination of concrete, brick, tile, rock. Must meet overall grading and strength. Environmental testing required.' },
+            { value: 'recycled-drainage', label: 'Recycled Drainage Rock', tip: 'Clean, sized recycled aggregate for subsoil drains, soakwells, ag drains.' },
+        ]
+    },
+    contaminated: {
+        label: 'Contaminated / Regulated',
+        grades: [
+            { value: 'enm', label: 'ENM — Excavated Natural Material', tip: 'Slightly elevated but non-hazardous concentrations. Lab testing against NEPM criteria required. Reuse with conditions.' },
+            { value: 'ct1', label: 'CT-1 — Low-Level Contaminated', tip: 'Exceeds NEPM HILs for commercial/industrial use. Licensed facility + licensed waste transport required.' },
+            { value: 'ct2', label: 'CT-2 — High-Level Contaminated', tip: 'Significantly exceeds NEPM HILs. Licensed high-security facility only. Regulated waste transport (ERA 57).' },
+            { value: 'ass', label: 'Acid Sulfate Soil', tip: 'Iron sulfides that produce sulfuric acid when exposed to air. Common in coastal QLD below 5m AHD. Acid Sulfate Soil Management Plan required.' },
+            { value: 'pfas', label: 'PFAS-Impacted Soil', tip: 'Per/poly-fluoroalkyl contamination. Specialist disposal required. Unlawful deposit = 4,500 penalty units or 5 years imprisonment (EP Act s.440ZG).' },
+            { value: 'acm', label: 'Asbestos Containing Material (ACM)', tip: 'Bonded (non-friable) asbestos. Licensed removalist and licensed disposal facility required.' },
+        ]
+    },
+};
+
+// ===== CASCADING MATERIAL DROPDOWN =====
+const catSelect = document.getElementById('siteMaterialCat');
+const gradeSelect = document.getElementById('siteMaterialGrade');
+const tooltip = document.getElementById('materialTooltip');
+const tooltipText = document.getElementById('materialTooltipText');
+
+catSelect.addEventListener('change', () => {
+    const cat = MATERIALS[catSelect.value];
+    gradeSelect.innerHTML = '<option value="">Select grade...</option>';
+    tooltip.style.display = 'none';
+    if (!cat) return;
+    cat.grades.forEach(g => {
+        const opt = document.createElement('option');
+        opt.value = g.value;
+        opt.textContent = g.label;
+        gradeSelect.appendChild(opt);
+    });
+});
+
+gradeSelect.addEventListener('change', () => {
+    const cat = MATERIALS[catSelect.value];
+    if (!cat) { tooltip.style.display = 'none'; return; }
+    const grade = cat.grades.find(g => g.value === gradeSelect.value);
+    if (grade) {
+        tooltipText.textContent = grade.tip;
+        tooltip.style.display = 'block';
+    } else {
+        tooltip.style.display = 'none';
+    }
+});
+
+// ===== QLD SUBURB → LGA LOOKUP =====
+const SUBURB_LGA = {
+    // SEQ
+    'acacia ridge':'Brisbane','albion':'Brisbane','annerley':'Brisbane','ascot':'Brisbane','aspley':'Brisbane','bald hills':'Brisbane','banyo':'Brisbane','bracken ridge':'Brisbane','bulimba':'Brisbane','carindale':'Brisbane','chermside':'Brisbane','clayfield':'Brisbane','coopers plains':'Brisbane','darra':'Brisbane','eagle farm':'Brisbane','eight mile plains':'Brisbane','ferny grove':'Brisbane','fig tree pocket':'Brisbane','fortitude valley':'Brisbane','geebung':'Brisbane','graceville':'Brisbane','greenslopes':'Brisbane','hamilton':'Brisbane','hendra':'Brisbane','herston':'Brisbane','holland park':'Brisbane','indooroopilly':'Brisbane','inala':'Brisbane','kangaroo point':'Brisbane','kenmore':'Brisbane','lytton':'Brisbane','milton':'Brisbane','moorooka':'Brisbane','morningside':'Brisbane','mount gravatt':'Brisbane','murarrie':'Brisbane','new farm':'Brisbane','newstead':'Brisbane','nundah':'Brisbane','oxley':'Brisbane','paddington':'Brisbane','pinkenba':'Brisbane','richlands':'Brisbane','rochedale':'Brisbane','sandgate':'Brisbane','sherwood':'Brisbane','south brisbane':'Brisbane','spring hill':'Brisbane','stafford':'Brisbane','stones corner':'Brisbane','sunnybank':'Brisbane','taringa':'Brisbane','toowong':'Brisbane','virginia':'Brisbane','west end':'Brisbane','woolloongabba':'Brisbane','wynnum':'Brisbane','zillmere':'Brisbane',
+    'beenleigh':'Logan','browns plains':'Logan','logan central':'Logan','loganholme':'Logan','marsden':'Logan','springwood':'Logan','underwood':'Logan','woodridge':'Logan','shailer park':'Logan','slacks creek':'Logan','daisy hill':'Logan','kingston':'Logan',
+    'broadbeach':'Gold Coast','burleigh heads':'Gold Coast','coolangatta':'Gold Coast','coomera':'Gold Coast','helensvale':'Gold Coast','hope island':'Gold Coast','labrador':'Gold Coast','mermaid beach':'Gold Coast','mudgeeraba':'Gold Coast','nerang':'Gold Coast','ormeau':'Gold Coast','oxenford':'Gold Coast','palm beach':'Gold Coast','robina':'Gold Coast','southport':'Gold Coast','surfers paradise':'Gold Coast','tweed heads':'Gold Coast','varsity lakes':'Gold Coast','pimpama':'Gold Coast','upper coomera':'Gold Coast',
+    'caboolture':'Moreton Bay','dakabin':'Moreton Bay','deception bay':'Moreton Bay','kallangur':'Moreton Bay','morayfield':'Moreton Bay','narangba':'Moreton Bay','north lakes':'Moreton Bay','petrie':'Moreton Bay','redcliffe':'Moreton Bay','strathpine':'Moreton Bay','burpengary':'Moreton Bay','warner':'Moreton Bay','mango hill':'Moreton Bay',
+    'beaudesert':'Scenic Rim','boonah':'Scenic Rim','canungra':'Scenic Rim','tamborine mountain':'Scenic Rim','kalbar':'Scenic Rim',
+    'ipswich':'Ipswich','springfield':'Ipswich','goodna':'Ipswich','redbank plains':'Ipswich','ripley':'Ipswich','rosewood':'Ipswich','yamanto':'Ipswich','bellbird park':'Ipswich','brassall':'Ipswich','bundamba':'Ipswich',
+    'caloundra':'Sunshine Coast','maroochydore':'Sunshine Coast','mooloolaba':'Sunshine Coast','nambour':'Sunshine Coast','noosa':'Sunshine Coast','buderim':'Sunshine Coast','sippy downs':'Sunshine Coast','kawana':'Sunshine Coast','coolum':'Sunshine Coast','eumundi':'Sunshine Coast','palmwoods':'Sunshine Coast','maleny':'Sunshine Coast','beerwah':'Sunshine Coast','landsborough':'Sunshine Coast','glass house mountains':'Sunshine Coast',
+    'gatton':'Lockyer Valley','laidley':'Lockyer Valley','forest hill':'Lockyer Valley','withcott':'Lockyer Valley','helidon':'Lockyer Valley','plainland':'Lockyer Valley',
+    'toowoomba':'Toowoomba','highfields':'Toowoomba','oakey':'Toowoomba','pittsworth':'Toowoomba','clifton':'Toowoomba','millmerran':'Toowoomba',
+    'cleveland':'Redland','victoria point':'Redland','capalaba':'Redland','wellington point':'Redland','redland bay':'Redland','mount cotton':'Redland','thornlands':'Redland','alexandra hills':'Redland','birkdale':'Redland',
+    // Regional
+    'bundaberg':'Bundaberg','bargara':'Bundaberg','childers':'Bundaberg',
+    'gladstone':'Gladstone','tannum sands':'Gladstone','boyne island':'Gladstone','calliope':'Gladstone',
+    'rockhampton':'Rockhampton','gracemere':'Rockhampton','yeppoon':'Livingstone','emu park':'Livingstone',
+    'mackay':'Mackay','sarina':'Mackay','walkerston':'Mackay','mirani':'Mackay',
+    'townsville':'Townsville','aitkenvale':'Townsville','kirwan':'Townsville','thuringowa':'Townsville','belgian gardens':'Townsville',
+    'cairns':'Cairns','gordonvale':'Cairns','edmonton':'Cairns','trinity beach':'Cairns','smithfield':'Cairns','mareeba':'Mareeba','atherton':'Tablelands','innisfail':'Cassowary Coast',
+    'hervey bay':'Fraser Coast','maryborough':'Fraser Coast','howard':'Fraser Coast',
+    'warwick':'Southern Downs','stanthorpe':'Southern Downs','killarney':'Southern Downs',
+    'dalby':'Western Downs','chinchilla':'Western Downs','miles':'Western Downs',
+    'kingaroy':'South Burnett','nanango':'South Burnett','murgon':'South Burnett',
+    'emerald':'Central Highlands','blackwater':'Central Highlands','springsure':'Central Highlands',
+    'mount isa':'Mount Isa','cloncurry':'Cloncurry',
+    'longreach':'Longreach','barcaldine':'Barcaldine',
+    'roma':'Maranoa','st george':'Balonne',
+    'biloela':'Banana','moura':'Banana','theodore':'Banana',
+    'gympie':'Gympie','tin can bay':'Gympie','rainbow beach':'Gympie',
+    'ayr':'Burdekin','home hill':'Burdekin','bowen':'Whitsunday','proserpine':'Whitsunday','cannonvale':'Whitsunday',
+};
+
+const QLD_LGAS = [
+    'Aurukun','Balonne','Banana','Barcaldine','Barcoo','Brisbane','Bulloo','Bundaberg','Burdekin','Burke',
+    'Cairns','Carpentaria','Cassowary Coast','Central Highlands','Charters Towers','Cloncurry','Cook',
+    'Croydon','Diamantina','Douglas','Etheridge','Flinders','Fraser Coast','Gladstone','Gold Coast',
+    'Goondiwindi','Gympie','Hinchinbrook','Hope Vale','Ipswich','Isaac','Kowanyama','Livingstone',
+    'Lockhart River','Lockyer Valley','Logan','Longreach','Mackay','Mapoon','Maranoa','Mareeba',
+    'McKinlay','Moreton Bay','Mount Isa','Murweh','Napranum','Noosa','North Burnett','Northern Peninsula Area',
+    'Palm Island','Paroo','Pormpuraaw','Quilpie','Redland','Richmond','Rockhampton','Scenic Rim',
+    'Somerset','South Burnett','Southern Downs','Sunshine Coast','Tablelands','Toowoomba','Torres',
+    'Torres Strait Island','Townsville','Western Downs','Whitsunday','Winton','Woorabinda','Wujal Wujal','Yarrabah'
+];
+
+// Populate LGA dropdown
+const lgaSelect = document.getElementById('siteLGA');
+QLD_LGAS.forEach(lga => {
+    const opt = document.createElement('option');
+    opt.value = lga; opt.textContent = lga;
+    lgaSelect.appendChild(opt);
+});
+
+// Auto-detect LGA from suburb
+document.getElementById('siteTown').addEventListener('input', function() {
+    const val = this.value.toLowerCase().trim();
+    const match = SUBURB_LGA[val];
+    if (match) {
+        lgaSelect.value = match;
+    }
+});
+
+// ===== CUT / FILL CARD TOGGLE =====
+function buildFillCheckboxes() {
+    const container = document.getElementById('fillCheckboxes');
+    if (container.children.length > 0) return; // already built
+    Object.entries(MATERIALS).forEach(([catKey, cat]) => {
+        // Category header
+        const header = document.createElement('div');
+        header.style.cssText = 'grid-column:1/-1;font-size:12px;font-weight:600;color:var(--text-muted);margin-top:8px;margin-bottom:2px;';
+        header.textContent = cat.label;
+        container.appendChild(header);
+        // Grade checkboxes
+        cat.grades.forEach(g => {
+            const label = document.createElement('label');
+            label.style.cssText = 'display:flex;align-items:flex-start;gap:6px;font-size:12px;cursor:pointer;padding:3px 0;';
+            label.innerHTML = `<input type="checkbox" name="fillMaterials" value="${g.value}" data-cat="${catKey}" style="margin-top:2px;"> <span>${g.label}</span>`;
+            container.appendChild(label);
+        });
+    });
+}
+
+function toggleCutFill(direction) {
+    const isCut = direction === 'cut';
+    // Card styling
+    document.getElementById('cardCut').style.borderColor = isCut ? 'var(--green)' : 'var(--border)';
+    document.getElementById('cardCut').style.background = isCut ? 'var(--green-bg)' : '';
+    document.getElementById('cardFill').style.borderColor = !isCut ? 'var(--amber)' : 'var(--border)';
+    document.getElementById('cardFill').style.background = !isCut ? 'var(--amber-bg)' : '';
+    // Material sections
+    document.getElementById('materialCutSection').style.display = isCut ? '' : 'none';
+    document.getElementById('materialFillSection').style.display = isCut ? 'none' : '';
+    // Testing (cut only)
+    document.getElementById('testedGroup').style.display = isCut ? '' : 'none';
+    // Uploads
+    document.getElementById('uploadsCutSection').style.display = isCut ? '' : 'none';
+    document.getElementById('uploadsFillSection').style.display = isCut ? 'none' : '';
+    // Build fill checkboxes on first show
+    if (!isCut) buildFillCheckboxes();
+    // Update required fields
+    document.getElementById('siteMaterialCat').required = isCut;
+}
+
+document.querySelectorAll('input[name="siteDirection"]').forEach(radio => {
+    radio.addEventListener('change', () => toggleCutFill(radio.value));
+});
+
+// ===== START DATE HINT =====
+document.getElementById('siteStartType').addEventListener('change', function() {
+    const hint = document.getElementById('startHint');
+    if (this.value === 'asap') hint.textContent = 'Leave blank for ASAP';
+    else if (this.value === 'on') hint.textContent = 'Select the exact start date';
+    else hint.textContent = 'Select the latest acceptable start date';
+});
+
+// ===== CONTACT AUTO-FILL =====
+function prefillContact() {
+    const email = document.getElementById('userLabel')?.textContent || '';
+    document.getElementById('siteContactEmail').value = email;
+    // Name from profile if available, otherwise email prefix
+    const name = email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    document.getElementById('siteContactName').value = name;
+}
+
+// ===== SUBMIT SITE =====
+document.getElementById('btnNewSite').addEventListener('click', () => { prefillContact(); openModal('siteModal'); });
 document.getElementById('siteModalClose').addEventListener('click', () => closeModal('siteModal'));
 document.getElementById('siteCancelBtn').addEventListener('click', () => closeModal('siteModal'));
 document.getElementById('siteModal').addEventListener('click', (e) => { if (e.target.id === 'siteModal') closeModal('siteModal'); });
 
 document.getElementById('siteForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Validate at least one contact method
+    const mobile = document.getElementById('siteContactMobile').value.trim();
+    const email = document.getElementById('siteContactEmail').value.trim();
+    if (!mobile && !email) {
+        showToast('Please provide at least a mobile number or email.');
+        return;
+    }
+
+    // Validate min volume
+    const vol = parseInt(document.getElementById('siteVolume').value);
+    if (vol < 100) {
+        showToast('Minimum volume is 100 m³.');
+        return;
+    }
+
     const btn = document.getElementById('siteSubmitBtn');
     btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
+    const direction = document.querySelector('input[name="siteDirection"]:checked');
+    const isCut = direction && direction.value === 'cut';
+
+    // Build material data depending on cut vs fill
+    let materialData = {};
+    if (isCut) {
+        const materialCat = MATERIALS[catSelect.value];
+        const materialGrade = materialCat ? materialCat.grades.find(g => g.value === gradeSelect.value) : null;
+        materialData = {
+            material_category: catSelect.value,
+            material_category_label: materialCat ? materialCat.label : '',
+            material_grade: gradeSelect.value,
+            material_grade_label: materialGrade ? materialGrade.label : '',
+            tested: document.getElementById('siteTested').value,
+        };
+    } else {
+        // Fill site — collect checked materials
+        const checked = Array.from(document.querySelectorAll('input[name="fillMaterials"]:checked'));
+        materialData = {
+            accepting_materials: checked.map(cb => cb.value),
+            accepting_labels: checked.map(cb => cb.parentElement.textContent.trim()),
+        };
+    }
+
     const payload = {
-        contact_name: document.getElementById('userLabel').textContent,
-        contact_email: document.getElementById('userLabel').textContent,
+        contact_name: document.getElementById('siteContactName').value,
+        contact_email: email,
+        contact_phone: mobile,
         data: {
+            site_direction: direction ? direction.value : '',
             name: document.getElementById('siteName').value,
-            facility_type: document.getElementById('siteType').value,
-            material: document.getElementById('siteMaterial').value,
+            ...materialData,
+            volume_m3: vol,
+            start_type: document.getElementById('siteStartType').value,
+            start_date: document.getElementById('siteStartDate').value,
+            end_type: document.getElementById('siteEndType').value,
+            end_date: document.getElementById('siteEndDate').value,
             town: document.getElementById('siteTown').value,
             lga: document.getElementById('siteLGA').value,
             address: document.getElementById('siteAddress').value,
-            operator: document.getElementById('siteOperator').value,
+            max_truck_size: document.getElementById('siteTruckSize').value,
+            haulage: document.getElementById('siteHaulage').value,
+            weather_access: document.getElementById('siteWeatherAccess').value,
+            operating_hours: document.getElementById('siteHours').value,
             notes: document.getElementById('siteNotes').value,
         }
     };
+
+    // Note file names (actual upload via Supabase Storage TODO)
+    if (isCut) {
+        const geotechFile = document.getElementById('siteGeotechFile').files[0];
+        const contamFile = document.getElementById('siteContamFile').files[0];
+        const cutPhotos = Array.from(document.getElementById('siteCutPhotos').files);
+        if (geotechFile) payload.data.geotech_file = geotechFile.name;
+        if (contamFile) payload.data.contamination_file = contamFile.name;
+        if (cutPhotos.length) payload.data.photos = cutPhotos.map(f => f.name);
+    } else {
+        const fillPhotos = Array.from(document.getElementById('siteFillPhotos').files);
+        const fillSpec = document.getElementById('siteFillSpec').files[0];
+        if (fillPhotos.length) payload.data.photos = fillPhotos.map(f => f.name);
+        if (fillSpec) payload.data.specification_file = fillSpec.name;
+    }
 
     try {
         const resp = await fetch(`${API}/submissions/site`, {
@@ -538,9 +1080,15 @@ document.getElementById('siteForm').addEventListener('submit', async (e) => {
             body: JSON.stringify(payload)
         });
         if (resp.ok) {
-            showToast('Tip site submitted for review!');
+            showToast('Site submitted for review!');
             closeModal('siteModal');
             document.getElementById('siteForm').reset();
+            gradeSelect.innerHTML = '<option value="">Select category first...</option>';
+            tooltip.style.display = 'none';
+            document.getElementById('cardCut').style.borderColor = 'var(--border)';
+            document.getElementById('cardCut').style.background = '';
+            document.getElementById('cardFill').style.borderColor = 'var(--border)';
+            document.getElementById('cardFill').style.background = '';
             loadSubmissions();
         } else {
             showToast('Failed to submit — please try again.');
@@ -595,6 +1143,80 @@ document.getElementById('projectForm').addEventListener('submit', async (e) => {
     } catch (err) { showToast('Network error — please try again.'); }
 
     btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit for Review';
+});
+
+// ===== STUCK IN THE MUD =====
+function prefillMudContact() {
+    const email = document.getElementById('userLabel')?.textContent || '';
+    document.getElementById('mudContactEmail').value = email;
+    const name = email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    document.getElementById('mudContactName').value = name;
+}
+
+document.getElementById('btnStuckInMud').addEventListener('click', () => { prefillMudContact(); openModal('mudModal'); });
+document.getElementById('mudModalClose').addEventListener('click', () => closeModal('mudModal'));
+document.getElementById('mudCancelBtn').addEventListener('click', () => closeModal('mudModal'));
+document.getElementById('mudModal').addEventListener('click', (e) => { if (e.target.id === 'mudModal') closeModal('mudModal'); });
+
+document.getElementById('mudForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validate at least one help type checked
+    const helpTypes = Array.from(document.querySelectorAll('input[name="mudHelp"]:checked'));
+    if (helpTypes.length === 0) {
+        showToast('Please select at least one thing you need help with.');
+        return;
+    }
+
+    // Validate contact
+    const pref = document.getElementById('mudContactPref').value;
+    const mobile = document.getElementById('mudContactMobile').value.trim();
+    const email = document.getElementById('mudContactEmail').value.trim();
+    if (pref === 'call' && !mobile) {
+        showToast('Please provide a mobile number for us to call you.');
+        return;
+    }
+    if (!mobile && !email) {
+        showToast('Please provide at least a mobile number or email.');
+        return;
+    }
+
+    const btn = document.getElementById('mudSubmitBtn');
+    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    const photos = Array.from(document.getElementById('mudPhotos').files);
+
+    const payload = {
+        contact_name: document.getElementById('mudContactName').value,
+        contact_email: email,
+        contact_phone: mobile,
+        data: {
+            help_types: helpTypes.map(cb => cb.value),
+            help_labels: helpTypes.map(cb => cb.parentElement.textContent.trim()),
+            situation: document.getElementById('mudSituation').value,
+            location: document.getElementById('mudLocation').value,
+            contact_preference: pref,
+            photos: photos.length ? photos.map(f => f.name) : [],
+        }
+    };
+
+    try {
+        const resp = await fetch(`${API}/submissions/feedback`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        if (resp.ok) {
+            showToast('Request sent — we\'ll be in touch to get you on firm ground.');
+            closeModal('mudModal');
+            document.getElementById('mudForm').reset();
+            loadSubmissions();
+        } else {
+            showToast('Failed to send — please try again.');
+        }
+    } catch (err) { showToast('Network error — please try again.'); }
+
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-life-ring"></i> Get Help';
 });
 </script>
 </body>
