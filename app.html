@@ -60,7 +60,7 @@
         <p id="gateToggle" style="font-size:13px;color:#9c9488;margin-top:14px;">
             Don't have an account? <a href="#" id="gateToggleLink" style="color:#d4a853;">Register</a>
         </p>
-        <p style="font-size:10px;color:#6b6358;margin-top:20px;">&copy; 2025 Archers Group Pty Ltd</p>
+        <p style="font-size:10px;color:#6b6358;margin-top:20px;">&copy; 2026 Archers Group Pty Ltd</p>
     </div>
 </div>
 
@@ -88,8 +88,15 @@
             if (session) hideGate();
         });
 
+        // If #register hash, show register form by default
+        var showingLogin = window.location.hash !== '#register';
+        if (!showingLogin) {
+            document.getElementById('gateLoginForm').style.display = 'none';
+            document.getElementById('gateRegisterForm').style.display = 'flex';
+            document.getElementById('gateToggle').innerHTML = 'Already have an account? <a href="#" id="gateToggleLink" style="color:#d4a853;">Sign In</a>';
+        }
+
         // Toggle sign in / register
-        var showingLogin = true;
         document.getElementById('gateToggleLink').addEventListener('click', function(e) {
             e.preventDefault();
             showingLogin = !showingLogin;
@@ -365,7 +372,7 @@
             <button class="map-ctrl-btn active" id="btnLGA" title="Council Boundaries"><span class="ctrl-label">Councils</span> <i class="fas fa-draw-polygon"></i></button>
             <button class="map-ctrl-btn" id="btnFireAnts" title="Fire Ant Biosecurity Zones"><span class="ctrl-label">Fire Ants</span> <i class="fas fa-bug"></i></button>
             <button class="map-ctrl-btn active" id="btnProjects" title="Major Projects"><span class="ctrl-label">Projects</span> <i class="fas fa-hard-hat"></i></button>
-            <button class="map-ctrl-btn" id="btnHeatmap" title="Toggle Heatmap"><span class="ctrl-label">Heatmap</span> <i class="fas fa-fire"></i></button>
+            <button class="map-ctrl-btn" id="btnHeatmap" title="Toggle Heatmap" style="display:none;"><span class="ctrl-label">Heatmap</span> <i class="fas fa-fire"></i></button>
         </div>
 
         <!-- Info Panel (shows when marker clicked) -->
@@ -767,7 +774,7 @@
 
 <!-- Footer -->
 <footer style="position:fixed;bottom:0;left:0;right:0;z-index:800;background:rgba(28,25,23,0.95);border-top:1px solid rgba(255,255,255,0.06);padding:6px 16px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgba(168,162,158,0.7);backdrop-filter:blur(8px);">
-    <div>&copy; 2025 Archers Group Pty Ltd. All rights reserved. <span style="margin-left:8px;background:rgba(245,158,11,0.12);color:#f59e0b;padding:1px 6px;border-radius:3px;font-weight:600;">BETA v0.1</span></div>
+    <div>&copy; 2026 Archers Group Pty Ltd. All rights reserved. <span style="margin-left:8px;background:rgba(245,158,11,0.12);color:#f59e0b;padding:1px 6px;border-radius:3px;font-weight:600;">BETA v0.1</span></div>
     <div style="text-align:right;max-width:60%;line-height:1.4;">
         <span style="cursor:pointer;text-decoration:underline;text-decoration-style:dotted;" id="disclaimerToggle">Legal Disclaimer</span>
     </div>
@@ -790,7 +797,7 @@
             <p><strong style="color:#e0dbd3;">Third-Party Data</strong><br>
             Cut2Fill incorporates data from OpenStreetMap, CARTO, Queensland Government, local councils, and water utility providers. This data is used under their respective licences and terms. Cut2Fill does not guarantee the accuracy or completeness of third-party data.</p>
             <p><strong style="color:#e0dbd3;">Intellectual Property</strong><br>
-            The Cut2Fill platform, including its design, curated datasets, and original content, is &copy; 2025 Archers Group Pty Ltd. All rights reserved. The Cut2Fill name and branding are proprietary to Archers Group.</p>
+            The Cut2Fill platform, including its design, curated datasets, and original content, is &copy; 2026 Archers Group Pty Ltd. All rights reserved. The Cut2Fill name and branding are proprietary to Archers Group.</p>
             <p><strong style="color:#e0dbd3;">Limitation of Liability</strong><br>
             To the maximum extent permitted by law, Archers Group Pty Ltd accepts no liability for any loss, damage, or cost arising from the use of or reliance on information provided through Cut2Fill. Use of this platform is at your own risk.</p>
         </div>

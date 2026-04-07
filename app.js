@@ -1469,6 +1469,129 @@ function showFacilityPanel(facility) {
     }
 }
 
+// ===== LISTINGS (Fill Available / Fill Wanted) =====
+let listings = [];
+let listingLayerGroup = L.layerGroup();
+
+const listingTypeColors = {
+    'available': '#22c55e',  // green — fill available
+    'wanted': '#3b82f6',     // blue — fill wanted
+};
+const listingTypeIcons = {
+    'available': 'fa-arrow-up',
+    'wanted': 'fa-arrow-down',
+};
+const listingTypeLabels = {
+    'available': 'Fill Available',
+    'wanted': 'Fill Wanted',
+};
+
+// Fetch approved listings from API
+(async () => {
+    try {
+        const resp = await fetch(`${CUT2FILL_API_URL}/listings`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const geo = await resp.json();
+        listings = geo.features.map(f => ({
+            id: f.properties.id,
+            listingType: f.properties.listing_type,
+            materialType: f.properties.material_type,
+            volume: f.properties.volume_m3,
+            lat: f.geometry ? f.geometry.coordinates[1] : null,
+            lng: f.geometry ? f.geometry.coordinates[0] : null,
+            suburb: f.properties.suburb,
+            address: f.properties.address,
+            description: f.properties.description,
+            pricing: f.properties.pricing,
+            dateFrom: f.properties.date_from,
+            dateTo: f.properties.date_to,
+            contactName: f.properties.contact_name,
+            contactEmail: f.properties.contact_email,
+            contactPhone: f.properties.contact_phone,
+            company: f.properties.company,
+            tested: f.properties.tested,
+            pickup: f.properties.pickup,
+            delivery: f.properties.delivery,
+            createdAt: f.properties.created_at,
+        }));
+        console.log(`[Cut2Fill API] Loaded ${listings.length} listings from backend`);
+        addListingMarkers();
+    } catch (e) {
+        console.warn('[Cut2Fill API] Listings fetch failed:', e.message);
+    }
+})();
+
+function addListingMarkers() {
+    listingLayerGroup.clearLayers();
+    listings.forEach(l => {
+        if (!l.lat || !l.lng) return;
+        const color = listingTypeColors[l.listingType] || '#6b8f5e';
+        const icon = listingTypeIcons[l.listingType] || 'fa-circle';
+        const label = listingTypeLabels[l.listingType] || 'Listing';
+        const materialLabel = materialTooltips[l.materialType] ? l.materialType.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : l.materialType;
+
+        const marker = L.marker([l.lat, l.lng], {
+            icon: L.divIcon({
+                className: '',
+                html: `<div style="width:32px;height:32px;border-radius:6px;background:${color};border:2px solid rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.5);cursor:pointer;transform:rotate(45deg);"><i class="fas ${icon}" style="transform:rotate(-45deg);"></i></div>`,
+                iconSize: [32, 32],
+                iconAnchor: [16, 16]
+            })
+        });
+        marker.bindTooltip(`<strong>${label}</strong><br>${materialLabel} · ${l.volume} m³<br>${l.suburb || ''}`, { direction: 'top', offset: [0, -18] });
+        marker.on('click', () => showListingPanel(l));
+        listingLayerGroup.addLayer(marker);
+    });
+}
+
+function showListingPanel(l) {
+    const panel = document.getElementById('infoPanel');
+    const color = listingTypeColors[l.listingType] || '#6b8f5e';
+    const label = listingTypeLabels[l.listingType] || 'Listing';
+    const materialLabel = l.materialType.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    const materialTip = materialTooltips[l.materialType] || '';
+
+    const badges = [];
+    if (l.tested) badges.push('<span style="background:rgba(107,143,94,0.2);color:#6b8f5e;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;">Tested</span>');
+    if (l.pickup) badges.push('<span style="background:rgba(92,138,151,0.2);color:#5c8a97;padding:2px 8px;border-radius:3px;font-size:11px;">Pickup</span>');
+    if (l.delivery) badges.push('<span style="background:rgba(196,132,62,0.2);color:#c4843e;padding:2px 8px;border-radius:3px;font-size:11px;">Delivery</span>');
+    if (l.pricing === 'free') badges.push('<span style="background:rgba(107,143,94,0.2);color:#6b8f5e;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;">Free</span>');
+
+    let html = `
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:36px;height:36px;border-radius:6px;background:${color};display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;transform:rotate(45deg);"><i class="fas ${listingTypeIcons[l.listingType] || 'fa-circle'}" style="transform:rotate(-45deg);"></i></div>
+            <div>
+                <div style="font-size:15px;font-weight:700;">${label}</div>
+                <div style="font-size:12px;color:#9c9488;">${materialLabel} · ${l.volume} m³</div>
+            </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">${badges.join('')}</div>
+    `;
+
+    if (l.description) html += `<p style="font-size:13px;color:#e0dbd3;margin-bottom:8px;">${l.description}</p>`;
+    if (materialTip) html += `<p style="font-size:12px;color:#9c9488;margin-bottom:10px;padding:8px;background:rgba(107,143,94,0.08);border-radius:4px;border-left:3px solid #6b8f5e;"><i class="fas fa-info-circle" style="margin-right:4px;"></i> ${materialTip}</p>`;
+
+    html += '<div style="font-size:12px;color:#9c9488;margin-top:8px;">';
+    if (l.suburb) html += `<div style="margin-bottom:3px;"><i class="fas fa-map-marker-alt" style="width:16px;"></i> ${l.suburb}${l.address ? ' — ' + l.address : ''}</div>`;
+    if (l.dateFrom) html += `<div style="margin-bottom:3px;"><i class="fas fa-calendar" style="width:16px;"></i> ${l.dateFrom}${l.dateTo ? ' to ' + l.dateTo : ' onwards'}</div>`;
+    if (l.company) html += `<div style="margin-bottom:3px;"><i class="fas fa-building" style="width:16px;"></i> ${l.company}</div>`;
+    if (l.contactName) html += `<div style="margin-bottom:3px;"><i class="fas fa-user" style="width:16px;"></i> ${l.contactName}</div>`;
+    if (l.contactEmail) html += `<div style="margin-bottom:3px;"><i class="fas fa-envelope" style="width:16px;"></i> <a href="mailto:${l.contactEmail}" style="color:#5c8a97;">${l.contactEmail}</a></div>`;
+    if (l.contactPhone) html += `<div style="margin-bottom:3px;"><i class="fas fa-phone" style="width:16px;"></i> ${l.contactPhone}</div>`;
+    html += '</div>';
+
+    // Zone check
+    if (l.lat && l.lng) {
+        const zone = getLocationZone(l.lat, l.lng);
+        if (zone === 1) html += '<div style="margin-top:10px;padding:8px;background:rgba(239,68,68,0.12);border-radius:4px;font-size:12px;color:#ef4444;"><i class="fas fa-bug"></i> Fire Ant Zone 1 (Restricted) — BIP may be required</div>';
+        else if (zone === 2) html += '<div style="margin-top:10px;padding:8px;background:rgba(245,158,11,0.12);border-radius:4px;font-size:12px;color:#f59e0b;"><i class="fas fa-bug"></i> Fire Ant Zone 2 (Buffer)</div>';
+    }
+
+    panel.querySelector('.info-body').innerHTML = html;
+    panel.classList.add('visible');
+    if (l.lat && l.lng) map.panTo([l.lat, l.lng]);
+}
+
 // ===== WATER FILL POINTS =====
 let waterFillPoints = [
     // QUU — Queensland Urban Utilities (23 stations)
@@ -2011,7 +2134,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render — facilities, water fill points, and major projects
     applyFacilityFilters();
     facilityLayerGroup.addTo(map);
-    waterFillLayerGroup.addTo(map);
+    listingLayerGroup.addTo(map);
+    // waterFillLayerGroup.addTo(map);  // Hidden for soft launch — water fill points disabled
     applyProjectFilters();
     majorProjectLayerGroup.addTo(map);
     renderDashboard();
@@ -2192,7 +2316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form submit — site registration
+    // Form submit — creates a listing if logged in, otherwise falls back to submission
     document.getElementById('postForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button[type="submit"]');
@@ -2213,34 +2337,78 @@ document.addEventListener('DOMContentLoaded', () => {
             pickup: document.getElementById('formPickup').checked,
             delivery: document.getElementById('formDelivery').checked
         };
-        const payload = {
-            contact_name: document.getElementById('formCompany').value,
-            contact_email: document.getElementById('formEmail').value,
-            contact_phone: document.getElementById('formPhone').value,
-            data: formData
-        };
-        try {
-            const resp = await fetch(`${CUT2FILL_API_URL}/submissions/site`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            if (resp.ok) {
-                showToast('Site submitted for verification — the Archers team will review and be in touch.');
-            } else {
-                throw new Error('API error');
-            }
-        } catch (err) {
-            // Fallback to Formspree
+
+        // If logged in, create a listing via API
+        if (currentSession) {
+            const listingPayload = {
+                listing_type: formData.listingType || 'available',
+                material_type: formData.material,
+                volume_m3: parseInt(formData.volume) || 100,
+                lat: userSiteLocation ? userSiteLocation.lat : null,
+                lng: userSiteLocation ? userSiteLocation.lng : null,
+                suburb: null,
+                address: formData.address,
+                description: formData.notes,
+                pricing: formData.pricing || 'free',
+                date_from: formData.dateFrom || null,
+                date_to: formData.dateTo || null,
+                contact_name: document.getElementById('formCompany').value,
+                contact_email: document.getElementById('formEmail').value,
+                contact_phone: document.getElementById('formPhone').value,
+                company: formData.company,
+                tested: formData.tested,
+                pickup: formData.pickup,
+                delivery: formData.delivery,
+            };
             try {
-                await fetch('https://formspree.io/f/xdawqlvg', {
+                const resp = await fetch(`${CUT2FILL_API_URL}/listings`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ _subject: 'Cut2Fill — New Site Registration', ...formData, email: payload.contact_email, phone: payload.contact_phone })
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${currentSession.access_token}`,
+                    },
+                    body: JSON.stringify(listingPayload)
                 });
-                showToast('Site submitted for verification — the Archers team will review and be in touch.');
-            } catch (err2) {
-                showToast('Network error — please try again.');
+                if (resp.ok) {
+                    showToast('Listing submitted — it will appear on the map after review.');
+                } else {
+                    const errData = await resp.json().catch(() => ({}));
+                    throw new Error(errData.detail || `HTTP ${resp.status}`);
+                }
+            } catch (err) {
+                console.error('Listing creation failed:', err);
+                showToast('Error submitting listing — ' + err.message);
+            }
+        } else {
+            // Not logged in — fall back to submission + Formspree
+            const payload = {
+                contact_name: document.getElementById('formCompany').value,
+                contact_email: document.getElementById('formEmail').value,
+                contact_phone: document.getElementById('formPhone').value,
+                data: formData
+            };
+            try {
+                const resp = await fetch(`${CUT2FILL_API_URL}/submissions/site`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (resp.ok) {
+                    showToast('Site submitted for verification — the Archers team will review and be in touch.');
+                } else {
+                    throw new Error('API error');
+                }
+            } catch (err) {
+                try {
+                    await fetch('https://formspree.io/f/xdawqlvg', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({ _subject: 'Cut2Fill — New Site Registration', ...formData, email: document.getElementById('formEmail').value, phone: document.getElementById('formPhone').value })
+                    });
+                    showToast('Site submitted for verification — the Archers team will review and be in touch.');
+                } catch (err2) {
+                    showToast('Network error — please try again.');
+                }
             }
         }
         btn.disabled = false;

@@ -200,6 +200,7 @@
 
     <div class="tab-bar">
         <button class="tab-btn active" data-tab="submissions"><i class="fas fa-inbox"></i> Submissions</button>
+        <button class="tab-btn" data-tab="listings"><i class="fas fa-list"></i> Listings</button>
         <button class="tab-btn" data-tab="facilities"><i class="fas fa-map-marker-alt"></i> Facilities</button>
         <button class="tab-btn" data-tab="health"><i class="fas fa-heartbeat"></i> Data Health</button>
         <button class="tab-btn" data-tab="users"><i class="fas fa-users"></i> Users</button>
@@ -237,6 +238,21 @@
                 <p>No submissions found</p>
             </div>
             <div id="reviewPanel" class="review-panel" style="display:none;"></div>
+        </div>
+
+        <!-- Listings Tab -->
+        <div class="tab-panel" id="panel-listings">
+            <div class="filter-bar">
+                <select id="listingFilter">
+                    <option value="pending">Pending Review</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+                <button class="btn btn-sm" onclick="loadListings()"><i class="fas fa-sync"></i> Refresh</button>
+            </div>
+            <div id="listingsGrid" class="card-grid" style="margin-top:16px;">
+                <p>Loading listings...</p>
+            </div>
         </div>
 
         <!-- Facilities Tab -->
@@ -433,6 +449,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.add('active');
         document.getElementById(`panel-${btn.dataset.tab}`).classList.add('active');
 
+        if (btn.dataset.tab === 'listings') loadListings();
         if (btn.dataset.tab === 'facilities') loadFacilities();
         if (btn.dataset.tab === 'health') loadHealth();
         if (btn.dataset.tab === 'users') loadUsers();
@@ -629,6 +646,67 @@ async function loadUsers() {
         document.getElementById('usersEmpty').style.display = '';
     }
 }
+
+// ===== LISTINGS =====
+async function loadListings() {
+    const status = document.getElementById('listingFilter').value;
+    const grid = document.getElementById('listingsGrid');
+    grid.innerHTML = '<p>Loading...</p>';
+    try {
+        const resp = await api(`/admin/listings?status=${status}`);
+        const data = await resp.json();
+        if (!data.length) {
+            grid.innerHTML = `<p style="color:var(--text-muted);">No ${status} listings.</p>`;
+            return;
+        }
+        grid.innerHTML = data.map(l => {
+            const materialLabel = l.material_type.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            const typeLabel = l.listing_type === 'available' ? 'Fill Available' : 'Fill Wanted';
+            const typeColor = l.listing_type === 'available' ? 'var(--green)' : 'var(--blue)';
+            const badges = [];
+            if (l.tested) badges.push('<span style="background:rgba(107,143,94,0.2);color:var(--green);padding:2px 6px;border-radius:3px;font-size:10px;">Tested</span>');
+            if (l.pricing === 'free') badges.push('<span style="background:rgba(107,143,94,0.2);color:var(--green);padding:2px 6px;border-radius:3px;font-size:10px;">Free</span>');
+
+            return `<div class="sub-card" style="border-left:3px solid ${typeColor};">
+                <div style="display:flex;justify-content:space-between;align-items:start;">
+                    <div>
+                        <div style="font-weight:600;font-size:14px;">${typeLabel} — ${materialLabel}</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${l.volume_m3} m³ · ${l.suburb || l.address || 'No location'}</div>
+                        ${l.company ? `<div style="font-size:12px;color:var(--text-muted);"><i class="fas fa-building" style="width:14px;"></i> ${l.company}</div>` : ''}
+                        ${l.contact_name ? `<div style="font-size:12px;color:var(--text-muted);"><i class="fas fa-user" style="width:14px;"></i> ${l.contact_name} ${l.contact_email ? '· ' + l.contact_email : ''} ${l.contact_phone ? '· ' + l.contact_phone : ''}</div>` : ''}
+                        ${l.description ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${l.description}</div>` : ''}
+                        <div style="display:flex;gap:4px;margin-top:4px;">${badges.join('')}</div>
+                        ${l.date_from ? `<div style="font-size:11px;color:var(--text-dim);margin-top:2px;">${l.date_from}${l.date_to ? ' to ' + l.date_to : ' onwards'}</div>` : ''}
+                    </div>
+                    <div style="font-size:10px;color:var(--text-dim);">${l.created_at ? new Date(l.created_at).toLocaleDateString() : ''}</div>
+                </div>
+                ${l.status === 'pending' ? `
+                <div style="display:flex;gap:8px;margin-top:10px;">
+                    <button class="btn btn-sm" style="background:var(--green);color:#fff;border-color:var(--green);" onclick="reviewListing('${l.id}','approved')"><i class="fas fa-check"></i> Approve</button>
+                    <button class="btn btn-sm" style="background:var(--red);color:#fff;border-color:var(--red);" onclick="reviewListing('${l.id}','rejected')"><i class="fas fa-times"></i> Reject</button>
+                </div>` : `<div style="font-size:11px;color:var(--text-dim);margin-top:6px;">Status: ${l.status}${l.review_notes ? ' — ' + l.review_notes : ''}</div>`}
+            </div>`;
+        }).join('');
+    } catch (e) {
+        grid.innerHTML = '<p style="color:var(--red);">Failed to load listings.</p>';
+    }
+}
+
+async function reviewListing(id, status) {
+    const notes = status === 'rejected' ? prompt('Rejection reason (optional):') : null;
+    try {
+        await api(`/admin/listings/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status, review_notes: notes }),
+        });
+        loadListings();
+    } catch (e) {
+        alert('Failed to update listing: ' + e.message);
+    }
+}
+
+document.getElementById('listingFilter').addEventListener('change', loadListings);
 </script>
 </body>
 </html>
