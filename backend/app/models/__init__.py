@@ -4,6 +4,7 @@ from app.models.project import MajorProject, ProjectPhase
 from app.models.submission import Submission
 from app.models.source import DataSource, SourceHealthCheck
 from app.models.profile import Profile
+from app.models.listing import Listing
 
 __all__ = [
     "Facility",
@@ -14,4 +15,5 @@ __all__ = [
     "DataSource",
     "SourceHealthCheck",
     "Profile",
+    "Listing",
 ]

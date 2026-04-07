@@ -9,9 +9,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
 from app.middleware.auth import require_admin
 from app.models.facility import Facility
+from app.models.listing import Listing
 from app.models.profile import Profile
 from app.models.submission import Submission
 from app.schemas.facility import FacilityCreate, FacilityUpdate
+from app.schemas.listing import ListingOut, ListingReview
 from app.schemas.submission import SubmissionOut, SubmissionReview
 from app.services.data_refresh import refresh_source
 from app.services.source_health import run_all_checks
@@ -188,6 +190,111 @@ async def run_health_checks(
     db: AsyncSession = Depends(get_db),
 ):
     return await run_all_checks(db)
+
+
+# --- Listings ---
+
+@router.get("/listings", response_model=list[ListingOut])
+async def list_admin_listings(
+    status: str = "pending",
+    user: dict = Depends(require_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(
+        select(
+            Listing,
+            geo_func.ST_X(Listing.location).label("lng"),
+            geo_func.ST_Y(Listing.location).label("lat"),
+        )
+        .where(Listing.status == status)
+        .order_by(Listing.created_at.desc())
+    )
+    rows = result.all()
+    return [
+        ListingOut(
+            id=l.id,
+            listing_type=l.listing_type,
+            material_type=l.material_type,
+            volume_m3=l.volume_m3,
+            lat=lat,
+            lng=lng,
+            suburb=l.suburb,
+            address=l.address,
+            description=l.description,
+            pricing=l.pricing,
+            date_from=l.date_from,
+            date_to=l.date_to,
+            contact_name=l.contact_name,
+            contact_email=l.contact_email,
+            contact_phone=l.contact_phone,
+            company=l.company,
+            tested=l.tested,
+            pickup=l.pickup,
+            delivery=l.delivery,
+            status=l.status,
+            review_notes=l.review_notes,
+            created_at=l.created_at,
+        )
+        for l, lng, lat in rows
+    ]
+
+
+@router.patch("/listings/{listing_id}", response_model=ListingOut)
+async def review_listing(
+    listing_id: uuid.UUID,
+    body: ListingReview,
+    user: dict = Depends(require_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(select(Listing).where(Listing.id == listing_id))
+    listing = result.scalar_one_or_none()
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
+
+    listing.status = body.status
+    listing.review_notes = body.review_notes
+    listing.reviewed_by = uuid.UUID(user["sub"])
+    listing.reviewed_at = datetime.now(timezone.utc)
+
+    await db.commit()
+    await db.refresh(listing)
+
+    lat, lng = None, None
+    if listing.location is not None:
+        coord_result = await db.execute(
+            select(
+                geo_func.ST_X(Listing.location).label("lng"),
+                geo_func.ST_Y(Listing.location).label("lat"),
+            ).where(Listing.id == listing.id)
+        )
+        row = coord_result.one_or_none()
+        if row:
+            lng, lat = row.lng, row.lat
+
+    return ListingOut(
+        id=listing.id,
+        listing_type=listing.listing_type,
+        material_type=listing.material_type,
+        volume_m3=listing.volume_m3,
+        lat=lat,
+        lng=lng,
+        suburb=listing.suburb,
+        address=listing.address,
+        description=listing.description,
+        pricing=listing.pricing,
+        date_from=listing.date_from,
+        date_to=listing.date_to,
+        contact_name=listing.contact_name,
+        contact_email=listing.contact_email,
+        contact_phone=listing.contact_phone,
+        company=listing.company,
+        tested=listing.tested,
+        pickup=listing.pickup,
+        delivery=listing.delivery,
+        status=listing.status,
+        review_notes=listing.review_notes,
+        created_at=listing.created_at,
+    )
 
 
 @router.get("/users")
