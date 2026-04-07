@@ -1,7 +1,7 @@
 # Cut2Fill — Cost Intelligence & Material Specification Engine
 
-**Version:** 1.0
-**Date:** 23 March 2026
+**Version:** 1.1
+**Date:** 7 April 2026
 **Status:** Feature specification (Phase 2-3)
 
 ---
@@ -11,11 +11,17 @@
 Finding material is only half the equation. A project manager needs to know:
 
 1. **What will this actually cost me?** — Free fill 50km away may cost more than paid fill 5km away once you factor in trucks, fuel, hours, and traffic
-2. **Will this material meet my spec?** — MRTS05 Type 2.1 material has specific grading, plasticity, and strength requirements. A listing that says "clean fill" tells you nothing about compliance with design specifications
+2. **Will this material meet my spec?** — MRTS04 general earthworks and MRTS05 structural fill both have specific grading, plasticity, and strength requirements. A listing that says "clean fill" tells you nothing about compliance with design specifications
 3. **What's my risk?** — Wet material costs more to handle, contaminated material has legal liability, untested material may fail on placement
-4. **Can I win work with this?** — Demonstrating material reuse, reduced truck movements, and lower carbon emissions is increasingly a tender evaluation criterion
+4. **Can I win work with this?** — Demonstrating material reuse, reduced truck movements, and lower carbon emissions is increasingly a tender evaluation criterion. But more importantly: can a tenderer go into a bid with **confidence** that fill sources exist, that deals can be structured prior to tender, and that those arrangements — combined with existing supplier relationships — can be relied on during project delivery?
 
 No existing platform addresses any of these. Cut2Fill's cost intelligence engine turns the platform from a listing board into a **decision support tool** that construction professionals trust with real money.
+
+### 1.1 Two Use Cases
+
+**Near-term: Pre-tender deal-making.** The platform's first commercial value is enabling contractors and suppliers to find each other and structure material supply arrangements *before* tender submission. A tenderer who knows they have 15,000m³ of fill secured at $X/m³ from a verified source 12km away has a cost advantage over a competitor guessing at quarry rates. The platform doesn't need live pricing to deliver this — it needs visibility of who has what and where.
+
+**Future: Live cost intelligence.** As the platform matures, live material availability and real-time cost estimates feed directly into estimating workflows. This is Phase 2-3 functionality. The near-term value is the network and the confidence it provides.
 
 ---
 
@@ -29,15 +35,15 @@ The "free" material myth: a listing marked "Free" only means the material itself
 |------------|-----------|-------------|
 | **Material cost** | Free or quoted price per m³ | Listing data |
 | **Truck hire** | Rate per hour (typically $140-180/hr for 6-wheeler, $200-250/hr for truck & dog) | Configurable rates |
-| **Cartage distance** | Driving distance in km (not straight line) | Routing API (Google/Mapbox) |
-| **Travel time** | Minutes per trip including loading/unloading | Routing API + configurable load/unload times |
+| **Cartage distance** | Driving distance in km (not straight line). *Note: current calculator uses straight-line distance — routing API integration is a Phase 2 requirement.* | Routing API (Google/Mapbox) |
+| **Travel time** | Full loop time per load: driving to site + queue/wait + loading + driving to destination + queue/wait + unloading + return. Not just travel time — time on site is often the dominant factor on busy projects. | Routing API + configurable site times |
 | **Fuel consumption** | Litres per km by truck type | Standard consumption tables |
 | **Fuel price** | Current diesel price per litre | AIP or manual update |
 | **Number of loads** | Total volume ÷ truck capacity (m³ per load by truck type) | Calculation |
 | **Loading method** | Self-load vs machine-loaded (affects time per load) | Listing data |
 | **Time of day** | Day rate vs night rate (overtime/penalty rates, noise restrictions) | User input |
 | **Material condition** | Wet material = heavier = fewer m³ per load, harder to handle | Listing flag |
-| **Waste levy (if landfill)** | $115/t (2025-26), escalating annually | QLD levy schedule |
+| **Waste levy (if landfill)** | $125/t (2025-26), rising $10/yr to $145 by 2027-28. **Does not always apply** — day cover material is exempt, and some landfills have operational limits or agreements that mean the levy is not attracted on all disposals. Do not assume every tonne to landfill incurs the full levy. | [QLD Govt Levy Rates](https://www.qld.gov.au/environment/circular-economy-waste-reduction/disposal-levy/about/levy-rates) |
 | **Permit costs** | BIP application, Soil Disposal Permit, ASSMP preparation | Regulatory schedule |
 
 ### 2.2 Cost Comparison View
@@ -45,39 +51,48 @@ The "free" material myth: a listing marked "Free" only means the material itself
 When a user clicks "Find Matches" or browses listings, the platform calculates and displays:
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Your project: Springfield Rise Estate                       │
-│  Need: 15,000 m³ Clean Fill                                 │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  OPTION A: BrisConnect Civil — South Brisbane (32km)        │
-│  ├─ Material: FREE                                          │
-│  ├─ Cartage: 1,250 loads × $185/load = $231,250            │
-│  ├─ Fuel: 1,250 × 64km × 0.45L/km × $1.85 = $66,600      │
-│  ├─ Zone crossing: YES — BIP may be required                │
-│  ├─ TOTAL ESTIMATED: $297,850 ($19.86/m³)                   │
-│  └─ Confidence: ●●●○○ MEDIUM (untested, zone crossing)     │
-│                                                              │
-│  OPTION B: Urban Dig Co — West End (28km)                   │
-│  ├─ Material: FREE                                          │
-│  ├─ Cartage: 500 loads × $185/load = $92,500               │
-│  ├─ Fuel: 500 × 56km × 0.45L/km × $1.85 = $23,310        │
-│  ├─ Zone crossing: NO                                       │
-│  ├─ Material Tested: YES ✓                                  │
-│  ├─ TOTAL ESTIMATED: $115,810 ($19.30/m³)                   │
-│  └─ Confidence: ●●●●○ HIGH (tested, same zone, 6,000m³)   │
-│                                                              │
-│  OPTION C: Landfill disposal (Swanbank, 18km)               │
-│  ├─ Waste levy: 15,000m³ × 1.7t/m³ × $115/t = $2,932,500  │
-│  ├─ Cartage: 1,250 loads × $165/load = $206,250            │
-│  ├─ Gate fee: est. $15/t × 25,500t = $382,500              │
-│  ├─ TOTAL ESTIMATED: $3,521,250 ($234.75/m³)                │
-│  └─ YOU SAVE: $3,405,440 by choosing Option B               │
-│                                                              │
-│  ⚡ SUSTAINABILITY: Option B saves 62,500 truck-km,          │
-│     28.1 tonnes CO₂, and diverts 15,000m³ from landfill     │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│  Your project: Springfield Rise Estate                        │
+│  Need: 15,000 m³ Clean Fill                                  │
+│  Truck: Truck & dog (12m³/load) = 1,250 loads               │
+├──────────────────────────────────────────────────────────────┤
+│                                                               │
+│  OPTION A: BrisConnect Civil — South Brisbane (32km)         │
+│  ├─ Material: FREE                                           │
+│  ├─ Cartage: 1,250 loads × $185/load = $231,250             │
+│  ├─ Fuel: 1,250 × 64km RT × 0.45L/km × $1.85 = $66,600    │
+│  ├─ Zone crossing: YES — BIP may be required                 │
+│  ├─ TOTAL ESTIMATED: $297,850 ($19.86/m³)                    │
+│  └─ Confidence: ●●●○○ MEDIUM (untested, zone crossing)      │
+│                                                               │
+│  OPTION B: Urban Dig Co — West End (28km)                    │
+│  ├─ Material: FREE                                           │
+│  ├─ Cartage: 1,250 loads × $185/load = $231,250             │
+│  ├─ Fuel: 1,250 × 56km RT × 0.45L/km × $1.85 = $58,275    │
+│  ├─ Zone crossing: NO                                        │
+│  ├─ Material Tested: YES ✓                                   │
+│  ├─ TOTAL ESTIMATED: $289,525 ($19.30/m³)                    │
+│  └─ Confidence: ●●●●○ HIGH (tested, same zone)              │
+│                                                               │
+│  OPTION C: Landfill disposal (Swanbank, 18km)                │
+│  ├─ Waste levy*: 15,000m³ × 1.7t/m³ × $125/t = $3,187,500  │
+│  ├─ Cartage: 1,250 loads × $165/load = $206,250             │
+│  ├─ Gate fee: est. $15/t × 25,500t = $382,500               │
+│  ├─ TOTAL ESTIMATED: $3,776,250 ($251.75/m³)                 │
+│  └─ * Levy may not apply to all disposals — see note below   │
+│                                                               │
+│  Compare truck types: switching to semi-tipper (18m³/load)   │
+│  reduces loads from 1,250 to 834 — saving ~$77K on Option B  │
+│  but requires suitable site access at both ends.              │
+│                                                               │
+└──────────────────────────────────────────────────────────────┘
+
+*Note on waste levy: The $125/t levy applies to waste received at
+levied landfills. It does not apply to all disposals — material
+used as day cover, operational fill within licence conditions, or
+disposals under specific site agreements may be exempt. The
+landfill comparison above assumes full levy as a worst case. Actual
+landfill costs should be confirmed with the receiving facility.*
 ```
 
 ### 2.3 Truck Types & Capacities
@@ -89,6 +104,8 @@ When a user clicks "Find Matches" or browses listings, the platform calculates a
 | Truck & dog | 12-14 m³ | $200-250/hr | 0.45 |
 | Semi-tipper | 16-20 m³ | $220-280/hr | 0.50 |
 | B-double | 28-34 m³ | $280-350/hr | 0.55 |
+
+*Rates are configurable per project. Capacities shown are neat (compacted) cubic metres. A future refinement is the neat-to-loose conversion factor — loose material occupies more volume in the truck body than its compacted equivalent (typically 1.2-1.4x depending on material type). This affects load counts and therefore total cost. Conceptual for now — conversion factors will be configurable when the cost engine is built.*
 
 ### 2.4 Wet vs Dry Material
 
@@ -105,7 +122,7 @@ Wet material impacts cost in three ways:
 
 Platform flag: When a listing is marked "wet material," the cost calculator adjusts load counts and displays a warning about potential specification issues.
 
-### 2.5 Night Work Premium
+### 2.5 Out of Hours Working
 
 Many sites restrict hours (typically 6am-6pm). If material must be moved outside standard hours:
 
@@ -122,29 +139,52 @@ Many sites restrict hours (typically 6am-6pm). If material must be moved outside
 
 ### 3.1 The Specification Problem
 
-A listing that says "Clean Fill" is meaningless to an engineer who needs material complying with **MRTS05 — Earthworks** (Queensland Transport and Main Roads Technical Specification). The spec defines multiple material classes with strict requirements.
+A listing that says "Clean Fill" is meaningless to an engineer who needs material complying with project specifications. The relevant standards span TMR technical specifications, Australian Standards, and project-specific requirements.
 
-### 3.2 MRTS05 Material Classifications
+**The primary spec for most Cut2Fill material movements is MRTS04 — General Earthworks.** This is the workhorse spec for bulk fill placement on civil projects. MRTS05 covers unbound pavements (quarried materials for road base/sub-base), but the material property requirements within MRTS05 are often referenced in MRTS04 contexts — so we deal with MRTS05-type material classification, typically within an MRTS04 framework.
 
-| Type | Description | Key Requirements |
-|------|------------|-----------------|
-| **Type 1** | General fill | LL ≤ 80, PI ≤ 55, max particle 150mm |
-| **Type 2.1** | Structural fill (high quality) | LL ≤ 40, PI ≤ 20, CBR ≥ 8, max particle 75mm |
-| **Type 2.2** | Structural fill (moderate) | LL ≤ 50, PI ≤ 25, CBR ≥ 5, max particle 75mm |
-| **Type 2.3** | Bridge approach fill | LL ≤ 35, PI ≤ 12, CBR ≥ 15, max particle 37.5mm |
-| **Type 2.4** | Reinforced earth fill | LL ≤ 30, PI ≤ 6, specific grading |
-| **Type 3** | Rock fill | Max particle 2/3 layer thickness, no soil fines |
-| **Type 4** | Select fill (subgrade replacement) | CBR ≥ 15, specific grading envelope |
+### 3.2 Key Specifications
 
-### 3.3 Platform Integration
+**MRTS04 — General Earthworks**
+The primary TMR specification for earthworks construction. Covers clearing, grubbing, fill placement, compaction, and material suitability. Most material movements on civil projects reference MRTS04.
+
+| Requirement | Detail |
+|-------------|--------|
+| **Material suitability** | Must be free of deleterious matter, vegetation, topsoil |
+| **Maximum particle size** | Generally 2/3 of compacted layer thickness |
+| **Compaction** | Minimum 95% standard (98% for top 300mm of subgrade) |
+| **Moisture** | Within allowable range at time of compaction |
+| **Testing frequency** | Lot-based testing per specification |
+
+MRTS04 defines what constitutes acceptable fill and how it must be placed. Material property requirements (LL, PI, CBR) may be specified by reference to material types, project-specific requirements, or by the RPEQ.
+
+**MRTS05 — Unbound Pavements**
+Covers quarried pavement materials — road base, sub-base. These are manufactured/processed materials with tight grading and property requirements. Cut2Fill would deal with MRTS05-type materials primarily in the context of quarry-sourced material supply rather than site-won fill.
+
+**AS3798 — Guidelines on Earthworks for Commercial and Residential Developments**
+The Australian Standard for non-TMR earthworks. Residential subdivisions, commercial sites, and local government projects typically reference AS3798 for compaction and material requirements.
+
+### 3.3 Compliance Documentation — Needs Development
+
+> **Note:** The compliance documentation structure for specifications is currently underdeveloped. Before building the specification matching engine, we need to:
+>
+> 1. **Map the full specification landscape** — Identify all TMR MRTS specifications, Australian Standards, and common project-specific requirements that apply to material movements in QLD
+> 2. **Define a testing framework** — Structured grades of testing appropriate to different specifications (e.g., basic suitability for MRTS04 general fill vs full classification for structural applications)
+> 3. **Clarify the MRTS04/MRTS05 relationship** — Document how material type classifications from MRTS05 are applied within MRTS04 earthworks contexts
+> 4. **Build a compliance matrix** — What tests are required, at what frequency, for what material types, under which specifications
+>
+> This is foundational work that needs to be done properly before the platform can credibly offer specification matching. Don't over-complicate too early — start with the most common scenarios and expand.
+
+### 3.4 Platform Integration
 
 **Listing side:**
 - Optional material specification fields: LL (Liquid Limit), PI (Plasticity Index), CBR, max particle size, grading
 - Upload field for test results (PDF) — Phase 2
-- Auto-classify material against MRTS05 types based on entered properties
+- Auto-classify material against specification types based on entered properties
+- Future: structured testing tiers matched to relevant specifications
 
 **Search/match side:**
-- Filter by specification compliance: "Show me fill that meets MRTS05 Type 2.1"
+- Filter by specification compliance: "Show me fill that meets general earthworks requirements"
 - Confidence badge: "Meets spec" (tested + compliant), "May meet spec" (partial data), "Unknown" (untested)
 
 **Example listing with spec data:**
@@ -153,20 +193,24 @@ Clean Fill — Road Widening Project
 ├─ Material: Clean Fill / Earth
 ├─ Volume: 8,500 m³
 ├─ Test Results: LL=32, PI=14, CBR=12, Max particle=40mm
-├─ MRTS05 Classification: ✓ Type 2.1 compliant
+├─ Specification: MRTS04 general fill — compliant
 ├─ Geotech Report: Available on request
 └─ Confidence: ●●●●● VERIFIED
 ```
 
-### 3.4 Other Specification Standards
+### 3.5 Applicable Standards & Specifications
 
-| Standard | Application | Key Parameters |
-|----------|------------|---------------|
-| MRTS05 | TMR road/bridge earthworks | LL, PI, CBR, grading, max particle |
-| AS3798 | Residential/commercial fill | Compaction requirements, material classification |
-| MRTS04 | General earthworks | Broader than MRTS05 |
-| MRTS06 | Subgrade reinstatement | Specific to pavement works |
-| DTMR RPEQ specifications | Project-specific | Vary by project |
+> **Note:** This table needs a proper deep dive. The specifications below are confirmed as relevant but the detail (application scope, key parameters) needs to be verified against current versions and expanded to cover the full landscape. Additional MRTS specifications, Australian Standards, and industry guidelines likely apply.
+
+| Standard | Application | Status |
+|----------|------------|--------|
+| **MRTS04** | General earthworks — fill placement, compaction, material suitability | Primary spec for most Cut2Fill material movements |
+| **MRTS05** | Unbound pavements — quarried base/sub-base materials | Relevant for material classifications referenced in MRTS04 contexts |
+| **AS3798** | Earthworks for commercial and residential developments | Primary spec for non-TMR projects |
+| **AS1289** | Methods of testing soils for engineering purposes | Referenced by MRTS04, MRTS05, AS3798 for test methods |
+| **Project-specific RPEQ requirements** | Vary by project — may override or supplement standard specs | Must be captured per listing |
+
+*Additional MRTS specifications and Australian Standards to be identified and documented as part of the compliance framework build.*
 
 ---
 
@@ -188,16 +232,39 @@ Each listing receives a confidence score based on available data:
 
 Automatic alerts triggered by listing characteristics:
 
+**Compliance & Regulatory**
+
 | Trigger | Alert | Level |
 |---------|-------|-------|
-| Material from EMR/CLR listed area | "Source may be on contaminated land register — verify before accepting" | HIGH |
-| Acid sulfate soil material | "ASSMP may be required — check AHD level at receiving site" | HIGH |
+| Material from EMR/CLR listed area | "Source may be on contaminated land register — verify before accepting" | CRITICAL |
 | Contaminated soil | "Soil Disposal Permit required — licensed facility only" | CRITICAL |
 | Fire ant zone crossing | "BIP may be required for cross-zone movement" | HIGH |
-| Wet material + structural fill spec | "Wet material may not meet moisture content requirements" | MEDIUM |
-| Volume mismatch >50% | "Available volume significantly less than your requirement" | LOW |
+| Acid sulfate soil material | "ASSMP may be required — check AHD level at receiving site" | HIGH |
+| Material from demolition site | "Asbestos risk — requires clearance certificate or inspection before acceptance" | HIGH |
+| Aboriginal cultural heritage area | "Cultural heritage management plan may apply — check DATSIP requirements" | HIGH |
+| Material from flood-affected area | "Flood-affected material may have altered properties or contamination — testing recommended" | MEDIUM |
+
+**Material Quality**
+
+| Trigger | Alert | Level |
+|---------|-------|-------|
+| Untested material for spec-critical use | "Material is untested — request test results before committing" | HIGH |
+| Wet material + structural fill spec | "Wet material may not meet moisture content requirements — drying time and cost may apply" | MEDIUM |
+| Dispersive soil indicators | "Dispersive soils require treatment (gypsum/lime) before use as fill — verify Emerson class" | MEDIUM |
+| Reactive clay (high PI) | "High plasticity material may cause shrink-swell issues — check suitability for intended use" | MEDIUM |
+| Material stockpiled >6 months | "Long-stockpiled material may have altered moisture, weed growth, or settlement — inspect before accepting" | LOW |
+| Mixed material sources | "Material from multiple sources may have inconsistent properties — additional testing recommended" | LOW |
+
+**Logistics & Access**
+
+| Trigger | Alert | Level |
+|---------|-------|-------|
+| Route includes load-limited bridges | "Transport route may include load-limited bridges — verify with council" | HIGH |
+| Oversize vehicle restrictions on route | "Route may have vehicle size restrictions — confirm access for selected truck type" | MEDIUM |
+| Site access constraints flagged | "Source or destination has access limitations — check turning circles, grade, width for truck type" | MEDIUM |
+| Wet weather access risk | "One or both sites may have restricted wet weather access — confirm all-weather capability" | MEDIUM |
+| Volume mismatch >50% | "Available volume significantly less than your requirement — may need multiple sources" | LOW |
 | Expiring within 1 week | "This listing expires soon — act fast" | INFO |
-| Untested material for spec-critical use | "Material is untested — request test results before committing" | MEDIUM |
 
 ### 4.3 Estimator Quick-Alert
 
@@ -233,20 +300,32 @@ Users can upload geotech or contamination reports (PDF). The platform uses AI to
 - Material classification (LL, PI, CBR, grading curves)
 - Contamination results (heavy metals, PFAS, hydrocarbons)
 - NEPM compliance assessment
-- MRTS05 type classification
+- Material type classification against applicable specifications
 - ASS indicators (pH, SCr results)
 
 **Output:** Auto-populated listing fields + confidence score + risk alerts
 
-### 5.2 Material Requirement Input
+### 5.2 Specification & Drawing Parsing
+
+Receivers (projects needing fill) can upload the specification they're working to. The platform parses the document to:
+
+- Identify which material types and properties are required
+- Clarify ambiguities — especially for users who aren't sure what their specification actually calls for
+- Auto-generate search filters that match the specification requirements
+- Flag where the specification references other standards (e.g., MRTS04 referencing AS1289 test methods)
+
+This is a relatively simple inclusion that adds significant value: many site supervisors and PMs know they need "fill to spec" but aren't clear on exactly what that means in terms of material properties. The platform interprets the specification for them.
+
+### 5.3 Material Requirement Input
 
 Users can describe their material requirement in plain language or by specification:
 
-- "I need MRTS05 Type 2.1 fill, 15,000m³"
+- "I need general fill for a subdivision pad, 15,000m³"
 - "Clean fill for residential subdivision, minimum CBR 8"
 - "Rock fill for retaining wall, 150mm minus"
+- "MRTS04 general earthworks fill, 5,000m³"
 
-The platform matches these requirements against available listings with test data, showing compliance confidence.
+The platform should be accessible enough that a site supervisor can describe what they need in plain language without having to know the specification numbers. The system interprets the intent and matches against available listings with test data, showing compliance confidence.
 
 ---
 
@@ -295,7 +374,7 @@ CO₂ emissions avoided:               75.4 tonnes
 COMPLIANCE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Material tested:                      ✓ NATA certified
-MRTS05 compliance:                    ✓ Type 2.1
+Specification compliance:             ✓ MRTS04 general earthworks
 Fire ant zone crossing:               ✗ None
 Contamination status:                 ✓ Clean (NEPM compliant)
 Biosecurity compliance:               ✓ Same zone
@@ -317,6 +396,16 @@ QLD Government procurement increasingly requires sustainability criteria:
 
 A company that can demonstrate they sourced reused material instead of virgin quarry product, avoided X tonnes of CO₂, and saved Y truck-km **scores higher on sustainability criteria** even if their headline price is comparable or slightly higher. Cut2Fill makes this evidence automatic and verifiable.
 
+### 6.4 Pre-Contract Sustainability Value
+
+The sustainability analysis is particularly valuable at the pre-contract stage. Even before material is physically moved, the platform can generate **indicative sustainability impact statements** based on a proposed material sourcing strategy. This gives tenderers soft stats to include in their submissions:
+
+- "Our proposed fill sourcing strategy diverts an estimated X tonnes from landfill"
+- "Estimated CO₂ reduction of Y tonnes vs virgin quarry supply"
+- "Z fewer truck movements through residential areas"
+
+Cost isn't everything in modern tenders. Environmental and sustainability targets are increasingly weighted in evaluation criteria, and demonstrating a considered material sourcing strategy — backed by platform data — is a genuine competitive advantage. Cut2Fill makes this effortless rather than requiring manual research and estimation.
+
 ---
 
 ## 7. Implementation Phases
@@ -325,15 +414,17 @@ A company that can demonstrate they sourced reused material instead of virgin qu
 |-------|----------|----------|
 | **MVP (current)** | Listings, map, basic matching, fire ant zones, compliance tooltips, pricing badges | Delivered |
 | **Phase 2** | Cost calculator, routing distance, truck type selection, wet/dry flag, specification fields | Q3 2026 |
-| **Phase 3** | Document upload (geotech/contamination reports), AI parsing, MRTS05 auto-classification | Q4 2026 |
+| **Phase 3** | Document upload (geotech/contamination reports, specifications), AI parsing, auto-classification | Q4 2026 |
 | **Phase 4** | Sustainability reporting, tender submission generator, estimator alerts | Q1 2027 |
 | **Phase 5** | API for integration with estimating software (CostX, Candy, Buildsoft) | Q2 2027 |
 
 ---
 
-## 8. CSIRO R&D Alignment
+## 8. Research & Industry Partnerships
 
-This feature set directly maps to CSIRO capabilities:
+The cost intelligence and specification engine has genuine R&D depth that aligns with multiple research organisations and industry bodies. Partnerships in this space would accelerate development, add credibility, and open doors to government and institutional users.
+
+### 8.1 CSIRO
 
 | Feature | CSIRO Research Area |
 |---------|-------------------|
@@ -344,4 +435,34 @@ This feature set directly maps to CSIRO capabilities:
 | AI document parsing (geotech reports) | CSIRO Data61 — NLP, document intelligence |
 | Circular economy metrics | CSIRO Manufacturing — industrial ecology |
 
-This strengthens the Kick-Start application by demonstrating that the R&D challenge has genuine scientific depth beyond basic software development.
+CSIRO Kick-Start provides a co-funded R&D pathway. The R&D challenge has genuine scientific depth beyond basic software development.
+
+### 8.2 Industry & Standards Bodies
+
+| Organisation | Relevance | Partnership Value |
+|-------------|-----------|------------------|
+| **TMR (Transport and Main Roads)** | Author of MRTS specifications. Largest earthworks client in QLD. | Specification accuracy, data partnership, pilot projects |
+| **CCF QLD (Civil Contractors Federation)** | Peak body for civil contractors. Members are primary users. | Industry validation, distribution channel, feedback loop |
+| **ASBEC / Green Building Council** | Sustainability rating frameworks (IS Rating, Green Star) | Sustainability metric methodology, certification alignment |
+| **Infrastructure Sustainability Council** | IS Rating scheme — material sourcing and waste diversion are scored | Ensuring Cut2Fill sustainability reports align with IS Rating criteria |
+| **Engineers Australia** | Professional body for RPEQs who specify and certify materials | Specification framework validation, professional credibility |
+| **NATA (National Association of Testing Authorities)** | Lab accreditation for material testing | Testing framework alignment, lab referral integration |
+| **Waste Management Association of Australia** | Waste and resource recovery industry body | Circular economy metrics, landfill data, policy advocacy |
+| **QLD Dept of Environment and Science** | Waste levy policy, contaminated land register, environmental regulation | Regulatory data feeds, policy alignment, compliance validation |
+
+### 8.3 University Research
+
+| Institution | Potential Collaboration |
+|------------|----------------------|
+| **QUT (Queensland University of Technology)** | Construction materials, AI/data science, sustainability assessment |
+| **UQ (University of Queensland)** | Geotechnical engineering, environmental science, contamination |
+| **Griffith University** | Environmental policy, circular economy, smart cities |
+
+### 8.4 Why This Matters
+
+Partnerships with these bodies serve three purposes:
+1. **Credibility** — Government and institutional users trust a platform endorsed by TMR, CCF, or CSIRO. Industry body partnerships are currency in construction.
+2. **Accuracy** — Getting specifications, testing frameworks, and compliance requirements right requires domain expertise that sits in these organisations.
+3. **Distribution** — CCF has the member base. TMR has the project pipeline. Universities have the research students. Partnerships provide reach that marketing can't buy.
+
+> **Action:** Identify 2-3 partnership targets for initial approach during soft launch phase. CCF QLD and TMR are the highest-value relationships for platform credibility and adoption.

@@ -8,25 +8,27 @@
 
 ## 1. Feasibility Assessment
 
-### 1.1 Technical Feasibility — CONFIRMED
+### 1.1 Technical Feasibility — CONFIRMED & DEMONSTRATED
 
-| Component | Feasibility | Evidence |
-|-----------|------------|---------|
-| Interactive mapping platform | Proven | MVP prototype built and functional (Leaflet.js) |
-| Fire ant zone overlay | Proven | QLD Open Data provides official zone boundaries in SHP/GPKG/GeoJSON; ArcGIS REST API available for live query |
-| Registered facility mapping | Feasible | QLD Waste Facilities CSV (geocoded), EA Register (requires geocoding), Mining Permits (ArcGIS REST with coordinates) |
-| Material matching algorithm | Feasible | Logic demonstrated in MVP; spatial + material + date matching achievable |
-| Compliance intelligence | Feasible | Regulatory framework fully mapped (see 02-Regulatory-Framework.md); decision tree logic implementable |
-| User authentication & data persistence | Standard | PostgreSQL + PostGIS + standard auth patterns |
-| Mobile responsiveness | Proven | MVP is responsive; field workers need tablet/phone access |
+| Component | Status | Evidence |
+|-----------|--------|---------|
+| Interactive mapping platform | **Built & deployed** | Leaflet.js map at cut2fill.com.au with 604 facilities, overlays, filters |
+| Fire ant zone overlay | **Built & deployed** | QLD Government zone polygons with point-in-polygon checking |
+| Registered facility mapping | **Built & deployed** | 604 verified facilities from TMR, GeoResGlobe, mining permits, EA Register |
+| Backend API | **Built & deployed** | FastAPI on Render, async SQLAlchemy, PostGIS, 7 routers |
+| User authentication | **Built & deployed** | Supabase JWT auth with JWKS validation, admin roles |
+| Database / persistence | **Built & deployed** | Supabase PostgreSQL + PostGIS, Alembic migrations |
+| Material matching algorithm | Feasible | Not yet built; spatial + material + date matching achievable |
+| Compliance intelligence | Partially built | Regulatory framework mapped; material tooltips built; decision tree logic planned |
+| Mobile responsiveness | **Built & deployed** | Responsive design with collapsible sidebar, mobile filter drawer |
 
-**Key technical risk:** The Environmental Authorities register (most authoritative facility dataset) contains text addresses but no coordinates. Geocoding 1,000+ addresses is required. Mitigation: Use Google Maps Geocoding API or Mapbox — cost approximately $5/1,000 addresses. One-time bulk geocoding with monthly incremental updates.
+**Key technical risk (mitigated):** The Environmental Authorities register geocoding challenge has been partially addressed — 604 facilities have been manually verified with coordinates. Full EA Register geocoding remains a future task for automated data refresh.
 
 ### 1.2 Market Feasibility — STRONG
 
 **Demand indicators:**
 
-1. **Waste levy escalation creates urgent economic need.** At $115/tonne (2025-26), a single subdivision project generating 10,000m³ of clean fill (approximately 17,000 tonnes) faces a potential levy cost of **$1.96M** if sent to landfill. The incentive to find reuse options is overwhelming and growing annually.
+1. **Waste levy escalation creates urgent economic need.** At $125/tonne (2025-26, metro zone), a single subdivision project generating 10,000m³ of clean fill (approximately 17,000 tonnes) faces a potential levy cost of **$2.13M** if sent to landfill as waste. Note: material accepted as day cover under operational purposes exemptions avoids the levy, but this is limited. The incentive to find reuse options is overwhelming and growing annually.
 
 2. **Clean earth levy exemption removal (1 July 2023) is recent.** Industry is still adapting to the new cost reality. Many smaller operators are unaware of the exemption removal or don't know their options.
 
@@ -34,7 +36,7 @@
 
 4. **No existing digital solution.** Industry currently relies on phone calls, personal networks, and occasional social media posts. The "Dial Before You Dump" phone service has no digital platform.
 
-5. **Government alignment.** QLD Waste Management and Resource Recovery Strategy explicitly targets increased C&D waste diversion. The Resource Recovery Industry Development Program funds solutions in this space (up to $10M grants).
+5. **Government alignment.** QLD Waste Management and Resource Recovery Strategy explicitly targets increased C&D waste diversion. The QLD Recycling Modernisation Fund (QRMF, successor to the now-closed RRIDP) funds resource recovery solutions. [QLD State Development](https://www.statedevelopment.qld.gov.au/industry/critical-industry-support/resource-recovery)
 
 **Demand validation planned:**
 - Survey of 30 civil earthworks companies in SEQ (Archers Group network)

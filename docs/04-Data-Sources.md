@@ -1,7 +1,28 @@
 # Cut2Fill — SEQ Data Sources & Integration Strategy
 
-**Version:** 1.0
-**Date:** 23 March 2026
+**Version:** 1.1
+**Date:** 7 April 2026 *(v1.0: 23 March 2026)*
+
+---
+
+## Integration Status Summary (April 2026)
+
+| Source | Status | Notes |
+|--------|--------|-------|
+| Fire ant biosecurity zones | **Integrated** | Inline GeoJSON from QLD Government data, point-in-polygon checking |
+| Quarries (TMR, GeoResGlobe, mining permits) | **Integrated** | 488 quarries manually verified, hardcoded in app.js |
+| Landfills + transfer stations | **Integrated** | 54 facilities from QLD Waste Facilities + manual verification |
+| Soil treatment / C&D recyclers / PFAS | **Integrated** | 12 facilities from EA Register + manual verification |
+| Concrete suppliers | **Integrated** | 50 suppliers, manually compiled |
+| Water fill points | **Integrated** | 83+ stations from council websites (QUU, Unitywater, GCCC, Logan, Redland) |
+| LGA boundaries | **Integrated** | External GeoJSON file |
+| Major projects | **Integrated** | 12 Brisbane 2032 / SEQ projects, manually compiled |
+| Environmental Authorities Register | Planned | Full register requires geocoding (~1,000+ text addresses) |
+| Mining permits (live ArcGIS) | Planned | ArcGIS REST API available but not yet queried live |
+| Key Resource Areas | Planned | QLD Open Data SHP available |
+| BCC transfer stations (live API) | Planned | BCC Open Data GeoJSON API available |
+
+*Note: All currently integrated data is hardcoded inline in app.js or as static GeoJSON files. The backend has the schema to serve from PostGIS but the frontend does not yet fetch facilities from the API. Migration to API-served data is a soft launch priority.*
 
 ---
 

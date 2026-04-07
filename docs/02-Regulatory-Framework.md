@@ -90,7 +90,7 @@ ERAs require an Environmental Authority (EA) from DES. The following ERAs are re
 | s.437 | Contravening conditions of EA | 300 penalty units |
 | s.440ZG | Unlawful deposit of prescribed waste | 4,500 penalty units or 5 years imprisonment |
 
-*1 penalty unit = $166.92 (2025-26)*
+*1 penalty unit = $166.90 (from 1 July 2025; [QLD Govt](https://www.dlgwv.qld.gov.au/local-government/for-councils/laws/value-of-a-penalty-unit))*
 
 ---
 
@@ -192,16 +192,18 @@ When triggered, an ASSMP must be prepared by a suitably qualified person. The AS
 
 The waste levy applies to all waste delivered to a levied waste disposal site in the waste levy zone (which includes all of SEQ).
 
-| Year | Levy Rate |
-|------|-----------|
-| 2024-25 | $105/tonne |
-| 2025-26 | $115/tonne |
-| 2026-27 | $125/tonne |
-| 2027-28 | $145/tonne |
+| Year | Levy Rate (Metro Zone) | Source |
+|------|----------------------|--------|
+| 2023-24 | $105/tonne | [QLD Govt Levy Rates](https://www.qld.gov.au/environment/circular-economy-waste-reduction/disposal-levy/about/levy-rates) |
+| 2024-25 | $115/tonne | " |
+| 2025-26 | $125/tonne | " |
+| 2026-27 | $135/tonne | " |
+| 2027-28 | $145/tonne (cap, then CPI-indexed) | " |
 
-**Critical change:** As of **1 July 2023**, the previous exemption for clean earth was **removed**. This means:
-- Clean fill delivered to a landfill now attracts the full waste levy
-- A single truck load (~15m³ / ~25 tonnes) of clean fill costs **$2,875** in levy alone
+**Critical change:** As of **1 July 2023**, the previous exemption for clean earth was **removed** [QLD Govt FAQ](https://www.qld.gov.au/environment/circular-economy-waste-reduction/policy-legislation/changes/frequently-asked-questions). This means:
+- Clean fill **disposed** to a landfill now attracts the full general waste levy
+- A single truck load (~15m³ / ~25 tonnes) of clean fill costs **$3,125** in levy alone (at $125/t, 2025-26)
+- **Day cover exemption:** Landfill operators can apply for an operational purposes exemption for material used as day cover, access roads, or capping — this material does not attract the levy
 - This creates a powerful economic incentive for reuse via a platform like Cut2Fill
 
 ### 5.2 Exempt Waste
