@@ -228,8 +228,12 @@ const truckProfiles = {
     'semi-tipper': { label: 'Semi Tipper', payload: 28, fuelPer100km: 50, icon: 'fa-trailer' },
 };
 const DIESEL_CO2_PER_LITRE = 2.68;  // kg CO2-e per litre (NGA Factors 2024)
-const AVG_SPEED_KMH = 45;           // average urban/peri-urban SEQ
-const ROAD_FACTOR = 1.35;           // straight-line to road distance multiplier
+const AVG_SPEED_KMH = 45;           // fallback average speed if HERE route unavailable
+const ROAD_FACTOR = 1.35;           // fallback straight-line multiplier if HERE route unavailable
+
+const HERE_API_KEY = 'SixDN88Kakq18wfYgg6OuFaEA_0Ji36eZD8qpcCFyNs';
+const routeCache = {};
+let currentRouteData = null;
 
 function haversineKm(lat1, lng1, lat2, lng2) {
     const R = 6371;
@@ -239,14 +243,17 @@ function haversineKm(lat1, lng1, lat2, lng2) {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
 
-function calcLogistics(distKm, tonnes, truckType) {
+function calcLogistics(distKm, tonnes, truckType, durationSec = null) {
     const truck = truckProfiles[truckType];
     const loads = Math.ceil(tonnes / truck.payload);
     const roundTripKm = distKm * 2;
     const totalKm = roundTripKm * loads;
     const fuelLitres = totalKm * truck.fuelPer100km / 100;
     const co2Kg = fuelLitres * DIESEL_CO2_PER_LITRE;
-    const hoursPerTrip = roundTripKm / AVG_SPEED_KMH + 0.5; // +30min load/unload
+    // Use real HERE travel time if available, else estimate from speed
+    const hoursPerTrip = durationSec != null
+        ? (durationSec / 3600) * 2 + 0.5   // actual one-way time × 2 (round trip) + 30min load/unload
+        : roundTripKm / AVG_SPEED_KMH + 0.5;
     const totalHours = hoursPerTrip * loads;
     return { loads, roundTripKm, totalKm, fuelLitres, co2Kg, totalHours, truck };
 }
@@ -258,13 +265,78 @@ function showRouteLine(fromLat, fromLng, toLat, toLng) {
     routeLine = L.polyline([[fromLat, fromLng], [toLat, toLng]], {
         color: '#6b8f5e',
         weight: 3,
-        opacity: 0.7,
+        opacity: 0.5,
         dashArray: '10, 8'
+    }).addTo(map);
+}
+
+function showRoutePolyline(encodedPolyline) {
+    if (routeLine) map.removeLayer(routeLine);
+    const coords = decodeFlexPolyline(encodedPolyline);
+    routeLine = L.polyline(coords, {
+        color: '#6b8f5e',
+        weight: 3,
+        opacity: 0.85,
     }).addTo(map);
 }
 
 function clearRouteLine() {
     if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
+}
+
+async function fetchHereRoute(fromLat, fromLng, toLat, toLng) {
+    const cacheKey = `${fromLat.toFixed(4)},${fromLng.toFixed(4)}_${toLat.toFixed(4)},${toLng.toFixed(4)}`;
+    if (routeCache[cacheKey]) return routeCache[cacheKey];
+
+    const o = `${fromLat},${fromLng}`;
+    const d = `${toLat},${toLng}`;
+    // Use truck-and-dog params — covers the realistic weight/height range for all three vehicle types
+    const url = `https://router.hereapi.com/v8/routes?apiKey=${HERE_API_KEY}&origin=${o}&destination=${d}&transportMode=truck&truck[grossWeight]=42500&truck[height]=430&truck[length]=1900&truck[width]=250&return=summary,polyline`;
+
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`HERE API ${resp.status}`);
+    const data = await resp.json();
+
+    const section = data.routes[0].sections[0];
+    const result = {
+        distanceKm: section.summary.length / 1000,
+        durationSec: section.summary.duration,
+        polyline: section.polyline,
+    };
+    routeCache[cacheKey] = result;
+    return result;
+}
+
+// HERE Flexible Polyline decoder — https://github.com/heremaps/flexible-polyline
+function decodeFlexPolyline(encoded) {
+    const DECODING_TABLE = [
+        62, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1,
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+        22, 23, 24, 25, -1, -1, -1, -1, 63, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
+        36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51
+    ];
+    function decodeChar(c) { return DECODING_TABLE[c.charCodeAt(0) - 45]; }
+    function toSigned(val) { return (val & 1) ? ~(val >> 1) : (val >> 1); }
+
+    const values = [];
+    let result = 0, shift = 0;
+    for (let i = 0; i < encoded.length; i++) {
+        const value = decodeChar(encoded[i]);
+        result |= (value & 0x1F) << shift;
+        if ((value & 0x20) === 0) { values.push(result); result = 0; shift = 0; }
+        else { shift += 5; }
+    }
+
+    // Header: values[0] = version, values[1] = precision info
+    const precision = Math.pow(10, -(values[1] & 0x0F));
+    let lat = 0, lng = 0;
+    const coords = [];
+    for (let i = 2; i < values.length; i += 2) {
+        lat += toSigned(values[i]);
+        lng += toSigned(values[i + 1]);
+        coords.push([lat * precision, lng * precision]);
+    }
+    return coords;
 }
 
 function buildLogisticsPanel(facility) {
@@ -277,7 +349,7 @@ function buildLogisticsPanel(facility) {
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
                 <i class="fas fa-route" style="color:var(--green);"></i>
                 <strong style="font-size:13px;">Delivery Estimator</strong>
-                <span class="badge" style="background:rgba(107,143,94,0.15);color:var(--green);margin-left:auto;font-size:11px;">~${roadKm} km each way</span>
+                <span id="routeDistanceBadge" class="badge" style="background:rgba(107,143,94,0.15);color:var(--green);margin-left:auto;font-size:11px;">~${roadKm} km each way</span>
             </div>
             <div style="display:flex;gap:8px;margin-bottom:8px;">
                 <div style="flex:1;">
@@ -303,9 +375,16 @@ function updateCalcResults(facility) {
     if (!container || !userSiteLocation) return;
     const tonnes = parseFloat(document.getElementById('calcTonnes').value) || 0;
     const truckType = document.getElementById('calcTruckType').value;
-    const straightKm = haversineKm(userSiteLocation.lat, userSiteLocation.lng, facility.lat, facility.lng);
-    const roadKm = straightKm * ROAD_FACTOR;
-    const r = calcLogistics(roadKm, tonnes, truckType);
+
+    let distKm, durationSec;
+    if (currentRouteData) {
+        distKm = currentRouteData.distanceKm;
+        durationSec = currentRouteData.durationSec;
+    } else {
+        distKm = haversineKm(userSiteLocation.lat, userSiteLocation.lng, facility.lat, facility.lng) * ROAD_FACTOR;
+        durationSec = null;
+    }
+    const r = calcLogistics(distKm, tonnes, truckType, durationSec);
 
     container.innerHTML = `
         <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:8px;text-align:center;">
@@ -331,10 +410,10 @@ function updateCalcResults(facility) {
         const note = document.createElement('div');
         note.id = 'calcTotalKmNote';
         note.style.cssText = 'font-size:11px;color:var(--text-muted);text-align:center;margin-top:6px;grid-column:1/-1;';
-        note.innerHTML = `${r.totalKm.toFixed(0)} km total · ${r.truck.payload}t per load · ${r.truck.fuelPer100km}L/100km · NGA Factors 2024`;
+        note.innerHTML = `${r.totalKm.toFixed(0)} km total · ${r.truck.payload}t per load · ${r.truck.fuelPer100km}L/100km · NGA Factors 2024${currentRouteData ? '' : ' · estimated'}`;
         container.appendChild(note);
     } else {
-        totalKmNote.innerHTML = `${r.totalKm.toFixed(0)} km total · ${r.truck.payload}t per load · ${r.truck.fuelPer100km}L/100km · NGA Factors 2024`;
+        totalKmNote.innerHTML = `${r.totalKm.toFixed(0)} km total · ${r.truck.payload}t per load · ${r.truck.fuelPer100km}L/100km · NGA Factors 2024${currentRouteData ? '' : ' · estimated'}`;
     }
 }
 
@@ -1457,11 +1536,23 @@ function showFacilityPanel(facility) {
         );
         map.fitBounds(bounds, { padding: [60, 60] });
 
-        // Wire up live calc updates after DOM renders
-        setTimeout(() => {
+        // Wire up live calc updates after DOM renders, then fetch real route
+        currentRouteData = null;
+        setTimeout(async () => {
             updateCalcResults(facility);
             document.getElementById('calcTonnes')?.addEventListener('input', () => updateCalcResults(facility));
             document.getElementById('calcTruckType')?.addEventListener('change', () => updateCalcResults(facility));
+
+            try {
+                const routeData = await fetchHereRoute(userSiteLocation.lat, userSiteLocation.lng, facility.lat, facility.lng);
+                currentRouteData = routeData;
+                const badge = document.getElementById('routeDistanceBadge');
+                if (badge) badge.textContent = `${routeData.distanceKm.toFixed(1)} km each way`;
+                showRoutePolyline(routeData.polyline);
+                updateCalcResults(facility);
+            } catch (e) {
+                console.warn('HERE route unavailable, using estimate:', e);
+            }
         }, 50);
     } else {
         clearRouteLine();
