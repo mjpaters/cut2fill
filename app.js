@@ -231,7 +231,6 @@ const DIESEL_CO2_PER_LITRE = 2.68;  // kg CO2-e per litre (NGA Factors 2024)
 const AVG_SPEED_KMH = 45;           // fallback average speed if HERE route unavailable
 const ROAD_FACTOR = 1.35;           // fallback straight-line multiplier if HERE route unavailable
 
-const HERE_API_KEY = 'SixDN88Kakq18wfYgg6OuFaEA_0Ji36eZD8qpcCFyNs';
 const routeCache = {};
 let currentRouteData = null;
 
@@ -288,21 +287,10 @@ async function fetchHereRoute(fromLat, fromLng, toLat, toLng) {
     const cacheKey = `${fromLat.toFixed(4)},${fromLng.toFixed(4)}_${toLat.toFixed(4)},${toLng.toFixed(4)}`;
     if (routeCache[cacheKey]) return routeCache[cacheKey];
 
-    const o = `${fromLat},${fromLng}`;
-    const d = `${toLat},${toLng}`;
-    // Use truck-and-dog params — covers the realistic weight/height range for all three vehicle types
-    const url = `https://router.hereapi.com/v8/routes?apiKey=${HERE_API_KEY}&origin=${o}&destination=${d}&transportMode=truck&truck[grossWeight]=42500&truck[height]=430&truck[length]=1900&truck[width]=250&return=summary,polyline`;
-
+    const url = `${CUT2FILL_API_URL}/route?origin=${fromLat},${fromLng}&destination=${toLat},${toLng}`;
     const resp = await fetch(url);
-    if (!resp.ok) throw new Error(`HERE API ${resp.status}`);
-    const data = await resp.json();
-
-    const section = data.routes[0].sections[0];
-    const result = {
-        distanceKm: section.summary.length / 1000,
-        durationSec: section.summary.duration,
-        polyline: section.polyline,
-    };
+    if (!resp.ok) throw new Error(`Route API ${resp.status}`);
+    const result = await resp.json();
     routeCache[cacheKey] = result;
     return result;
 }

@@ -9,7 +9,7 @@ from slowapi.util import get_remote_address
 
 from app.config import settings
 from app.database import engine
-from app.routers import admin, facilities, health, listings, profile, projects, submissions, water_points
+from app.routers import admin, facilities, health, listings, profile, projects, routing, submissions, water_points
 
 limiter = Limiter(key_func=get_remote_address, default_limits=["60/minute"])
 
@@ -52,4 +52,5 @@ app.include_router(submissions.router, prefix="/api/v1")
 app.include_router(listings.router, prefix="/api/v1")
 app.include_router(profile.router, prefix="/api/v1")
 app.include_router(admin.router, prefix="/api/v1")
+app.include_router(routing.router, prefix="/api/v1")
 app.include_router(health.router, prefix="/api/v1")

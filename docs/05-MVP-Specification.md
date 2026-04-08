@@ -158,18 +158,18 @@ This is not a public launch. It's a controlled rollout to 10-20 trusted industry
 
 ### 3.1 Critical (must have for soft launch)
 
-| # | Feature | Description | Effort |
+| # | Feature | Description | Status |
 |---|---------|-------------|--------|
-| 1 | **Listing model + router** | New `Listing` model: material type, volume, dates, location, contact, status (pending/approved/expired). Router with POST (auth'd), GET (public, approved only), admin PATCH. | Small |
-| 2 | **Admin listing approval** | Admin panel shows pending listings. Approve → listing appears on map. Reject → notification. | Small |
-| 3 | **Listing markers on map** | Approved listings render as distinct markers (different style from facilities). Filter by material type, available/wanted. Detail panel shows volume, dates, material, contact. | Small |
-| 4 | **Connect post form to listing system** | Modify existing post form to create a Listing (not just a Submission). Auth required. Form already collects all needed fields. | Small |
-| 5 | **Hide water fill points** | Comment out `waterFillLayerGroup.addTo(map)` and related UI. Keep code and data intact. | Tiny |
-| 6 | **Fix "Create Free Account" flow** | Landing page CTA should trigger the register modal in app.html, not just navigate to the map. | Tiny |
-| 7 | **Fix footer copyright** | Change 2025 to 2026 in index.html. | Tiny |
-| 8 | **Hide heatmap button** | Remove or hide until implemented. "Coming soon" toasts look unfinished. | Tiny |
-| 9 | **Update landing page feature claims** | "Live Site Status" → reword or remove (not built). "Geotech Testing Framework" → reword to "Material Classification Guidance" (partially built). | Tiny |
-| 10 | **Listing expiry** | Listings auto-expire when end date passes. Cron or check-on-load. | Small |
+| 1 | **Listing model + router** | New `Listing` model: material type, volume, dates, location, contact, status (pending/approved/expired). Router with POST (auth'd), GET (public, approved only), admin PATCH. | ✅ Done (2026-04-07) |
+| 2 | **Admin listing approval** | Admin panel shows pending listings. Approve → listing appears on map. Reject → notification. | ✅ Done (2026-04-07) |
+| 3 | **Listing markers on map** | Approved listings render as distinct markers (different style from facilities). Filter by material type, available/wanted. Detail panel shows volume, dates, material, contact. | ✅ Done (2026-04-07) |
+| 4 | **Connect post form to listing system** | Modify existing post form to create a Listing (not just a Submission). Auth required. Form already collects all needed fields. | ✅ Done (2026-04-07) |
+| 5 | **Hide water fill points** | Comment out `waterFillLayerGroup.addTo(map)` and related UI. Keep code and data intact. | ✅ Done (2026-04-07) |
+| 6 | **Fix "Create Free Account" flow** | Landing page CTA should trigger the register modal in app.html, not just navigate to the map. | ✅ Done (2026-04-07) |
+| 7 | **Fix footer copyright** | Change 2025 to 2026 in index.html. | ✅ Done (2026-04-07) |
+| 8 | **Hide heatmap button** | Remove or hide until implemented. "Coming soon" toasts look unfinished. | ✅ Done (2026-04-07) |
+| 9 | **Update landing page feature claims** | "Live Site Status" → reword or remove (not built). "Geotech Testing Framework" → reword to "Material Classification Guidance" (partially built). | ✅ Done (2026-04-07) |
+| 10 | **Listing expiry** | Listings auto-expire when end date passes. Cron or check-on-load. | Backlog |
 
 ### 3.2 Important (should have, build during soft launch)
 
@@ -186,7 +186,7 @@ This is not a public launch. It's a controlled rollout to 10-20 trusted industry
 |---|---------|-------------|--------|
 | 15 | **Material testing guidance** | Standardised testing framework per material type. What tests, what labs, what it costs. Educational content, not a testing service. | Medium |
 | 16 | **Standardised classification selector** | Replace free-text material with structured MRTS05 / VENM / ENM classification. Builds on doc 11. | Medium |
-| 17 | **Real road routing** | Replace haversine distance with HERE Routing API v8 (confirmed working in SEQ, Leaflet-compatible, 5,000 free truck routes/month). Prototype validated at `prototype-truck-routing.html`. Includes car vs truck route comparison. Proxy through backend to secure API key. | Small-Medium |
+| 17 | **Real road routing** | Replace haversine distance with HERE Routing API v8 (confirmed working in SEQ, Leaflet-compatible, 5,000 free truck routes/month). Prototype validated at `prototype-truck-routing.html`. Includes car vs truck route comparison. Proxy through backend to secure API key. | ✅ Done (2026-04-08) |
 | 18 | **NHVR heavy vehicle network overlay** | Approved B-double, road train, and HML routes rendered via NHVR ArcGIS MapServer (esri-leaflet dynamicMapLayer). Prototype validated — server-rendered, complete coverage, updates on pan/zoom. Users visually check if their route follows approved HV roads. | Small |
 | 19 | **Analytics dashboard** | Track platform usage: page views, map interactions, listing views, registration funnel. | Medium |
 
